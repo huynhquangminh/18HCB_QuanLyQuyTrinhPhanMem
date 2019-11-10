@@ -1,0 +1,21 @@
+.container-display {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.steper {
+    height: 500px;
+}
+
+.mattip {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
