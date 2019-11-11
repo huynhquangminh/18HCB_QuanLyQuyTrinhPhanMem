@@ -9,7 +9,8 @@
                     <mat-chip-list aria-label="Language">
                         <ng-container *ngFor="let item of listLanguage">
                             <mat-chip class="mattip language-mattip" color="primary" (click)="settingLanguage(item.id)">
-                                {{item.name}}</mat-chip>
+                                <div class="text">{{item.name}}</div>
+                            </mat-chip>
                         </ng-container>
                     </mat-chip-list>
                 </mat-step>
@@ -17,18 +18,22 @@
                     <mat-chip-list aria-label="Level">
                         <ng-container *ngFor="let item of listLevel">
                             <mat-chip class="mattip level-mattip" color="accent" (click)="settingLevel(item.id)">
-                                {{item.name}}</mat-chip>
+                                <div class="text">{{item.name}}</div>
+                            </mat-chip>
                         </ng-container>
                     </mat-chip-list>
                 </mat-step>
                 <mat-step label="Goal Every Day">
-                    <ng-container *ngFor="let item of listGoalDay">
-                        <mat-chip class="mattip goal-day-mattip" color="accent" (click)="settingGoalDay(item.id)">
-                            {{item.name}}</mat-chip>
-                    </ng-container>
+                    <mat-chip-list aria-label="Level">
+                        <ng-container *ngFor="let item of listGoalDay">
+                            <mat-chip class="mattip goal-day-mattip" color="accent" (click)="settingGoalDay(item.id)">
+                                <div class="text">{{item.name}}</div>
+                            </mat-chip>
+                        </ng-container>
+                    </mat-chip-list>
                 </mat-step>
             </mat-horizontal-stepper>
-            <button mat-raised-button color="primary" [disabled]="resultSetting.launguage == 0 || resultSetting.level == 0 || resultSetting.goalday == 0" (click)="saveSetting()">
+            <button mat-raised-button color="primary" id="BtnSave" [disabled]="resultSetting.launguage == 0 || resultSetting.level == 0 || resultSetting.goalday == 0" (click)="saveSetting()">
                 Save Setting
             </button>
         </div>
