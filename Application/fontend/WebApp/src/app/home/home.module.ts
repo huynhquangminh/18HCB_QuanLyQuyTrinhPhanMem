@@ -12,11 +12,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
-
+import { CourseListComponent } from './course-list/course-list.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 @NgModule({
   declarations: [
     HomeComponent,
     DisplaySettingComponent,
+    CourseListComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,15 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatCardModule,
     MatMenuModule,
     MatButtonModule,
-    LayoutModule
+    LayoutModule,
+    NgCircleProgressModule.forRoot({
+      radius: 60,
+      outerStrokeWidth: 10,
+      innerStrokeWidth: 5,
+      showBackground: false,
+      startFromZero: false,
+      showSubtitle : false,
+    })
   ]
 })
 export class HomeModule { }
