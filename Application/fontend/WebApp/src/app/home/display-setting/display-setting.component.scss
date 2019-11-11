@@ -20,8 +20,44 @@
     border-radius: 50px;
 }
 
-.language-mattip {
+.language-mattip{
     background-color: #e88989;
+}
+
+.mattip.language-mattip{
+    // margin: auto;
+    // // margin-top: 10px;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr;
+    // grid-template-rows: repeat(auto-fill, 1fr);
+    margin: auto;
+    margin-top: 100px;
+}
+
+.mattip.language-mattip:hover{
+    background-color: red;
+}
+
+.mattip.level-mattip{
+    margin: auto;
+    margin-top: 100px;
+}
+
+.mattip.level-mattip:hover{
+    background-color: blueviolet;
+}
+
+.mattip.goal-day-mattip{
+    margin: auto;
+    margin-top: 100px;
+}
+
+.mattip.goal-day-mattip:hover{
+    background-color: green;
+}
+
+.text{
+    margin: auto;
 }
 
 .level-mattip {
@@ -30,4 +66,8 @@
 
 .goal-day-mattip {
     background-color: #60d085;
+}
+
+#BtnSave{
+    float: right;
 }
