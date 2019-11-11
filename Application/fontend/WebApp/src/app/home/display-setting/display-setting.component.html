@@ -4,25 +4,33 @@
     </div>
     <div class="container-display">
         <div>
-            <mat-horizontal-stepper [linear]="isLinear" class="steper">
+            <mat-horizontal-stepper [linear]="isLinear" disableRipple="false" class="steper">
                 <mat-step label="Language">
-                    <mat-chip-list aria-label="Fish selection">
-                        <mat-chip class="mattip" color="primary" selected>C#</mat-chip>
-                        <mat-chip class="mattip" color="primary" selected>Angular</mat-chip>
-                        <mat-chip class="mattip" color="accent" selected>Sql Sever</mat-chip>
-                        <mat-chip class="mattip" color="primary" selected>TyepScript</mat-chip>
+                    <mat-chip-list aria-label="Language">
+                        <ng-container *ngFor="let item of listLanguage">
+                            <mat-chip class="mattip language-mattip" color="primary" (click)="settingLanguage(item.id)">
+                                {{item.name}}</mat-chip>
+                        </ng-container>
                     </mat-chip-list>
                 </mat-step>
                 <mat-step label="Level">
-                    xxxx
+                    <mat-chip-list aria-label="Level">
+                        <ng-container *ngFor="let item of listLevel">
+                            <mat-chip class="mattip level-mattip" color="accent" (click)="settingLevel(item.id)">
+                                {{item.name}}</mat-chip>
+                        </ng-container>
+                    </mat-chip-list>
                 </mat-step>
                 <mat-step label="Goal Every Day">
-                    xxxxx
+                    <ng-container *ngFor="let item of listGoalDay">
+                        <mat-chip class="mattip goal-day-mattip" color="accent" (click)="settingGoalDay(item.id)">
+                            {{item.name}}</mat-chip>
+                    </ng-container>
                 </mat-step>
             </mat-horizontal-stepper>
+            <button mat-raised-button color="primary" [disabled]="resultSetting.launguage == 0 || resultSetting.level == 0 || resultSetting.goalday == 0" (click)="saveSetting()">
+                Save Setting
+            </button>
         </div>
-
     </div>
-
-
 </div>
