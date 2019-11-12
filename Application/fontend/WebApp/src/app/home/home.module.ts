@@ -5,8 +5,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { DisplaySettingComponent } from './display-setting/display-setting.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatIconModule} from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -14,13 +14,23 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CourseListComponent } from './course-list/course-list.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { StudyQuizComponent } from './study-quiz/study-quiz.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     HomeComponent,
     DisplaySettingComponent,
     CourseListComponent,
+    StudyQuizComponent,
   ],
   imports: [
+    FormsModule,
     CommonModule,
     HomeRoutingModule,
     MatStepperModule,
@@ -32,13 +42,19 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     MatMenuModule,
     MatButtonModule,
     LayoutModule,
+    MatProgressBarModule,
+    MatRadioModule,
+    MatTabsModule,
+    MatDividerModule,
+    MatListModule,
+    MatSnackBarModule,
     NgCircleProgressModule.forRoot({
       radius: 60,
       outerStrokeWidth: 10,
       innerStrokeWidth: 5,
       showBackground: false,
       startFromZero: false,
-      showSubtitle : false,
+      showSubtitle: false,
     })
   ]
 })
