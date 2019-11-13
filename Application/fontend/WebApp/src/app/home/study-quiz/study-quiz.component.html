@@ -1,16 +1,19 @@
 <div class="progess-style">
     <mat-icon aria-hidden="false" aria-label="Example home icon">close</mat-icon>
-    <mat-progress-bar mode="determinate" [value]="valueProgress"></mat-progress-bar>
+    <mat-progress-bar class="custom-progessbar" mode="determinate" [value]="valueProgress"></mat-progress-bar>
 </div>
 <div>
-    <mat-card-content>
+    <mat-card-content *ngIf="valueProgress < 100">
         <label id="example-radio-group-label">Question: {{currentQuestion.question}}</label>
         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
             [(ngModel)]="resultAnswer">
-            <mat-radio-button class="example-radio-button" *ngFor="let item of currentQuestion.answer" [value]="item.id">
+            <mat-radio-button class="example-radio-button" *ngFor="let item of currentQuestion.answer"
+                [value]="item.id">
                 {{item.answerName}}
             </mat-radio-button>
         </mat-radio-group>
-        <button mat-raised-button color="primary" [disabled]="!resultAnswer" (click)= "submitAnswer(resultAnswer,currentQuestion.id )">Submit</button>
+        <button mat-raised-button color="primary" [disabled]="!resultAnswer"
+            (click)="submitAnswer(resultAnswer,currentQuestion.id )">Submit</button>
     </mat-card-content>
+    <button *ngIf="valueProgress === 100" mat-raised-button color="primary" (click)="selectFinish()">Finish</button>
 </div>

@@ -31,11 +31,13 @@
                     <mat-card-title>Mục tiêu mỗi ngày</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <circle-progress [percent]="85" [radius]="70" [outerStrokeWidth]="20" [innerStrokeWidth]="0" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300" [title]="'34/50 Điểm KN'" [showUnits]="false" [titleFontSize]="'15'">
+                    <circle-progress [percent]="85" [radius]="50"  [innerStrokeWidth]="0"
+                        [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
+                        [animationDuration]="300" [title]="'34/50 Điểm KN'" [showUnits]="false" [titleFontSize]="'10'">
                     </circle-progress>
                 </mat-card-content>
             </mat-card>
-            <mat-card class="example-card" style="margin: 10px 10px 10px 10px; border-radius: 15px; height: 200px;">
+            <mat-card class="example-card" style="margin: 10px 10px 10px 10px; border-radius: 15px; height: 250px;">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title>Bảng xếp hạng </mat-card-title>
@@ -43,20 +45,26 @@
                 <mat-card-content>
                     <mat-tab-group disableRipple="true">
                         <mat-tab label="Tuần này">
-                            <mat-list>
-                                <mat-list-item>Item 1</mat-list-item>
+                            <mat-list style="height: 150px;">
+                                <mat-list-item>MinhHuynh : 50 KN</mat-list-item>
+                                <mat-divider></mat-divider>
+                                <mat-list-item>TrungHuynh : 34 KN</mat-list-item>
                                 <mat-divider></mat-divider>
                             </mat-list>
                         </mat-tab>
                         <mat-tab label="Tháng này">
-                            <mat-list>
-                                <mat-list-item>Item 1</mat-list-item>
+                            <mat-list style="height: 150px;">
+                                <mat-list-item>MinhHuynh : 50 KN</mat-list-item>
+                                <mat-divider></mat-divider>
+                                <mat-list-item>TrungHuynh : 34 KN</mat-list-item>
                                 <mat-divider></mat-divider>
                             </mat-list>
                         </mat-tab>
                         <mat-tab label="Tổng cộng">
-                            <mat-list>
-                                <mat-list-item>Item 1</mat-list-item>
+                            <mat-list style="height: 150px;">
+                                <mat-list-item>MinhHuynh : 50 KN</mat-list-item>
+                                <mat-divider></mat-divider>
+                                <mat-list-item>TrungHuynh : 34 KN</mat-list-item>
                                 <mat-divider></mat-divider>
                             </mat-list>
                         </mat-tab>

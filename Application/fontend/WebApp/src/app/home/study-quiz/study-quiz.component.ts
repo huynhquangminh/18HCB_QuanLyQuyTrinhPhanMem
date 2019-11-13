@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataQuizMock } from './data-mock';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-study-quiz',
@@ -9,64 +11,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class StudyQuizComponent implements OnInit {
   public valueProgress = 0;
   public resultAnswer: string;
-  public listQuestion = [
-    {
-      id: 1,
-      question: 'Điền vào chỗ trống kiểu dữ liệu phù hợp: ___ name = "Khoa"',
-      answer: [
-        {
-          id: 1,
-          answerName: 'string	',
-          isBool: true
-        },
-        {
-          id: 2,
-          answerName: 'int',
-          isBool: false
-        },
-        {
-          id: 3,
-          answerName: 'boolean',
-          isBool: false
-        },
-        {
-          id: 4,
-          answerName: 'float',
-          isBool: false
-        }
-      ],
-      isAnswer: false
-    },
-    {
-      id: 2,
-      question: 'Phương thức này trả ra kiểu dữ liệu gì: public ___ Tong(int a, int b) return a + b;',
-      answer: [
-        {
-          id: 1,
-          answerName: 'string	',
-          isBool: false
-        },
-        {
-          id: 2,
-          answerName: 'int',
-          isBool: true
-        },
-        {
-          id: 3,
-          answerName: 'boolean',
-          isBool: false
-        },
-        {
-          id: 4,
-          answerName: 'float',
-          isBool: false
-        }
-      ],
-      isAnswer: false
-    }
-  ];
+  public listQuestion = DataQuizMock;
   currentQuestion = {};
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
     this.currentQuestion = this.getQuestion();
@@ -117,5 +64,9 @@ export class StudyQuizComponent implements OnInit {
     this.snackBar.open(message, null, {
       duration: 2000,
     });
+  }
+
+  selectFinish() {
+    this.router.navigateByUrl('/home/main/course-list');
   }
 }

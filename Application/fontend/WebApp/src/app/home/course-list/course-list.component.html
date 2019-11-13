@@ -1,7 +1,7 @@
 <div>
     <mat-chip-list>
         <ng-container *ngFor="let item of listCourse">
-            <mat-chip class="mattip language-mattip" color="primary">
+            <mat-chip class="mattip language-mattip" color="primary" (click)="selectCourse()">
                 {{item.name}}</mat-chip>
         </ng-container>
     </mat-chip-list>
