@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataQuizMock } from './data-mock';
 import { Router } from '@angular/router';
+import { GoalEveryDayService } from 'src/app/services/goal-every-day.service';
 
 @Component({
   selector: 'app-study-quiz',
@@ -13,10 +14,15 @@ export class StudyQuizComponent implements OnInit {
   public resultAnswer: string;
   public listQuestion = DataQuizMock;
   currentQuestion = {};
-  constructor(private snackBar: MatSnackBar, private router: Router) { }
+  constructor(
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private goalEveryDayService: GoalEveryDayService
+  ) { }
 
   ngOnInit() {
     this.currentQuestion = this.getQuestion();
+    console.log(this.listQuestion);
   }
 
   getQuestion() {
@@ -45,6 +51,7 @@ export class StudyQuizComponent implements OnInit {
         this.updateAnswer(idQuestion);
         this.resultAnswer = null;
         this.valueProgress = this.valueProgress + 10;
+        this.updatePointGoalDay(this.valueProgress);
         this.openMessageResult('Correct Answer');
       } else {
         this.openMessageResult('Incorrect Answer');
@@ -68,5 +75,15 @@ export class StudyQuizComponent implements OnInit {
 
   selectFinish() {
     this.router.navigateByUrl('/home/main/course-list');
+  }
+  cancelStudy() {
+    this.router.navigateByUrl('/home/main/course-list');
+  }
+
+  updatePointGoalDay(point) {
+    if (point === 100) {
+      const item = Math.random() * (15 - 5) + 5;
+      this.goalEveryDayService.listensChangeGoalDay(item);
+    }
   }
 }
