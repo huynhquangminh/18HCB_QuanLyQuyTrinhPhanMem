@@ -40,3 +40,11 @@ footer {
         height: auto;
     }
 }
+
+.button-fllow {
+    margin: 3px;
+}
+.button-fllow:hover {
+    transform: scale(1.1);
+    transition: all ease-in-out 0.7s;
+}

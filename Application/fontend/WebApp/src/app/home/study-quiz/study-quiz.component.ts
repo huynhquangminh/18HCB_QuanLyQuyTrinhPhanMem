@@ -12,8 +12,11 @@ import { GoalEveryDayService } from 'src/app/services/goal-every-day.service';
 export class StudyQuizComponent implements OnInit {
   public valueProgress = 0;
   public resultAnswer: string;
-  public listQuestion = DataQuizMock;
+  public listQuestion: any[] = [];
   currentQuestion = {};
+  audio = new Audio();
+  pathAudioRight = '../../../../assets/audio/right_answer.mp3';
+  pathAudioWrong = '../../../../assets/audio/wrong_answer.mp3';
   constructor(
     private snackBar: MatSnackBar,
     private router: Router,
@@ -21,8 +24,18 @@ export class StudyQuizComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.listQuestion = this.cloneQuestion();
     this.currentQuestion = this.getQuestion();
-    console.log(this.listQuestion);
+  }
+
+  cloneQuestion() {
+    const arr = [];
+    DataQuizMock.forEach(item => {
+      if (!item.isAnswer) {
+        arr.push(Object.assign({}, item));
+      }
+    });
+    return arr;
   }
 
   getQuestion() {
@@ -51,9 +64,11 @@ export class StudyQuizComponent implements OnInit {
         this.updateAnswer(idQuestion);
         this.resultAnswer = null;
         this.valueProgress = this.valueProgress + 10;
+        this.playAudio(this.pathAudioRight);
         this.updatePointGoalDay(this.valueProgress);
         this.openMessageResult('Correct Answer');
       } else {
+        this.playAudio(this.pathAudioWrong);
         this.openMessageResult('Incorrect Answer');
       }
     }
@@ -85,5 +100,12 @@ export class StudyQuizComponent implements OnInit {
       const item = Math.random() * (15 - 5) + 5;
       this.goalEveryDayService.listensChangeGoalDay(item);
     }
+  }
+
+  playAudio(linkSrc) {
+    this.audio = new Audio();
+    this.audio.src = linkSrc;
+    this.audio.load();
+    this.audio.play();
   }
 }

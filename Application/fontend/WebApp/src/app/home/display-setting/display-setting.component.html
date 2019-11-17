@@ -4,7 +4,7 @@
     </div>
     <div class="container-display">
         <div>
-            <mat-horizontal-stepper [linear]="isLinear" disableRipple="false" class="steper">
+            <mat-horizontal-stepper #stepper [linear]="isLinear" disableRipple="false" class="steper">
                 <mat-step label="Language">
                     <mat-chip-list aria-label="Language">
                         <ng-container *ngFor="let item of listLanguage">
@@ -33,7 +33,9 @@
                     </mat-chip-list>
                 </mat-step>
             </mat-horizontal-stepper>
-            <button mat-raised-button color="primary" id="BtnSave" [disabled]="resultSetting.launguage == 0 || resultSetting.level == 0 || resultSetting.goalday == 0" (click)="saveSetting()">
+            <button mat-raised-button color="primary" id="BtnSave"
+                [disabled]="resultSetting.launguage == 0 || resultSetting.level == 0 || resultSetting.goalday == 0"
+                (click)="saveSetting()">
                 Save Setting
             </button>
         </div>

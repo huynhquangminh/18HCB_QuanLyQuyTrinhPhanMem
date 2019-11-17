@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-display-setting',
@@ -7,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./display-setting.component.scss']
 })
 export class DisplaySettingComponent implements OnInit {
+  @ViewChild('stepper', { static: true }) myStepper: MatStepper;
   public isLinear = true;
   public listLanguage = [
     { id: 1, name: 'C#' },
@@ -42,15 +44,18 @@ export class DisplaySettingComponent implements OnInit {
   settingLanguage(id) {
     // tslint:disable-next-line:no-string-literal
     this.resultSetting['launguage'] = id;
+    this.myStepper.next();
 
   }
   settingLevel(id) {
     // tslint:disable-next-line:no-string-literal
     this.resultSetting['level'] = id;
+    this.myStepper.next();
   }
   settingGoalDay(id) {
     // tslint:disable-next-line:no-string-literal
     this.resultSetting['goalday'] = id;
+    // this.myStepper.next();
   }
 
   saveSetting() {

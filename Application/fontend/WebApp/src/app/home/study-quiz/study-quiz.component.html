@@ -1,8 +1,8 @@
 <div class="progess-style">
-    <mat-icon style="cursor: pointer;" (click)= "cancelStudy()">close</mat-icon>
+    <mat-icon style="cursor: pointer;" (click)="cancelStudy()">close</mat-icon>
     <mat-progress-bar class="custom-progessbar" mode="determinate" [value]="valueProgress"></mat-progress-bar>
 </div>
-<div>
+<div class="question-style">
     <mat-card-content *ngIf="valueProgress < 100">
         <label id="example-radio-group-label">Question: {{currentQuestion.question}}</label>
         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
