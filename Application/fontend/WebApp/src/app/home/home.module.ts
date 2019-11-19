@@ -22,12 +22,14 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { TargetDayComponent } from './target-day/target-day.component';
 @NgModule({
   declarations: [
     HomeComponent,
     DisplaySettingComponent,
     CourseListComponent,
     StudyQuizComponent,
+    TargetDayComponent,
   ],
   imports: [
     FormsModule,

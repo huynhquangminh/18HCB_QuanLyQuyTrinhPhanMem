@@ -15,7 +15,8 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!-- <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
-                <li><span class="glyphicon glyphicon-log-in"><img width="40px" src="../../assets/image/User_Avatar-512.png"></span></li>
+                <li><span class="glyphicon glyphicon-log-in"><img width="40px"
+                            src="../../assets/image/User_Avatar-512.png"></span></li>
             </ul>
         </div>
     </div>
@@ -28,18 +29,7 @@
             <router-outlet></router-outlet>
         </div>
         <div class="col-sm-4 sidenav">
-            <mat-card class="example-card" style="margin: 10px 10px 10px 10px; border-radius: 15px;">
-                <mat-card-header>
-                    <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title>Mục tiêu mỗi ngày</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <circle-progress [percent]="progessGoalDay" [radius]="50"  [innerStrokeWidth]="1"
-                        [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
-                        [animationDuration]="300" [title]="numGoalDay + '/50 KN' " [showUnits]="false" [titleFontSize]="'15'">
-                    </circle-progress>
-                </mat-card-content>
-            </mat-card>
+            <app-target-day></app-target-day>
             <mat-card class="example-card" style="margin: 10px 10px 10px 10px; border-radius: 15px; height: 250px;">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>

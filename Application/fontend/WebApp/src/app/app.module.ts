@@ -19,7 +19,7 @@ import { GoalEveryDayService } from './services/goal-every-day.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     FormsModule
   ],
   providers: [GoalEveryDayService],
