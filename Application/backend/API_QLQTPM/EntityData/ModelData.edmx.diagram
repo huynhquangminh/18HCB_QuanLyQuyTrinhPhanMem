@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2d4b79276fe54822836c8b1c08f07c3a" Name="Diagram1">
+        <EntityTypeShape EntityType="WebLapTrinhModel.CapDo" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSBaiHoc" Width="1.5" PointX="3.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSBanBe" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSCauHoi" Width="1.5" PointX="9" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSDapAn" Width="1.5" PointX="11.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSThongBao" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSYeuCauKetBan" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.KhoaHoc" Width="1.5" PointX="1.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.LoaiDiemKN" Width="1.5" PointX="3.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.ThongTinTaiKhoan" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_DSCauHoi_CapDo" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_ThongTinTaiKhoan_CapDo" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_DSBaiHoc_KhoaHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_DSCauHoi_DSBaiHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_ThongTinTaiKhoan_DSBaiHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_DSBanBe_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_DSDapAn_DSCauHoi" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_DSThongBao_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_DSYeuCauKetBan_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_ThongTinTaiKhoan_KhoaHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_ThongTinTaiKhoan_LoaiDiemKN" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_ThongTinTaiKhoan_TaiKhoan" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
