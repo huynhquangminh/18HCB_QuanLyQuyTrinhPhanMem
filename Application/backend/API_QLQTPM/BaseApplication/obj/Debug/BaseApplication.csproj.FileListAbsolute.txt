@@ -1,0 +1,89 @@
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\BaseApplication.dll.config
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\BaseApplication.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\BaseApplication.pdb
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\AutoMapper.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\CommonServiceLocator.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\EntityFramework.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\EntityFramework.SqlServer.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Newtonsoft.Json.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\System.Web.Http.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Abstractions.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Configuration.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Container.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Interception.Configuration.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Interception.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.RegistrationByConvention.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.ServiceLocation.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\AutoMapper.xml
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\CommonServiceLocator.pdb
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\EntityFramework.xml
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\EntityFramework.SqlServer.xml
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Newtonsoft.Json.xml
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\System.Web.Http.xml
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Abstractions.pdb
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Configuration.pdb
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Container.pdb
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Interception.pdb
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Interception.Configuration.pdb
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.RegistrationByConvention.pdb
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.ServiceLocation.pdb
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\obj\Debug\BaseApplication.dll
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\obj\Debug\BaseApplication.pdb
+E:\WEB_ASP_Online\ShopEshopperAPI\BaseApplication\obj\Debug\BaseApplication.csprojResolveAssemblyReference.cache
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\BaseApplication.dll.config
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\BaseApplication.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\BaseApplication.pdb
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\AutoMapper.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\CommonServiceLocator.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\EntityFramework.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\EntityFramework.SqlServer.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Newtonsoft.Json.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\System.Web.Http.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Abstractions.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Configuration.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Container.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Interception.Configuration.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Interception.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.RegistrationByConvention.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.ServiceLocation.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\AutoMapper.xml
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\CommonServiceLocator.pdb
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\EntityFramework.xml
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\EntityFramework.SqlServer.xml
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Newtonsoft.Json.xml
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\System.Web.Http.xml
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Abstractions.pdb
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Configuration.pdb
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Container.pdb
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Interception.pdb
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.Interception.Configuration.pdb
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.RegistrationByConvention.pdb
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\bin\Debug\Unity.ServiceLocation.pdb
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\obj\Debug\BaseApplication.dll
+E:\WEB_ASP_Online\API\ShopEshopperAPI\BaseApplication\obj\Debug\BaseApplication.pdb
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\BaseApplication.dll.config
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\BaseApplication.dll
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\BaseApplication.pdb
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\AutoMapper.dll
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\EntityFramework.dll
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\EntityFramework.SqlServer.dll
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\Newtonsoft.Json.dll
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\Unity.Abstractions.dll
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\Unity.Container.dll
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\AutoMapper.xml
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\EntityFramework.xml
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\EntityFramework.SqlServer.xml
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\Unity.Abstractions.pdb
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\Unity.Container.pdb
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\obj\Debug\BaseApplication.csprojAssemblyReference.cache
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\obj\Debug\BaseApplication.csproj.CoreCompileInputs.cache
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\obj\Debug\BaseApplication.csproj.CopyComplete
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\obj\Debug\BaseApplication.dll
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\obj\Debug\BaseApplication.pdb
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\EntityData.dll
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\EntityData.pdb
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\BaseApplication\bin\Debug\EntityData.dll.config
