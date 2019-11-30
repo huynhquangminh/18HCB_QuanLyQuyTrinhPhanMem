@@ -35,9 +35,9 @@
             return db.INSERT_ACCOUNT(param.user, param.pass) == 1 ? true : false;
         }
 
-        public GET_THONGTINTAIKHOAN_Result getDSThongTinTaiKhoan(int idAccount)
+        public GET_THONGTINTAIKHOAN_Result getDSThongTinTaiKhoan(GetThongTinTaiKhoanParameter param)
         {
-            return db.GET_THONGTINTAIKHOAN(idAccount).First();
+            return db.GET_THONGTINTAIKHOAN(param.idAccount).First();
         }
     }
 }

@@ -43,9 +43,9 @@ namespace api.Controllers
         /// </summary>
         /// <returns>IHttpActionResult</returns>
         [HttpPost]
-        public IHttpActionResult ThongTinTaiKhoan(int idAccount)
+        public IHttpActionResult ThongTinTaiKhoan(GetThongTinTaiKhoanParameter RequestData)
         {
-            var result = _businessLogic.GetThongTinTaiKhoan(idAccount);
+            var result = _businessLogic.GetThongTinTaiKhoan(RequestData);
             return new ActionResult<ThongTaiKhoanResponse>(result.Result, Request);
         }
     }

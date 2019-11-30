@@ -73,12 +73,12 @@ namespace BusinessLogic
             }
         }
 
-        public async Task<ThongTaiKhoanResponse> GetThongTinTaiKhoan(int idAccount)
+        public async Task<ThongTaiKhoanResponse> GetThongTinTaiKhoan(GetThongTinTaiKhoanParameter request)
         {
             var response = new ThongTaiKhoanResponse();
             try
             {
-                var result = _dataAccess.getDSThongTinTaiKhoan(idAccount);
+                var result = _dataAccess.getDSThongTinTaiKhoan(request);
                 if (result != null)
                 {
                     response.thongTinTaiKhoan = mapper.Map<GET_THONGTINTAIKHOAN_Result, thongtintaikhoanDto>(result);

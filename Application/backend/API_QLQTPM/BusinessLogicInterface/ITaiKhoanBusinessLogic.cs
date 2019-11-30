@@ -1,20 +1,33 @@
-﻿using BusinessLogicInterface.Requests;
-using BusinessLogicInterface.Response;
-using DataAcceessInterface.Parameter;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BusinessLogicInterface
+﻿namespace BusinessLogicInterface
 {
+    using BusinessLogicInterface.Response;
+    using DataAcceessInterface.Parameter;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Defines the <see cref="ITaiKhoanBusinessLogic" />
+    /// </summary>
     public interface ITaiKhoanBusinessLogic
     {
+        /// <summary>
+        /// The Login
+        /// </summary>
+        /// <param name="request">The request<see cref="LoginParameter"/></param>
+        /// <returns>The <see cref="Task{LoginResponse}"/></returns>
         Task<LoginResponse> Login(LoginParameter request);
 
+        /// <summary>
+        /// The ThemTaiKhoan
+        /// </summary>
+        /// <param name="request">The request<see cref="LoginParameter"/></param>
+        /// <returns>The <see cref="Task{bool}"/></returns>
         Task<bool> ThemTaiKhoan(LoginParameter request);
 
-        Task<ThongTaiKhoanResponse> GetThongTinTaiKhoan(int idAccount);
+        /// <summary>
+        /// The GetThongTinTaiKhoan
+        /// </summary>
+        /// <param name="request">The request<see cref="GetThongTinTaiKhoanParameter"/></param>
+        /// <returns>The <see cref="Task{ThongTaiKhoanResponse}"/></returns>
+        Task<ThongTaiKhoanResponse> GetThongTinTaiKhoan(GetThongTinTaiKhoanParameter request);
     }
 }
