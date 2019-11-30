@@ -258,6 +258,21 @@
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="pass" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="GET_THONGTINTAIKHOAN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idTaikhoan" Type="int" Mode="In" />
+  </Function>
+  <Function Name="INSERT_ACCOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="pass" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="THEM_THONGTINTAIKHOAN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idkhoahoc" Type="int" Mode="In" />
+    <Parameter Name="idcapdo" Type="int" Mode="In" />
+    <Parameter Name="diemKN" Type="int" Mode="In" />
+    <Parameter Name="diemKNDay" Type="int" Mode="In" />
+    <Parameter Name="idbaihoc" Type="int" Mode="In" />
+    <Parameter Name="idtaikhoan" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="WebLapTrinhModelStoreContainer">
     <EntitySet Name="CapDo" EntityType="Self.CapDo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DSBaiHoc" EntityType="Self.DSBaiHoc" Schema="dbo" store:Type="Tables" />

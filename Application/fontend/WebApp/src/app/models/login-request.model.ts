@@ -1,8 +1,8 @@
 export class LoginRequestModel {
-    public username: string;
-    public password: string;
+    public user: string;
+    public pass: string;
     constructor() {
-        this.username = '';
-        this.password = '';
+        this.user = '';
+        this.pass = '';
     }
 }

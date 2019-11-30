@@ -134,5 +134,20 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="INSERT_ACCOUNT" FunctionName="WebLapTrinhModel.Store.INSERT_ACCOUNT" />
+    <FunctionImportMapping FunctionImportName="GET_THONGTINTAIKHOAN" FunctionName="WebLapTrinhModel.Store.GET_THONGTINTAIKHOAN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WebLapTrinhModel.GET_THONGTINTAIKHOAN_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idkhoahoc" ColumnName="idkhoahoc" />
+          <ScalarProperty Name="idcapdo" ColumnName="idcapdo" />
+          <ScalarProperty Name="diemKN" ColumnName="diemKN" />
+          <ScalarProperty Name="diemKNDay" ColumnName="diemKNDay" />
+          <ScalarProperty Name="idbaihoc" ColumnName="idbaihoc" />
+          <ScalarProperty Name="idtaikhoan" ColumnName="idtaikhoan" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="THEM_THONGTINTAIKHOAN" FunctionName="WebLapTrinhModel.Store.THEM_THONGTINTAIKHOAN" />
   </EntityContainerMapping>
 </Mapping>

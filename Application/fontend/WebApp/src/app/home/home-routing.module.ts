@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { DisplaySettingComponent } from './display-setting/display-setting.component';

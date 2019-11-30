@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WebLapTrinhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WebLapTrinhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CapDo">
           <Key>
             <PropertyRef Name="id" />
@@ -263,6 +263,21 @@
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="pass" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GET_THONGTINTAIKHOAN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTaikhoan" Type="int" Mode="In" />
+        </Function>
+        <Function Name="INSERT_ACCOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="THEM_THONGTINTAIKHOAN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idkhoahoc" Type="int" Mode="In" />
+          <Parameter Name="idcapdo" Type="int" Mode="In" />
+          <Parameter Name="diemKN" Type="int" Mode="In" />
+          <Parameter Name="diemKNDay" Type="int" Mode="In" />
+          <Parameter Name="idbaihoc" Type="int" Mode="In" />
+          <Parameter Name="idtaikhoan" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="WebLapTrinhModelStoreContainer">
           <EntitySet Name="CapDo" EntityType="Self.CapDo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DSBaiHoc" EntityType="Self.DSBaiHoc" Schema="dbo" store:Type="Tables" />
@@ -325,8 +340,7 @@
             <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoan" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebLapTrinhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -673,6 +687,21 @@
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="INSERT_ACCOUNT">
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GET_THONGTINTAIKHOAN" ReturnType="Collection(WebLapTrinhModel.GET_THONGTINTAIKHOAN_Result)">
+            <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="THEM_THONGTINTAIKHOAN">
+            <Parameter Name="idkhoahoc" Mode="In" Type="Int32" />
+            <Parameter Name="idcapdo" Mode="In" Type="Int32" />
+            <Parameter Name="diemKN" Mode="In" Type="Int32" />
+            <Parameter Name="diemKNDay" Mode="In" Type="Int32" />
+            <Parameter Name="idbaihoc" Mode="In" Type="Int32" />
+            <Parameter Name="idtaikhoan" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ACCOUNT_LOGIN_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -680,6 +709,15 @@
           <Property Type="String" Name="password" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="email" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="GET_THONGTINTAIKHOAN_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="idkhoahoc" Nullable="false" />
+          <Property Type="Int32" Name="idcapdo" Nullable="false" />
+          <Property Type="Int32" Name="diemKN" Nullable="false" />
+          <Property Type="Int32" Name="diemKNDay" Nullable="true" />
+          <Property Type="Int32" Name="idbaihoc" Nullable="true" />
+          <Property Type="Int32" Name="idtaikhoan" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -820,6 +858,21 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="INSERT_ACCOUNT" FunctionName="WebLapTrinhModel.Store.INSERT_ACCOUNT" />
+          <FunctionImportMapping FunctionImportName="GET_THONGTINTAIKHOAN" FunctionName="WebLapTrinhModel.Store.GET_THONGTINTAIKHOAN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.GET_THONGTINTAIKHOAN_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idkhoahoc" ColumnName="idkhoahoc" />
+                <ScalarProperty Name="idcapdo" ColumnName="idcapdo" />
+                <ScalarProperty Name="diemKN" ColumnName="diemKN" />
+                <ScalarProperty Name="diemKNDay" ColumnName="diemKNDay" />
+                <ScalarProperty Name="idbaihoc" ColumnName="idbaihoc" />
+                <ScalarProperty Name="idtaikhoan" ColumnName="idtaikhoan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="THEM_THONGTINTAIKHOAN" FunctionName="WebLapTrinhModel.Store.THEM_THONGTINTAIKHOAN" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

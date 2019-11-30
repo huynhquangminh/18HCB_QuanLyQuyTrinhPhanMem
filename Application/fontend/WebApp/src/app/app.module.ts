@@ -1,3 +1,4 @@
+import { TaiKhoanService } from './services/tai-khoan.service';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -9,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoalEveryDayService } from './services/goal-every-day.service';
+import { AppService } from './services/app-service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,9 +23,10 @@ import { GoalEveryDayService } from './services/goal-every-day.service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [GoalEveryDayService],
+  providers: [AppService, GoalEveryDayService , TaiKhoanService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

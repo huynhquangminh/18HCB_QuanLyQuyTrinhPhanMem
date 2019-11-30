@@ -52,5 +52,56 @@ namespace EntityData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ACCOUNT_LOGIN_Result>("ACCOUNT_LOGIN", userParameter, passParameter);
         }
+    
+        public virtual int INSERT_ACCOUNT(string user, string pass)
+        {
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            var passParameter = pass != null ?
+                new ObjectParameter("pass", pass) :
+                new ObjectParameter("pass", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERT_ACCOUNT", userParameter, passParameter);
+        }
+    
+        public virtual ObjectResult<GET_THONGTINTAIKHOAN_Result> GET_THONGTINTAIKHOAN(Nullable<int> idTaikhoan)
+        {
+            var idTaikhoanParameter = idTaikhoan.HasValue ?
+                new ObjectParameter("idTaikhoan", idTaikhoan) :
+                new ObjectParameter("idTaikhoan", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_THONGTINTAIKHOAN_Result>("GET_THONGTINTAIKHOAN", idTaikhoanParameter);
+        }
+    
+        public virtual int THEM_THONGTINTAIKHOAN(Nullable<int> idkhoahoc, Nullable<int> idcapdo, Nullable<int> diemKN, Nullable<int> diemKNDay, Nullable<int> idbaihoc, Nullable<int> idtaikhoan)
+        {
+            var idkhoahocParameter = idkhoahoc.HasValue ?
+                new ObjectParameter("idkhoahoc", idkhoahoc) :
+                new ObjectParameter("idkhoahoc", typeof(int));
+    
+            var idcapdoParameter = idcapdo.HasValue ?
+                new ObjectParameter("idcapdo", idcapdo) :
+                new ObjectParameter("idcapdo", typeof(int));
+    
+            var diemKNParameter = diemKN.HasValue ?
+                new ObjectParameter("diemKN", diemKN) :
+                new ObjectParameter("diemKN", typeof(int));
+    
+            var diemKNDayParameter = diemKNDay.HasValue ?
+                new ObjectParameter("diemKNDay", diemKNDay) :
+                new ObjectParameter("diemKNDay", typeof(int));
+    
+            var idbaihocParameter = idbaihoc.HasValue ?
+                new ObjectParameter("idbaihoc", idbaihoc) :
+                new ObjectParameter("idbaihoc", typeof(int));
+    
+            var idtaikhoanParameter = idtaikhoan.HasValue ?
+                new ObjectParameter("idtaikhoan", idtaikhoan) :
+                new ObjectParameter("idtaikhoan", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("THEM_THONGTINTAIKHOAN", idkhoahocParameter, idcapdoParameter, diemKNParameter, diemKNDayParameter, idbaihocParameter, idtaikhoanParameter);
+        }
     }
 }

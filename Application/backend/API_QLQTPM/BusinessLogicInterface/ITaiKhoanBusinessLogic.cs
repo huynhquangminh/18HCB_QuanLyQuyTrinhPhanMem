@@ -12,5 +12,9 @@ namespace BusinessLogicInterface
     public interface ITaiKhoanBusinessLogic
     {
         Task<LoginResponse> Login(LoginParameter request);
+
+        Task<bool> ThemTaiKhoan(LoginParameter request);
+
+        Task<ThongTaiKhoanResponse> GetThongTinTaiKhoan(int idAccount);
     }
 }

@@ -11,5 +11,8 @@ namespace DataAcceessInterface
    public interface ITaiKhoanDataAccess
     {
          ACCOUNT_LOGIN_Result login(LoginParameter param );
+        bool ThemTaiKhoan(LoginParameter param );
+
+        GET_THONGTINTAIKHOAN_Result getDSThongTinTaiKhoan(int idAccount);
     }
 }

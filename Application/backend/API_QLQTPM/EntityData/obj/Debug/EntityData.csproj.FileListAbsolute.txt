@@ -9,3 +9,4 @@ E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Appli
 E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\EntityData\obj\Debug\EntityData.csproj.CopyComplete
 E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\EntityData\obj\Debug\EntityData.dll
 E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\EntityData\obj\Debug\EntityData.pdb
+E:\LienThong\Quan ly quy trinh phan mem\soucre\18HCB_QuanLyQuyTrinhPhanMem\Application\backend\API_QLQTPM\EntityData\obj\Debug\EntityData.csprojAssemblyReference.cache

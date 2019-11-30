@@ -77,6 +77,9 @@
     <Compile Include="DSYeuCauKetBan.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
+    <Compile Include="GET_THONGTINTAIKHOAN_Result.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="KhoaHoc.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>

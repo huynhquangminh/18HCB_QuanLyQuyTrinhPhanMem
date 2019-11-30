@@ -89,10 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\loginDto.cs" />
+    <Compile Include="Dtos\thongtintaikhoanDto.cs" />
     <Compile Include="ITaiKhoanBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\LoginRequest.cs" />
     <Compile Include="Response\LoginResponse.cs" />
+    <Compile Include="Response\ThongTaiKhoanResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

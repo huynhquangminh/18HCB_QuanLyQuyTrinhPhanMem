@@ -33,6 +33,7 @@ namespace BusinessLogic
             configMap = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<ACCOUNT_LOGIN_Result, loginDto>();
+                cfg.CreateMap<GET_THONGTINTAIKHOAN_Result, thongtintaikhoanDto>();
             });
             mapper = configMap.CreateMapper();
         }
@@ -46,6 +47,41 @@ namespace BusinessLogic
                 if (result != null)
                 {
                     response.accountLogin = mapper.Map<ACCOUNT_LOGIN_Result, loginDto>(result);
+                    response.Success = true;
+                }
+
+            }
+            catch (Exception)
+            {
+                response.Success = false;
+            }
+            return await Task.FromResult(response);
+        }
+
+        public async Task<bool> ThemTaiKhoan(LoginParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.ThemTaiKhoan(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
+        public async Task<ThongTaiKhoanResponse> GetThongTinTaiKhoan(int idAccount)
+        {
+            var response = new ThongTaiKhoanResponse();
+            try
+            {
+                var result = _dataAccess.getDSThongTinTaiKhoan(idAccount);
+                if (result != null)
+                {
+                    response.thongTinTaiKhoan = mapper.Map<GET_THONGTINTAIKHOAN_Result, thongtintaikhoanDto>(result);
                     response.Success = true;
                 }
 
