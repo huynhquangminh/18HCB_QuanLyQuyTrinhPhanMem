@@ -29,9 +29,11 @@ namespace EntityData
     
         public virtual DbSet<CapDo> CapDoes { get; set; }
         public virtual DbSet<DSBaiHoc> DSBaiHocs { get; set; }
+        public virtual DbSet<DSBaiHocPass_Of_TaiKhoan> DSBaiHocPass_Of_TaiKhoan { get; set; }
         public virtual DbSet<DSBanBe> DSBanBes { get; set; }
         public virtual DbSet<DSCauHoi> DSCauHois { get; set; }
         public virtual DbSet<DSDapAn> DSDapAns { get; set; }
+        public virtual DbSet<DSKhoaHocPass_Of_TaiKhoan> DSKhoaHocPass_Of_TaiKhoan { get; set; }
         public virtual DbSet<DSThongBao> DSThongBaos { get; set; }
         public virtual DbSet<DSYeuCauKetBan> DSYeuCauKetBans { get; set; }
         public virtual DbSet<KhoaHoc> KhoaHocs { get; set; }
@@ -53,6 +55,39 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ACCOUNT_LOGIN_Result>("ACCOUNT_LOGIN", userParameter, passParameter);
         }
     
+        public virtual ObjectResult<Get_CapDo_Result> Get_CapDo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_CapDo_Result>("Get_CapDo");
+        }
+    
+        public virtual ObjectResult<Get_DSBaiHoc_Result> Get_DSBaiHoc(Nullable<int> idKhoaHoc)
+        {
+            var idKhoaHocParameter = idKhoaHoc.HasValue ?
+                new ObjectParameter("idKhoaHoc", idKhoaHoc) :
+                new ObjectParameter("idKhoaHoc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_DSBaiHoc_Result>("Get_DSBaiHoc", idKhoaHocParameter);
+        }
+    
+        public virtual ObjectResult<Get_DSKhoaHoc_Result> Get_DSKhoaHoc()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_DSKhoaHoc_Result>("Get_DSKhoaHoc");
+        }
+    
+        public virtual ObjectResult<Get_LoaiDiemKinhNghiem_Result> Get_LoaiDiemKinhNghiem()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_LoaiDiemKinhNghiem_Result>("Get_LoaiDiemKinhNghiem");
+        }
+    
+        public virtual ObjectResult<GET_THONGTINTAIKHOAN_Result> GET_THONGTINTAIKHOAN(Nullable<int> idTaikhoan)
+        {
+            var idTaikhoanParameter = idTaikhoan.HasValue ?
+                new ObjectParameter("idTaikhoan", idTaikhoan) :
+                new ObjectParameter("idTaikhoan", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_THONGTINTAIKHOAN_Result>("GET_THONGTINTAIKHOAN", idTaikhoanParameter);
+        }
+    
         public virtual int INSERT_ACCOUNT(string user, string pass)
         {
             var userParameter = user != null ?
@@ -66,16 +101,7 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERT_ACCOUNT", userParameter, passParameter);
         }
     
-        public virtual ObjectResult<GET_THONGTINTAIKHOAN_Result> GET_THONGTINTAIKHOAN(Nullable<int> idTaikhoan)
-        {
-            var idTaikhoanParameter = idTaikhoan.HasValue ?
-                new ObjectParameter("idTaikhoan", idTaikhoan) :
-                new ObjectParameter("idTaikhoan", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_THONGTINTAIKHOAN_Result>("GET_THONGTINTAIKHOAN", idTaikhoanParameter);
-        }
-    
-        public virtual int THEM_THONGTINTAIKHOAN(Nullable<int> idkhoahoc, Nullable<int> idcapdo, Nullable<int> diemKN, Nullable<int> diemKNDay, Nullable<int> idbaihoc, Nullable<int> idtaikhoan)
+        public virtual int THEM_THONGTINTAIKHOAN(Nullable<int> idkhoahoc, Nullable<int> idcapdo, Nullable<int> diemKN, Nullable<int> diemKNDay, Nullable<int> idtaikhoan)
         {
             var idkhoahocParameter = idkhoahoc.HasValue ?
                 new ObjectParameter("idkhoahoc", idkhoahoc) :
@@ -93,15 +119,11 @@ namespace EntityData
                 new ObjectParameter("diemKNDay", diemKNDay) :
                 new ObjectParameter("diemKNDay", typeof(int));
     
-            var idbaihocParameter = idbaihoc.HasValue ?
-                new ObjectParameter("idbaihoc", idbaihoc) :
-                new ObjectParameter("idbaihoc", typeof(int));
-    
             var idtaikhoanParameter = idtaikhoan.HasValue ?
                 new ObjectParameter("idtaikhoan", idtaikhoan) :
                 new ObjectParameter("idtaikhoan", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("THEM_THONGTINTAIKHOAN", idkhoahocParameter, idcapdoParameter, diemKNParameter, diemKNDayParameter, idbaihocParameter, idtaikhoanParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("THEM_THONGTINTAIKHOAN", idkhoahocParameter, idcapdoParameter, diemKNParameter, diemKNDayParameter, idtaikhoanParameter);
         }
     }
 }

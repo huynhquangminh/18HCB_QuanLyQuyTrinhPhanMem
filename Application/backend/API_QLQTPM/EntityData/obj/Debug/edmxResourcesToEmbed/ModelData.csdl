@@ -16,11 +16,17 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="tenbaihoc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="idkhoahoc" Type="Int32" Nullable="false" />
-    <Property Name="passbaihoc" Type="Boolean" />
-    <Property Name="nhombaihoc" Type="Int32" Nullable="false" />
     <NavigationProperty Name="KhoaHoc" Relationship="Self.FK_DSBaiHoc_KhoaHoc" FromRole="DSBaiHoc" ToRole="KhoaHoc" />
     <NavigationProperty Name="DSCauHois" Relationship="Self.FK_DSCauHoi_DSBaiHoc" FromRole="DSBaiHoc" ToRole="DSCauHoi" />
-    <NavigationProperty Name="ThongTinTaiKhoans" Relationship="Self.FK_ThongTinTaiKhoan_DSBaiHoc" FromRole="DSBaiHoc" ToRole="ThongTinTaiKhoan" />
+  </EntityType>
+  <EntityType Name="DSBaiHocPass_Of_TaiKhoan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTTTaiKhoan" Type="Int32" Nullable="false" />
+    <Property Name="idBaiHoc" Type="Int32" />
+    <NavigationProperty Name="ThongTinTaiKhoan" Relationship="Self.FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan" FromRole="DSBaiHocPass_Of_TaiKhoan" ToRole="ThongTinTaiKhoan" />
   </EntityType>
   <EntityType Name="DSBanBe">
     <Key>
@@ -55,6 +61,15 @@
     <Property Name="dapan" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="DSCauHoi" Relationship="Self.FK_DSDapAn_DSCauHoi" FromRole="DSDapAn" ToRole="DSCauHoi" />
   </EntityType>
+  <EntityType Name="DSKhoaHocPass_Of_TaiKhoan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTTTaiKhoan" Type="Int32" Nullable="false" />
+    <Property Name="idKhoaHoc" Type="Int32" />
+    <NavigationProperty Name="ThongTinTaiKhoan" Relationship="Self.FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan" FromRole="DSKhoaHocPass_Of_TaiKhoan" ToRole="ThongTinTaiKhoan" />
+  </EntityType>
   <EntityType Name="DSThongBao">
     <Key>
       <PropertyRef Name="id" />
@@ -81,7 +96,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="tenkhoahoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="passkhoahoc" Type="Boolean" />
+    <Property Name="imgKhoaHoc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="DSBaiHocs" Relationship="Self.FK_DSBaiHoc_KhoaHoc" FromRole="KhoaHoc" ToRole="DSBaiHoc" />
     <NavigationProperty Name="ThongTinTaiKhoans" Relationship="Self.FK_ThongTinTaiKhoan_KhoaHoc" FromRole="KhoaHoc" ToRole="ThongTinTaiKhoan" />
   </EntityType>
@@ -126,10 +141,10 @@
     <Property Name="idcapdo" Type="Int32" Nullable="false" />
     <Property Name="diemKN" Type="Int32" Nullable="false" />
     <Property Name="diemKNDay" Type="Int32" />
-    <Property Name="idbaihoc" Type="Int32" />
     <Property Name="idtaikhoan" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CapDo" Relationship="Self.FK_ThongTinTaiKhoan_CapDo" FromRole="ThongTinTaiKhoan" ToRole="CapDo" />
-    <NavigationProperty Name="DSBaiHoc" Relationship="Self.FK_ThongTinTaiKhoan_DSBaiHoc" FromRole="ThongTinTaiKhoan" ToRole="DSBaiHoc" />
+    <NavigationProperty Name="DSBaiHocPass_Of_TaiKhoan" Relationship="Self.FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan" FromRole="ThongTinTaiKhoan" ToRole="DSBaiHocPass_Of_TaiKhoan" />
+    <NavigationProperty Name="DSKhoaHocPass_Of_TaiKhoan" Relationship="Self.FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan" FromRole="ThongTinTaiKhoan" ToRole="DSKhoaHocPass_Of_TaiKhoan" />
     <NavigationProperty Name="KhoaHoc" Relationship="Self.FK_ThongTinTaiKhoan_KhoaHoc" FromRole="ThongTinTaiKhoan" ToRole="KhoaHoc" />
     <NavigationProperty Name="LoaiDiemKN" Relationship="Self.FK_ThongTinTaiKhoan_LoaiDiemKN" FromRole="ThongTinTaiKhoan" ToRole="LoaiDiemKN" />
     <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_ThongTinTaiKhoan_TaiKhoan" FromRole="ThongTinTaiKhoan" ToRole="TaiKhoan" />
@@ -182,15 +197,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ThongTinTaiKhoan_DSBaiHoc">
-    <End Role="DSBaiHoc" Type="Self.DSBaiHoc" Multiplicity="0..1" />
-    <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="*" />
+  <Association Name="FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
+    <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="1" />
+    <End Role="DSBaiHocPass_Of_TaiKhoan" Type="Self.DSBaiHocPass_Of_TaiKhoan" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="DSBaiHoc">
+      <Principal Role="ThongTinTaiKhoan">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="ThongTinTaiKhoan">
-        <PropertyRef Name="idbaihoc" />
+      <Dependent Role="DSBaiHocPass_Of_TaiKhoan">
+        <PropertyRef Name="idTTTaiKhoan" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -215,6 +230,18 @@
       </Principal>
       <Dependent Role="DSDapAn">
         <PropertyRef Name="idcauhoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
+    <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="1" />
+    <End Role="DSKhoaHocPass_Of_TaiKhoan" Type="Self.DSKhoaHocPass_Of_TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThongTinTaiKhoan">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DSKhoaHocPass_Of_TaiKhoan">
+        <PropertyRef Name="idTTTaiKhoan" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -281,9 +308,11 @@
   <EntityContainer Name="WebLapTrinhEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CapDoes" EntityType="Self.CapDo" />
     <EntitySet Name="DSBaiHocs" EntityType="Self.DSBaiHoc" />
+    <EntitySet Name="DSBaiHocPass_Of_TaiKhoan" EntityType="Self.DSBaiHocPass_Of_TaiKhoan" />
     <EntitySet Name="DSBanBes" EntityType="Self.DSBanBe" />
     <EntitySet Name="DSCauHois" EntityType="Self.DSCauHoi" />
     <EntitySet Name="DSDapAns" EntityType="Self.DSDapAn" />
+    <EntitySet Name="DSKhoaHocPass_Of_TaiKhoan" EntityType="Self.DSKhoaHocPass_Of_TaiKhoan" />
     <EntitySet Name="DSThongBaos" EntityType="Self.DSThongBao" />
     <EntitySet Name="DSYeuCauKetBans" EntityType="Self.DSYeuCauKetBan" />
     <EntitySet Name="KhoaHocs" EntityType="Self.KhoaHoc" />
@@ -307,9 +336,9 @@
       <End Role="DSBaiHoc" EntitySet="DSBaiHocs" />
       <End Role="DSCauHoi" EntitySet="DSCauHois" />
     </AssociationSet>
-    <AssociationSet Name="FK_ThongTinTaiKhoan_DSBaiHoc" Association="Self.FK_ThongTinTaiKhoan_DSBaiHoc">
-      <End Role="DSBaiHoc" EntitySet="DSBaiHocs" />
+    <AssociationSet Name="FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan" Association="Self.FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
       <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoans" />
+      <End Role="DSBaiHocPass_Of_TaiKhoan" EntitySet="DSBaiHocPass_Of_TaiKhoan" />
     </AssociationSet>
     <AssociationSet Name="FK_DSBanBe_TaiKhoan" Association="Self.FK_DSBanBe_TaiKhoan">
       <End Role="TaiKhoan" EntitySet="TaiKhoans" />
@@ -318,6 +347,10 @@
     <AssociationSet Name="FK_DSDapAn_DSCauHoi" Association="Self.FK_DSDapAn_DSCauHoi">
       <End Role="DSCauHoi" EntitySet="DSCauHois" />
       <End Role="DSDapAn" EntitySet="DSDapAns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan" Association="Self.FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
+      <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoans" />
+      <End Role="DSKhoaHocPass_Of_TaiKhoan" EntitySet="DSKhoaHocPass_Of_TaiKhoan" />
     </AssociationSet>
     <AssociationSet Name="FK_DSThongBao_TaiKhoan" Association="Self.FK_DSThongBao_TaiKhoan">
       <End Role="TaiKhoan" EntitySet="TaiKhoans" />
@@ -343,19 +376,24 @@
       <Parameter Name="user" Mode="In" Type="String" />
       <Parameter Name="pass" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="Get_CapDo" ReturnType="Collection(WebLapTrinhModel.Get_CapDo_Result)" />
+    <FunctionImport Name="Get_DSBaiHoc" ReturnType="Collection(WebLapTrinhModel.Get_DSBaiHoc_Result)">
+      <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Get_DSKhoaHoc" ReturnType="Collection(WebLapTrinhModel.Get_DSKhoaHoc_Result)" />
+    <FunctionImport Name="Get_LoaiDiemKinhNghiem" ReturnType="Collection(WebLapTrinhModel.Get_LoaiDiemKinhNghiem_Result)" />
+    <FunctionImport Name="GET_THONGTINTAIKHOAN" ReturnType="Collection(WebLapTrinhModel.GET_THONGTINTAIKHOAN_Result)">
+      <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="INSERT_ACCOUNT">
       <Parameter Name="user" Mode="In" Type="String" />
       <Parameter Name="pass" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="GET_THONGTINTAIKHOAN" ReturnType="Collection(WebLapTrinhModel.GET_THONGTINTAIKHOAN_Result)">
-      <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="THEM_THONGTINTAIKHOAN">
       <Parameter Name="idkhoahoc" Mode="In" Type="Int32" />
       <Parameter Name="idcapdo" Mode="In" Type="Int32" />
       <Parameter Name="diemKN" Mode="In" Type="Int32" />
       <Parameter Name="diemKNDay" Mode="In" Type="Int32" />
-      <Parameter Name="idbaihoc" Mode="In" Type="Int32" />
       <Parameter Name="idtaikhoan" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
@@ -366,13 +404,30 @@
     <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
     <Property Type="String" Name="email" Nullable="true" MaxLength="200" />
   </ComplexType>
+  <ComplexType Name="Get_CapDo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="tencapdo" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Get_DSBaiHoc_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="tenbaihoc" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="idkhoahoc" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Get_DSKhoaHoc_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="tenkhoahoc" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="imgKhoaHoc" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="Get_LoaiDiemKinhNghiem_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="diemKN" Nullable="false" />
+  </ComplexType>
   <ComplexType Name="GET_THONGTINTAIKHOAN_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
     <Property Type="Int32" Name="idkhoahoc" Nullable="false" />
     <Property Type="Int32" Name="idcapdo" Nullable="false" />
     <Property Type="Int32" Name="diemKN" Nullable="false" />
     <Property Type="Int32" Name="diemKNDay" Nullable="true" />
-    <Property Type="Int32" Name="idbaihoc" Nullable="true" />
     <Property Type="Int32" Name="idtaikhoan" Nullable="false" />
   </ComplexType>
 </Schema>

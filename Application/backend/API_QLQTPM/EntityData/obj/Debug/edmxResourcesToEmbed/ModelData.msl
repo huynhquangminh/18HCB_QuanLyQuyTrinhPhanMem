@@ -15,8 +15,15 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="tenbaihoc" ColumnName="tenbaihoc" />
           <ScalarProperty Name="idkhoahoc" ColumnName="idkhoahoc" />
-          <ScalarProperty Name="passbaihoc" ColumnName="passbaihoc" />
-          <ScalarProperty Name="nhombaihoc" ColumnName="nhombaihoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DSBaiHocPass_Of_TaiKhoan">
+      <EntityTypeMapping TypeName="WebLapTrinhModel.DSBaiHocPass_Of_TaiKhoan">
+        <MappingFragment StoreEntitySet="DSBaiHocPass_Of_TaiKhoan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idTTTaiKhoan" ColumnName="idTTTaiKhoan" />
+          <ScalarProperty Name="idBaiHoc" ColumnName="idBaiHoc" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -51,6 +58,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="DSKhoaHocPass_Of_TaiKhoan">
+      <EntityTypeMapping TypeName="WebLapTrinhModel.DSKhoaHocPass_Of_TaiKhoan">
+        <MappingFragment StoreEntitySet="DSKhoaHocPass_Of_TaiKhoan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idTTTaiKhoan" ColumnName="idTTTaiKhoan" />
+          <ScalarProperty Name="idKhoaHoc" ColumnName="idKhoaHoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="DSThongBaos">
       <EntityTypeMapping TypeName="WebLapTrinhModel.DSThongBao">
         <MappingFragment StoreEntitySet="DSThongBao">
@@ -76,7 +92,7 @@
         <MappingFragment StoreEntitySet="KhoaHoc">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="tenkhoahoc" ColumnName="tenkhoahoc" />
-          <ScalarProperty Name="passkhoahoc" ColumnName="passkhoahoc" />
+          <ScalarProperty Name="imgKhoaHoc" ColumnName="imgKhoaHoc" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -118,7 +134,6 @@
           <ScalarProperty Name="idcapdo" ColumnName="idcapdo" />
           <ScalarProperty Name="diemKN" ColumnName="diemKN" />
           <ScalarProperty Name="diemKNDay" ColumnName="diemKNDay" />
-          <ScalarProperty Name="idbaihoc" ColumnName="idbaihoc" />
           <ScalarProperty Name="idtaikhoan" ColumnName="idtaikhoan" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -134,7 +149,40 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="INSERT_ACCOUNT" FunctionName="WebLapTrinhModel.Store.INSERT_ACCOUNT" />
+    <FunctionImportMapping FunctionImportName="Get_CapDo" FunctionName="WebLapTrinhModel.Store.Get_CapDo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_CapDo_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tencapdo" ColumnName="tencapdo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_DSBaiHoc" FunctionName="WebLapTrinhModel.Store.Get_DSBaiHoc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_DSBaiHoc_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tenbaihoc" ColumnName="tenbaihoc" />
+          <ScalarProperty Name="idkhoahoc" ColumnName="idkhoahoc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_DSKhoaHoc" FunctionName="WebLapTrinhModel.Store.Get_DSKhoaHoc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_DSKhoaHoc_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tenkhoahoc" ColumnName="tenkhoahoc" />
+          <ScalarProperty Name="imgKhoaHoc" ColumnName="imgKhoaHoc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_LoaiDiemKinhNghiem" FunctionName="WebLapTrinhModel.Store.Get_LoaiDiemKinhNghiem">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_LoaiDiemKinhNghiem_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="diemKN" ColumnName="diemKN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="GET_THONGTINTAIKHOAN" FunctionName="WebLapTrinhModel.Store.GET_THONGTINTAIKHOAN">
       <ResultMapping>
         <ComplexTypeMapping TypeName="WebLapTrinhModel.GET_THONGTINTAIKHOAN_Result">
@@ -143,11 +191,11 @@
           <ScalarProperty Name="idcapdo" ColumnName="idcapdo" />
           <ScalarProperty Name="diemKN" ColumnName="diemKN" />
           <ScalarProperty Name="diemKNDay" ColumnName="diemKNDay" />
-          <ScalarProperty Name="idbaihoc" ColumnName="idbaihoc" />
           <ScalarProperty Name="idtaikhoan" ColumnName="idtaikhoan" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="INSERT_ACCOUNT" FunctionName="WebLapTrinhModel.Store.INSERT_ACCOUNT" />
     <FunctionImportMapping FunctionImportName="THEM_THONGTINTAIKHOAN" FunctionName="WebLapTrinhModel.Store.THEM_THONGTINTAIKHOAN" />
   </EntityContainerMapping>
 </Mapping>

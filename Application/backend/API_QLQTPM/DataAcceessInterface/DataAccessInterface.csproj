@@ -83,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IKhoaHocDataAccess.cs" />
     <Compile Include="ITaiKhoanDataAccess.cs" />
     <Compile Include="Parameter\GetThongTinTaiKhoanParameter.cs" />
     <Compile Include="Parameter\LoginParameter.cs" />

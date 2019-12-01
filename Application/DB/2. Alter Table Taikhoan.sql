@@ -1,6 +1,0 @@
-
-DELETE FROM TaiKhoan WHERE id = 2
-
-ALTER TABLE dbo.TaiKhoan
-ADD CONSTRAINT AK_USERNAME UNIQUE (username);   
-GO  

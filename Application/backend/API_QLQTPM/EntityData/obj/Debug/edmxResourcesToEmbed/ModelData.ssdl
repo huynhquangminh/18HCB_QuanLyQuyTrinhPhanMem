@@ -14,8 +14,14 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tenbaihoc" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="idkhoahoc" Type="int" Nullable="false" />
-    <Property Name="passbaihoc" Type="bit" />
-    <Property Name="nhombaihoc" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DSBaiHocPass_Of_TaiKhoan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTTTaiKhoan" Type="int" Nullable="false" />
+    <Property Name="idBaiHoc" Type="int" />
   </EntityType>
   <EntityType Name="DSBanBe">
     <Key>
@@ -45,6 +51,14 @@
     <Property Name="cautraloi" Type="nvarchar(max)" Nullable="false" />
     <Property Name="dapan" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="DSKhoaHocPass_Of_TaiKhoan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTTTaiKhoan" Type="int" Nullable="false" />
+    <Property Name="idKhoaHoc" Type="int" />
+  </EntityType>
   <EntityType Name="DSThongBao">
     <Key>
       <PropertyRef Name="id" />
@@ -69,7 +83,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tenkhoahoc" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="passkhoahoc" Type="bit" />
+    <Property Name="imgKhoaHoc" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="LoaiDiemKN">
     <Key>
@@ -107,7 +121,6 @@
     <Property Name="idcapdo" Type="int" Nullable="false" />
     <Property Name="diemKN" Type="int" Nullable="false" />
     <Property Name="diemKNDay" Type="int" />
-    <Property Name="idbaihoc" Type="int" />
     <Property Name="idtaikhoan" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_DSBaiHoc_KhoaHoc">
@@ -119,6 +132,18 @@
       </Principal>
       <Dependent Role="DSBaiHoc">
         <PropertyRef Name="idkhoahoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
+    <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="1" />
+    <End Role="DSBaiHocPass_Of_TaiKhoan" Type="Self.DSBaiHocPass_Of_TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThongTinTaiKhoan">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DSBaiHocPass_Of_TaiKhoan">
+        <PropertyRef Name="idTTTaiKhoan" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -170,6 +195,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
+    <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="1" />
+    <End Role="DSKhoaHocPass_Of_TaiKhoan" Type="Self.DSKhoaHocPass_Of_TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThongTinTaiKhoan">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DSKhoaHocPass_Of_TaiKhoan">
+        <PropertyRef Name="idTTTaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_DSThongBao_TaiKhoan">
     <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
     <End Role="DSThongBao" Type="Self.DSThongBao" Multiplicity="*" />
@@ -203,18 +240,6 @@
       </Principal>
       <Dependent Role="ThongTinTaiKhoan">
         <PropertyRef Name="idcapdo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ThongTinTaiKhoan_DSBaiHoc">
-    <End Role="DSBaiHoc" Type="Self.DSBaiHoc" Multiplicity="0..1" />
-    <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DSBaiHoc">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="ThongTinTaiKhoan">
-        <PropertyRef Name="idbaihoc" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -258,6 +283,12 @@
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="pass" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="Get_CapDo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_DSBaiHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idKhoaHoc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_DSKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_LoaiDiemKinhNghiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GET_THONGTINTAIKHOAN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idTaikhoan" Type="int" Mode="In" />
   </Function>
@@ -270,15 +301,16 @@
     <Parameter Name="idcapdo" Type="int" Mode="In" />
     <Parameter Name="diemKN" Type="int" Mode="In" />
     <Parameter Name="diemKNDay" Type="int" Mode="In" />
-    <Parameter Name="idbaihoc" Type="int" Mode="In" />
     <Parameter Name="idtaikhoan" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="WebLapTrinhModelStoreContainer">
     <EntitySet Name="CapDo" EntityType="Self.CapDo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DSBaiHoc" EntityType="Self.DSBaiHoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DSBaiHocPass_Of_TaiKhoan" EntityType="Self.DSBaiHocPass_Of_TaiKhoan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DSBanBe" EntityType="Self.DSBanBe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DSCauHoi" EntityType="Self.DSCauHoi" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DSDapAn" EntityType="Self.DSDapAn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DSKhoaHocPass_Of_TaiKhoan" EntityType="Self.DSKhoaHocPass_Of_TaiKhoan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DSThongBao" EntityType="Self.DSThongBao" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DSYeuCauKetBan" EntityType="Self.DSYeuCauKetBan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KhoaHoc" EntityType="Self.KhoaHoc" Schema="dbo" store:Type="Tables" />
@@ -289,6 +321,10 @@
     <AssociationSet Name="FK_DSBaiHoc_KhoaHoc" Association="Self.FK_DSBaiHoc_KhoaHoc">
       <End Role="KhoaHoc" EntitySet="KhoaHoc" />
       <End Role="DSBaiHoc" EntitySet="DSBaiHoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan" Association="Self.FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
+      <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoan" />
+      <End Role="DSBaiHocPass_Of_TaiKhoan" EntitySet="DSBaiHocPass_Of_TaiKhoan" />
     </AssociationSet>
     <AssociationSet Name="FK_DSBanBe_TaiKhoan" Association="Self.FK_DSBanBe_TaiKhoan">
       <End Role="TaiKhoan" EntitySet="TaiKhoan" />
@@ -306,6 +342,10 @@
       <End Role="DSCauHoi" EntitySet="DSCauHoi" />
       <End Role="DSDapAn" EntitySet="DSDapAn" />
     </AssociationSet>
+    <AssociationSet Name="FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan" Association="Self.FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
+      <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoan" />
+      <End Role="DSKhoaHocPass_Of_TaiKhoan" EntitySet="DSKhoaHocPass_Of_TaiKhoan" />
+    </AssociationSet>
     <AssociationSet Name="FK_DSThongBao_TaiKhoan" Association="Self.FK_DSThongBao_TaiKhoan">
       <End Role="TaiKhoan" EntitySet="TaiKhoan" />
       <End Role="DSThongBao" EntitySet="DSThongBao" />
@@ -316,10 +356,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_ThongTinTaiKhoan_CapDo" Association="Self.FK_ThongTinTaiKhoan_CapDo">
       <End Role="CapDo" EntitySet="CapDo" />
-      <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoan" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ThongTinTaiKhoan_DSBaiHoc" Association="Self.FK_ThongTinTaiKhoan_DSBaiHoc">
-      <End Role="DSBaiHoc" EntitySet="DSBaiHoc" />
       <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoan" />
     </AssociationSet>
     <AssociationSet Name="FK_ThongTinTaiKhoan_KhoaHoc" Association="Self.FK_ThongTinTaiKhoan_KhoaHoc">

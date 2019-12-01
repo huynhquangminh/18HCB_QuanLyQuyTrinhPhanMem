@@ -16,6 +16,19 @@ export class DisplaySettingComponent implements OnInit {
     { id: 3, name: 'Sql Serve' },
     { id: 4, name: 'TypeScript' },
     { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
+    { id: 5, name: 'TypeScript' },
   ];
 
   public listLevel = [

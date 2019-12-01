@@ -12,8 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoalEveryDayService } from './services/goal-every-day.service';
 import { AppService } from './services/app-service';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxWebstorageModule } from 'ngx-webstorage';
 import { WebStorageSerivce } from './services/webStorage.service';
+import { AngularWebStorageModule } from 'angular-web-storage';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,7 @@ import { WebStorageSerivce } from './services/webStorage.service';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    NgxWebstorageModule.forRoot()
+    AngularWebStorageModule
   ],
   providers: [
     AppService,

@@ -23,7 +23,7 @@ namespace EntityData
     
         public int id { get; set; }
         public string tenkhoahoc { get; set; }
-        public Nullable<bool> passkhoahoc { get; set; }
+        public string imgKhoaHoc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DSBaiHoc> DSBaiHocs { get; set; }

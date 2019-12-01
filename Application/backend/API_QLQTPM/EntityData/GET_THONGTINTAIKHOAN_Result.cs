@@ -18,7 +18,6 @@ namespace EntityData
         public int idcapdo { get; set; }
         public int diemKN { get; set; }
         public Nullable<int> diemKNDay { get; set; }
-        public Nullable<int> idbaihoc { get; set; }
         public int idtaikhoan { get; set; }
     }
 }

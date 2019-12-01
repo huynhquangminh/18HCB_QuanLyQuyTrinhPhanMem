@@ -18,19 +18,14 @@ namespace EntityData
         public DSBaiHoc()
         {
             this.DSCauHois = new HashSet<DSCauHoi>();
-            this.ThongTinTaiKhoans = new HashSet<ThongTinTaiKhoan>();
         }
     
         public int id { get; set; }
         public string tenbaihoc { get; set; }
         public int idkhoahoc { get; set; }
-        public Nullable<bool> passbaihoc { get; set; }
-        public int nhombaihoc { get; set; }
     
         public virtual KhoaHoc KhoaHoc { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DSCauHoi> DSCauHois { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ThongTinTaiKhoan> ThongTinTaiKhoans { get; set; }
     }
 }

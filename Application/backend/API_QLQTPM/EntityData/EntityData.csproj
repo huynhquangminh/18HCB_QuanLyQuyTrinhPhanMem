@@ -62,6 +62,9 @@
     <Compile Include="DSBaiHoc.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
+    <Compile Include="DSBaiHocPass_Of_TaiKhoan.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="DSBanBe.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
@@ -71,10 +74,25 @@
     <Compile Include="DSDapAn.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
+    <Compile Include="DSKhoaHocPass_Of_TaiKhoan.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="DSThongBao.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
     <Compile Include="DSYeuCauKetBan.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_CapDo_Result.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_DSBaiHoc_Result.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_DSKhoaHoc_Result.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_LoaiDiemKinhNghiem_Result.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
     <Compile Include="GET_THONGTINTAIKHOAN_Result.cs">
