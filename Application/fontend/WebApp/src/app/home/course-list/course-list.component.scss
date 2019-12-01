@@ -14,3 +14,17 @@
     margin-right: 30px;
     margin-top: 30px;
 }
+
+.listcard {
+    width: 70%;
+    margin: 5px;
+    font-size: 15px;
+    transition:1s;
+    // transition: color 1s ease-in-out;
+}
+
+.listcard:hover {
+    background-color:#5aa2ef;
+    transform: scale(1.02);
+    transition: all ease-in-out 1s;
+}

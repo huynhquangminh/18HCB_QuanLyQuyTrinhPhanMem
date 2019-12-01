@@ -23,13 +23,13 @@ export class LoginComponent implements OnInit {
     this.taiKhoanService.login(this.loginModel).subscribe(result => {
       if (result && result.Success) {
         this.router.navigateByUrl('/home/display-setting');
-        // this.taiKhoanService.getDanhSachThongTinTaiKhoan(result.accountLogin.id).subscribe(res => {
-        //   if (res && result.Success) {
-        //     // this.router.navigateByUrl('/home/main/');
-        //   } else {
-        //     // this.router.navigateByUrl('/home/display-setting');
-        //   }
-        // });
+        this.taiKhoanService.getDanhSachThongTinTaiKhoan({ idAccount: result.accountLogin.id }).subscribe(res => {
+          if (res && res.Success) {
+            this.router.navigateByUrl('/home');
+          } else {
+            this.router.navigateByUrl('/home/display-setting');
+          }
+        });
       }
     });
   }

@@ -1,0 +1,37 @@
+ALTER PROC [dbo].[GET_THONGTINTAIKHOAN] (@idTaikhoan int)
+AS
+BEGIN
+	SELECT TOP 1 id, idkhoahoc, idcapdo, diemKN, diemKNDay, idbaihoc, idtaikhoan
+	FROM ThongTinTaiKhoan 
+	WHERE idtaikhoan = @idTaikhoan 
+END
+
+ALTER PROC [dbo].[GET_THONGTINTAIKHOAN] (@idTaikhoan int)
+AS
+BEGIN
+	SELECT TOP 1 id, idkhoahoc, idcapdo, diemKN, diemKNDay, idbaihoc, idtaikhoan
+	FROM ThongTinTaiKhoan 
+	WHERE idtaikhoan = @idTaikhoan 
+END
+
+ALTER PROC [dbo].[INSERT_ACCOUNT] (@user varchar(100), @pass varchar(100))
+AS BEGIN 
+	IF NOT EXISTS  (SELECT* From TaiKhoan WHERE username = @user)
+	BEGIN 
+		INSERT INTO TaiKhoan (username, [password], email, img)
+		Values (@user, @pass, null, null)
+	END
+END
+
+ALTER PROC [dbo].[THEM_THONGTINTAIKHOAN] (
+	@idkhoahoc int, 
+	@idcapdo int, 
+	@diemKN int, 
+	@diemKNDay int, 
+	@idbaihoc int,
+	@idtaikhoan int
+)
+AS BEGIN
+	INSERT INTO ThongThongTinTaiKhoan (idkhoahoc,idcapdo,diemKN, diemKNDay,idbaihoc, idtaikhoan) 
+	VALUES (@idkhoahoc,@idcapdo,@diemKN,@diemKNDay,@idbaihoc,@idtaikhoan)
+END
