@@ -14,9 +14,12 @@ export class StudyQuizComponent implements OnInit {
   public resultAnswer: string;
   public listQuestion: any[] = [];
   currentQuestion = {};
+  indexCurrentQuestion = 0;
   audio = new Audio();
   pathAudioRight = '../../../../assets/audio/right_answer.mp3';
   pathAudioWrong = '../../../../assets/audio/wrong_answer.mp3';
+  timeLeft = 70;
+  interval: any;
   constructor(
     private snackBar: MatSnackBar,
     private router: Router,
@@ -26,6 +29,7 @@ export class StudyQuizComponent implements OnInit {
   ngOnInit() {
     this.listQuestion = this.cloneQuestion();
     this.currentQuestion = this.getQuestion();
+    this.startTimer();
   }
 
   cloneQuestion() {
@@ -41,11 +45,11 @@ export class StudyQuizComponent implements OnInit {
   getQuestion() {
     let result = {};
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.listQuestion.length; i++) {
+    for (let i = this.indexCurrentQuestion; i < this.listQuestion.length; i++) {
       if (!this.listQuestion[i].isAnswer) {
         result = this.listQuestion[i];
+        this.indexCurrentQuestion = i + 1;
         break;
-
       }
     }
     return result;
@@ -54,13 +58,13 @@ export class StudyQuizComponent implements OnInit {
   submitAnswer(answer, idQuestion) {
     this.checkAnswer(idQuestion, answer);
     this.currentQuestion = this.getQuestion();
-
   }
   checkAnswer(idQuestion, answer): boolean {
     const question = this.listQuestion.find(item => item.id === idQuestion);
     if (question) {
       const result = question.answer.find(i => i.id === answer);
       if (result && result.isBool) {
+        this.timeLeft = this.timeLeft + 5;
         this.updateAnswer(idQuestion);
         this.resultAnswer = null;
         this.valueProgress = this.valueProgress + 10;
@@ -68,6 +72,8 @@ export class StudyQuizComponent implements OnInit {
         this.updatePointGoalDay(this.valueProgress);
         this.openMessageResult('Correct Answer');
       } else {
+        this.listQuestion.push(question);
+        this.resultAnswer = null;
         this.playAudio(this.pathAudioWrong);
         this.openMessageResult('Incorrect Answer');
       }
@@ -107,5 +113,16 @@ export class StudyQuizComponent implements OnInit {
     this.audio.src = linkSrc;
     this.audio.load();
     this.audio.play();
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if (this.timeLeft > 0) {
+        this.timeLeft--;
+      }
+    }, 1000);
+  }
+  pauseTimer() {
+    clearInterval(this.interval);
   }
 }

@@ -6,35 +6,53 @@
         <div>
             <mat-horizontal-stepper #stepper [linear]="isLinear" disableRipple="false" class="steper">
                 <mat-step label="Language">
-                    <mat-chip-list aria-label="Language">
+                    <mat-grid-list cols="4" rowHeight="2:2.2">
                         <ng-container *ngFor="let item of listLanguage">
-                            <mat-chip class="mattip language-mattip" color="primary" (click)="settingLanguage(item.id)">
-                                <div class="text">{{item.name}}</div>
-                            </mat-chip>
+                            <mat-grid-tile style="margin: 10px">
+                                <mat-card class="example-card card-setting" style="width: 75%">
+                                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                                        alt="Photo of a Shiba Inu">
+                                    <mat-card-actions>
+                                        <button class="btn-card" mat-stroked-button color="primary">Vào học</button>
+                                        <button class="btn-card" mat-raised-button color="primary">Đã hoàn
+                                            thành</button>
+                                    </mat-card-actions>
+                                </mat-card>
+                            </mat-grid-tile>
                         </ng-container>
-                    </mat-chip-list>
+                    </mat-grid-list>
                 </mat-step>
                 <mat-step label="Level">
-                    <mat-chip-list aria-label="Level">
+                    <mat-grid-list cols="3" rowHeight="2:2">
                         <ng-container *ngFor="let item of listLevel">
-                            <mat-chip class="mattip level-mattip" color="accent" (click)="settingLevel(item.id)">
-                                <div class="text">{{item.name}}</div>
-                            </mat-chip>
+                            <mat-grid-tile style="margin: 10px">
+                                <mat-card class="example-card card-setting" style="width: 50%; border: 0.5px solid black;">
+                                    <mat-card-title>Shiba Inu</mat-card-title>
+                                    <mat-card-actions>
+                                        <button class="btn-card" mat-raised-button color="primary">Chọn</button>
+                                    </mat-card-actions>
+                                </mat-card>
+                            </mat-grid-tile>
                         </ng-container>
-                    </mat-chip-list>
+                    </mat-grid-list>
                 </mat-step>
                 <mat-step label="Goal Every Day">
-                    <mat-chip-list aria-label="Level">
-                        <ng-container *ngFor="let item of listGoalDay">
-                            <mat-chip class="mattip goal-day-mattip" color="accent" (click)="settingGoalDay(item.id)">
-                                <div class="text">{{item.name}} 'Điểm KN'</div>
-                            </mat-chip>
+                    <mat-grid-list cols="3" rowHeight="2:2">
+                        <ng-container *ngFor="let item of listLevel">
+                            <mat-grid-tile style="margin: 10px">
+                                <mat-card class="example-card card-setting" style="width: 50%; border: 0.5px solid black;">
+                                    <mat-card-title>Shiba Inu</mat-card-title>
+                                    <mat-card-actions>
+                                        <button class="btn-card" mat-raised-button color="primary">Chọn</button>
+                                    </mat-card-actions>
+                                </mat-card>
+                            </mat-grid-tile>
                         </ng-container>
-                    </mat-chip-list>
+                    </mat-grid-list>
                 </mat-step>
             </mat-horizontal-stepper>
             <button mat-raised-button color="primary" id="BtnSave"
-                [disabled]="resultSetting.launguage == 0 || resultSetting.level == 0 || resultSetting.goalday == 0"
+                [hidden]="resultSetting.launguage == 0 || resultSetting.level == 0 || resultSetting.goalday == 0"
                 (click)="saveSetting()">
                 Save Setting
             </button>
