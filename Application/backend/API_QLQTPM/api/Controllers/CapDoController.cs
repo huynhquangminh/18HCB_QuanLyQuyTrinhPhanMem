@@ -19,7 +19,7 @@ namespace api.Controllers
         /// get cap do
         /// </summary>
         /// <returns>IHttpActionResult</returns>
-        [HttpGet]
+        [HttpPost]
         public IHttpActionResult GetCapDo()
         {
             var result = _businessLogic.GetCapDo();

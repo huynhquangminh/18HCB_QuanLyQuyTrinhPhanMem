@@ -1,7 +1,7 @@
 <div class="progess-style">
     <mat-icon style="cursor: pointer;" (click)="cancelStudy()">close</mat-icon>
     <mat-progress-bar class="custom-progessbar" mode="determinate" [value]="valueProgress"></mat-progress-bar>
-    <p>00:{{timeLeft}}</p> 
+   <span class="timer">00:{{timeLeft}}</span> 
 </div>
 <div class="question-style">
     <mat-card-content *ngIf="valueProgress < 100">

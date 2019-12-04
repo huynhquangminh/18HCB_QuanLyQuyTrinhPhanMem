@@ -23,6 +23,18 @@ namespace api
             container.RegisterType<ITaiKhoanBusinessLogic, TaiKhoanBusinessLogic>();
             container.RegisterType<ITaiKhoanDataAccess, TaiKhoanDataAccess>();
 
+            // KhoaHoc
+            container.RegisterType<IKhoaHocBusinessLogic, KhoaHocBusinessLogic>();
+            container.RegisterType<IKhoaHocDataAccess, KhoaHocDataAccess>();
+
+            // CapDo
+            container.RegisterType<ICapDoBusinessLogic, CapDoBusinessLogic>();
+            container.RegisterType<ICapDoDataAccess, CapDoDataAccess>();
+
+            // LoaiDiemKN
+            container.RegisterType<ILoaiDiemKNBusinessLogic, LoaiDiemKNBusinessLogic>();
+            container.RegisterType<ILoaiDiemKNDataAccess, LoaiDiemKNDataAccess>();
+
 
             config.DependencyResolver = new UnityResolver(container);
             // Web API routes

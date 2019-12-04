@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using BaseApplication;
-using BusinessLogicInterface;
 using BusinessLogicInterface.Response;
 using DataAcceessInterface.Parameter;
 
@@ -24,7 +23,7 @@ namespace api.Controllers
         /// get khoa hoc
         /// </summary>
         /// <returns>IHttpActionResult</returns>
-        [HttpGet]
+        [HttpPost]
         public IHttpActionResult GetDSKhoaHoc()
         {
             var result = _businessLogic.GetDSKhoaHoc();

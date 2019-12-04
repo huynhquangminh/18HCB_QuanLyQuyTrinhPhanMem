@@ -10,10 +10,10 @@
                         <ng-container *ngFor="let item of listLanguage">
                             <mat-grid-tile style="margin: 10px">
                                 <mat-card class="example-card card-setting" style="width: 75%">
-                                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                                        alt="Photo of a Shiba Inu">
+                                    <img mat-card-image src="{{item.imgKhoaHoc}}">
                                     <mat-card-actions>
-                                        <button class="btn-card" mat-stroked-button color="primary">Vào học</button>
+                                        <button class="btn-card" mat-stroked-button color="primary"
+                                            (click)="settingLanguage(item.id)">Vào học</button>
                                         <button class="btn-card" mat-raised-button color="primary">Đã hoàn
                                             thành</button>
                                     </mat-card-actions>
@@ -26,10 +26,12 @@
                     <mat-grid-list cols="3" rowHeight="2:2">
                         <ng-container *ngFor="let item of listLevel">
                             <mat-grid-tile style="margin: 10px">
-                                <mat-card class="example-card card-setting" style="width: 50%; border: 0.5px solid black;">
-                                    <mat-card-title>Shiba Inu</mat-card-title>
+                                <mat-card class="example-card card-setting"
+                                    style="width: 50%; border: 0.5px solid black;">
+                                    <mat-card-title>{{item.tencapdo}}</mat-card-title>
                                     <mat-card-actions>
-                                        <button class="btn-card" mat-raised-button color="primary">Chọn</button>
+                                        <button class="btn-card" mat-raised-button color="primary"
+                                            (click)="settingLevel(item.id)">Chọn</button>
                                     </mat-card-actions>
                                 </mat-card>
                             </mat-grid-tile>
@@ -38,12 +40,14 @@
                 </mat-step>
                 <mat-step label="Goal Every Day">
                     <mat-grid-list cols="3" rowHeight="2:2">
-                        <ng-container *ngFor="let item of listLevel">
+                        <ng-container *ngFor="let item of listGoalDay">
                             <mat-grid-tile style="margin: 10px">
-                                <mat-card class="example-card card-setting" style="width: 50%; border: 0.5px solid black;">
-                                    <mat-card-title>Shiba Inu</mat-card-title>
+                                <mat-card class="example-card card-setting"
+                                    style="width: 50%; border: 0.5px solid black;">
+                                    <mat-card-title>{{item.diemKN}} Điểm Kinh Nghiệm</mat-card-title>
                                     <mat-card-actions>
-                                        <button class="btn-card" mat-raised-button color="primary">Chọn</button>
+                                        <button class="btn-card" mat-raised-button color="primary"
+                                            (click)="settingGoalDay(item.id)">Chọn</button>
                                     </mat-card-actions>
                                 </mat-card>
                             </mat-grid-tile>

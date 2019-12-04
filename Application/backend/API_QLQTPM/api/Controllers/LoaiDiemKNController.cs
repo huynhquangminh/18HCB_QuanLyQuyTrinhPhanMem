@@ -23,7 +23,7 @@ namespace api.Controllers
         /// 
         /// </summary>
         /// <returns>IHttpActionResult</returns>
-        [HttpGet]
+        [HttpPost]
         public IHttpActionResult GetDSLoaiDiemKN()
         {
             var result = _businessLogic.GetDSLoaiDiemKinhNghiem();
