@@ -88,11 +88,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\CapDoDTO.cs" />
+    <Compile Include="Dtos\khoahocDTO.cs" />
+    <Compile Include="Dtos\loaidiemknDTO.cs" />
     <Compile Include="Dtos\loginDto.cs" />
     <Compile Include="Dtos\thongtintaikhoanDto.cs" />
+    <Compile Include="ICapDoBusinessLogic.cs" />
+    <Compile Include="IKhoaHocBusinessLogic.cs" />
+    <Compile Include="ILoaiDiemKNBusinessLogic.cs" />
     <Compile Include="ITaiKhoanBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\LoginRequest.cs" />
+    <Compile Include="Response\GetCapDoResponse.cs" />
+    <Compile Include="Response\GetKhoaHocResponse.cs" />
+    <Compile Include="Response\GetLoaiDiemKNResponse.cs" />
     <Compile Include="Response\LoginResponse.cs" />
     <Compile Include="Response\ThongTaiKhoanResponse.cs" />
   </ItemGroup>

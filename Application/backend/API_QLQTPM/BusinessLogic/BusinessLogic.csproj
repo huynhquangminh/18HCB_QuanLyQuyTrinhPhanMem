@@ -88,6 +88,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CapDoBusinessLogic.cs" />
+    <Compile Include="KhoaHocBusinessLogic.cs" />
+    <Compile Include="LoaiDiemKNBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaiKhoanBusinessLogic.cs" />
   </ItemGroup>

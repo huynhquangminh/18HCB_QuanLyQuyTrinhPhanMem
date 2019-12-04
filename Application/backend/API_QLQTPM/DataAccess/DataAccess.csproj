@@ -83,6 +83,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CapDoDataAccess.cs" />
+    <Compile Include="KhoaHocDataAccess.cs" />
+    <Compile Include="LoaiDiemKNDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaiKhoanDataAccess.cs" />
   </ItemGroup>
