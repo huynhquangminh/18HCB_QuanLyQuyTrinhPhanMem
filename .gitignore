@@ -328,3 +328,11 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+#bin files
+api/bin/
+BaseApplication/bin/
+BusinessLogic/bin/
+BusinessLogicInterface/bin/
+DataAcceessInterface/bin/
+DataAccess/bin/
+EntityData/bin/
