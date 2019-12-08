@@ -18,7 +18,7 @@ namespace BusinessLogic
     {
         private readonly IBaiHocDataAccess _dataAccess;
 
-        BaiHocBusinessLogic(IBaiHocDataAccess dataAccess)
+        public BaiHocBusinessLogic(IBaiHocDataAccess dataAccess)
         {
             _dataAccess = dataAccess;
             ConfigAutoMapper();

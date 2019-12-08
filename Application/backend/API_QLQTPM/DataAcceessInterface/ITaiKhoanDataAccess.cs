@@ -28,5 +28,7 @@
         /// <param name="param">The param<see cref="GetThongTinTaiKhoanParameter"/></param>
         /// <returns>The <see cref="GET_THONGTINTAIKHOAN_Result"/></returns>
         GET_THONGTINTAIKHOAN_Result getDSThongTinTaiKhoan(GetThongTinTaiKhoanParameter param);
+
+
     }
 }
