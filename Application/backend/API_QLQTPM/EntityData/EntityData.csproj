@@ -86,6 +86,9 @@
     <Compile Include="Get_CapDo_Result.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Get_DSBaiHoc_ById_Result.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Get_DSBaiHoc_Result.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
