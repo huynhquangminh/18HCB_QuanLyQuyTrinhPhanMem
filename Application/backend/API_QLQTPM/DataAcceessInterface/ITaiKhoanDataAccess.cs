@@ -29,6 +29,11 @@
         /// <returns>The <see cref="GET_THONGTINTAIKHOAN_Result"/></returns>
         GET_THONGTINTAIKHOAN_Result getDSThongTinTaiKhoan(GetThongTinTaiKhoanParameter param);
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        bool UpdatePassword(UpdatePasswordParameter param);
     }
 }

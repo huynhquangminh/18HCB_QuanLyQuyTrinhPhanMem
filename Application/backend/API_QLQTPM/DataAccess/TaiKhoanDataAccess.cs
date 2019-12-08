@@ -39,5 +39,15 @@
         {
             return db.GET_THONGTINTAIKHOAN(param.idAccount).First();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public bool UpdatePassword(UpdatePasswordParameter param)
+        {
+            return db.Update_PassWord_Account(param.username, param.currentPass, param.newPass) == 1 ? true : false;
+        }
     }
 }

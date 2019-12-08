@@ -29,5 +29,12 @@
         /// <param name="request">The request<see cref="GetThongTinTaiKhoanParameter"/></param>
         /// <returns>The <see cref="Task{ThongTaiKhoanResponse}"/></returns>
         Task<ThongTaiKhoanResponse> GetThongTinTaiKhoan(GetThongTinTaiKhoanParameter request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<bool> UpdatePassword(UpdatePasswordParameter request);
     }
 }

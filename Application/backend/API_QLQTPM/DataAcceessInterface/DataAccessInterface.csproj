@@ -91,6 +91,7 @@
     <Compile Include="Parameter\GetDSBaiHocParameter.cs" />
     <Compile Include="Parameter\GetThongTinTaiKhoanParameter.cs" />
     <Compile Include="Parameter\LoginParameter.cs" />
+    <Compile Include="Parameter\UpdatePasswordParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
