@@ -25,7 +25,7 @@ namespace api.Controllers
         /// </summary>
         /// <returns>IHttpActionResult</returns>
         [HttpPost]
-        public IHttpActionResult GetDSBaiHocById(GetDSBaiHocParameter dataRequest)
+        public IHttpActionResult DanhSachBaiHoc(GetDSBaiHocParameter dataRequest)
         {
             var result = _businessLogic.GetDSBaiHocByID(dataRequest);
             return new ActionResult<GetDSBaiHocByIDResponse>(result.Result, Request);

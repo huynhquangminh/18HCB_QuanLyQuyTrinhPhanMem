@@ -18,10 +18,16 @@
                         [(ngModel)]="loginModel.pass">
 
                 </div>
+
+                <div class="message-notification" *ngIf="!isLoginPass">
+                    <span > * Tên đăng nhập hoặc mật khẩu không đúng!</span>
+                </div>
+
                 <div class="container-login100-form-btn">
                     <button type="submit" class="login100-form-btn">
                         Login
                     </button>
+
                 </div>
                 <div class="flex-col-c p-t-224">
                     <span class="txt2 p-b-10">

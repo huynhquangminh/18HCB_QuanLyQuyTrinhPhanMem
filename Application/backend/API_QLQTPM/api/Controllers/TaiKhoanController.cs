@@ -60,5 +60,17 @@ namespace api.Controllers
             var result = _businessLogic.UpdatePassword(RequestData);
             return new ActionResult<bool>(result.Result, Request);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="RequestData"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult ThemThongTinTaiKhoan(ThemThongTinTaiKhoanParameter RequestData)
+        {
+            var result = _businessLogic.ThemThongTinTaiKhoan(RequestData);
+            return new ActionResult<bool>(result.Result, Request);
+        }
     }
 }

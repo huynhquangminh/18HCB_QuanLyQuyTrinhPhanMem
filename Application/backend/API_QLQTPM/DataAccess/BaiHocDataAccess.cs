@@ -20,9 +20,9 @@ namespace DataAccess
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Get_DSBaiHoc_ById_Result GetDSBaiHoc(GetDSBaiHocParameter param)
+        public IEnumerable<Get_DSBaiHoc_ById_Result> GetDSBaiHoc(GetDSBaiHocParameter param)
         {
-            return db.Get_DSBaiHoc_ById(param.id).First();
+            return db.Get_DSBaiHoc_ById(param.id);
         }
     }
 }

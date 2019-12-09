@@ -1,5 +1,8 @@
+import { WebStorageSerivce } from './../../services/webStorage.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CourseListService } from 'src/app/services/course-list.service';
+import { WebKeyStorage } from 'src/app/global/web-key-storage';
 
 @Component({
   selector: 'app-course-list',
@@ -7,27 +10,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
-  public listCourse = [
-    { id: 1, name: 'Syntax' },
-    { id: 2, name: 'Variables' },
-    { id: 3, name: 'Operators' },
-    { id: 4, name: 'Strings' },
-    { id: 5, name: 'Loop' },
-    { id: 6, name: 'Arrays' },
-    { id: 7, name: 'OOP' },
-    { id: 8, name: 'Classes and Objects' },
-    { id: 9, name: 'Class Members' },
-    { id: 10, name: 'Methods' },
-    { id: 11, name: 'Constructors' },
-    { id: 12, name: 'Abstraction' },
-  ];
-  constructor(private router: Router) { }
+  public listCourse = [];
+  constructor(
+    private router: Router,
+    private courseListService: CourseListService,
+    private webStorageSerivce: WebStorageSerivce
+  ) { }
 
   ngOnInit() {
+    this.getDSBaiHoc();
   }
 
-  selectCourse() {
+  selectCourse(id) {
+    console.log(id);
     this.router.navigateByUrl('/home/main/study-quiz');
+  }
+
+  getDSBaiHoc() {
+    const setting = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
+    if (setting) {
+      this.courseListService.getDsBaiHoc({ id: setting.idkhoahoc }).subscribe(res => {
+        if (res && res.Success) {
+          this.listCourse = res.listBaiHoc;
+        }
+      });
+    }
   }
 
 }

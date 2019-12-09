@@ -10,6 +10,6 @@ namespace BusinessLogicInterface.Response
 {
     public class GetDSBaiHocByIDResponse : BaseResponse
     {
-        public baihocDTO BaiHoc { get; set; }
+        public List<baihocDTO> listBaiHoc { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 <div>
     <ng-container *ngFor="let item of listCourse">
-        <mat-card class="listcard" (click)="selectCourse()"> {{item.name}}</mat-card>
+        <mat-card class="listcard" (click)="selectCourse(item.id)"> {{item.tenbaihoc}}</mat-card>
     </ng-container>
 </div>

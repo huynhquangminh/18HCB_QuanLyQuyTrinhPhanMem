@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { WebStorageSerivce } from './services/webStorage.service';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { DisplaySettingService } from './services/display-setting.service';
+import { CourseListService } from './services/course-list.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { DisplaySettingService } from './services/display-setting.service';
     GoalEveryDayService,
     TaiKhoanService,
     WebStorageSerivce,
-    DisplaySettingService
+    DisplaySettingService,
+    CourseListService
   ],
 
   bootstrap: [AppComponent]

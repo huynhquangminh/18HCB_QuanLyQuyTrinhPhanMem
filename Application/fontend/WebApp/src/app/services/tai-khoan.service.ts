@@ -15,4 +15,12 @@ export class TaiKhoanService extends AppService {
     getDanhSachThongTinTaiKhoan(idAccount) {
         return this.CallByResquestService('/api/taikhoan/thongtintaikhoan', idAccount);
     }
+
+    updatePassword(request: any) {
+        return this.CallByResquestService('/api/taikhoan/updatepassword', request);
+    }
+
+    themThongTinTaiKhoan(request: any) {
+        return this.CallByResquestService('/api/taikhoan/themthongtintaikhoan', request);
+    }
 }

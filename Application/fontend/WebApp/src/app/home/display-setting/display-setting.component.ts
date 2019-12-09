@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 import { DisplaySettingService } from 'src/app/services/display-setting.service';
 import { Subscription } from 'rxjs';
+import { ThongTinTaiKhoanModel } from 'src/app/models/thong-tin-tai-khoan.model';
+import { WebStorageSerivce } from 'src/app/services/webStorage.service';
+import { WebKeyStorage } from 'src/app/global/web-key-storage';
+import { TaiKhoanService } from 'src/app/services/tai-khoan.service';
 
 @Component({
   selector: 'app-display-setting',
@@ -15,16 +19,14 @@ export class DisplaySettingComponent implements OnInit {
   public listLanguage: any[];
   public listLevel: any[];
   public listGoalDay: any[];
-  resultSetting = {
-    launguage: 0,
-    level: 0,
-    goalday: 0
-  };
+  resultSetting = new ThongTinTaiKhoanModel();
   public isBtnSetting = false;
   listDisplaySetting: Subscription;
   constructor(
     private router: Router,
-    private displaySettingService: DisplaySettingService
+    private displaySettingService: DisplaySettingService,
+    private webStorageSerivce: WebStorageSerivce,
+    private taiKhoanService: TaiKhoanService
   ) { }
 
   ngOnInit() {
@@ -55,20 +57,30 @@ export class DisplaySettingComponent implements OnInit {
 
   }
   settingLanguage(id) {
-    this.resultSetting.launguage = id;
+    this.resultSetting.idkhoahoc = id;
     this.myStepper.next();
 
   }
   settingLevel(id) {
-    this.resultSetting.level = id;
+    this.resultSetting.idcapdo = id;
     this.myStepper.next();
   }
   settingGoalDay(id) {
-    this.resultSetting.goalday = id;
+    this.resultSetting.diemKN = id;
     // this.myStepper.next();
   }
 
   saveSetting() {
-    this.router.navigateByUrl('/home/main');
+    this.resultSetting.diemKNDay = 0;
+    const taikhoanInfo = this.webStorageSerivce.getLocalStorage(WebKeyStorage.AccountInfo);
+    if (taikhoanInfo) {
+      this.resultSetting.idtaikhoan = taikhoanInfo.id;
+    }
+    this.taiKhoanService.themThongTinTaiKhoan(this.resultSetting).subscribe(res => {
+      if (res) {
+        this.webStorageSerivce.setLocalStorage(WebKeyStorage.SettingUser, this.resultSetting);
+        this.router.navigateByUrl('/home/main');
+      }
+    });
   }
 }

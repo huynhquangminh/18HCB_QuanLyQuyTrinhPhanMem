@@ -41,7 +41,7 @@ namespace BusinessLogic
                 var result = _dataAccess.GetDSBaiHoc(request);
                 if (result != null)
                 {
-                    response.BaiHoc = mapper.Map<Get_DSBaiHoc_ById_Result, baihocDTO>(result);
+                    response.listBaiHoc = MapList<Get_DSBaiHoc_ById_Result, baihocDTO>(result.ToList());
                     response.Success = true;
                 }
 

@@ -11,10 +11,10 @@ namespace EntityData
 {
     using System;
     
-    public partial class Get_DSBaiHoc_Result
+    public partial class GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result
     {
         public int id { get; set; }
-        public string tenbaihoc { get; set; }
-        public int idkhoahoc { get; set; }
+        public string tencauhoi { get; set; }
+        public int idbaihoc { get; set; }
     }
 }

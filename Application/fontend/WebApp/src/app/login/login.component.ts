@@ -14,6 +14,7 @@ import { WebKeyStorage } from '../global/web-key-storage';
 export class LoginComponent implements OnInit {
   loginModel = new LoginRequestModel();
   formLogin: NgForm;
+  isLoginPass = true;
   constructor(
     private router: Router,
     private taiKhoanService: TaiKhoanService,
@@ -25,16 +26,19 @@ export class LoginComponent implements OnInit {
   submitLogin() {
     this.taiKhoanService.login(this.loginModel).subscribe(result => {
       if (result && result.Success) {
-        this.router.navigateByUrl('/home/display-setting');
+        // this.router.navigateByUrl('/home/display-setting');
+        this.webStorageSerivce.setLocalStorage(WebKeyStorage.AccountInfo, result.accountLogin);
         this.taiKhoanService.getDanhSachThongTinTaiKhoan({ idAccount: result.accountLogin.id }).subscribe(res => {
           if (res && res.Success) {
             this.webStorageSerivce.setLocalStorage(WebKeyStorage.SettingUser, res.thongTinTaiKhoan);
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/home/main/course-list');
           } else {
-            this.webStorageSerivce.setLocalStorage(WebKeyStorage.SettingUser, res);
             this.router.navigateByUrl('/home/display-setting');
           }
         });
+        this.isLoginPass = true;
+      } else {
+        this.isLoginPass = false;
       }
     });
   }

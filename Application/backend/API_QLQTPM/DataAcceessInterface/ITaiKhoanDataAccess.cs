@@ -35,5 +35,12 @@
         /// <param name="param"></param>
         /// <returns></returns>
         bool UpdatePassword(UpdatePasswordParameter param);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param">The param<see cref="ThemThongTinTaiKhoanParameter"/></param>
+        /// <returns>The <see cref="bool"/></returns>
+        bool ThemThongTinTaiKhoan(ThemThongTinTaiKhoanParameter param);
     }
 }

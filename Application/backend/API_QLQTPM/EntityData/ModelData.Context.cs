@@ -60,13 +60,26 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_CapDo_Result>("Get_CapDo");
         }
     
-        public virtual ObjectResult<Get_DSBaiHoc_Result> Get_DSBaiHoc(Nullable<int> idKhoaHoc)
+        public virtual ObjectResult<Get_DSBaiHoc_ById_Result> Get_DSBaiHoc_ById(Nullable<int> idKhoaHoc)
         {
             var idKhoaHocParameter = idKhoaHoc.HasValue ?
                 new ObjectParameter("idKhoaHoc", idKhoaHoc) :
                 new ObjectParameter("idKhoaHoc", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_DSBaiHoc_Result>("Get_DSBaiHoc", idKhoaHocParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_DSBaiHoc_ById_Result>("Get_DSBaiHoc_ById", idKhoaHocParameter);
+        }
+    
+        public virtual ObjectResult<GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result> GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo(Nullable<int> idBaiHoc, Nullable<int> idCapDo)
+        {
+            var idBaiHocParameter = idBaiHoc.HasValue ?
+                new ObjectParameter("idBaiHoc", idBaiHoc) :
+                new ObjectParameter("idBaiHoc", typeof(int));
+    
+            var idCapDoParameter = idCapDo.HasValue ?
+                new ObjectParameter("idCapDo", idCapDo) :
+                new ObjectParameter("idCapDo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result>("GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo", idBaiHocParameter, idCapDoParameter);
         }
     
         public virtual ObjectResult<Get_DSKhoaHoc_Result> Get_DSKhoaHoc()
@@ -124,15 +137,6 @@ namespace EntityData
                 new ObjectParameter("idtaikhoan", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("THEM_THONGTINTAIKHOAN", idkhoahocParameter, idcapdoParameter, diemKNParameter, diemKNDayParameter, idtaikhoanParameter);
-        }
-    
-        public virtual ObjectResult<Get_DSBaiHoc_ById_Result> Get_DSBaiHoc_ById(Nullable<int> idKhoaHoc)
-        {
-            var idKhoaHocParameter = idKhoaHoc.HasValue ?
-                new ObjectParameter("idKhoaHoc", idKhoaHoc) :
-                new ObjectParameter("idKhoaHoc", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_DSBaiHoc_ById_Result>("Get_DSBaiHoc_ById", idKhoaHocParameter);
         }
     
         public virtual int Update_PassWord_Account(string username, string currentPass, string newPass)

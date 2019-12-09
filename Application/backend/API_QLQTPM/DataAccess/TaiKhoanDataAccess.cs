@@ -47,7 +47,14 @@
         /// <returns></returns>
         public bool UpdatePassword(UpdatePasswordParameter param)
         {
-            return db.Update_PassWord_Account(param.username, param.currentPass, param.newPass) == 1 ? true : false;
+            var result = db.Update_PassWord_Account(param.username, param.currentPass, param.newPass) > 0 ? true : false;
+            return result;
+        }
+
+        public bool ThemThongTinTaiKhoan(ThemThongTinTaiKhoanParameter param)
+        {
+            var result = db.THEM_THONGTINTAIKHOAN(param.idkhoahoc, param.idcapdo, param.diemKN, param.diemKNDay, param.idtaikhoan) > 0 ? true : false;
+            return result;
         }
     }
 }

@@ -23,6 +23,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TargetDayComponent } from './target-day/target-day.component';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -50,6 +51,7 @@ import { TargetDayComponent } from './target-day/target-day.component';
     MatDividerModule,
     MatListModule,
     MatSnackBarModule,
+    MatBadgeModule,
     NgCircleProgressModule.forRoot({
       radius: 60,
       outerStrokeWidth: 10,
