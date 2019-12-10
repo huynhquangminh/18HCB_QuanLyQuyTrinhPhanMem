@@ -35,6 +35,19 @@ INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (9, N'Syntax', 7
 INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (10, N'Arrays', 7)
 INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (11, N'Loop', 7)
 INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (12, N'Class Members', 7)
+
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (13, N'Syntax', 2)
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (14, N'Variables', 2)
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (15, N'Operators', 2)
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (16, N'Strings', 2)
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (17, N'Loop', 2)
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (18, N'Arrays', 2)
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (19, N'OOP', 2)
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (20, N'Classes and Objects', 2)
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (21, N'Class Members', 2)
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (22, N'Methods', 2)
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (23, N'Constructors', 2)
+INSERT [dbo].[DSBaiHoc] ([id], [tenbaihoc], [idkhoahoc]) VALUES (24, N'Abstraction', 2)
 SET IDENTITY_INSERT [dbo].[DSBaiHoc] OFF
 
 /***4***/
@@ -121,6 +134,42 @@ SET IDENTITY_INSERT [dbo].[DSKhoaHocPass_Of_TaiKhoan] OFF
 
 /***12***/
 SET IDENTITY_INSERT [dbo].[DSCauHoi] ON
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (1, N'Đâu là khai báo biến đúng trong javascript', 5, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (2, N'Tên biến nào sai', 5, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (3, N'Ký hiệu "=" trong <code>var x = 5 </code>khai báo là gì?', 5, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (4, N'Đâu là khai báo mảng đúng', 5, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (5, N'Đâu là phép nối chuỗi đúng<br><code>var chuoiA = "Web học lập trình "; <br>chuoiB = "thật bổ ích"</code>', 5, 1)
+
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (6, N'Mảng cars có 3 phần tử, đâu là cách truy cập phần tử đúng', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (7, N'<code>var myStr = "Bob";<br>myStr[0] = "J";</code><br>. Đoạn code trên làm gì?', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (8, N'<code>var fruits = [ "Banana", "Orange", "Apple", "Mango" ];<br>fruits.<strong>______</strong> ;</code><br>Sử dụng phương thức nào để loại bỏ phần tử đầu tiên', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (9, N'Độ dài của mảng?', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (10, N'Thay đổi phần tử đầu tiên của mảng', 6, 1)
+
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (11, N'Khai báo vòng lặp for', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (12, N'Kết quả của biến i sau kết thúc vòng lặp<br><code>var i<br> for (i = 0; i <= 5; i++) {<br>&emsp;&emsp;text += "The number is " + i + "<br>";<br> } </code>', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (13, N'Câu lệnh nào dùng để dừng vòng lặp', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (14, N'Có các loại vòng lặp nào trong Javascript', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (15, N'Ý nghĩa lệnh continue trong vòng lặp trong Javascript', 7, 1)
+
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (16, N'Để viết script PHP cần khai báo?', 9, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (17, N'Đâu là khai báo biến đúng trong PHP', 9, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (18, N'<code>$xinChao = "Học lập trình thật vui";<br><strong>____</strong> $xinChao;</code>. Điền từ khóa in biến xinChao', 9, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (19, N'PHP có phân biệt in hoa với in thường', 9, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (20, N'<code>echo _____("Hello world!");</code><br>Để đếm số ký tự dùng hàm nào', 9, 1)
+
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (21, N'Đâu là cách khai báo array đúng', 10, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (22, N'<code>echo _____($cars);</code><br>Để lấy độ dài mảng dùng hàm gì', 10, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (23, N'Ý nghĩa hàm rsort()', 10, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (24, N'Ý nghĩa hàm arsort()', 10, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (25, N'Mảng có 2 phần tử. Truy cập vào thứ 2 và thay đổi thành "BMW"', 10, 1)
+
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (26, N'<code>$x = 1;<br>while($x <= 5) {<br>&emsp;&emsp;$x++;<br>}<br>echo $x;</code>Giá trị của x sau vòng lặp', 11, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (27, N'<code>for ($x = 0; $x <= 4; $x++) {<br>&emsp;&emsp;$y = $y + $x; <br>}echo $y</code><br>Giá trị của y', 11, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (28, N'Ý nghĩa lệnh break trong vòng lặp trong PHP', 11, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (29, N'Các loại vòng lặp trong PHP?', 11, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (30, N'Cách thức hoạt động của vòng lặp do-while', 11, 1)
+
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (46, N'Miền giá trị của char trong C?', 1, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (47, N'Hàm duy nhất mà tất cả các chương trình C phải có là gì?', 1, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (48, N'Hằng (Constant) là gì?', 1, 1)
@@ -128,7 +177,7 @@ INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (49, N
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (50, N'Biến là gì?', 1, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (51, N'Ý nghĩa của dayso[4] = 50;', 2, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (52, N'Ý nghĩa của a[3][4]', 2, 1)
-INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (53, N'So sánh kết quả 2 cách khai báo int a[2][2] = {{0, 1,}, {2, 3}}; và int a[2][2] = {0, 1, 2, 3};' và , 2, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (53, N'So sánh kết quả 2 cách khai báo int a[2][2] = {{0, 1,}, {2, 3}}; và int a[2][2] = {0, 1, 2, 3};', 2, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (54, N'Đâu không phải là ưu điểm của mảng một chiều.', 2, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (55, N'Cho int array[2][2][3] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}; Kết quả array[1][0][2] ?', 2, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (56, N'Ý nghĩa lệnh break trong vòng lặp trong C++', 3, 1)
@@ -198,7 +247,7 @@ INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (38, 55, 
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (39, 56, N'Bỏ qua câu lệnh trong cùng vòng lặp.', 0)
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (40, 56, N'Kết thúc hoàn toàn xử lý.', 0)
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (41, 56, N'Chuyển tới lệnh được gán.', 0)
-INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (42, 56, N'Kết thúc vòng lặp hoặc lệnh switch và chuyển sang vòng lặp hoặc lệnh switch ngay sau nó.', 1))
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (42, 56, N'Kết thúc vòng lặp hoặc lệnh switch và chuyển sang vòng lặp hoặc lệnh switch ngay sau nó.', 1)
 
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (43, 57, N'Kết thúc hoàn toàn xử lý.', 0)
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (44, 57, N'Bỏ qua các câu lệnh trong cùng một câu lệnh lặp để thực hiện vòng lặp mới.', 1)
@@ -220,3 +269,148 @@ INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (56, 60, 
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (57, 60, N'mmmm aaa nnn.', 0)
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (58, 60, N'Kết quả khác.', 0)
 SET IDENTITY_INSERT [dbo].[DSDapAn] OFF
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (1, N'var tenBien;', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (1, N'int tenBien;', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (1, N'string tenBien;', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (1, N'float tenBien;', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (2, N'var soThuc = 45;', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (2, N'var _soThuc = 16.5;', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (2, N'var soThuc56 = 5.6;', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (2, N'var 90soThuc = 10.45;', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (3, N'Là phép so sánh bằng x bằng 5', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (3, N'Là phép gán cho x bằng 5', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (4, N'var cars = {"Saab", "Volvo", "BMW"};', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (4, N'var cars = new array("Saab", "Volvo", "BMW");', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (4, N'var cars = ["Saab", "Volvo", "BMW"];', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (5, N'chuoiA -= chuoiB;', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (5, N'chuoiA += chuoiB;', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (5, N'chuoiA = chuoiB - chuoiB;', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (6, N'var name = cars[-1];', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (6, N'var name = cars;', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (6, N'var name = cars[3];', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (6, N'var name = cars{2};', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (7, N'Truy cập phần tử đầu tiên và thay đổi ký tự B sang ký tự J', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (7, N'Truy cập phần tử đầu tiên nhưng vì giá trị là kiểu String nên không thể thay đổi ký tự', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (7, N'Sai cú pháp', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (8, N'shift()', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (8, N'pop()', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (8, N'unshift()', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (8, N'push()', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (9, N'var doDai = cars.length', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (9, N'var doDai = cars.size()', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (9, N'var doDai = cars.length()', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (9, N'var doDai = cars.size', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (10, N'cars[-1] = "Opel";', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (10, N'cars = "Opel";', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (10, N'cars{0} = "Opel";', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (10, N'cars[0] = "Opel";', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (11, N'i = 4";', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (11, N'i = 5";', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (11, N'i = 6";', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (11, N'i = 7', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (12, N'for(statment 1 , statment 2, statment 3) { ... }', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (12, N'for(statment 1 ; statment 2; statment 3) { ... }', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (13, N'stop', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (13, N'jump', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (13, N'break', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (13, N'exit', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (13, N'stop', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (13, N'jump', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (13, N'break', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (13, N'exit', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (14, N'Vòng lặp while.', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (14, N'Vòng lặp do...while.', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (14, N'Vòng lặp for.', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (14, N'Cả 3 câu kia đều đúng.', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (15, N'Kết thúc hoàn toàn xử lý.', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (15, N'Bỏ qua các câu lệnh trong cùng một câu lệnh lặp để thực hiện vòng lặp mới.', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (15, N'Truy cập đến các phần tử trong mảng nhanh.', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (15, N'Chuyển tới lệnh được gán.', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (16, N'<?php ... ?>', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (16, N'<?php ... ?php>', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (16, N'<?php ... />', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (16, N'<?php .. /php>', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (17, N'var x = 5', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (17, N'int x = 5', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (17, N'String x = "hello!"', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (17, N'$x = 5', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (18, N'$xinChao', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (18, N'echo $xinChao', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (18, N'print $xinChao', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (18, N'Cả B và C đúng', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (19, N'Có', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (19, N'Không', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (20, N'str_word_count', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (20, N'strlen', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (20, N'strrev', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (20, N'strpos', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (21, N'$cars = ["Volvo"; "BMW"; "Toyota"];', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (21, N'$cars = {"Volvo", "BMW", "Toyota"};', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (21, N'$cars = ["Volvo", "BMW", "Toyota"];', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (21, N'$cars = array("Volvo", "BMW", "Toyota");', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (22, N'size()', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (22, N'length()', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (22, N'count()', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (22, N'sizeArray()', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (23, N'sắp xếp tăng dần', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (23, N'sắp xếp giảm dần', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (23, N'sắp xếp giảm dần theo giá trị', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (23, N'sắp xếp tăng dần theo key', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (24, N'sắp xếp tăng dần', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (24, N'sắp xếp giảm dần', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (24, N'sắp xếp giảm dần theo giá trị', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (24, N'sắp xếp tăng dần theo key', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (25, N'$cars[0] = "BMW";', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (25, N'$cars[1] = "BMW";', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (25, N'$cars[2] = "BMW";', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (25, N'$cars[3] = "BMW";', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (26, N'x = 4', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (26, N'x = 3', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (26, N'x = 5', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (26, N'x = 6', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (27, N'Không in ra được y', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (27, N'y = 4', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (27, N'y = 6";', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (27, N'y = 10";', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (28, N'Bỏ qua câu lệnh trong cùng vòng lặp.', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (28, N'Kết thúc hoàn toàn xử lý.', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (28, N'Chuyển tới lệnh được gán.', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (28, N'Kết thúc vòng lặp và chuyển sang vòng lặp ngay sau nó.', 1)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (29, N'Các vòng lặp gồm while, do...while, for, foreach', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (29, N'Các vòng lặp gồm while, do...while, for', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (29, N'Các vòng lặp gồm while, for', 0)
+
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (30, N'Thực hiện lệnh trước rồi kiểm tra điều kiện. Nếu sai, thực hiện tiếp công việc.<br>Nếu đúng,thoát khỏi vòng lặp', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (30, N'Kiểm tra điều kiện trước khi lặp. Nếu đúng thực hiện công việc. Nếu sai, không<br>thực hiện công việc hoặc thoát khỏi vòng lặp', 0)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (30, N'Thực hiện lệnh trước rồi kiểm tra điều kiện. Nếu đúng, thực hiện tiếp công việc.<br>Nếu sai,thoát khỏi vòng lặp', 1)
+INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (30, N'Kiểm tra điều kiện trước khi lặp. Nếu sai thực hiện công việc. Nếu đúng, không<br>thực hiện công việc hoặc thoát khỏi vòng lặp', 0)
