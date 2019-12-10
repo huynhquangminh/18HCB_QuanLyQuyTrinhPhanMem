@@ -9,9 +9,17 @@ AS BEGIN
 END
 GO
 
-CREATE PROC [dbo].[GET_DSDapAn_By_IdCauHoi](@idCauHoi int)
+CREATE PROC [dbo].[GET_DSThongBao]
 AS BEGIN 
-	SELECT dapan.cautraloi, dapan.dapan
-	FROM DSDapAn dapan
-	WHERE dapan.idcauhoi = @idCauHoi
+	SELECT id, idaccount, thongbao, docthongbao
+	FROM DSThongBao
+END
+
+CREATE PROC [dbo].[GET_DSDapAn_Follow_IdBaiHoc_IdCapDo](@idBaiHoc int, @idCapDo int)
+AS BEGIN 
+	SELECT idcauhoi, cautraloi, dapan
+	FROM DSDapAn
+	WHERE idcauhoi IN (SELECT ID 
+						FROM DSCauHoi 
+						WHERE idbaihoc = @idBaiHoc AND idcapdo = @idcapdo)
 END
