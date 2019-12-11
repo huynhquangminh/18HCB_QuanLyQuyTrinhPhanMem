@@ -108,3 +108,19 @@ AS BEGIN
 						WHERE idbaihoc = @idBaiHoc AND idcapdo = @idcapdo
 						GROUP BY ID)
 END
+GO
+
+CREATE PROC [dbo].[UPDATE_DSThongBao_Follow_Id_IdAccount](@id int, @idAccount int)
+AS BEGIN 
+	UPDATE DSThongBao
+	SET docthongbao = 1
+	WHERE idaccount = @idAccount AND id = @id
+END
+
+
+CREATE PROC [dbo].[GET_DSKhoaHocPass_By_IdTTTaiKhoan](@idTTTaiKhoan int)
+AS BEGIN 
+	SELECT id, idTTTaiKhoan, idKhoaHoc
+	FROM DSKhoaHocPass_Of_TaiKhoan
+	WHERE idTTTaiKhoan = @idTTTaiKhoan
+END
