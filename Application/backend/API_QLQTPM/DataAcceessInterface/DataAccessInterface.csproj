@@ -89,8 +89,10 @@
     <Compile Include="IKhoaHocDataAccess.cs" />
     <Compile Include="ILoaiDiemKNDataAccess.cs" />
     <Compile Include="ITaiKhoanDataAccess.cs" />
+    <Compile Include="IThongBaoDataAccess.cs" />
     <Compile Include="Parameter\GetDSBaiHocParameter.cs" />
     <Compile Include="Parameter\GetDSCauHoiParameter.cs" />
+    <Compile Include="Parameter\GetDSThongBaoParameter.cs" />
     <Compile Include="Parameter\GetThongTinTaiKhoanParameter.cs" />
     <Compile Include="Parameter\LoginParameter.cs" />
     <Compile Include="Parameter\ThemThongTinTaiKhoanParameter.cs" />

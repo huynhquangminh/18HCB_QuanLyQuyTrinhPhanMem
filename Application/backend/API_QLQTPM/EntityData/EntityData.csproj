@@ -92,7 +92,13 @@
     <Compile Include="GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
+    <Compile Include="GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Get_DSKhoaHoc_Result.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GET_DSThongBao_Result.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
     <Compile Include="Get_LoaiDiemKinhNghiem_Result.cs">

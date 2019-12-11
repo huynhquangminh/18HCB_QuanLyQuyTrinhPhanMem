@@ -43,6 +43,10 @@ namespace api
             container.RegisterType<ICauHoiBusinessLogic, CauHoiBusinessLogic>();
             container.RegisterType<ICauHoiDataAccess, CauHoiDataAccess>();
 
+            // ThongBao
+            container.RegisterType<IThongBaoBusinessLogic, ThongBaoBusinessLogic>();
+            container.RegisterType<IThongBaoDataAccess, ThongBaoDataAccess>();
+
 
             config.DependencyResolver = new UnityResolver(container);
             // Web API routes

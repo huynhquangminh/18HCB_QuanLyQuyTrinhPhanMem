@@ -181,6 +181,7 @@
     <Compile Include="Controllers\KhoaHocController.cs" />
     <Compile Include="Controllers\LoaiDiemKNController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Controllers\ThongBaoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

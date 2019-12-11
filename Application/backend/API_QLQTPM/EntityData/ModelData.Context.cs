@@ -155,5 +155,27 @@ namespace EntityData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_PassWord_Account", usernameParameter, currentPassParameter, newPassParameter);
         }
+    
+        public virtual ObjectResult<GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result> GET_DSDapAn_Follow_IdBaiHoc_IdCapDo(Nullable<int> idBaiHoc, Nullable<int> idCapDo)
+        {
+            var idBaiHocParameter = idBaiHoc.HasValue ?
+                new ObjectParameter("idBaiHoc", idBaiHoc) :
+                new ObjectParameter("idBaiHoc", typeof(int));
+    
+            var idCapDoParameter = idCapDo.HasValue ?
+                new ObjectParameter("idCapDo", idCapDo) :
+                new ObjectParameter("idCapDo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result>("GET_DSDapAn_Follow_IdBaiHoc_IdCapDo", idBaiHocParameter, idCapDoParameter);
+        }
+    
+        public virtual ObjectResult<GET_DSThongBao_Result> GET_DSThongBao(Nullable<int> idaccount)
+        {
+            var idaccountParameter = idaccount.HasValue ?
+                new ObjectParameter("idaccount", idaccount) :
+                new ObjectParameter("idaccount", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_DSThongBao_Result>("GET_DSThongBao", idaccountParameter);
+        }
     }
 }
