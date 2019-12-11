@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="BaiHocBusinessLogic.cs" />
     <Compile Include="CapDoBusinessLogic.cs" />
+    <Compile Include="CauHoiBusinessLogic.cs" />
     <Compile Include="KhoaHocBusinessLogic.cs" />
     <Compile Include="LoaiDiemKNBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
