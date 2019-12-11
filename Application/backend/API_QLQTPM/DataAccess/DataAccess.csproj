@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="BaiHocDataAccess.cs" />
     <Compile Include="CapDoDataAccess.cs" />
+    <Compile Include="CauHoiDataAccess.cs" />
     <Compile Include="KhoaHocDataAccess.cs" />
     <Compile Include="LoaiDiemKNDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

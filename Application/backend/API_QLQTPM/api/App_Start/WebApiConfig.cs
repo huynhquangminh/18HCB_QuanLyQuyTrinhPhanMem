@@ -39,6 +39,10 @@ namespace api
             container.RegisterType<IBaiHocBusinessLogic, BaiHocBusinessLogic>();
             container.RegisterType<IBaiHocDataAccess, BaiHocDataAccess>();
 
+            // CauHoi
+            container.RegisterType<ICauHoiBusinessLogic, CauHoiBusinessLogic>();
+            container.RegisterType<ICauHoiDataAccess, CauHoiDataAccess>();
+
 
             config.DependencyResolver = new UnityResolver(container);
             // Web API routes
