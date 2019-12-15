@@ -16,9 +16,16 @@
 
             <ul class="nav navbar-nav navbar-right" style="display: block;">
                 <li class="notication">
-                    <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon matBadge="10" matBadgeColor="warn">home</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Item 1</button>
+                        <button mat-menu-item>Item 2</button>
+                    </mat-menu>
                 </li>
-                <li><img width="40px" src="../../assets/image/User_Avatar-512.png"></li>
+                <li style="margin-right:5px"><img width="40px" src="../../assets/image/icon-logout.png"></li>
+                <li><img width="40px" src="../../assets/image/icon-login.png"></li>
             </ul>
         </div>
     </div>

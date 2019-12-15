@@ -16,12 +16,16 @@ import { WebStorageSerivce } from './services/webStorage.service';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { DisplaySettingService } from './services/display-setting.service';
 import { CourseListService } from './services/course-list.service';
+import { DialogTimeOutComponent } from './shared/dialog-time-out/dialog-time-out.component';
+import { DialogQuizSuccessComponent } from './shared/dialog-quiz-success/dialog-quiz-success.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    DialogTimeOutComponent,
+    DialogQuizSuccessComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,9 @@ import { CourseListService } from './services/course-list.service';
     CourseListService
   ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogTimeOutComponent, 
+    DialogQuizSuccessComponent]
 })
 export class AppModule { }
