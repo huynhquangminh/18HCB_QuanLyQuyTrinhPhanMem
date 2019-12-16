@@ -25,6 +25,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TargetDayComponent } from './target-day/target-day.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ChartModule } from 'angular-highcharts';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -61,7 +62,8 @@ import {MatDialogModule} from '@angular/material/dialog';
       showBackground: false,
       startFromZero: false,
       showSubtitle: false,
-    })
+    }),
+    ChartModule
   ]
 })
 export class HomeModule { }

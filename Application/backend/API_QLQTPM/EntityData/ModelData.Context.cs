@@ -27,6 +27,7 @@ namespace EntityData
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BieuDoTheoDoi> BieuDoTheoDois { get; set; }
         public virtual DbSet<CapDo> CapDoes { get; set; }
         public virtual DbSet<DSBaiHoc> DSBaiHocs { get; set; }
         public virtual DbSet<DSBaiHocPass_Of_TaiKhoan> DSBaiHocPass_Of_TaiKhoan { get; set; }
@@ -82,9 +83,40 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result>("GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo", idBaiHocParameter, idCapDoParameter);
         }
     
+        public virtual ObjectResult<GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result> GET_DSDapAn_Follow_IdBaiHoc_IdCapDo(Nullable<int> idBaiHoc, Nullable<int> idCapDo)
+        {
+            var idBaiHocParameter = idBaiHoc.HasValue ?
+                new ObjectParameter("idBaiHoc", idBaiHoc) :
+                new ObjectParameter("idBaiHoc", typeof(int));
+    
+            var idCapDoParameter = idCapDo.HasValue ?
+                new ObjectParameter("idCapDo", idCapDo) :
+                new ObjectParameter("idCapDo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result>("GET_DSDapAn_Follow_IdBaiHoc_IdCapDo", idBaiHocParameter, idCapDoParameter);
+        }
+    
         public virtual ObjectResult<Get_DSKhoaHoc_Result> Get_DSKhoaHoc()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_DSKhoaHoc_Result>("Get_DSKhoaHoc");
+        }
+    
+        public virtual ObjectResult<GET_DSKhoaHocPass_By_IdTTTaiKhoan_Result> GET_DSKhoaHocPass_By_IdTTTaiKhoan(Nullable<int> idTTTaiKhoan)
+        {
+            var idTTTaiKhoanParameter = idTTTaiKhoan.HasValue ?
+                new ObjectParameter("idTTTaiKhoan", idTTTaiKhoan) :
+                new ObjectParameter("idTTTaiKhoan", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_DSKhoaHocPass_By_IdTTTaiKhoan_Result>("GET_DSKhoaHocPass_By_IdTTTaiKhoan", idTTTaiKhoanParameter);
+        }
+    
+        public virtual ObjectResult<GET_DSThongBao_Result> GET_DSThongBao(Nullable<int> idaccount)
+        {
+            var idaccountParameter = idaccount.HasValue ?
+                new ObjectParameter("idaccount", idaccount) :
+                new ObjectParameter("idaccount", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_DSThongBao_Result>("GET_DSThongBao", idaccountParameter);
         }
     
         public virtual ObjectResult<Get_LoaiDiemKinhNghiem_Result> Get_LoaiDiemKinhNghiem()
@@ -139,6 +171,19 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("THEM_THONGTINTAIKHOAN", idkhoahocParameter, idcapdoParameter, diemKNParameter, diemKNDayParameter, idtaikhoanParameter);
         }
     
+        public virtual int UPDATE_DSThongBao_Follow_Id_IdAccount(Nullable<int> id, Nullable<int> idAccount)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var idAccountParameter = idAccount.HasValue ?
+                new ObjectParameter("idAccount", idAccount) :
+                new ObjectParameter("idAccount", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATE_DSThongBao_Follow_Id_IdAccount", idParameter, idAccountParameter);
+        }
+    
         public virtual int Update_PassWord_Account(string username, string currentPass, string newPass)
         {
             var usernameParameter = username != null ?
@@ -154,28 +199,6 @@ namespace EntityData
                 new ObjectParameter("newPass", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_PassWord_Account", usernameParameter, currentPassParameter, newPassParameter);
-        }
-    
-        public virtual ObjectResult<GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result> GET_DSDapAn_Follow_IdBaiHoc_IdCapDo(Nullable<int> idBaiHoc, Nullable<int> idCapDo)
-        {
-            var idBaiHocParameter = idBaiHoc.HasValue ?
-                new ObjectParameter("idBaiHoc", idBaiHoc) :
-                new ObjectParameter("idBaiHoc", typeof(int));
-    
-            var idCapDoParameter = idCapDo.HasValue ?
-                new ObjectParameter("idCapDo", idCapDo) :
-                new ObjectParameter("idCapDo", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result>("GET_DSDapAn_Follow_IdBaiHoc_IdCapDo", idBaiHocParameter, idCapDoParameter);
-        }
-    
-        public virtual ObjectResult<GET_DSThongBao_Result> GET_DSThongBao(Nullable<int> idaccount)
-        {
-            var idaccountParameter = idaccount.HasValue ?
-                new ObjectParameter("idaccount", idaccount) :
-                new ObjectParameter("idaccount", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_DSThongBao_Result>("GET_DSThongBao", idaccountParameter);
         }
     }
 }

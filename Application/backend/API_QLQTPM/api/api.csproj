@@ -177,6 +177,7 @@
     <Compile Include="Controllers\BaiHocController.cs" />
     <Compile Include="Controllers\CapDoController.cs" />
     <Compile Include="Controllers\CauHoiController.cs" />
+    <Compile Include="Controllers\DapAnController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhoaHocController.cs" />
     <Compile Include="Controllers\LoaiDiemKNController.cs" />
@@ -241,6 +242,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\DapAn\" />
     <Folder Include="Views\TaiKhoan\" />
   </ItemGroup>
   <ItemGroup>

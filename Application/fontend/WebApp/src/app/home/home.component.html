@@ -16,16 +16,26 @@
 
             <ul class="nav navbar-nav navbar-right" style="display: block;">
                 <li class="notication">
-                    <button mat-button [matMenuTriggerFor]="menu">
+                    <button mat-button [matMenuTriggerFor]="menuNotication">
                         <mat-icon matBadge="10" matBadgeColor="warn">home</mat-icon>
                     </button>
-                    <mat-menu #menu="matMenu">
+                    <mat-menu #menuNotication="matMenu">
                         <button mat-menu-item>Item 1</button>
                         <button mat-menu-item>Item 2</button>
                     </mat-menu>
                 </li>
-                <li style="margin-right:5px"><img width="40px" src="../../assets/image/icon-logout.png"></li>
-                <li><img width="40px" src="../../assets/image/icon-login.png"></li>
+                <li style="margin-right:5px" (click)="logout()"><img width="40px"
+                        src="../../assets/image/icon-logout.png"></li>
+
+                <li>
+                    <button mat-button [matMenuTriggerFor]="menuAccount">
+                        <img width="40px" src="../../assets/image/icon-login.png">
+                    </button>
+                    <mat-menu #menuAccount="matMenu">
+                        <button mat-menu-item>Item 1</button>
+                        <button mat-menu-item>Item 2</button>
+                    </mat-menu>
+                </li>
             </ul>
         </div>
     </div>

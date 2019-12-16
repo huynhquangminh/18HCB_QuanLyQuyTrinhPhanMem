@@ -17,6 +17,7 @@ namespace EntityData
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TaiKhoan()
         {
+            this.BieuDoTheoDois = new HashSet<BieuDoTheoDoi>();
             this.DSBanBes = new HashSet<DSBanBe>();
             this.DSThongBaos = new HashSet<DSThongBao>();
             this.DSYeuCauKetBans = new HashSet<DSYeuCauKetBan>();
@@ -29,6 +30,8 @@ namespace EntityData
         public string email { get; set; }
         public string img { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BieuDoTheoDoi> BieuDoTheoDois { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DSBanBe> DSBanBes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

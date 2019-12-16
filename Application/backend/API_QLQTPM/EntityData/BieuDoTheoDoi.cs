@@ -10,12 +10,21 @@
 namespace EntityData
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result
+    public partial class BieuDoTheoDoi
     {
         public int id { get; set; }
-        public int idcauhoi { get; set; }
-        public string cautraloi { get; set; }
-        public bool dapan { get; set; }
+        public int idTaiKhoan { get; set; }
+        public int Thu2 { get; set; }
+        public int Thu3 { get; set; }
+        public int Thu4 { get; set; }
+        public int Thu5 { get; set; }
+        public int Thu6 { get; set; }
+        public int Thu7 { get; set; }
+        public int ChuNhat { get; set; }
+        public System.DateTime NgayBatDau { get; set; }
+    
+        public virtual TaiKhoan TaiKhoan { get; set; }
     }
 }

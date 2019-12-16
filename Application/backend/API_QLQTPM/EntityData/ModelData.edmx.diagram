@@ -4,21 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="afcddde424ae4d92bde0621fac4473ef" Name="Diagram1">
-        <EntityTypeShape EntityType="WebLapTrinhModel.CapDo" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.DSBaiHoc" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.DSBaiHocPass_Of_TaiKhoan" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.DSBanBe" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.DSCauHoi" Width="1.5" PointX="11.25" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.DSDapAn" Width="1.5" PointX="13.5" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.DSKhoaHocPass_Of_TaiKhoan" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.DSThongBao" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.DSYeuCauKetBan" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.KhoaHoc" Width="1.5" PointX="3.75" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.LoaiDiemKN" Width="1.5" PointX="3.75" PointY="15.625" IsExpanded="true" />
+      <Diagram DiagramId="816045f730a24b80b904a2e9069d317a" Name="Diagram1">
+        <EntityTypeShape EntityType="WebLapTrinhModel.BieuDoTheoDoi" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.CapDo" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSBaiHoc" Width="1.5" PointX="6" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSBaiHocPass_Of_TaiKhoan" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSBanBe" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSCauHoi" Width="1.5" PointX="11.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSDapAn" Width="1.5" PointX="13.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSKhoaHocPass_Of_TaiKhoan" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSThongBao" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.DSYeuCauKetBan" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.KhoaHoc" Width="1.5" PointX="3.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.LoaiDiemKN" Width="1.5" PointX="3.75" PointY="19.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WebLapTrinhModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebLapTrinhModel.ThongTinTaiKhoan" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLapTrinhModel.ThongTinTaiKhoan" Width="1.5" PointX="6" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="WebLapTrinhModel.FK_BieuDoTheoDoi_TaiKhoan" ManuallyRouted="false" />
         <AssociationConnector Association="WebLapTrinhModel.FK_DSCauHoi_CapDo" ManuallyRouted="false" />
         <AssociationConnector Association="WebLapTrinhModel.FK_ThongTinTaiKhoan_CapDo" ManuallyRouted="false" />
         <AssociationConnector Association="WebLapTrinhModel.FK_DSBaiHoc_KhoaHoc" ManuallyRouted="false" />

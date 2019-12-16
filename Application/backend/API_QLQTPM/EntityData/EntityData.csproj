@@ -56,6 +56,9 @@
     <Compile Include="ACCOUNT_LOGIN_Result.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
+    <Compile Include="BieuDoTheoDoi.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="CapDo.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
@@ -93,6 +96,9 @@
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
     <Compile Include="GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GET_DSKhoaHocPass_By_IdTTTaiKhoan_Result.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
     <Compile Include="Get_DSKhoaHoc_Result.cs">

@@ -1,11 +1,14 @@
+import { WebKeyStorage } from 'src/app/global/web-key-storage';
 import { DialogTimeOutComponent } from './../../shared/dialog-time-out/dialog-time-out.component';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataQuizMock } from './data-mock';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { GoalEveryDayService } from 'src/app/services/goal-every-day.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogQuizSuccessComponent } from 'src/app/shared/dialog-quiz-success/dialog-quiz-success.component';
+import { StudyQuizService } from 'src/app/services/study-quiz.service';
+import { WebStorageSerivce } from 'src/app/services/webStorage.service';
 @Component({
   selector: 'app-study-quiz',
   templateUrl: './study-quiz.component.html',
@@ -15,6 +18,8 @@ export class StudyQuizComponent implements OnInit {
   public valueProgress = 0;
   public resultAnswer: string;
   public listQuestion: any[] = [];
+  public listCauHoi: any[] = [];
+  public listDapAn: any[] = [];
   currentQuestion = {};
   indexCurrentQuestion = 0;
   audio = new Audio();
@@ -22,17 +27,32 @@ export class StudyQuizComponent implements OnInit {
   pathAudioWrong = '../../../../assets/audio/wrong_answer.mp3';
   timeLeft = 3;
   interval: any;
+  id = 0;
+  settingUser: any;
   constructor(
     private snackBar: MatSnackBar,
     private router: Router,
     private goalEveryDayService: GoalEveryDayService,
-    public dialog: MatDialog
-  ) { }
+    public dialog: MatDialog,
+    public studyQuizService: StudyQuizService,
+    private activatedRoute: ActivatedRoute,
+    private webStorageSerivce: WebStorageSerivce
+  ) {
+    // this.activatedRoute.queryParams.subscribe(params => {
+    //   // tslint:disable-next-line:no-string-literal
+    //   this.id = params['id'];
+    // });
+  }
 
   ngOnInit() {
-    this.listQuestion = this.cloneQuestion();
-    this.currentQuestion = this.getQuestion();
-    this.startTimer();
+    this.id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.settingUser = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
+    this.getDsCauHoi();
+    this.getDsDapAn();
+    this.listQuestion = this.formatCauHoi();
+    // this.listQuestion = this.cloneQuestion();
+    // this.currentQuestion = this.getQuestion();
+    // this.startTimer();
   }
 
   cloneQuestion() {
@@ -40,6 +60,72 @@ export class StudyQuizComponent implements OnInit {
     DataQuizMock.forEach(item => {
       if (!item.isAnswer) {
         arr.push(Object.assign({}, item));
+      }
+    });
+    return arr;
+  }
+
+  getDsCauHoi() {
+    if (this.settingUser) {
+      const request = {
+        idBaiHoc: this.id,
+        idCapDo: this.settingUser.idcapdo
+      };
+      this.studyQuizService.getDsCauHoi(request).subscribe(res => {
+        if (res && res.Success) {
+          this.listCauHoi = res.listCauHoi;
+          console.log(this.listCauHoi);
+        }
+      });
+    }
+  }
+
+  getDsDapAn() {
+    if (this.settingUser) {
+      const request = {
+        idBaiHoc: this.id,
+        idCapDo: this.settingUser.idcapdo
+      };
+      this.studyQuizService.getDsDapAn(request).subscribe(res => {
+        if (res && res.Success) {
+          this.listDapAn = res.listDapAn;
+          console.log(this.listDapAn);
+        }
+      });
+    }
+  }
+
+  formatCauHoi() {
+    const arr = [];
+    console.log(this.listCauHoi);
+    this.listCauHoi.forEach(item => {
+      if (item.id) {
+        console.log(item);
+      }
+
+    });
+    // this.listCauHoi.forEach(item => {
+    //   console.log(item);
+    //   // arr.push({
+    //   //   id: item.id,
+    //   //   question: item.tencauhoi,
+    //   //   answer: this.findListDapAn(item.id)
+    //   // });
+    //   console.log(item);
+    // });
+    // console.log('arr', arr);
+    return arr;
+  }
+
+  findListDapAn(idCauHoi: any) {
+    const arr = [];
+    this.listDapAn.forEach(item => {
+      if (item.idcauhoi === idCauHoi) {
+        arr.push({
+          id: item.id,
+          answerName: item.cautraloi,
+          isBool: item.dapan
+        });
       }
     });
     return arr;
@@ -106,10 +192,10 @@ export class StudyQuizComponent implements OnInit {
   }
 
   showDialogTimeOut() {
-      const dialogRef = this.dialog.open(DialogTimeOutComponent, {
-        width: '350px',
-        disableClose: true
-      });
+    const dialogRef = this.dialog.open(DialogTimeOutComponent, {
+      width: '350px',
+      disableClose: true
+    });
   }
 
   showDialogQuizSuccess() {

@@ -101,7 +101,7 @@ GO
 
 CREATE PROC [dbo].[GET_DSDapAn_Follow_IdBaiHoc_IdCapDo](@idBaiHoc int, @idCapDo int)
 AS BEGIN 
-	SELECT idcauhoi, cautraloi, dapan
+	SELECT id, idcauhoi, cautraloi, dapan
 	FROM DSDapAn
 	WHERE idcauhoi IN (SELECT ID 
 						FROM DSCauHoi 

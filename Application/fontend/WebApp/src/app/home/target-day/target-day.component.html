@@ -4,9 +4,14 @@
         <mat-card-title>Mục tiêu mỗi ngày</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <circle-progress [percent]="progessGoalDay" [radius]="50" [innerStrokeWidth]="1" [outerStrokeColor]="'#78C000'"
-            [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300" [title]=" numGoalDay === targetNumber? 'Hoàn thành' : numGoalDay + '/50 KN' "
-            [showUnits]="false" [titleFontSize]="'15'">
-        </circle-progress>
+        <div>
+            <circle-progress [percent]="progessGoalDay" [radius]="50" [innerStrokeWidth]="1"
+                [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
+                [animationDuration]="300" [title]=" numGoalDay === targetNumber? 'Hoàn thành' : numGoalDay + '/50 KN' "
+                [showUnits]="false" [titleFontSize]="'15'">
+            </circle-progress>
+
+        </div>
+        <div [chart]="chart"></div>
     </mat-card-content>
 </mat-card>

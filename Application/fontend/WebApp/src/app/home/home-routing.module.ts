@@ -10,7 +10,7 @@ const homeRouting: Routes = [
         path: 'main', component: HomeComponent, children: [
             { path: '', redirectTo: 'course-list', pathMatch: 'full' },
             { path: 'course-list', component: CourseListComponent },
-            { path: 'study-quiz', component: StudyQuizComponent }
+            { path: 'study-quiz/:id', component: StudyQuizComponent }
         ]
     },
     { path: 'display-setting', component: DisplaySettingComponent },

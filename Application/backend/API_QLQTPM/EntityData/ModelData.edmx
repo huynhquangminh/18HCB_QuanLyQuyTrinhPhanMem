@@ -4,7 +4,22 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="WebLapTrinhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="WebLapTrinhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BieuDoTheoDoi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTaiKhoan" Type="int" Nullable="false" />
+          <Property Name="Thu2" Type="int" Nullable="false" />
+          <Property Name="Thu3" Type="int" Nullable="false" />
+          <Property Name="Thu4" Type="int" Nullable="false" />
+          <Property Name="Thu5" Type="int" Nullable="false" />
+          <Property Name="Thu6" Type="int" Nullable="false" />
+          <Property Name="Thu7" Type="int" Nullable="false" />
+          <Property Name="ChuNhat" Type="int" Nullable="false" />
+          <Property Name="NgayBatDau" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="CapDo">
           <Key>
             <PropertyRef Name="id" />
@@ -68,7 +83,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idaccount" Type="int" Nullable="false" />
           <Property Name="thongbao" Type="nvarchar(max)" Nullable="false" />
           <Property Name="docthongbao" Type="bit" Nullable="false" />
@@ -97,6 +112,16 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="diemKN" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
             <PropertyRef Name="id" />
@@ -118,6 +143,18 @@
           <Property Name="diemKNDay" Type="int" />
           <Property Name="idtaikhoan" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_BieuDoTheoDoi_TaiKhoan">
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+          <End Role="BieuDoTheoDoi" Type="Self.BieuDoTheoDoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BieuDoTheoDoi">
+              <PropertyRef Name="idTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DSBaiHoc_KhoaHoc">
           <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
           <End Role="DSBaiHoc" Type="Self.DSBaiHoc" Multiplicity="*" />
@@ -291,6 +328,9 @@
           <Parameter Name="idCapDo" Type="int" Mode="In" />
         </Function>
         <Function Name="Get_DSKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GET_DSKhoaHocPass_By_IdTTTaiKhoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTTTaiKhoan" Type="int" Mode="In" />
+        </Function>
         <Function Name="GET_DSThongBao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idaccount" Type="int" Mode="In" />
         </Function>
@@ -309,12 +349,17 @@
           <Parameter Name="diemKNDay" Type="int" Mode="In" />
           <Parameter Name="idtaikhoan" Type="int" Mode="In" />
         </Function>
+        <Function Name="UPDATE_DSThongBao_Follow_Id_IdAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idAccount" Type="int" Mode="In" />
+        </Function>
         <Function Name="Update_PassWord_Account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="username" Type="varchar" Mode="In" />
           <Parameter Name="currentPass" Type="varchar" Mode="In" />
           <Parameter Name="newPass" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="WebLapTrinhModelStoreContainer">
+          <EntitySet Name="BieuDoTheoDoi" EntityType="Self.BieuDoTheoDoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CapDo" EntityType="Self.CapDo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DSBaiHoc" EntityType="Self.DSBaiHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DSBaiHocPass_Of_TaiKhoan" EntityType="Self.DSBaiHocPass_Of_TaiKhoan" Schema="dbo" store:Type="Tables" />
@@ -326,8 +371,13 @@
           <EntitySet Name="DSYeuCauKetBan" EntityType="Self.DSYeuCauKetBan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KhoaHoc" EntityType="Self.KhoaHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiDiemKN" EntityType="Self.LoaiDiemKN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongTinTaiKhoan" EntityType="Self.ThongTinTaiKhoan" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BieuDoTheoDoi_TaiKhoan" Association="Self.FK_BieuDoTheoDoi_TaiKhoan">
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+            <End Role="BieuDoTheoDoi" EntitySet="BieuDoTheoDoi" />
+          </AssociationSet>
           <AssociationSet Name="FK_DSBaiHoc_KhoaHoc" Association="Self.FK_DSBaiHoc_KhoaHoc">
             <End Role="KhoaHoc" EntitySet="KhoaHoc" />
             <End Role="DSBaiHoc" EntitySet="DSBaiHoc" />
@@ -381,10 +431,27 @@
             <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoan" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebLapTrinhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BieuDoTheoDoi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTaiKhoan" Type="Int32" Nullable="false" />
+          <Property Name="Thu2" Type="Int32" Nullable="false" />
+          <Property Name="Thu3" Type="Int32" Nullable="false" />
+          <Property Name="Thu4" Type="Int32" Nullable="false" />
+          <Property Name="Thu5" Type="Int32" Nullable="false" />
+          <Property Name="Thu6" Type="Int32" Nullable="false" />
+          <Property Name="Thu7" Type="Int32" Nullable="false" />
+          <Property Name="ChuNhat" Type="Int32" Nullable="false" />
+          <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_BieuDoTheoDoi_TaiKhoan" FromRole="BieuDoTheoDoi" ToRole="TaiKhoan" />
+        </EntityType>
         <EntityType Name="CapDo">
           <Key>
             <PropertyRef Name="id" />
@@ -459,7 +526,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idaccount" Type="Int32" Nullable="false" />
           <Property Name="thongbao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="docthongbao" Type="Boolean" Nullable="false" />
@@ -512,6 +579,7 @@
           <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BieuDoTheoDois" Relationship="Self.FK_BieuDoTheoDoi_TaiKhoan" FromRole="TaiKhoan" ToRole="BieuDoTheoDoi" />
           <NavigationProperty Name="DSBanBes" Relationship="Self.FK_DSBanBe_TaiKhoan" FromRole="TaiKhoan" ToRole="DSBanBe" />
           <NavigationProperty Name="DSThongBaos" Relationship="Self.FK_DSThongBao_TaiKhoan" FromRole="TaiKhoan" ToRole="DSThongBao" />
           <NavigationProperty Name="DSYeuCauKetBans" Relationship="Self.FK_DSYeuCauKetBan_TaiKhoan" FromRole="TaiKhoan" ToRole="DSYeuCauKetBan" />
@@ -534,6 +602,18 @@
           <NavigationProperty Name="LoaiDiemKN" Relationship="Self.FK_ThongTinTaiKhoan_LoaiDiemKN" FromRole="ThongTinTaiKhoan" ToRole="LoaiDiemKN" />
           <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_ThongTinTaiKhoan_TaiKhoan" FromRole="ThongTinTaiKhoan" ToRole="TaiKhoan" />
         </EntityType>
+        <Association Name="FK_BieuDoTheoDoi_TaiKhoan">
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+          <End Role="BieuDoTheoDoi" Type="Self.BieuDoTheoDoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BieuDoTheoDoi">
+              <PropertyRef Name="idTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DSCauHoi_CapDo">
           <End Role="CapDo" Type="Self.CapDo" Multiplicity="1" />
           <End Role="DSCauHoi" Type="Self.DSCauHoi" Multiplicity="*" />
@@ -691,6 +771,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WebLapTrinhEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BieuDoTheoDois" EntityType="Self.BieuDoTheoDoi" />
           <EntitySet Name="CapDoes" EntityType="Self.CapDo" />
           <EntitySet Name="DSBaiHocs" EntityType="Self.DSBaiHoc" />
           <EntitySet Name="DSBaiHocPass_Of_TaiKhoan" EntityType="Self.DSBaiHocPass_Of_TaiKhoan" />
@@ -705,6 +786,10 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
           <EntitySet Name="ThongTinTaiKhoans" EntityType="Self.ThongTinTaiKhoan" />
+          <AssociationSet Name="FK_BieuDoTheoDoi_TaiKhoan" Association="Self.FK_BieuDoTheoDoi_TaiKhoan">
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+            <End Role="BieuDoTheoDoi" EntitySet="BieuDoTheoDois" />
+          </AssociationSet>
           <AssociationSet Name="FK_DSCauHoi_CapDo" Association="Self.FK_DSCauHoi_CapDo">
             <End Role="CapDo" EntitySet="CapDoes" />
             <End Role="DSCauHoi" EntitySet="DSCauHois" />
@@ -763,16 +848,26 @@
           </FunctionImport>
           <FunctionImport Name="Get_CapDo" ReturnType="Collection(WebLapTrinhModel.Get_CapDo_Result)" />
           <FunctionImport Name="Get_DSBaiHoc_ById" ReturnType="Collection(WebLapTrinhModel.Get_DSBaiHoc_ById_Result)">
-          <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
+            <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo" ReturnType="Collection(WebLapTrinhModel.GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result)">
             <Parameter Name="idBaiHoc" Mode="In" Type="Int32" />
             <Parameter Name="idCapDo" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GET_DSDapAn_Follow_IdBaiHoc_IdCapDo" ReturnType="Collection(WebLapTrinhModel.GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result)">
+            <Parameter Name="idBaiHoc" Mode="In" Type="Int32" />
+            <Parameter Name="idCapDo" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Get_DSKhoaHoc" ReturnType="Collection(WebLapTrinhModel.Get_DSKhoaHoc_Result)" />
+          <FunctionImport Name="GET_DSKhoaHocPass_By_IdTTTaiKhoan" ReturnType="Collection(WebLapTrinhModel.GET_DSKhoaHocPass_By_IdTTTaiKhoan_Result)">
+            <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GET_DSThongBao" ReturnType="Collection(WebLapTrinhModel.GET_DSThongBao_Result)">
+            <Parameter Name="idaccount" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Get_LoaiDiemKinhNghiem" ReturnType="Collection(WebLapTrinhModel.Get_LoaiDiemKinhNghiem_Result)" />
           <FunctionImport Name="GET_THONGTINTAIKHOAN" ReturnType="Collection(WebLapTrinhModel.GET_THONGTINTAIKHOAN_Result)">
-          <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
+            <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="INSERT_ACCOUNT">
             <Parameter Name="user" Mode="In" Type="String" />
@@ -785,17 +880,14 @@
             <Parameter Name="diemKNDay" Mode="In" Type="Int32" />
             <Parameter Name="idtaikhoan" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="UPDATE_DSThongBao_Follow_Id_IdAccount">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idAccount" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Update_PassWord_Account">
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="currentPass" Mode="In" Type="String" />
             <Parameter Name="newPass" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GET_DSDapAn_Follow_IdBaiHoc_IdCapDo" ReturnType="Collection(WebLapTrinhModel.GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result)">
-            <Parameter Name="idBaiHoc" Mode="In" Type="Int32" />
-            <Parameter Name="idCapDo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GET_DSThongBao" ReturnType="Collection(WebLapTrinhModel.GET_DSThongBao_Result)">
-            <Parameter Name="idaccount" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ACCOUNT_LOGIN_Result">
@@ -819,10 +911,27 @@
           <Property Type="String" Name="tencauhoi" Nullable="false" />
           <Property Type="Int32" Name="idbaihoc" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="idcauhoi" Nullable="false" />
+          <Property Type="String" Name="cautraloi" Nullable="false" />
+          <Property Type="Boolean" Name="dapan" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="Get_DSKhoaHoc_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="tenkhoahoc" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="imgKhoaHoc" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="GET_DSKhoaHocPass_By_IdTTTaiKhoan_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="idTTTaiKhoan" Nullable="false" />
+          <Property Type="Int32" Name="idKhoaHoc" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GET_DSThongBao_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="idaccount" Nullable="false" />
+          <Property Type="String" Name="thongbao" Nullable="false" />
+          <Property Type="Boolean" Name="docthongbao" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Get_LoaiDiemKinhNghiem_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -836,23 +945,28 @@
           <Property Type="Int32" Name="diemKNDay" Nullable="true" />
           <Property Type="Int32" Name="idtaikhoan" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result">
-          <Property Type="Int32" Name="idcauhoi" Nullable="false" />
-          <Property Type="String" Name="cautraloi" Nullable="false" />
-          <Property Type="Boolean" Name="dapan" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="GET_DSThongBao_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="Int32" Name="idaccount" Nullable="false" />
-          <Property Type="String" Name="thongbao" Nullable="false" />
-          <Property Type="Boolean" Name="docthongbao" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="WebLapTrinhModelStoreContainer" CdmEntityContainer="WebLapTrinhEntities">
+          <EntitySetMapping Name="BieuDoTheoDois">
+            <EntityTypeMapping TypeName="WebLapTrinhModel.BieuDoTheoDoi">
+              <MappingFragment StoreEntitySet="BieuDoTheoDoi">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idTaiKhoan" ColumnName="idTaiKhoan" />
+                <ScalarProperty Name="Thu2" ColumnName="Thu2" />
+                <ScalarProperty Name="Thu3" ColumnName="Thu3" />
+                <ScalarProperty Name="Thu4" ColumnName="Thu4" />
+                <ScalarProperty Name="Thu5" ColumnName="Thu5" />
+                <ScalarProperty Name="Thu6" ColumnName="Thu6" />
+                <ScalarProperty Name="Thu7" ColumnName="Thu7" />
+                <ScalarProperty Name="ChuNhat" ColumnName="ChuNhat" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CapDoes">
             <EntityTypeMapping TypeName="WebLapTrinhModel.CapDo">
               <MappingFragment StoreEntitySet="CapDo">
@@ -956,6 +1070,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WebLapTrinhModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TaiKhoans">
             <EntityTypeMapping TypeName="WebLapTrinhModel.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
@@ -1016,12 +1141,41 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GET_DSDapAn_Follow_IdBaiHoc_IdCapDo" FunctionName="WebLapTrinhModel.Store.GET_DSDapAn_Follow_IdBaiHoc_IdCapDo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idcauhoi" ColumnName="idcauhoi" />
+                <ScalarProperty Name="cautraloi" ColumnName="cautraloi" />
+                <ScalarProperty Name="dapan" ColumnName="dapan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Get_DSKhoaHoc" FunctionName="WebLapTrinhModel.Store.Get_DSKhoaHoc">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_DSKhoaHoc_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tenkhoahoc" ColumnName="tenkhoahoc" />
                 <ScalarProperty Name="imgKhoaHoc" ColumnName="imgKhoaHoc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GET_DSKhoaHocPass_By_IdTTTaiKhoan" FunctionName="WebLapTrinhModel.Store.GET_DSKhoaHocPass_By_IdTTTaiKhoan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.GET_DSKhoaHocPass_By_IdTTTaiKhoan_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idTTTaiKhoan" ColumnName="idTTTaiKhoan" />
+                <ScalarProperty Name="idKhoaHoc" ColumnName="idKhoaHoc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GET_DSThongBao" FunctionName="WebLapTrinhModel.Store.GET_DSThongBao">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.GET_DSThongBao_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idaccount" ColumnName="idaccount" />
+                <ScalarProperty Name="thongbao" ColumnName="thongbao" />
+                <ScalarProperty Name="docthongbao" ColumnName="docthongbao" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1047,26 +1201,8 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="INSERT_ACCOUNT" FunctionName="WebLapTrinhModel.Store.INSERT_ACCOUNT" />
           <FunctionImportMapping FunctionImportName="THEM_THONGTINTAIKHOAN" FunctionName="WebLapTrinhModel.Store.THEM_THONGTINTAIKHOAN" />
+          <FunctionImportMapping FunctionImportName="UPDATE_DSThongBao_Follow_Id_IdAccount" FunctionName="WebLapTrinhModel.Store.UPDATE_DSThongBao_Follow_Id_IdAccount" />
           <FunctionImportMapping FunctionImportName="Update_PassWord_Account" FunctionName="WebLapTrinhModel.Store.Update_PassWord_Account" />
-          <FunctionImportMapping FunctionImportName="GET_DSDapAn_Follow_IdBaiHoc_IdCapDo" FunctionName="WebLapTrinhModel.Store.GET_DSDapAn_Follow_IdBaiHoc_IdCapDo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WebLapTrinhModel.GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result">
-                <ScalarProperty Name="idcauhoi" ColumnName="idcauhoi" />
-                <ScalarProperty Name="cautraloi" ColumnName="cautraloi" />
-                <ScalarProperty Name="dapan" ColumnName="dapan" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GET_DSThongBao" FunctionName="WebLapTrinhModel.Store.GET_DSThongBao">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WebLapTrinhModel.GET_DSThongBao_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idaccount" ColumnName="idaccount" />
-                <ScalarProperty Name="thongbao" ColumnName="thongbao" />
-                <ScalarProperty Name="docthongbao" ColumnName="docthongbao" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
