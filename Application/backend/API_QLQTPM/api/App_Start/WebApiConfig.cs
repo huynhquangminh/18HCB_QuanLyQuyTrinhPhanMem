@@ -47,10 +47,6 @@ namespace api
             container.RegisterType<IThongBaoBusinessLogic, ThongBaoBusinessLogic>();
             container.RegisterType<IThongBaoDataAccess, ThongBaoDataAccess>();
 
-            // DapAn
-            container.RegisterType<IDapAnBusinessLogic, DapAnBusinessLogic>();
-            container.RegisterType<IDapAnDataAccess, DapAnDataAccess>();
-
 
             config.DependencyResolver = new UnityResolver(container);
             // Web API routes

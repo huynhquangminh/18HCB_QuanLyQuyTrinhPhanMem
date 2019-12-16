@@ -91,7 +91,6 @@
     <Compile Include="Dtos\baihocDTO.cs" />
     <Compile Include="Dtos\CapDoDTO.cs" />
     <Compile Include="Dtos\cauhoiDTO.cs" />
-    <Compile Include="Dtos\dapanDTO.cs" />
     <Compile Include="Dtos\khoahocDTO.cs" />
     <Compile Include="Dtos\loaidiemknDTO.cs" />
     <Compile Include="Dtos\loginDto.cs" />
@@ -100,7 +99,6 @@
     <Compile Include="IBaiHocBusinessLogic.cs" />
     <Compile Include="ICapDoBusinessLogic.cs" />
     <Compile Include="ICauHoiBusinessLogic.cs" />
-    <Compile Include="IDapAnBusinessLogic.cs" />
     <Compile Include="IKhoaHocBusinessLogic.cs" />
     <Compile Include="ILoaiDiemKNBusinessLogic.cs" />
     <Compile Include="ITaiKhoanBusinessLogic.cs" />
@@ -110,7 +108,6 @@
     <Compile Include="Response\GetCapDoResponse.cs" />
     <Compile Include="Response\GetDSBaiHocByIDResponse.cs" />
     <Compile Include="Response\GetDSCauHoiResponse.cs" />
-    <Compile Include="Response\GetDSDapAnResponse.cs" />
     <Compile Include="Response\GetDSThongBaoResponse.cs" />
     <Compile Include="Response\GetKhoaHocResponse.cs" />
     <Compile Include="Response\GetLoaiDiemKNResponse.cs" />
