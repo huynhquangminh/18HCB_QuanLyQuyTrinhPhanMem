@@ -1,10 +1,10 @@
-<div class="progess-style">
+<div class="progess-style" *ngIf="listCauHoi.length > 0">
     <mat-icon style="cursor: pointer;" (click)="cancelStudy()">close</mat-icon>
     <mat-progress-bar class="custom-progessbar" mode="determinate" [value]="valueProgress"></mat-progress-bar>
     <mat-icon style="margin:5px">timer</mat-icon>
     <span class="timer">00:{{timeLeft}}</span>
 </div>
-<div class="question-style">
+<div class="question-style" *ngIf="listCauHoi.length > 0">
     <mat-card-content *ngIf="valueProgress < 100">
         <label id="example-radio-group-label" style="font-size: 20px">Question: {{currentQuestion.question}}</label>
         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
@@ -17,5 +17,5 @@
         <button mat-raised-button color="primary" [disabled]="!resultAnswer"
             (click)="submitAnswer(resultAnswer,currentQuestion.id )">Submit</button>
     </mat-card-content>
-    <button *ngIf="valueProgress === 100" mat-raised-button color="primary" (click)="selectFinish()">Finish</button>
+    <!-- <button *ngIf="valueProgress === 100" mat-raised-button color="primary" (click)="selectFinish()">Finish</button> -->
 </div>

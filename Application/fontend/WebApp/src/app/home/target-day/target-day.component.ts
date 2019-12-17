@@ -59,7 +59,6 @@ export class TargetDayComponent implements OnInit {
         type: 'line',
         name: 'Điểm Kinh Nghiệm',
         data: [120, 45, 32, 56, 76, 213, 133]
-
       }]
     });
   }
