@@ -25,7 +25,7 @@ namespace api.Controllers
         /// </summary>
         /// <returns>IHttpActionResult</returns>
         [HttpPost]
-        public IHttpActionResult GetDSThongBao(GetDSThongBaoParameter request)
+        public IHttpActionResult DanhSachThongBao(GetDSThongBaoParameter request)
         {
             var result = _businessLogic.GetDSThongBao(request);
             return new ActionResult<GetDSThongBaoResponse>(result.Result, Request);

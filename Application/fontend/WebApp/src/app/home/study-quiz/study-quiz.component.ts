@@ -25,7 +25,8 @@ export class StudyQuizComponent implements OnInit {
   audio = new Audio();
   pathAudioRight = '../../../../assets/audio/right_answer.mp3';
   pathAudioWrong = '../../../../assets/audio/wrong_answer.mp3';
-  timeLeft = 3;
+  passAudioComplete = '../../../../assets/audio/lesson_complete.mp3';
+  timeLeft = 30;
   interval: any;
   id = 0;
   settingUser: any;
@@ -37,22 +38,13 @@ export class StudyQuizComponent implements OnInit {
     public studyQuizService: StudyQuizService,
     private activatedRoute: ActivatedRoute,
     private webStorageSerivce: WebStorageSerivce
-  ) {
-    // this.activatedRoute.queryParams.subscribe(params => {
-    //   // tslint:disable-next-line:no-string-literal
-    //   this.id = params['id'];
-    // });
-  }
+  ) { }
 
   ngOnInit() {
     this.id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.settingUser = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
     this.getDsCauHoi();
-    this.getDsDapAn();
-    this.listQuestion = this.formatCauHoi();
-    // this.listQuestion = this.cloneQuestion();
-    // this.currentQuestion = this.getQuestion();
-    // this.startTimer();
+    this.startTimer();
   }
 
   cloneQuestion() {
@@ -66,6 +58,7 @@ export class StudyQuizComponent implements OnInit {
   }
 
   getDsCauHoi() {
+    let snackRef: any;
     if (this.settingUser) {
       const request = {
         idBaiHoc: this.id,
@@ -74,7 +67,16 @@ export class StudyQuizComponent implements OnInit {
       this.studyQuizService.getDsCauHoi(request).subscribe(res => {
         if (res && res.Success) {
           this.listCauHoi = res.listCauHoi;
-          console.log(this.listCauHoi);
+          if (this.listCauHoi.length < 1) {
+            clearInterval(this.interval);
+            snackRef = this.snackBar.open('Bài học này chưa được hoàn thiện, vui vòng chọn bài học khác!', 'Quay lại', {
+              duration: 10000,
+            });
+            snackRef.afterDismissed().subscribe(null, null, () => {
+              this.router.navigateByUrl('/home/main/course-list');
+            });
+          }
+          this.getDsDapAn();
         }
       });
     }
@@ -89,7 +91,8 @@ export class StudyQuizComponent implements OnInit {
       this.studyQuizService.getDsDapAn(request).subscribe(res => {
         if (res && res.Success) {
           this.listDapAn = res.listDapAn;
-          console.log(this.listDapAn);
+          this.listQuestion = this.formatCauHoi();
+          this.currentQuestion = this.getQuestion();
         }
       });
     }
@@ -97,23 +100,13 @@ export class StudyQuizComponent implements OnInit {
 
   formatCauHoi() {
     const arr = [];
-    console.log(this.listCauHoi);
     this.listCauHoi.forEach(item => {
-      if (item.id) {
-        console.log(item);
-      }
-
+      arr.push({
+        id: item.id,
+        question: item.tencauhoi,
+        answer: this.findListDapAn(item.id)
+      });
     });
-    // this.listCauHoi.forEach(item => {
-    //   console.log(item);
-    //   // arr.push({
-    //   //   id: item.id,
-    //   //   question: item.tencauhoi,
-    //   //   answer: this.findListDapAn(item.id)
-    //   // });
-    //   console.log(item);
-    // });
-    // console.log('arr', arr);
     return arr;
   }
 
@@ -156,7 +149,7 @@ export class StudyQuizComponent implements OnInit {
         this.timeLeft = this.timeLeft + 5;
         this.updateAnswer(idQuestion);
         this.resultAnswer = null;
-        this.valueProgress = this.valueProgress + 10;
+        this.valueProgress = this.valueProgress + (100 / this.listCauHoi.length);
         this.playAudio(this.pathAudioRight);
         this.updatePointGoalDay(this.valueProgress);
         this.openMessageResult('Correct Answer');
@@ -200,18 +193,23 @@ export class StudyQuizComponent implements OnInit {
 
   showDialogQuizSuccess() {
     if (this.valueProgress === 100) {
+      clearInterval(this.interval);
       const dialogRef = this.dialog.open(DialogQuizSuccessComponent, {
         width: '400px',
-        disableClose: true
+        disableClose: true,
+        data: { point: this.updatePointGoalDay(100) }
       });
+      this.playAudio(this.passAudioComplete);
     }
   }
 
   updatePointGoalDay(point) {
+    let item = 0;
     if (point === 100) {
-      const item = Math.random() * (15 - 5) + 5;
+      item = Math.random() * (15 - 5) + 5;
       this.goalEveryDayService.listensChangeGoalDay(item);
     }
+    return item;
   }
 
   playAudio(linkSrc) {
@@ -224,7 +222,6 @@ export class StudyQuizComponent implements OnInit {
   startTimer() {
     this.interval = setInterval(() => {
       if (this.timeLeft > 0) {
-        // this.showDialogTimeOut();
         this.timeLeft--;
       } else {
         this.showDialogTimeOut();

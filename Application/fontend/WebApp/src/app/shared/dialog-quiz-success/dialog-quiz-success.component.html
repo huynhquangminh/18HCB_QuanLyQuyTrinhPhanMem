@@ -4,7 +4,7 @@
         <span> Bạn đã hoàn thành bài học </span> <br>
         <span>Giữ vững tinh thần nhé!</span><br>
         <img class="img-success " src="../../../assets/image/images.png" />
-        <span style="margin-left: 5px">+ 10 điểm KN</span>
+        <span style="margin-left: 5px">+ {{data.point | number: '1.0-0'}} điểm KN</span>
     </div>
     <div class="action">
         <button (click)="clickBtn()">Học tiếp </button>

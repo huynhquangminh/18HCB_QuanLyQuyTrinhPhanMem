@@ -1,4 +1,3 @@
-<!-- <router-outlet></router-outlet> -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid" style="display: block">
         <div class="navbar-header">
@@ -17,11 +16,13 @@
             <ul class="nav navbar-nav navbar-right" style="display: block;">
                 <li class="notication">
                     <button mat-button [matMenuTriggerFor]="menuNotication">
-                        <mat-icon matBadge="10" matBadgeColor="warn">home</mat-icon>
+                        <mat-icon matBadge="{{countNotication}}" matBadgeColor="warn">home</mat-icon>
                     </button>
                     <mat-menu #menuNotication="matMenu">
-                        <button mat-menu-item>Item 1</button>
-                        <button mat-menu-item>Item 2</button>
+                        <mat-list *ngFor="let item of listNotication">
+                            <mat-list-item matRipple>{{item.thongbao}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
                     </mat-menu>
                 </li>
                 <li style="margin-right:5px" (click)="logout()"><img width="40px"
@@ -32,8 +33,9 @@
                         <img width="40px" src="../../assets/image/icon-login.png">
                     </button>
                     <mat-menu #menuAccount="matMenu">
-                        <button mat-menu-item>Item 1</button>
-                        <button mat-menu-item>Item 2</button>
+                        <button mat-menu-item>Thông tin tài khoản</button>
+                        <button mat-menu-item>Cài đặt khóa học</button>
+                        <button mat-menu-item>Tìm bạn bè</button>
                     </mat-menu>
                 </li>
             </ul>
@@ -55,7 +57,7 @@
                     <mat-card-title>Bảng xếp hạng </mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <mat-tab-group disableRipple="true">
+                    <mat-tab-group mat-stretch-tabs>
                         <mat-tab label="Tuần này">
                             <mat-list style="height: 150px;">
                                 <mat-list-item>MinhHuynh : 50 KN</mat-list-item>
@@ -81,6 +83,8 @@
                             </mat-list>
                         </mat-tab>
                     </mat-tab-group>
+                   
+
                 </mat-card-content>
             </mat-card>
             <mat-card class="example-card" style="margin: 10px 10px 10px 10px; border-radius: 15px;">
@@ -98,10 +102,10 @@
     </div>
 </div>
 <footer class="container-fluid text-center">
-    <ul class="nav navbar-nav" style="display: block;">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+    <ul>
+        <li style="font-size: 20px;">Website dậy lập trình từ căn bản tới nâng cao</li>
+        <li style="font-size: 15px;">Phone: 084-4324-3424</li>
+        <li style="font-size: 15px;">GMail: laptrinhcanban@gmail.com</li>
+        <li style="font-size: 15px;">Địa chỉ: 40 Lê lợi, Phường 7, TP.Hồ Chí Minh</li>
     </ul>
 </footer>

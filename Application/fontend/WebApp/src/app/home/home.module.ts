@@ -26,6 +26,8 @@ import { TargetDayComponent } from './target-day/target-day.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ChartModule } from 'angular-highcharts';
+import {MatRippleModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -63,7 +65,9 @@ import { ChartModule } from 'angular-highcharts';
       startFromZero: false,
       showSubtitle: false,
     }),
-    ChartModule
+    ChartModule,
+    MatRippleModule,
+    MatInputModule
   ]
 })
 export class HomeModule { }
