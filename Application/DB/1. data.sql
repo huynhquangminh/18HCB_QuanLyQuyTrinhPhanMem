@@ -237,6 +237,39 @@ INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (92, N
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (93, N'Base class không bao giờ được sử dụng để tạo đối tượng?', 5, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (94, N'C++ là một ngôn ngữ lập trình hướng đối tượng thuần túy?', 5, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (95, N'% = không phải là toán tử trong C ++?', 5, 1)
+
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (96, N'Một biến được gọi là biến toàn cục nếu?', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (97, N'Một biến được gọi là một biến địa phương nếu?.', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (98, N'Nếu x là một biến toàn cục và x không phải là một con trỏ thì?', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (99, N'Kiểu dữ liệu nào dưới đây được coi là kiểu dữ liệu cơ bản trong ngôn ngữ lập trình C?', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (100, N'Xâu định dạng nào dưới đây dùng để in ra một số nguyên hệ 16?', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (101, N'Xâu định dạng nào dưới đây dùng để in ra một số nguyên ở hệ 8?', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (102, N'Xâu định dạng nào dưới đây dùng để in ra một kí tự?', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (103, N'Xâu định dạng nào dưới đây dùng để in ra một xâu kí tự?', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (104, N'Xâu định dạng nào dưới đây dùng để in ra một số nguyên dài?.', 6, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (105, N'Xâu định dạng nào dưới đây dùng để in ra địa chỉ của một biến?', 6, 1)
+
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (106, N'Sử dụng cách truyền nào trong hàm sẽ không làm thay đổi giá trị của biến?', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (107, N'Cho biết giá trị của biểu thức 5>1:', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (108, N'Cho biết giá trị của biểu thức 2+4>2&&4<2 :', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (109, N'Biến con trỏ có thể chứa?', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (110, N'Dữ liệu kí tự bao gồm?', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (111, N'Nếu hàm được gọi trước khi nó định nghĩa thì điều kiện là gì?', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (112, N'Kiểu dữ liệu float có thể xử lí dữ liệu trong phạm vi nào?', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (113, N'Kiểu dữ liệu nào dưới đây không được coi là kiểu dữ liệu cơ bản trong ngôn ngữ lập trình C?', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (114, N'Giả sử có câu lệnh ch="A". Vậy ch sẽ chứa bao nhiêu byte?', 7, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (115, N'Giả sử có câu lệnh ch[]="A". ch chứa bao nhiêu bytes?', 7, 1)
+
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (116, N'Độ ưu tiên đối với các toán tử logic là?', 8, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (117, N'Phát biểu nào sau đây không phài là lợi ích của việc dùng hàm?', 8, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (118, N'Kết quả in ra màn hình của biểu thức sau là gì:-3+4%5/2?', 8, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (119, N'Có các khai báo sau: int x=15; int *p; Muốn p là con trỏ trỏ tới x phải thực hiện lệnh nào?', 8, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (120, N'Kí hiệu nào là con trỏ của phẩn tử thứ 3 của màng a có 4 kí tự?', 8, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (121, N'Phép cộng 1 con trỏ với một số nuyên sẽ là?', 8, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (122, N'Phép trừ 2 con trỏ có cùng kiểu sẽ là?', 8, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (123, N'Phép toán 1 ngôi nào dùng để xác định địa chỉ của đối tượng mà con trỏ chỉ tới?', 8, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (124, N'Sự hiệu chỉnh các kiểu dữ liệu số học khi tính toán là?', 8, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (125, N'Các kí hiệu đặc trưng cho sự tác động lên dữ liệu gọi là?', 8, 1)
 SET IDENTITY_INSERT [dbo].[DSCauHoi] OFF
 
 /***13***/
@@ -472,6 +505,156 @@ INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (180, 94,
 
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (181, 95, N'Đúng', 0)
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (182, 95, N'Sai', 1)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (183, 96, N'Nó được khai báo tất cả các hàm, ngoại trừ hàm main().', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (184, 96, N'Nó được khai báo ngoài tất cả các hàm kể cả hàm main().', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (185, 96, N'Nó được khai báo bên ngoài hàm main().', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (186, 96, N'Nó được khai báo bên trong hàm main().', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (187, 97, N'Nó được khai báo bên trong các hàm hoặc thủ tục, kể cả hàm main().', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (188, 97, N'Nó đươc khai báo bên trong các hàm ngoại trừ hàm main().', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (189, 97, N'Nó được khai báo bên trong hàm main().', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (190, 97, N'Nó được khai báo bên ngoài các hàm kể cả hàm main().', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (191, 98, N'Miền nhớ dành cho x có thể thay đổi trong quá trình thực hiện chương trình.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (192, 98, N'Miền nhớ dành cho x chỉ có thay đổi bởi những thao tác với x bên trong hàm main().', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (193, 98, N'Miền nhớ dành cho x sẽ thay đổi bởi những thao tác với x trong tất cả các hàm, kể cả hàm main().', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (194, 98, N'Miền nhớ giành cho x không bị thay đổi trong quá trình thực hiện chương trình.', 1)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (195, 99, N'Kiểu double.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (196, 99, N'Kiểu con trỏ.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (197, 99, N'Kiểu hợp.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (198, 99, N'Kiểu mảng.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (199, 100, N'"%d".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (200, 100, N'"%x".', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (201, 100, N'"%i".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (202, 100, N'"%u".', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (203, 101, N'"%ld".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (204, 101, N'"%x".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (205, 101, N'"%o".', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (206, 101, N'"%u".', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (207, 102, N'"%f".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (208, 102, N'"%x".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (209, 102, N'"%s".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (210, 102, N'"%c".', 1)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (211, 103, N'"%f".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (212, 103, N'"%x".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (213, 103, N'"%s".', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (214, 103, N'"%c".', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (215, 104, N'"%ld".', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (216, 104, N'"%x".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (217, 104, N'"%d".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (218, 104, N'"%o".', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (219, 105, N'"%u".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (220, 105, N'"%e".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (221, 105, N'"%o".', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (262, 105, N'"%p".', 1)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (223, 106, N'Truyền bằng trị.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (224, 106, N'Truyền bằng giá trị địa chỉ của tham số.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (225, 106, N'Cả a và b đều đúng.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (226, 106, N'Cả a và b đều sai.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (227, 107, N'-1.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (228, 107, N'0.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (229, 107, N'1.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (230, 107, N'Không câu nào đúng.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (231, 108, N'1.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (232, 108, N'0.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (233, 108, N'-1 .', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (234, 108, N'Không câu nào đúng.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (235, 109, N'Địa chỉ vùng nhớ của một biến khác.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (236, 109, N'Giá trị của một biến khác.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (237, 109, N'Cả a và b đều đúng.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (238, 109, N'Cả a và b đều sai.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (239, 110, N'Các kí tự số chữ số.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (240, 110, N'Các kí tự chữ cái.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (241, 110, N'Các kí tự đặc biệt.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (242, 110, N'Cả a,b và c.', 1)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (243, 111, N'Kiểu trả về của hàm phải là kiều void.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (244, 111, N'Kiểu đầu vào của hàm phải là kiểu void.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (245, 111, N'Trước khi gọi hàm nó phải được khai báo.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (246, 111, N'Hàm chỉ trả về kiểu dữ liệu boolean.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (247, 112, N'3.4*10-38đến 3.4*1038.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (248, 112, N'-32768 đến 32767.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (249, 112, N'-128 đến 127.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (250, 112, N'0…65535.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (251, 113, N'Kiểu mảng.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (252, 113, N'Kiểu enum.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (253, 113, N'Kiểu short int.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (254, 113, N'Kiểu unsigned.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (255, 114, N'1.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (256, 114, N'2.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (257, 114, N'3.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (258, 114, N'4.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (259, 115, N'1.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (260, 115, N'2.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (261, 115, N'3.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (262, 115, N'4.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (263, 116, N'AND, NOT, OR.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (264, 116, N'NOT, OR, AND.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (265, 116, N'OR, NOT, AND.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (266, 116, N'NOT, AND, OR.', 1)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (267, 117, N'Tránh dư thừa, lặp lại nhiều lần một đoạn lệnh.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (268, 117, N'Dễ bảo trì.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (269, 117, N'Khả năng sử dụng lại đoạn lệnh.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (270, 117, N'Tất cả đều sai.', 1)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (271, 118, N'-1.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (272, 118, N'-3.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (273, 118, N'1.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (274, 118, N'Kết quả khác.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (275, 119, N'p=x;', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (276, 119, N'p=&x;', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (277, 119, N'p=*x;', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (278, 119, N'Tất cả các lệnh đều đúng.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (279, 120, N'*(a+3);', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (280, 120, N'*(a+2);', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (281, 120, N'*a+3;', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (282, 120, N'*(a+4);', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (283, 121, N'Một con trỏ có cùng kiểu.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (284, 121, N'Một số nguyên.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (285, 121, N'Cả hai kết quả đều đúng.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (286, 121, N'Cả hai kết quả đều sai.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (287, 122, N'Một con trỏ có cùng kiểu.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (288, 122, N'Một số nguyên.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (289, 122, N'Kết quả khác.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (290, 122, N'Không thực hiện được.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (291, 123, N'*;', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (292, 123, N'!;', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (293, 123, N'&;', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (294, 123, N'Kết quả khác.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (295, 124, N'int à long à float à double à long double.', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (296, 124, N'int à float à long à double à long double.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (297, 124, N'int à double à float àlong à long double.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (298, 124, N'long à int à float àdouble à long double.', 0)
+
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (299, 125, N'Hàm.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (300, 125, N'Biểu thức.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (301, 125, N'Biến.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (302, 125, N'Toán tử.', 1)
 SET IDENTITY_INSERT [dbo].[DSDapAn] OFF
 
 INSERT [dbo].[DSDapAn] ([idcauhoi], [cautraloi], [dapan]) VALUES (1, N'var tenBien;', 1)
