@@ -39,19 +39,16 @@ export class DisplaySettingComponent implements OnInit {
     this.displaySettingService.getDsKhoaHoc().subscribe(res => {
       if (res && res.Success) {
         this.listLanguage = res.listKhoaHoc;
-        console.log('listLanguage', this.listLanguage);
       }
     });
     this.displaySettingService.getDsCapDo().subscribe(res => {
       if (res && res.Success) {
         this.listLevel = res.listCapDo;
-        console.log('listLevel', this.listLevel);
       }
     });
     this.displaySettingService.getDsDiemKinhNghiem().subscribe(res => {
       if (res && res.Success) {
         this.listGoalDay = res.listLoaiDiemKinhNghiem;
-        console.log('listGoalDay', this.listGoalDay);
       }
     });
 

@@ -224,6 +224,7 @@ export class StudyQuizComponent implements OnInit {
       if (this.timeLeft > 0) {
         this.timeLeft--;
       } else {
+        console.log('xxx');
         this.showDialogTimeOut();
         this.playAudio(this.pathAudioWrong);
         clearInterval(this.interval);
