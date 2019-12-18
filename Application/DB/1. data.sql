@@ -350,7 +350,7 @@ INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (112, 74,
 
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (113, 75, N'4', 1)
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (114, 75, N'0', 0)
-INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (115 75, N'Vòng lặp vô hạn.', 0)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (115, 75, N'Vòng lặp vô hạn.', 0)
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (116, 75, N'5', 0)
 SET IDENTITY_INSERT [dbo].[DSDapAn] OFF
 
