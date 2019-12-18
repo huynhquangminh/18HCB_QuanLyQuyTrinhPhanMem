@@ -554,7 +554,7 @@ INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (218, 104
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (219, 105, N'"%u".', 0)
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (220, 105, N'"%e".', 0)
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (221, 105, N'"%o".', 0)
-INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (262, 105, N'"%p".', 1)
+INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (222, 105, N'"%p".', 1)
 
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (223, 106, N'Truyền bằng trị.', 1)
 INSERT [dbo].[DSDapAn] ([id], [idcauhoi], [cautraloi], [dapan]) VALUES (224, 106, N'Truyền bằng giá trị địa chỉ của tham số.', 0)
