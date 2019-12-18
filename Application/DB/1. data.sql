@@ -164,6 +164,12 @@ INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (23, N
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (24, N'Ý nghĩa hàm arsort()', 10, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (25, N'Mảng có 2 phần tử. Truy cập vào thứ 2 và thay đổi thành "BMW"', 10, 1)
 
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (26, N'<code>$x = 1;<br>while($x <= 5) {<br>&emsp;&emsp;$x++;<br>}<br>echo $x;</code>Giá trị của x sau vòng lặp', 11, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (27, N'<code>for ($x = 0; $x <= 4; $x++) {<br>&emsp;&emsp;$y = $y + $x; <br>}echo $y</code><br>Giá trị của y', 11, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (28, N'Ý nghĩa lệnh break trong vòng lặp trong PHP', 11, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (29, N'Các loại vòng lặp trong PHP?', 11, 1)
+INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (30, N'Cách thức hoạt động của vòng lặp do-while', 11, 1)
+
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (46, N'Đáp án nào tương đương với x = x + 1', 1, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (47, N'Miền giá trị của char trong C?', 1, 1)
 INSERT [dbo].[DSCauHoi] ([id], [tencauhoi], [idbaihoc], [idcapdo]) VALUES (48, N'Hàm duy nhất mà tất cả các chương trình C phải có là gì?', 1, 1)
