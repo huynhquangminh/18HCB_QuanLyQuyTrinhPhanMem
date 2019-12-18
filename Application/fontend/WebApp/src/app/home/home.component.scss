@@ -60,3 +60,13 @@ footer {
     padding: 3px!important;
     margin: 3px!important;
 }
+
+::ng-deep.mat-menu-content {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+
+::ng-deep.mat-card-header-text {
+    width: 100%;
+}

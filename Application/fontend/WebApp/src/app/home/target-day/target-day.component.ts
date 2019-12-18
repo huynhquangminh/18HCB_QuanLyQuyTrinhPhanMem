@@ -1,6 +1,8 @@
 import { GoalEveryDayService } from './../../services/goal-every-day.service';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
+import { WebStorageSerivce } from 'src/app/services/webStorage.service';
+import { WebKeyStorage } from 'src/app/global/web-key-storage';
 @Component({
   selector: 'app-target-day',
   templateUrl: './target-day.component.html',
@@ -13,10 +15,12 @@ export class TargetDayComponent implements OnInit {
   public targetNumber = 50;
   chart: Chart;
   constructor(
-    private goalEveryDayService: GoalEveryDayService
+    private goalEveryDayService: GoalEveryDayService,
+    private webStorageSerivce: WebStorageSerivce,
   ) { }
 
   ngOnInit() {
+    // this.targetNumber = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser)
     this.goalEveryDayService.goalDay.subscribe(result => {
       if (result && this.progessGoalDay < 100) {
         this.numGoalDay = Math.round(result) > 50 ? 50 : Math.round(result);

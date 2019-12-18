@@ -20,6 +20,7 @@ import { DialogTimeOutComponent } from './shared/dialog-time-out/dialog-time-out
 import { DialogQuizSuccessComponent } from './shared/dialog-quiz-success/dialog-quiz-success.component';
 import { StudyQuizService } from './services/study-quiz.service';
 import { HomeService } from './services/home.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { HomeService } from './services/home.service';
     ForgotPasswordComponent,
     DialogTimeOutComponent,
     DialogQuizSuccessComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
