@@ -124,3 +124,36 @@ AS BEGIN
 	FROM DSKhoaHocPass_Of_TaiKhoan
 	WHERE idTTTaiKhoan = @idTTTaiKhoan
 END
+
+CREATE PROC [dbo].[GET_BieuDoTheoDoi](@idTaikhoan int)
+AS BEGIN 
+	SELECT id, idTaikhoan, Thu2, Thu3, Thu4, Thu5, Thu6, Thu7, ChuNhat, NgayBatDau
+	FROM BieuDoTheoDoi
+	WHERE idTaikhoan = @idTaikhoan
+END
+
+CREATE PROC [dbo].[INSERT_OR_UPDATE_BieuDoTheoDoi](
+	@idTaikhoan int,
+	@Thu2 int,
+	@Thu3 int, 
+	@Thu4 int, 
+	@Thu5 int, 
+	@Thu6 int, 
+	@Thu7 int, 
+	@ChuNhat int, 
+	@NgayBatDau date
+)
+AS BEGIN 
+	IF NOT EXISTS  (SELECT 1 From BieuDoTheoDoi WHERE idTaikhoan = @idTaikhoan)
+	BEGIN
+		INSERT INTO BieuDoTheoDoi (idTaikhoan, Thu2, Thu3, Thu4, Thu5, Thu6, Thu7, ChuNhat, NgayBatDau) 
+						VALUES (@idTaikhoan,@Thu2,@Thu3,@Thu4,@Thu5,@Thu6, @Thu7, @ChuNhat, @NgayBatDau)
+	END
+	ELSE
+	BEGIN
+		UPDATE BieuDoTheoDoi 
+		SET Thu2 = @Thu2, Thu3 = @Thu3, Thu4 = @Thu4, Thu5 = @Thu5, Thu6 = @Thu6, 
+			Thu7 = @Thu7, ChuNhat = @ChuNhat, NgayBatDau = @NgayBatDau 
+		WHERE idTaikhoan = @idTaikhoan
+	END
+END
