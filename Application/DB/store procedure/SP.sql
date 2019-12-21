@@ -141,19 +141,77 @@ CREATE PROC [dbo].[INSERT_OR_UPDATE_BieuDoTheoDoi](
 	@Thu6 int, 
 	@Thu7 int, 
 	@ChuNhat int, 
-	@NgayBatDau date
+	@NgayHienTai date
 )
 AS BEGIN 
+	-- set ngày đầu tuần là thứ 2
+	SET DATEFIRST 1 ;
+
+	--CONSTANT
+	DECLARE @MONDAY int = 1;
+	DECLARE @TUESDAY int = 2;
+	DECLARE @WEDNESDAY int = 3;
+	DECLARE @THURSDAY int = 4;
+	DECLARE @FRIDAY int = 5;
+	DECLARE @SATURDAY int = 6;
+	DECLARE @SUNDAY int = 7;
+
+	DECLARE @CurDayOfWeek int = DATEPART(weekday, @NgayHienTai);
+
+	--INSERT
 	IF NOT EXISTS  (SELECT 1 From BieuDoTheoDoi WHERE idTaikhoan = @idTaikhoan)
 	BEGIN
+		DECLARE @NgayDauTuan date = @NgayHienTai;
+		
+		IF (@CurDayOfWeek <> @MONDAY)
+			SET @NgayDauTuan = DATEADD(day, -(@CurDayOfWeek-1), @NgayHienTai);
+
 		INSERT INTO BieuDoTheoDoi (idTaikhoan, Thu2, Thu3, Thu4, Thu5, Thu6, Thu7, ChuNhat, NgayBatDau) 
-						VALUES (@idTaikhoan,@Thu2,@Thu3,@Thu4,@Thu5,@Thu6, @Thu7, @ChuNhat, @NgayBatDau)
+							VALUES (@idTaikhoan,@Thu2,@Thu3,@Thu4,@Thu5,@Thu6, @Thu7, @ChuNhat, @NgayDauTuan)
 	END
+
+	--UPDATE
 	ELSE
 	BEGIN
-		UPDATE BieuDoTheoDoi 
-		SET Thu2 = @Thu2, Thu3 = @Thu3, Thu4 = @Thu4, Thu5 = @Thu5, Thu6 = @Thu6, 
-			Thu7 = @Thu7, ChuNhat = @ChuNhat, NgayBatDau = @NgayBatDau 
-		WHERE idTaikhoan = @idTaikhoan
+		DECLARE @NgayDauTuanDB date;
+		SET @NgayDauTuanDB = (SELECT NgayBatDau FROM BieuDoTheoDoi);
+
+		IF DATEDIFF (day, @NgayDauTuanDB, @NgayHienTai) >= 7
+		BEGIN
+			SET @NgayDauTuanDB = DATEADD(day, -(@CurDayOfWeek-1), @NgayHienTai);
+		
+			SET @Thu2 = CASE @CurDayOfWeek WHEN @MONDAY THEN @Thu2
+						ELSE 0 END
+
+			SET @Thu3 = CASE @CurDayOfWeek WHEN @TUESDAY THEN @Thu3
+						ELSE 0 END
+
+			SET @Thu4 = CASE @CurDayOfWeek WHEN @WEDNESDAY THEN @Thu4
+						ELSE 0 END
+
+			SET @Thu5 = CASE @CurDayOfWeek WHEN @THURSDAY THEN @Thu5
+						ELSE 0 END
+
+			SET @Thu6 = CASE @CurDayOfWeek WHEN @FRIDAY THEN @Thu6
+						ELSE 0 END
+
+			SET @Thu7 = CASE @CurDayOfWeek WHEN @SATURDAY THEN @Thu7
+						ELSE 0 END
+
+			SET @ChuNhat =	CASE @CurDayOfWeek WHEN @SUNDAY THEN @ChuNhat
+							ELSE 0 END
+
+			UPDATE BieuDoTheoDoi 
+			SET Thu2 = @Thu2, Thu3 = @Thu3, Thu4 = @Thu4, Thu5 = @Thu5, Thu6 = @Thu6,
+				Thu7 = @Thu7, ChuNhat = @ChuNhat, NgayBatDau = @NgayDauTuanDB
+			WHERE idTaikhoan = @idTaikhoan
+		END
+		ELSE
+		BEGIN
+			UPDATE BieuDoTheoDoi 
+			SET Thu2 = @Thu2, Thu3 = @Thu3, Thu4 = @Thu4, Thu5 = @Thu5, 
+				Thu6 = @Thu6, Thu7 = @Thu7, ChuNhat = @ChuNhat
+			WHERE idTaikhoan = @idTaikhoan
+		END
 	END
 END
