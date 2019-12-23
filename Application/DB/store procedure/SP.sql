@@ -45,7 +45,7 @@ END
 ALTER PROC [dbo].[GET_THONGTINTAIKHOAN] (@idTaikhoan int)
 AS
 BEGIN
-	SELECT TOP 1 id, idkhoahoc, idcapdo, diemKN, diemKNDay, idtaikhoan
+	SELECT TOP 1 id, idkhoahoc, idcapdo, diemKN, diemKNDay, idtaikhoan, ngayhoc
 	FROM ThongTinTaiKhoan 
 	WHERE idtaikhoan = @idTaikhoan 
 END
@@ -64,18 +64,24 @@ ALTER PROC [dbo].[THEM_THONGTINTAIKHOAN] (
 	@idcapdo int, 
 	@diemKN int, 
 	@diemKNDay int, 
-	@idtaikhoan int
+	@idtaikhoan int,
+	@ngayhoc date
 )
 AS BEGIN
 	IF NOT EXISTS  (SELECT* From ThongTinTaiKhoan WHERE idtaikhoan = @idtaikhoan)
 	BEGIN 
-		INSERT INTO ThongTinTaiKhoan (idkhoahoc,idcapdo,diemKN, diemKNDay, idtaikhoan) 
-		VALUES (@idkhoahoc,@idcapdo,@diemKN,@diemKNDay,@idtaikhoan)
+		INSERT INTO ThongTinTaiKhoan (idkhoahoc,idcapdo,diemKN, diemKNDay, idtaikhoan, ngayhoc) 
+		VALUES (@idkhoahoc,@idcapdo,@diemKN,@diemKNDay,@idtaikhoan, @ngayhoc)
 	END 
 	ELSE 
 	BEGIN 
 		UPDATE ThongTinTaiKhoan 
-		SET idkhoahoc = @idkhoahoc, idcapdo = @idcapdo, diemKN = @diemKN, diemKNDay = @diemKNDay
+		SET 
+		idkhoahoc = @idkhoahoc, 
+		idcapdo = @idcapdo, 
+		diemKN = @diemKN, 
+		diemKNDay = @diemKNDay, 
+		ngayhoc = @ngayhoc
 		WHERE idtaikhoan = @idtaikhoan
 	END
 	

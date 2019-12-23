@@ -20,14 +20,39 @@ export class TargetDayComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.targetNumber = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser)
     this.goalEveryDayService.goalDay.subscribe(result => {
       if (result && this.progessGoalDay < 100) {
-        this.numGoalDay = Math.round(result) > 50 ? 50 : Math.round(result);
-        this.progessGoalDay = this.numGoalDay * 2;
+        this.numGoalDay = Math.round(result) > this.targetNumber ? this.targetNumber : Math.round(result);
+        this.progessGoalDay = this.numGoalDay * Math.round(100 / this.targetNumber);
+        const setting = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
+        // tslint:disable-next-line:no-string-literal
+        setting['diemKNDay'] = this.numGoalDay;
+        this.webStorageSerivce.setLocalStorage(WebKeyStorage.SettingUser, setting);
+        this.updateGoadDay();
       }
     });
     this.renderChart();
+  }
+
+  updateGoadDay() {
+    const setting = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
+    if (setting) {
+      const request = {
+        idkhoahoc: setting.idkhoahoc,
+        idcapdo: setting.idcapdo,
+        diemKN: setting.diemKN,
+        diemKNDay: this.numGoalDay,
+        idtaikhoan: setting.idtaikhoan,
+        ngayhoc: setting.ngayhoc
+      };
+      this.goalEveryDayService.updateGoadDay(request).subscribe(res => {
+        if (res) {
+          console.log('update pass');
+        }
+      });
+
+    }
+
   }
 
   renderChart() {

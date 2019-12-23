@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CourseListService } from 'src/app/services/course-list.service';
 import { WebKeyStorage } from 'src/app/global/web-key-storage';
+import { GoalEveryDayService } from 'src/app/services/goal-every-day.service';
 
 @Component({
   selector: 'app-course-list',
@@ -14,10 +15,13 @@ export class CourseListComponent implements OnInit {
   constructor(
     private router: Router,
     private courseListService: CourseListService,
-    private webStorageSerivce: WebStorageSerivce
+    private webStorageSerivce: WebStorageSerivce,
+    private goalEveryDayService: GoalEveryDayService,
   ) { }
 
   ngOnInit() {
+    // const setting = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
+    // this.goalEveryDayService.listensChangeGoalDay(setting ? setting.diemKNDay : 0);
     this.getDSBaiHoc();
   }
 

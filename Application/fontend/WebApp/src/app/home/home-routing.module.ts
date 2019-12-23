@@ -1,3 +1,4 @@
+import { ContactComponent } from './contact/contact.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
@@ -10,7 +11,8 @@ const homeRouting: Routes = [
         path: 'main', component: HomeComponent, children: [
             { path: '', redirectTo: 'course-list', pathMatch: 'full' },
             { path: 'course-list', component: CourseListComponent },
-            { path: 'study-quiz/:id', component: StudyQuizComponent }
+            { path: 'study-quiz/:id', component: StudyQuizComponent },
+            { path: 'contact', component: ContactComponent },
         ]
     },
     { path: 'display-setting', component: DisplaySettingComponent },

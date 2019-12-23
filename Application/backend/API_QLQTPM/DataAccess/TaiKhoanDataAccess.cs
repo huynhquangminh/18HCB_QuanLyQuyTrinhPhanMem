@@ -3,6 +3,8 @@
     using DataAcceessInterface;
     using DataAcceessInterface.Parameter;
     using EntityData;
+    using System;
+    using System.Globalization;
     using System.Linq;
 
     /// <summary>
@@ -53,7 +55,7 @@
 
         public bool ThemThongTinTaiKhoan(ThemThongTinTaiKhoanParameter param)
         {
-            var result = db.THEM_THONGTINTAIKHOAN(param.idkhoahoc, param.idcapdo, param.diemKN, param.diemKNDay, param.idtaikhoan) > 0 ? true : false;
+            var result = db.THEM_THONGTINTAIKHOAN(param.idkhoahoc, param.idcapdo, param.diemKN, param.diemKNDay, param.idtaikhoan, param.ngayhoc) > 0 ? true : false;
             return result;
         }
     }

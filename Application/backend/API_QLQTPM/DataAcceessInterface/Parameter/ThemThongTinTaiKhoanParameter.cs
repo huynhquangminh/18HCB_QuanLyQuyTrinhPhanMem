@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataAcceessInterface.Parameter
+﻿namespace DataAcceessInterface.Parameter
 {
     public class ThemThongTinTaiKhoanParameter
     {
@@ -13,5 +7,6 @@ namespace DataAcceessInterface.Parameter
         public int diemKN { get; set; }
         public int diemKNDay { get; set; }
         public int idtaikhoan { get; set; }
+        public string ngayhoc { get; set; }
     }
 }

@@ -7,10 +7,10 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav" style="display: block;">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Blog</a></li>
+                <li class="active"><a routerLink="/home/main/course-list">Home</a></li>
+                <!-- <li><a href="">Blog</a></li> -->
                 <!-- <li><a href="#">Projects</a></li> -->
-                <li><a href="#">Contact</a></li>
+                <li><a routerLink="/home/main/contact">Contact</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right" style="display: block;">
@@ -21,7 +21,8 @@
                     <mat-menu #menuNotication="matMenu">
                         <mat-card class="example-card">
                             <mat-card-header>
-                                <mat-card-title style="font-size: 14px; border-bottom: 1px solid;">Thông báo của bạn</mat-card-title>
+                                <mat-card-title style="font-size: 14px; border-bottom: 1px solid;">Thông báo của bạn
+                                </mat-card-title>
                             </mat-card-header>
                             <mat-card-content>
                                 <mat-list *ngFor="let item of listNotication">
@@ -34,7 +35,7 @@
                     </mat-menu>
                 </li>
                 <li style="margin-right:5px" (click)="logout()"><img width="40px"
-                        src="../../assets/image/icon-logout.png"></li>
+                        src="../../assets/image/icon-logout.png" title="Logout"></li>
 
                 <li>
                     <button mat-button [matMenuTriggerFor]="menuAccount">
@@ -42,6 +43,7 @@
                     </button>
                     <mat-menu #menuAccount="matMenu">
                         <button mat-menu-item>Thông tin tài khoản</button>
+                        <button mat-menu-item (click)="forgotpass()">Đổi Mật Khẩu</button>
                         <button mat-menu-item>Cài đặt khóa học</button>
                         <button mat-menu-item>Tìm bạn bè</button>
                     </mat-menu>
@@ -59,40 +61,56 @@
         </div>
         <div class="col-sm-4 sidenav">
             <app-target-day></app-target-day>
-            <mat-card class="example-card" style="margin: 10px 10px 10px 10px; border-radius: 15px; height: 250px;">
+            <mat-card class="example-card" style="margin: 10px 10px 10px 10px; border-radius: 15px; height: 350px;">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title>Bảng xếp hạng </mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
+
                     <mat-tab-group mat-stretch-tabs>
                         <mat-tab label="Tuần này">
                             <mat-list style="height: 150px;">
-                                <mat-list-item>MinhHuynh : 50 KN</mat-list-item>
+                                <mat-list-item><span>MinhHuynh </span> <span style="margin-left: 200px;">50 KN</span>
+                                </mat-list-item>
                                 <mat-divider></mat-divider>
-                                <mat-list-item>TrungHuynh : 34 KN</mat-list-item>
+                                <mat-list-item><span>TrungHuynh </span> <span style="margin-left: 200px;">50 KN</span>
+                                </mat-list-item>
                                 <mat-divider></mat-divider>
                             </mat-list>
                         </mat-tab>
                         <mat-tab label="Tháng này">
                             <mat-list style="height: 150px;">
-                                <mat-list-item>MinhHuynh : 50 KN</mat-list-item>
+                                <mat-list-item>
+                                    <span>MinhHuynh </span> 
+                                    <span style="margin-left: 200px;">50 KN</span>
+                                </mat-list-item>
                                 <mat-divider></mat-divider>
-                                <mat-list-item>TrungHuynh : 34 KN</mat-list-item>
+                                <mat-list-item>
+                                    <span>TrungHuynh </span> 
+                                    <span style="margin-left: 200px;">50 KN</span>
+                                </mat-list-item>
                                 <mat-divider></mat-divider>
                             </mat-list>
                         </mat-tab>
                         <mat-tab label="Tổng cộng">
                             <mat-list style="height: 150px;">
-                                <mat-list-item>MinhHuynh : 50 KN</mat-list-item>
+                                <mat-list-item>
+                                    <span>MinhHuynh </span> 
+                                    <span style="margin-left: 200px;">50 KN</span>
+                                </mat-list-item>
                                 <mat-divider></mat-divider>
-                                <mat-list-item>TrungHuynh : 34 KN</mat-list-item>
+                                <mat-list-item>
+                                    <span>TrungHuynh </span> 
+                                    <span style="margin-left: 200px;">50 KN</span>
+                                </mat-list-item>
                                 <mat-divider></mat-divider>
                             </mat-list>
                         </mat-tab>
                     </mat-tab-group>
-
-
+                    <button type="button" class="btn btn-info" style="width: 300px;border-radius: 5px;height: 40px;">
+                        <span class="glyphicon glyphicon-search"></span> <b style="font-size: 12px;">Tìm kiếm bạn bè</b>
+                    </button>
                 </mat-card-content>
             </mat-card>
             <mat-card class="example-card" style="margin: 10px 10px 10px 10px; border-radius: 15px;">
@@ -101,9 +119,10 @@
                     <mat-card-title>Theo dõi TechDEV</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <button class="button-fllow" mat-raised-button color="primary">Facebook</button>
-                    <button class="button-fllow" mat-raised-button color="accent">instagram</button>
-                    <button class="button-fllow" mat-raised-button color="warn">twitter</button>
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-youtube"></a>
                 </mat-card-content>
             </mat-card>
         </div>
@@ -113,7 +132,7 @@
     <ul>
         <li style="font-size: 20px;">Website dậy lập trình từ căn bản tới nâng cao</li>
         <li style="font-size: 15px;">Phone: 084-4324-3424</li>
-        <li style="font-size: 15px;">GMail: laptrinhcanban@gmail.com</li>
+        <li style="font-size: 15px;">Gmail: laptrinhcanban@gmail.com</li>
         <li style="font-size: 15px;">Địa chỉ: 40 Lê lợi, Phường 7, TP.Hồ Chí Minh</li>
     </ul>
 </footer>

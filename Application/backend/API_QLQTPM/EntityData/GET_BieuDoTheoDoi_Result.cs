@@ -10,14 +10,18 @@
 namespace EntityData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class GET_BieuDoTheoDoi_Result
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id { get; set; }
+        public int idTaikhoan { get; set; }
+        public int Thu2 { get; set; }
+        public int Thu3 { get; set; }
+        public int Thu4 { get; set; }
+        public int Thu5 { get; set; }
+        public int Thu6 { get; set; }
+        public int Thu7 { get; set; }
+        public int ChuNhat { get; set; }
+        public System.DateTime NgayBatDau { get; set; }
     }
 }

@@ -28,6 +28,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ChartModule } from 'angular-highcharts';
 import {MatRippleModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
+import { ContactComponent } from './contact/contact.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -35,6 +36,7 @@ import {MatInputModule} from '@angular/material/input';
     CourseListComponent,
     StudyQuizComponent,
     TargetDayComponent,
+    ContactComponent,
   ],
   imports: [
     FormsModule,

@@ -39,7 +39,6 @@ namespace EntityData
         public virtual DbSet<DSYeuCauKetBan> DSYeuCauKetBans { get; set; }
         public virtual DbSet<KhoaHoc> KhoaHocs { get; set; }
         public virtual DbSet<LoaiDiemKN> LoaiDiemKNs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<ThongTinTaiKhoan> ThongTinTaiKhoans { get; set; }
     
@@ -54,6 +53,15 @@ namespace EntityData
                 new ObjectParameter("pass", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ACCOUNT_LOGIN_Result>("ACCOUNT_LOGIN", userParameter, passParameter);
+        }
+    
+        public virtual ObjectResult<GET_BieuDoTheoDoi_Result> GET_BieuDoTheoDoi(Nullable<int> idTaikhoan)
+        {
+            var idTaikhoanParameter = idTaikhoan.HasValue ?
+                new ObjectParameter("idTaikhoan", idTaikhoan) :
+                new ObjectParameter("idTaikhoan", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_BieuDoTheoDoi_Result>("GET_BieuDoTheoDoi", idTaikhoanParameter);
         }
     
         public virtual ObjectResult<Get_CapDo_Result> Get_CapDo()
@@ -146,7 +154,7 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERT_ACCOUNT", userParameter, passParameter);
         }
     
-        public virtual int THEM_THONGTINTAIKHOAN(Nullable<int> idkhoahoc, Nullable<int> idcapdo, Nullable<int> diemKN, Nullable<int> diemKNDay, Nullable<int> idtaikhoan)
+        public virtual int THEM_THONGTINTAIKHOAN(Nullable<int> idkhoahoc, Nullable<int> idcapdo, Nullable<int> diemKN, Nullable<int> diemKNDay, Nullable<int> idtaikhoan, string ngayhoc)
         {
             var idkhoahocParameter = idkhoahoc.HasValue ?
                 new ObjectParameter("idkhoahoc", idkhoahoc) :
@@ -168,7 +176,11 @@ namespace EntityData
                 new ObjectParameter("idtaikhoan", idtaikhoan) :
                 new ObjectParameter("idtaikhoan", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("THEM_THONGTINTAIKHOAN", idkhoahocParameter, idcapdoParameter, diemKNParameter, diemKNDayParameter, idtaikhoanParameter);
+            var ngayhocParameter = ngayhoc != null ?
+                new ObjectParameter("ngayhoc", ngayhoc) :
+                new ObjectParameter("ngayhoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("THEM_THONGTINTAIKHOAN", idkhoahocParameter, idcapdoParameter, diemKNParameter, diemKNDayParameter, idtaikhoanParameter, ngayhocParameter);
         }
     
         public virtual int UPDATE_DSThongBao_Follow_Id_IdAccount(Nullable<int> id, Nullable<int> idAccount)

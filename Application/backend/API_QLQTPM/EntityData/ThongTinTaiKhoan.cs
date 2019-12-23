@@ -27,6 +27,7 @@ namespace EntityData
         public int diemKN { get; set; }
         public Nullable<int> diemKNDay { get; set; }
         public int idtaikhoan { get; set; }
+        public Nullable<System.DateTime> ngayhoc { get; set; }
     
         public virtual CapDo CapDo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
