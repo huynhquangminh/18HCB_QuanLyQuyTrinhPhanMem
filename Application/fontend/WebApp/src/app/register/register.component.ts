@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerModel = new LoginRequestModel();
   formRegister: NgForm;
+  confirmPass: any;
   constructor(
     private router: Router,
     private taiKhoanService: TaiKhoanService

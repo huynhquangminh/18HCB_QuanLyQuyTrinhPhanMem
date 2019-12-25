@@ -5,29 +5,36 @@
                 <span class="login100-form-title p-b-40">
                     Login
                 </span>
+                <div class="validate-form"
+                    *ngIf="formLogin.controls.user?.errors?.required && formLogin.controls.user?.touched">
+                    <span>(*) Name is required!</span>
+                </div>
                 <div class="wrap-input100 validate-input m-b-16">
                     <input class="input100 form-control" type="text" name="user" placeholder="UserName"
-                        [(ngModel)]="loginModel.user">
+                        [(ngModel)]="loginModel.user" required>
+                </div>
 
+                <div class="validate-form"
+                    *ngIf="formLogin.controls.pass?.errors?.required && formLogin.controls.pass?.touched">
+                    <span>(*) Password is required!</span>
                 </div>
                 <div class="wrap-input100 validate-input m-b-20">
                     <span class="btn-show-pass">
                         <i class="fa fa fa-eye"></i>
                     </span>
                     <input class="input100 form-control" type="password" name="pass" placeholder="Password"
-                        [(ngModel)]="loginModel.pass">
+                        [(ngModel)]="loginModel.pass" required>
 
                 </div>
 
                 <div class="message-notification" *ngIf="!isLoginPass">
-                    <span > * Tên đăng nhập hoặc mật khẩu không đúng!</span>
+                    <span> * Tên đăng nhập hoặc mật khẩu không đúng!</span>
                 </div>
 
                 <div class="container-login100-form-btn">
-                    <button type="submit" class="login100-form-btn">
+                    <button type="submit" class="login100-form-btn" [disabled] ="!formLogin.valid">
                         Login
                     </button>
-
                 </div>
                 <div class="flex-col-c p-t-224">
                     <span class="txt2 p-b-10">

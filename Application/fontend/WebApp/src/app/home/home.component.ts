@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
   }
 
   forgotpass() {
-    this.router.navigateByUrl('/forgot-password');
+    this.router.navigateByUrl('/change-password');
   }
 
 }

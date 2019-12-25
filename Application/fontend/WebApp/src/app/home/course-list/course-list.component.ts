@@ -26,7 +26,6 @@ export class CourseListComponent implements OnInit {
   }
 
   selectCourse(id) {
-    console.log(id);
     this.router.navigateByUrl('/home/main/study-quiz/' + id);
   }
 

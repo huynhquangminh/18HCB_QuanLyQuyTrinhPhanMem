@@ -151,7 +151,6 @@ export class StudyQuizComponent implements OnInit {
         this.resultAnswer = null;
         this.valueProgress = this.valueProgress + (100 / this.listCauHoi.length);
         this.playAudio(this.pathAudioRight);
-        this.updatePointGoalDay(this.valueProgress);
         this.openMessageResult('Correct Answer');
         this.showDialogQuizSuccess();
       } else {

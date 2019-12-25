@@ -5,29 +5,41 @@
                 <span class="login100-form-title p-b-40">
                     Register
                 </span>
+                <div class="validate-form"
+                    *ngIf="formRegister.controls.user?.errors?.required && formRegister.controls.user?.touched">
+                    <span>(*) Name is required!</span>
+                </div>
                 <div class="wrap-input100 validate-input m-b-16">
-                    <input class="input100 form-control" type="text" name="user" placeholder="Email"
-                        [(ngModel)]="registerModel.user">
+                    <input class="input100 form-control" type="text" name="user" placeholder="UserName"
+                        [(ngModel)]="registerModel.user" required>
 
+                </div>
+                <div class="validate-form"
+                    *ngIf="formRegister.controls.pass?.errors?.required && formRegister.controls.pass?.touched">
+                    <span>(*) Password is required!</span>
                 </div>
                 <div class="wrap-input100 validate-input m-b-20">
                     <span class="btn-show-pass">
                         <i class="fa fa fa-eye"></i>
                     </span>
                     <input class="input100 form-control" type="password" name="pass" placeholder="Password"
-                        [(ngModel)]="registerModel.pass">
+                        [(ngModel)]="registerModel.pass" required>
 
+                </div>
+                <div class="validate-form"
+                    *ngIf="formRegister.controls.confirmpass?.errors?.required && formRegister.controls.confirmpass?.touched">
+                    <span>(*) Password confirm is required!</span>
                 </div>
                 <div class="wrap-input100 validate-input m-b-20">
                     <span class="btn-show-pass">
                         <i class="fa fa fa-eye"></i>
                     </span>
                     <input class="input100 form-control" type="password" name="confirmpass"
-                        placeholder="Confirm Password">
+                        placeholder="Confirm Password" [(ngModel)]="confirmPass" required>
 
                 </div>
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn">
+                    <button class="login100-form-btn" [disabled]="!formRegister.valid">
                         Register
                     </button>
                 </div>

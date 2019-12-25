@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
             // const dateNow = new Date().toDateString();
             const dateNow = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
             const datedb = new Date(res.thongTinTaiKhoan.ngayhoc).toJSON().slice(0, 10).replace(/-/g, '/');
-            res.thongTinTaiKhoan.ngayhoc = datedb;
-            if (datedb !== datedb) {
+            res.thongTinTaiKhoan.ngayhoc = dateNow;
+            if (datedb !== dateNow) {
               res.thongTinTaiKhoan.diemKNDay = 0;
             }
             this.goalEveryDayService.listensChangeGoalDay(res.thongTinTaiKhoan.diemKNDay);
