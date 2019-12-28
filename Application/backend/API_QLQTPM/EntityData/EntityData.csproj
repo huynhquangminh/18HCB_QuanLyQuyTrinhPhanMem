@@ -86,6 +86,9 @@
     <Compile Include="DSYeuCauKetBan.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Get_all_account_same_khoahoc_Result.cs">
+      <DependentUpon>ModelData.tt</DependentUpon>
+    </Compile>
     <Compile Include="GET_BieuDoTheoDoi_Result.cs">
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>

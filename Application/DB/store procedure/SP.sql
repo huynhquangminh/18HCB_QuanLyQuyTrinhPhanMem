@@ -131,6 +131,25 @@ AS BEGIN
 	WHERE idTTTaiKhoan = @idTTTaiKhoan
 END
 
+CREATE PROC ThemBaiHocPass (@idTTTaiKhoan int, @idBaiHoc int)
+AS BEGIN
+	IF NOT EXISTS  (SELECT* From DSBaiHocPass_Of_TaiKhoan WHERE idBaiHoc = @idBaiHoc)
+	BEGIN
+		INSERT INTO DSBaiHocPass_Of_TaiKhoan (idTTTaiKhoan, idBaiHoc)
+		VALUES (@idTTTaiKhoan, @idBaiHoc)
+	END 
+END
+
+CREATE PROC Get_all_account_same_khoahoc(
+	@idTaiKhoan int,
+	@idKhoaHoc int
+)
+AS BEGIN 
+	SELECT tk.id, tk.username, tk.img
+	FROM TaiKhoan tk, ThongTinTaiKhoan tttk
+	WHERE tk.id != @idTaiKhoan AND tk.id = tttk.idtaikhoan And tttk.idkhoahoc = @idKhoaHoc 
+END
+
 CREATE PROC [dbo].[GET_BieuDoTheoDoi](@idTaikhoan int)
 AS BEGIN 
 	SELECT id, idTaikhoan, Thu2, Thu3, Thu4, Thu5, Thu6, Thu7, ChuNhat, NgayBatDau

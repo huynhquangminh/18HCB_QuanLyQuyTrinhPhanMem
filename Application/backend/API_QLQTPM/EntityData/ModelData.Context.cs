@@ -212,5 +212,31 @@ namespace EntityData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_PassWord_Account", usernameParameter, currentPassParameter, newPassParameter);
         }
+    
+        public virtual ObjectResult<Get_all_account_same_khoahoc_Result> Get_all_account_same_khoahoc(Nullable<int> idTaiKhoan, Nullable<int> idKhoaHoc)
+        {
+            var idTaiKhoanParameter = idTaiKhoan.HasValue ?
+                new ObjectParameter("idTaiKhoan", idTaiKhoan) :
+                new ObjectParameter("idTaiKhoan", typeof(int));
+    
+            var idKhoaHocParameter = idKhoaHoc.HasValue ?
+                new ObjectParameter("idKhoaHoc", idKhoaHoc) :
+                new ObjectParameter("idKhoaHoc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_all_account_same_khoahoc_Result>("Get_all_account_same_khoahoc", idTaiKhoanParameter, idKhoaHocParameter);
+        }
+    
+        public virtual int ThemBaiHocPass(Nullable<int> idTTTaiKhoan, Nullable<int> idBaiHoc)
+        {
+            var idTTTaiKhoanParameter = idTTTaiKhoan.HasValue ?
+                new ObjectParameter("idTTTaiKhoan", idTTTaiKhoan) :
+                new ObjectParameter("idTTTaiKhoan", typeof(int));
+    
+            var idBaiHocParameter = idBaiHoc.HasValue ?
+                new ObjectParameter("idBaiHoc", idBaiHoc) :
+                new ObjectParameter("idBaiHoc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ThemBaiHocPass", idTTTaiKhoanParameter, idBaiHocParameter);
+        }
     }
 }

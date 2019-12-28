@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WebLapTrinhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WebLapTrinhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BieuDoTheoDoi">
           <Key>
             <PropertyRef Name="id" />
@@ -306,6 +306,10 @@
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="pass" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Get_all_account_same_khoahoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTaiKhoan" Type="int" Mode="In" />
+          <Parameter Name="idKhoaHoc" Type="int" Mode="In" />
+        </Function>
         <Function Name="GET_BieuDoTheoDoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTaikhoan" Type="int" Mode="In" />
         </Function>
@@ -343,6 +347,10 @@
           <Parameter Name="diemKNDay" Type="int" Mode="In" />
           <Parameter Name="idtaikhoan" Type="int" Mode="In" />
           <Parameter Name="ngayhoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ThemBaiHocPass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTTTaiKhoan" Type="int" Mode="In" />
+          <Parameter Name="idBaiHoc" Type="int" Mode="In" />
         </Function>
         <Function Name="UPDATE_DSThongBao_Follow_Id_IdAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -425,8 +433,7 @@
             <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoan" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebLapTrinhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -831,11 +838,11 @@
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GET_BieuDoTheoDoi" ReturnType="Collection(WebLapTrinhModel.GET_BieuDoTheoDoi_Result)">
-            <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
+          <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Get_CapDo" ReturnType="Collection(WebLapTrinhModel.Get_CapDo_Result)" />
           <FunctionImport Name="Get_DSBaiHoc_ById" ReturnType="Collection(WebLapTrinhModel.Get_DSBaiHoc_ById_Result)">
-            <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
+          <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo" ReturnType="Collection(WebLapTrinhModel.GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result)">
             <Parameter Name="idBaiHoc" Mode="In" Type="Int32" />
@@ -847,14 +854,14 @@
           </FunctionImport>
           <FunctionImport Name="Get_DSKhoaHoc" ReturnType="Collection(WebLapTrinhModel.Get_DSKhoaHoc_Result)" />
           <FunctionImport Name="GET_DSKhoaHocPass_By_IdTTTaiKhoan" ReturnType="Collection(WebLapTrinhModel.GET_DSKhoaHocPass_By_IdTTTaiKhoan_Result)">
-            <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
+          <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GET_DSThongBao" ReturnType="Collection(WebLapTrinhModel.GET_DSThongBao_Result)">
-            <Parameter Name="idaccount" Mode="In" Type="Int32" />
+          <Parameter Name="idaccount" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Get_LoaiDiemKinhNghiem" ReturnType="Collection(WebLapTrinhModel.Get_LoaiDiemKinhNghiem_Result)" />
           <FunctionImport Name="GET_THONGTINTAIKHOAN" ReturnType="Collection(WebLapTrinhModel.GET_THONGTINTAIKHOAN_Result)">
-            <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
+          <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="INSERT_ACCOUNT">
             <Parameter Name="user" Mode="In" Type="String" />
@@ -876,6 +883,14 @@
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="currentPass" Mode="In" Type="String" />
             <Parameter Name="newPass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_all_account_same_khoahoc" ReturnType="Collection(WebLapTrinhModel.Get_all_account_same_khoahoc_Result)">
+            <Parameter Name="idTaiKhoan" Mode="In" Type="Int32" />
+            <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ThemBaiHocPass">
+            <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
+            <Parameter Name="idBaiHoc" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ACCOUNT_LOGIN_Result">
@@ -945,6 +960,11 @@
           <Property Type="Int32" Name="diemKNDay" Nullable="true" />
           <Property Type="Int32" Name="idtaikhoan" Nullable="false" />
           <Property Type="DateTime" Name="ngayhoc" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_all_account_same_khoahoc_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1211,6 +1231,16 @@
           <FunctionImportMapping FunctionImportName="THEM_THONGTINTAIKHOAN" FunctionName="WebLapTrinhModel.Store.THEM_THONGTINTAIKHOAN" />
           <FunctionImportMapping FunctionImportName="UPDATE_DSThongBao_Follow_Id_IdAccount" FunctionName="WebLapTrinhModel.Store.UPDATE_DSThongBao_Follow_Id_IdAccount" />
           <FunctionImportMapping FunctionImportName="Update_PassWord_Account" FunctionName="WebLapTrinhModel.Store.Update_PassWord_Account" />
+          <FunctionImportMapping FunctionImportName="Get_all_account_same_khoahoc" FunctionName="WebLapTrinhModel.Store.Get_all_account_same_khoahoc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_all_account_same_khoahoc_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ThemBaiHocPass" FunctionName="WebLapTrinhModel.Store.ThemBaiHocPass" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
