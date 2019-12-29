@@ -240,3 +240,124 @@ AS BEGIN
 		END
 	END
 END
+
+----------- 28/12/2019------------
+CREATE PROC [dbo].[Get_DiemPerThang](@idTaikhoan int, @idKhoaHoc int, @NgayHienTai date)
+AS BEGIN
+	DECLARE @dauThang Date,
+			@cuoiThang Date
+			
+	SET @dauThang = DATEADD(DAY,1,EOMONTH(@NgayHienTai,-1))
+	SET @cuoiThang = EOMONTH(@NgayHienTai)
+
+	SELECT SUM(diemKNDay) AS 'diem/thang' 
+	FROM ThongTinTaiKhoan
+	WHERE ngayhoc BETWEEN @dauThang AND @cuoiThang
+ 	AND idtaikhoan = @idTaikhoan AND idkhoahoc = @idKhoaHoc
+END
+
+CREATE PROC [dbo].[Insert_KhoaHoc](@tenkhoahoc nvarchar, @imgKhoaHoc varchar)
+AS BEGIN
+	IF NOT EXISTS (SELECT 1 FROM KhoaHoc WHERE tenkhoahoc = @tenkhoahoc)
+	BEGIN
+		INSERT INTO KhoaHoc(tenkhoahoc, imgKhoaHoc)
+		VALUES (@tenkhoahoc, @imgKhoaHoc)
+
+		SELECT SCOPE_IDENTITY() AS ID
+	END
+END
+
+CREATE PROC [dbo].[Update_KhoaHoc](@id int, @tenkhoahoc nvarchar, @imgKhoaHoc varchar)
+AS BEGIN
+	UPDATE KhoaHoc 
+	SET tenkhoahoc = @tenkhoahoc, imgKhoaHoc = @imgKhoaHoc
+	WHERE id = @id
+END
+
+CREATE PROC [dbo].[Insert_DSBaiHoc](@tenbaihoc nvarchar(100), @idkhoahoc int)
+AS BEGIN
+	IF EXISTS (SELECT 1 FROM KhoaHoc WHERE id = @idkhoahoc)
+	BEGIN
+		INSERT INTO DSBaiHoc(tenbaihoc, idkhoahoc) 
+		VALUES (@tenbaihoc, @idkhoahoc)
+	END
+END
+
+CREATE PROC [dbo].[Update_DSBaiHoc](@id int, @tenbaihoc nvarchar(100), @idkhoahoc int)
+AS BEGIN
+	IF EXISTS (SELECT 1 FROM KhoaHoc WHERE id = @idkhoahoc)
+	BEGIN
+		UPDATE DSBaiHoc
+		SET tenbaihoc = @tenbaihoc, idkhoahoc = @idkhoahoc 
+		WHERE id = @id
+	END
+END
+
+CREATE PROC [dbo].[Insert_DSCauHoi](@tencauhoi nvarchar(MAX), @idbaihoc int, @idcapdo int)
+AS BEGIN
+	IF EXISTS (SELECT 1 FROM DSBaiHoc WHERE id = @idbaihoc) AND EXISTS (SELECT 1 FROM CapDo WHERE id = @idcapdo)
+	BEGIN
+		INSERT INTO DSCauHoi(tencauhoi, idbaihoc, idcapdo)
+		VALUES (@tencauhoi, @idbaihoc, @idcapdo)
+
+		SELECT SCOPE_IDENTITY() AS ID
+	END
+END
+
+CREATE PROC [dbo].[Update_DSCauHoi](@id int,  @tencauhoi nvarchar(MAX), @idbaihoc int, @idcapdo int)
+AS BEGIN
+	IF EXISTS (SELECT 1 FROM DSBaiHoc WHERE id = @idbaihoc) AND EXISTS (SELECT 1 FROM CapDo WHERE id = @idcapdo)
+	BEGIN
+		UPDATE DSCauHoi 
+		SET tencauhoi = @tencauhoi, idbaihoc = @idbaihoc, idcapdo = @idcapdo
+		WHERE id = @id
+	END
+END
+
+CREATE PROC [dbo].[Insert_DSDapAn](@idcauhoi int, @cautraloi nvarchar(MAX), @dapan bit)
+AS BEGIN
+	IF EXISTS (SELECT 1 FROM DSCauHoi WHERE id = @idcauhoi)
+	BEGIN
+		INSERT INTO DSDapAn(idcauhoi, cautraloi, dapan)
+		VALUES (@idcauhoi, @cautraloi, @dapan)
+	END
+END
+
+CREATE PROC [dbo].[Update_DSDapAn](@id int, @idcauhoi int, @cautraloi nvarchar(MAX), @dapan bit)
+AS BEGIN
+	IF EXISTS (SELECT 1 FROM DSCauHoi WHERE id = @idcauhoi)
+	BEGIN
+		UPDATE DSDapAn
+		SET idcauhoi = @idcauhoi, cautraloi = @cautraloi, dapan = @dapan
+		WHERE id = @id
+	END
+	
+END
+
+CREATE PROC [dbo].[InsertUpdate_CapDo](@id int, @tencapdo nvarchar(100))
+AS BEGIN
+	IF NOT EXISTS (SELECT 1 FROM CapDo WHERE id = @id)
+	BEGIN
+		INSERT INTO CapDo(tencapdo) VALUES (@tencapdo)
+	END
+	ELSE
+	BEGIN
+		UPDATE CapDo
+		SET tencapdo = @tencapdo
+		WHERE id = @id
+	END
+END
+
+CREATE PROC [dbo].[InsertUpdate_LoaiDiemKN](@id int, @diemKN int)
+AS BEGIN
+	IF NOT EXISTS (SELECT 1 FROM LoaiDiemKN WHERE id = @id)
+	BEGIN
+		INSERT INTO LoaiDiemKN(diemKN) VALUES (@diemKN)
+	END
+	ELSE
+	BEGIN
+		UPDATE LoaiDiemKN
+		SET diemKN = @diemKN
+		WHERE id = @id
+	END
+END
