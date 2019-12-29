@@ -88,7 +88,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\accountsamekhDTO.cs" />
     <Compile Include="Dtos\baihocDTO.cs" />
+    <Compile Include="Dtos\bieudotheodoiDTO.cs" />
     <Compile Include="Dtos\CapDoDTO.cs" />
     <Compile Include="Dtos\cauhoiDTO.cs" />
     <Compile Include="Dtos\khoahocDTO.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="Dtos\thongbaoDTO.cs" />
     <Compile Include="Dtos\thongtintaikhoanDto.cs" />
     <Compile Include="IBaiHocBusinessLogic.cs" />
+    <Compile Include="IBieuDoTheoDoiBusinessLogic.cs" />
     <Compile Include="ICapDoBusinessLogic.cs" />
     <Compile Include="ICauHoiBusinessLogic.cs" />
     <Compile Include="IDapAnBusinessLogic.cs" />
@@ -107,6 +110,8 @@
     <Compile Include="IThongBaoBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\LoginRequest.cs" />
+    <Compile Include="Response\GetAllAccSameKHResponse.cs" />
+    <Compile Include="Response\GetBieuDoTheoDoiResponse.cs" />
     <Compile Include="Response\GetCapDoResponse.cs" />
     <Compile Include="Response\GetDSBaiHocByIDResponse.cs" />
     <Compile Include="Response\GetDSCauHoiResponse.cs" />

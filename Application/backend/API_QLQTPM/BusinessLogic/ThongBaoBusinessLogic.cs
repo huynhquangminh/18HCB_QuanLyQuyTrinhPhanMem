@@ -60,5 +60,25 @@ namespace BusinessLogic
             }
             return await Task.FromResult(response);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<bool> UpdateThongBao(UpdateThongBaoParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.UpdateThongBao(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
     }
 }

@@ -25,5 +25,16 @@ namespace DataAccess
         {
             return db.GET_DSThongBao(param.idaccount);
         }
+
+        /// <summary>
+        /// update thong bao
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public bool UpdateThongBao(UpdateThongBaoParameter param)
+        {
+            var result = db.UPDATE_DSThongBao_Follow_Id_IdAccount(param.id, param.idAccount) > 0 ? true : false;
+            return result;
+        }
     }
 }

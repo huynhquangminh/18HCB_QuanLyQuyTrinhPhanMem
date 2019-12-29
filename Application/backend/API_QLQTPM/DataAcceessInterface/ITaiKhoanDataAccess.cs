@@ -2,6 +2,7 @@
 {
     using DataAcceessInterface.Parameter;
     using EntityData;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="ITaiKhoanDataAccess" />
@@ -42,5 +43,12 @@
         /// <param name="param">The param<see cref="ThemThongTinTaiKhoanParameter"/></param>
         /// <returns>The <see cref="bool"/></returns>
         bool ThemThongTinTaiKhoan(ThemThongTinTaiKhoanParameter param);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        IEnumerable<Get_all_account_same_khoahoc_Result> GetAllAccSameKH(GetAllAccountSameKHParam param);
     }
 }

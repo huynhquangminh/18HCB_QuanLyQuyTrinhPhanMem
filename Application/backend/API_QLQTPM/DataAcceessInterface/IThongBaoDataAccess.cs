@@ -11,5 +11,12 @@ namespace DataAcceessInterface
     public interface IThongBaoDataAccess
     {
         IEnumerable<GET_DSThongBao_Result> GetDSThongBao(GetDSThongBaoParameter param);
+
+        /// <summary>
+        /// update thong bao
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        bool UpdateThongBao(UpdateThongBaoParameter param);
     }
 }

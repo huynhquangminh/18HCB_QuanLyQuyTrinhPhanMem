@@ -4,6 +4,7 @@
     using DataAcceessInterface.Parameter;
     using EntityData;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
 
@@ -57,6 +58,16 @@
         {
             var result = db.THEM_THONGTINTAIKHOAN(param.idkhoahoc, param.idcapdo, param.diemKN, param.diemKNDay, param.idtaikhoan, param.ngayhoc) > 0 ? true : false;
             return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public IEnumerable<Get_all_account_same_khoahoc_Result> GetAllAccSameKH(GetAllAccountSameKHParam param)
+        {
+            return db.Get_all_account_same_khoahoc(param.idTaiKhoan, param.idKhoaHoc);
         }
     }
 }

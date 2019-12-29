@@ -30,5 +30,17 @@ namespace api.Controllers
             var result = _businessLogic.GetDSBaiHocByID(dataRequest);
             return new ActionResult<GetDSBaiHocByIDResponse>(result.Result, Request);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dataRequest"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult ThemBaiHocPass(ThemBaiHocPassParameter dataRequest)
+        {
+            var result = _businessLogic.ThemBaiHocPass(dataRequest);
+            return new ActionResult<bool>(result.Result, Request);
+        }
     }
 }

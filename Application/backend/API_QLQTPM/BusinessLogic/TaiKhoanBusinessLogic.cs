@@ -34,6 +34,7 @@ namespace BusinessLogic
             {
                 cfg.CreateMap<ACCOUNT_LOGIN_Result, loginDto>();
                 cfg.CreateMap<GET_THONGTINTAIKHOAN_Result, thongtintaikhoanDto>();
+                cfg.CreateMap<Get_all_account_same_khoahoc_Result, accountsamekhDTO>();
             });
             mapper = configMap.CreateMapper();
         }
@@ -126,6 +127,26 @@ namespace BusinessLogic
             {
                 return await Task.FromResult(response);
             }
+        }
+
+        public async Task<GetAllAccSameKHResponse> GetAllAccSameKH(GetAllAccountSameKHParam request)
+        {
+            var response = new GetAllAccSameKHResponse();
+            try
+            {
+                var result = _dataAccess.GetAllAccSameKH(request);
+                if (result != null)
+                {
+                    response.lstAccSameKH = MapList<Get_all_account_same_khoahoc_Result, accountsamekhDTO>(result.ToList());
+                    response.Success = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+            }
+            return await Task.FromResult(response);
         }
     }
 }

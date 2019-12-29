@@ -72,5 +72,17 @@ namespace api.Controllers
             var result = _businessLogic.ThemThongTinTaiKhoan(RequestData);
             return new ActionResult<bool>(result.Result, Request);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="RequestData"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult GetAllAccountSameKhoaHoc(GetAllAccountSameKHParam RequestData)
+        {
+            var result = _businessLogic.GetAllAccSameKH(RequestData);
+            return new ActionResult<GetAllAccSameKHResponse>(result.Result, Request);
+        }
     }
 }

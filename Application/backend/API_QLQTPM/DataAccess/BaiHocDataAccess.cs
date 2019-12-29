@@ -24,5 +24,16 @@ namespace DataAccess
         {
             return db.Get_DSBaiHoc_ById(param.id);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public bool ThemBaiHocPass(ThemBaiHocPassParameter param)
+        {
+            var result = db.ThemBaiHocPass(param.idTTTaiKhoan, param.idBaiHoc) > 0 ? true : false;
+            return result;
+        }
     }
 }

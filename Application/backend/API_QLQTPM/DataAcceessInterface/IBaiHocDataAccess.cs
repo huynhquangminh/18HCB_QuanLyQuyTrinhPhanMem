@@ -16,5 +16,12 @@ namespace DataAcceessInterface
         /// <param name="param">id bai hoc</param>
         /// <returns></returns>
         IEnumerable<Get_DSBaiHoc_ById_Result> GetDSBaiHoc(GetDSBaiHocParameter param);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        bool ThemBaiHocPass(ThemBaiHocPassParameter param);
     }
 }

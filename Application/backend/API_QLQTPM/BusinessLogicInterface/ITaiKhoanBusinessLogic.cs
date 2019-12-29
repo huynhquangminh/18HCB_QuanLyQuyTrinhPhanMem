@@ -43,5 +43,12 @@
         /// <param name="request">The request<see cref="LoginParameter"/></param>
         /// <returns>The <see cref="Task{bool}"/></returns>
         Task<bool> ThemThongTinTaiKhoan(ThemThongTinTaiKhoanParameter request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<GetAllAccSameKHResponse> GetAllAccSameKH(GetAllAccountSameKHParam request);
     }
 }

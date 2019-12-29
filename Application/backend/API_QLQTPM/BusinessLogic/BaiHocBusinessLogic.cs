@@ -52,5 +52,20 @@ namespace BusinessLogic
             }
             return await Task.FromResult(response);
         }
+
+        public async Task<bool> ThemBaiHocPass(ThemBaiHocPassParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.ThemBaiHocPass(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
     }
 }
