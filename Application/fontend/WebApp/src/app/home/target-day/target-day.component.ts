@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 import { WebStorageSerivce } from 'src/app/services/webStorage.service';
 import { WebKeyStorage } from 'src/app/global/web-key-storage';
+import { ChartFllowService } from 'src/app/services/chart-fllow.service';
 @Component({
   selector: 'app-target-day',
   templateUrl: './target-day.component.html',
@@ -17,6 +18,7 @@ export class TargetDayComponent implements OnInit {
   constructor(
     private goalEveryDayService: GoalEveryDayService,
     private webStorageSerivce: WebStorageSerivce,
+    private chartFllowService: ChartFllowService
   ) { }
 
   ngOnInit() {
@@ -31,7 +33,13 @@ export class TargetDayComponent implements OnInit {
         this.updateGoadDay();
       }
     });
-    this.renderChart();
+    this.chartFllowService.dataChart.subscribe(res => {
+      if (res) {
+        this.renderChart();
+      }
+    });
+
+
   }
 
   updateGoadDay() {

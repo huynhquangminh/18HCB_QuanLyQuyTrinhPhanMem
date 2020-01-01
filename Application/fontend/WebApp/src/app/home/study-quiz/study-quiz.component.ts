@@ -196,7 +196,7 @@ export class StudyQuizComponent implements OnInit {
       const dialogRef = this.dialog.open(DialogQuizSuccessComponent, {
         width: '400px',
         disableClose: true,
-        data: { point: this.updatePointGoalDay(100) }
+        data: { point: this.updatePointGoalDay(100), idBaiHoc: this.id }
       });
       this.playAudio(this.passAudioComplete);
     }

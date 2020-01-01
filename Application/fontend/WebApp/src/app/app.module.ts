@@ -2,7 +2,6 @@ import { TaiKhoanService } from './services/tai-khoan.service';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,6 +20,17 @@ import { DialogQuizSuccessComponent } from './shared/dialog-quiz-success/dialog-
 import { StudyQuizService } from './services/study-quiz.service';
 import { HomeService } from './services/home.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ChartFllowService } from './services/chart-fllow.service';
+import { DialogNoticationsComponent } from './shared/dialog-notications/dialog-notications.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { ThongBaoService } from './services/notications.service';
+import { DialogFriendsComponent } from './shared/dialog-friends/dialog-friends.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FriendsService } from './services/friends.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +40,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     DialogTimeOutComponent,
     DialogQuizSuccessComponent,
     NotFoundComponent,
+    DialogNoticationsComponent,
+    DialogFriendsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +49,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    AngularWebStorageModule
+    AngularWebStorageModule,
+    MatCardModule,
+    MatListModule,
+    MatButtonModule,
+    MatRippleModule,
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [
     AppService,
@@ -47,12 +65,18 @@ import { NotFoundComponent } from './not-found/not-found.component';
     DisplaySettingService,
     CourseListService,
     StudyQuizService,
-    HomeService
+    HomeService,
+    ChartFllowService,
+    ThongBaoService,
+    FriendsService
   ],
 
   bootstrap: [AppComponent],
   entryComponents: [
-    DialogTimeOutComponent, 
-    DialogQuizSuccessComponent]
+    DialogTimeOutComponent,
+    DialogQuizSuccessComponent,
+    DialogNoticationsComponent,
+    DialogFriendsComponent
+  ]
 })
 export class AppModule { }

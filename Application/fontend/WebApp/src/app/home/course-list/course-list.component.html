@@ -1,5 +1,11 @@
 <div>
     <ng-container *ngFor="let item of listCourse">
-        <mat-card class="listcard" (click)="selectCourse(item.id)"> {{item.tenbaihoc}}</mat-card>
+        <mat-card class="listcard" (click)="selectCourse(item.id)">
+            {{item.tenbaihoc}}
+            <span style="float: right;" *ngIf="findBaiHocPass(item.id)">
+                <mat-icon style="margin-right: 5px;">check_circle</mat-icon>
+                <span>Hoàn thành</span>
+            </span>
+        </mat-card>
     </ng-container>
 </div>

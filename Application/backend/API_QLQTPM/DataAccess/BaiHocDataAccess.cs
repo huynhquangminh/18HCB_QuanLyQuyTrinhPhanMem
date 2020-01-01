@@ -35,5 +35,17 @@ namespace DataAccess
             var result = db.ThemBaiHocPass(param.idTTTaiKhoan, param.idBaiHoc) > 0 ? true : false;
             return result;
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public IEnumerable<Get_DSBaiHocPass_Result> GetDSBaiHocPass(GetDSBaiHocPassParameter param)
+        {
+            return db.Get_DSBaiHocPass(param.idTTTaiKhoan);
+        }
+
     }
 }

@@ -23,5 +23,13 @@ namespace BusinessLogicInterface
         /// <param name="request"></param>
         /// <returns></returns>
         Task<bool> ThemBaiHocPass(ThemBaiHocPassParameter request);
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<GetDSBaiHocPassResponse> GetDSBaiHocPass(GetDSBaiHocPassParameter request);
     }
 }

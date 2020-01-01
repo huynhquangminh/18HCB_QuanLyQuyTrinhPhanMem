@@ -5,7 +5,7 @@
     <div class="container-display">
         <div>
             <mat-horizontal-stepper #stepper [linear]="isLinear" disableRipple="false" class="steper">
-                <mat-step label="Language">
+                <mat-step label="Khóa học">
                     <div class="child-page-listing">
                         <div class="grid-container">
                             <article id="3685" class="location-listing" *ngFor="let item of listLanguage">
@@ -21,7 +21,7 @@
                     </div>
 
                 </mat-step>
-                <mat-step label="Level">
+                <mat-step label="Cấp độ">
                     <mat-grid-list cols="3" rowHeight="2:2">
                         <ng-container *ngFor="let item of listLevel">
                             <mat-grid-tile style="margin: 10px">
@@ -37,7 +37,7 @@
                         </ng-container>
                     </mat-grid-list>
                 </mat-step>
-                <mat-step label="Goal Every Day">
+                <mat-step label="Mục tiêu mỗi ngày">
                     <mat-grid-list cols="3" rowHeight="2:2">
                         <ng-container *ngFor="let item of listGoalDay">
                             <mat-grid-tile style="margin: 10px">

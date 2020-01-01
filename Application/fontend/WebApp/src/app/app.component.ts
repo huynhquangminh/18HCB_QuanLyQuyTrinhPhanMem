@@ -19,7 +19,6 @@ export class AppComponent {
     if (user) {
       const setting = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
       this.goalEveryDayService.listensChangeGoalDay(setting ? setting.diemKNDay : 0);
-      console.log('xx');
     } else {
       this.router.navigateByUrl('/login');
     }

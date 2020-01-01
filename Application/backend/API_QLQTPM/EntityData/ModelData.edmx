@@ -317,6 +317,9 @@
         <Function Name="Get_DSBaiHoc_ById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idKhoaHoc" Type="int" Mode="In" />
         </Function>
+        <Function Name="Get_DSBaiHocPass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTTTaiKhoan" Type="int" Mode="In" />
+        </Function>
         <Function Name="GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idBaiHoc" Type="int" Mode="In" />
           <Parameter Name="idCapDo" Type="int" Mode="In" />
@@ -892,6 +895,9 @@
             <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
             <Parameter Name="idBaiHoc" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="Get_DSBaiHocPass" ReturnType="Collection(WebLapTrinhModel.Get_DSBaiHocPass_Result)">
+            <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ACCOUNT_LOGIN_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -965,6 +971,11 @@
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="username" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="Get_DSBaiHocPass_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="idTTTaiKhoan" Nullable="false" />
+          <Property Type="Int32" Name="idBaiHoc" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1241,6 +1252,15 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ThemBaiHocPass" FunctionName="WebLapTrinhModel.Store.ThemBaiHocPass" />
+          <FunctionImportMapping FunctionImportName="Get_DSBaiHocPass" FunctionName="WebLapTrinhModel.Store.Get_DSBaiHocPass">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_DSBaiHocPass_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idTTTaiKhoan" ColumnName="idTTTaiKhoan" />
+                <ScalarProperty Name="idBaiHoc" ColumnName="idBaiHoc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

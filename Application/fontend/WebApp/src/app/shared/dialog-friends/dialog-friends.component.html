@@ -1,0 +1,24 @@
+<mat-tab-group mat-stretch-tabs>
+    <mat-tab label="Bạn cùng khóa">
+        <mat-list style="height: 150px;" *ngFor="let item of listAccountSameCoures">
+            <mat-list-item>
+                <img style="margin-right:5px" [src]="pathImg + 'icon-login.png'" width="40px">
+                <span>{{item.username}} </span>
+                <button style="margin-left: 300px;" mat-button color="primary">Theo dõi</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </mat-tab>
+    <mat-tab label="Bạn bè theo dõi">
+        <mat-list style="height: 150px;">
+
+        </mat-list>
+    </mat-tab>
+    <mat-tab label="Yêu cầu kết bạn">
+        <mat-list style="height: 150px;">
+
+        </mat-list>
+    </mat-tab>
+</mat-tab-group>
+
+<button style="float: right;" mat-raised-button color="primary" (click)="closeDialog()">Đóng</button>

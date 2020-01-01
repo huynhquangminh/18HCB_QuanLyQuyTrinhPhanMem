@@ -23,5 +23,13 @@ namespace DataAcceessInterface
         /// <param name="param"></param>
         /// <returns></returns>
         bool ThemBaiHocPass(ThemBaiHocPassParameter param);
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        IEnumerable<Get_DSBaiHocPass_Result> GetDSBaiHocPass(GetDSBaiHocPassParameter param);
     }
 }

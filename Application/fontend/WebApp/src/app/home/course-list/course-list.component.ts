@@ -1,3 +1,4 @@
+import { TaiKhoanService } from './../../services/tai-khoan.service';
 import { WebStorageSerivce } from './../../services/webStorage.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,17 +13,24 @@ import { GoalEveryDayService } from 'src/app/services/goal-every-day.service';
 })
 export class CourseListComponent implements OnInit {
   public listCourse = [];
+  private listBaiHocPass = [];
+  private user: any;
   constructor(
     private router: Router,
     private courseListService: CourseListService,
     private webStorageSerivce: WebStorageSerivce,
     private goalEveryDayService: GoalEveryDayService,
+    private taiKhoanService: TaiKhoanService,
   ) { }
 
   ngOnInit() {
     // const setting = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
+    this.user = this.webStorageSerivce.getLocalStorage(WebKeyStorage.AccountInfo);
+    if (this.user) {
+      this.getDSBaiHoc();
+      this.getDSBaiHocPass();
+    }
     // this.goalEveryDayService.listensChangeGoalDay(setting ? setting.diemKNDay : 0);
-    this.getDSBaiHoc();
   }
 
   selectCourse(id) {
@@ -38,6 +46,22 @@ export class CourseListComponent implements OnInit {
         }
       });
     }
+  }
+
+  getDSBaiHocPass() {
+    this.taiKhoanService.getDanhSachThongTinTaiKhoan({ idAccount: this.user.id }).subscribe(res => {
+      if (res && res.Success) {
+        this.courseListService.getDSBaiHocPass({ idTTTaiKhoan: res.thongTinTaiKhoan.id }).subscribe(result => {
+          if (result && result.Success) {
+            this.listBaiHocPass = result.listDSBaiHocPass;
+          }
+        });
+      }
+    });
+  }
+
+  findBaiHocPass(id) {
+    return this.listBaiHocPass.find(item => item.idBaiHoc === id) ? true : false;
   }
 
 }

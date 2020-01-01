@@ -238,5 +238,14 @@ namespace EntityData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ThemBaiHocPass", idTTTaiKhoanParameter, idBaiHocParameter);
         }
+    
+        public virtual ObjectResult<Get_DSBaiHocPass_Result> Get_DSBaiHocPass(Nullable<int> idTTTaiKhoan)
+        {
+            var idTTTaiKhoanParameter = idTTTaiKhoan.HasValue ?
+                new ObjectParameter("idTTTaiKhoan", idTTTaiKhoan) :
+                new ObjectParameter("idTTTaiKhoan", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_DSBaiHocPass_Result>("Get_DSBaiHocPass", idTTTaiKhoanParameter);
+        }
     }
 }

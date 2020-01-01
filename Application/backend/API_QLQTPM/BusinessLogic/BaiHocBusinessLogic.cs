@@ -29,6 +29,7 @@ namespace BusinessLogic
             configMap = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Get_DSBaiHoc_ById_Result, baihocDTO>();
+                cfg.CreateMap<Get_DSBaiHocPass_Result, GetDsBaiHocPassDto>();
             });
             mapper = configMap.CreateMapper();
         }
@@ -66,6 +67,26 @@ namespace BusinessLogic
             {
                 return await Task.FromResult(response);
             }
+        }
+
+       public async Task<GetDSBaiHocPassResponse> GetDSBaiHocPass(GetDSBaiHocPassParameter request)
+        {
+            var response = new GetDSBaiHocPassResponse();
+            try
+            {
+                var result = _dataAccess.GetDSBaiHocPass(request);
+                if (result != null)
+                {
+                    response.listDSBaiHocPass = MapList<Get_DSBaiHocPass_Result, GetDsBaiHocPassDto>(result.ToList());
+                    response.Success = true;
+                }
+
+            }
+            catch (Exception)
+            {
+                response.Success = false;
+            }
+            return await Task.FromResult(response);
         }
     }
 }

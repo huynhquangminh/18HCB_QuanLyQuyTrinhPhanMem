@@ -133,7 +133,7 @@ END
 
 CREATE PROC ThemBaiHocPass (@idTTTaiKhoan int, @idBaiHoc int)
 AS BEGIN
-	IF NOT EXISTS  (SELECT* From DSBaiHocPass_Of_TaiKhoan WHERE idBaiHoc = @idBaiHoc)
+	IF NOT EXISTS  (SELECT* From DSBaiHocPass_Of_TaiKhoan WHERE idBaiHoc = @idBaiHoc and idTTTaiKhoan = @idTTTaiKhoan)
 	BEGIN
 		INSERT INTO DSBaiHocPass_Of_TaiKhoan (idTTTaiKhoan, idBaiHoc)
 		VALUES (@idTTTaiKhoan, @idBaiHoc)
@@ -360,4 +360,11 @@ AS BEGIN
 		SET diemKN = @diemKN
 		WHERE id = @id
 	END
+END
+
+CREATE PROC Get_DSBaiHocPass(@idTTTaiKhoan int)
+AS BEGIN
+	SELECT id, idTTTaiKhoan, idBaiHoc
+	FROM DSBaiHocPass_Of_TaiKhoan
+	WHERE idTTTaiKhoan = @idTTTaiKhoan 
 END

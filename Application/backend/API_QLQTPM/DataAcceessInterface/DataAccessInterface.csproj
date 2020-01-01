@@ -95,6 +95,7 @@
     <Compile Include="Parameter\GetAllAccountSameKHParam.cs" />
     <Compile Include="Parameter\GetBieuDoTheoDoiParameter.cs" />
     <Compile Include="Parameter\GetDSBaiHocParameter.cs" />
+    <Compile Include="Parameter\GetDSBaiHocPassParameter.cs" />
     <Compile Include="Parameter\GetDSCauHoiParameter.cs" />
     <Compile Include="Parameter\GetDsDapAnParameter.cs" />
     <Compile Include="Parameter\GetDSThongBaoParameter.cs" />
