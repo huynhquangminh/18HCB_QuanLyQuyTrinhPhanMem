@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaiHocDataAccess.cs" />
+    <Compile Include="BanBeDataAccess.cs" />
     <Compile Include="BieuDoTheoDoiDataAccess.cs" />
     <Compile Include="CapDoDataAccess.cs" />
     <Compile Include="CauHoiDataAccess.cs" />

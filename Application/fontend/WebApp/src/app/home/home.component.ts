@@ -7,6 +7,7 @@ import { ChartFllowService } from '../services/chart-fllow.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogNoticationsComponent } from '../shared/dialog-notications/dialog-notications.component';
 import { DialogFriendsComponent } from '../shared/dialog-friends/dialog-friends.component';
+import { FriendsService } from '../services/friends.service';
 
 @Component({
   selector: 'app-home',
@@ -16,17 +17,21 @@ import { DialogFriendsComponent } from '../shared/dialog-friends/dialog-friends.
 export class HomeComponent implements OnInit {
   public countNotication = 0;
   public listNotication = [];
+  public listFriend = [];
+  public pathImg = '../../assets/image/';
   constructor(
     private router: Router,
     private webStorageSerivce: WebStorageSerivce,
     private homeService: HomeService,
     private chartFllowService: ChartFllowService,
     public dialog: MatDialog,
+    private friendsService: FriendsService
   ) { }
 
   ngOnInit() {
     this.getDataChart();
     this.getDSThongBao();
+    this.getListFriends();
   }
 
   getDSThongBao() {
@@ -86,8 +91,20 @@ export class HomeComponent implements OnInit {
         disableClose: true,
         data: { idTaiKhoan: user.id, idKhoaHoc: setting.idkhoahoc }
       });
+      dialogRef.afterClosed().subscribe(res => {
+        this.getListFriends();
+      })
     }
 
+  }
+
+  getListFriends(){
+    const user = this.webStorageSerivce.getLocalStorage(WebKeyStorage.AccountInfo);
+    this.friendsService.getListFriends({idAccount:user.id }).subscribe(res=> {
+      if(res && res.Success){
+        this.listFriend = res.listBanBe.filter(item=> item.yeucau === true);
+      }
+    });
   }
 
 }

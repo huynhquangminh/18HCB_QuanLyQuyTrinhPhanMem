@@ -12,13 +12,11 @@ namespace EntityData
     using System;
     using System.Collections.Generic;
     
-    public partial class DSBanBe
+    public partial class PhanHoi
     {
         public int id { get; set; }
-        public int idbanbe { get; set; }
-        public int idaccount { get; set; }
-        public bool yeucau { get; set; }
-    
-        public virtual TaiKhoan TaiKhoan { get; set; }
+        public string email { get; set; }
+        public string noidung { get; set; }
+        public bool trangthai { get; set; }
     }
 }

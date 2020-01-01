@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaiHocBusinessLogic.cs" />
+    <Compile Include="BanBeBusinessLogic.cs" />
     <Compile Include="BieuDoTheoDoiBusinessLogic.cs" />
     <Compile Include="CapDoBusinessLogic.cs" />
     <Compile Include="CauHoiBusinessLogic.cs" />

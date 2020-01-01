@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBaiHocDataAccess.cs" />
+    <Compile Include="IBanBeDataAccess.cs" />
     <Compile Include="ICapDoDataAccess.cs" />
     <Compile Include="ICauHoiDataAccess.cs" />
     <Compile Include="IDapAnDataAccess.cs" />
@@ -92,10 +93,12 @@
     <Compile Include="IBieuDoTheoDoiDataAccess.cs" />
     <Compile Include="ITaiKhoanDataAccess.cs" />
     <Compile Include="IThongBaoDataAccess.cs" />
+    <Compile Include="Parameter\DeleteBanBeParameter.cs" />
     <Compile Include="Parameter\GetAllAccountSameKHParam.cs" />
     <Compile Include="Parameter\GetBieuDoTheoDoiParameter.cs" />
     <Compile Include="Parameter\GetDSBaiHocParameter.cs" />
     <Compile Include="Parameter\GetDSBaiHocPassParameter.cs" />
+    <Compile Include="Parameter\GetDSBanBeParameter.cs" />
     <Compile Include="Parameter\GetDSCauHoiParameter.cs" />
     <Compile Include="Parameter\GetDsDapAnParameter.cs" />
     <Compile Include="Parameter\GetDSThongBaoParameter.cs" />

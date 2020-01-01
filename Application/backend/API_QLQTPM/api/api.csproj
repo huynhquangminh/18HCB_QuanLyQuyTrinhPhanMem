@@ -175,6 +175,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BaiHocController.cs" />
+    <Compile Include="Controllers\BanBeController.cs" />
     <Compile Include="Controllers\BieuDoTheoDoiController.cs" />
     <Compile Include="Controllers\CapDoController.cs" />
     <Compile Include="Controllers\CauHoiController.cs" />
@@ -243,6 +244,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\BanBe\" />
     <Folder Include="Views\DapAn\" />
     <Folder Include="Views\TaiKhoan\" />
   </ItemGroup>

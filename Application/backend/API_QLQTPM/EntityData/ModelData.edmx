@@ -49,7 +49,6 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idbanbe" Type="int" Nullable="false" />
-          <Property Name="tenbanbe" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="idaccount" Type="int" Nullable="false" />
           <Property Name="yeucau" Type="bit" Nullable="false" />
         </EntityType>
@@ -111,6 +110,15 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="diemKN" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhanHoi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="noidung" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="trangthai" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -306,6 +314,14 @@
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="pass" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Delete_BanBe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idbanbe" Type="int" Mode="In" />
+          <Parameter Name="idaccount" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_YeuCauKetBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idbanbe" Type="int" Mode="In" />
+          <Parameter Name="idaccount" Type="int" Mode="In" />
+        </Function>
         <Function Name="Get_all_account_same_khoahoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTaiKhoan" Type="int" Mode="In" />
           <Parameter Name="idKhoaHoc" Type="int" Mode="In" />
@@ -319,6 +335,9 @@
         </Function>
         <Function Name="Get_DSBaiHocPass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTTTaiKhoan" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_DSBanBe_By_IdAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAccount" Type="int" Mode="In" />
         </Function>
         <Function Name="GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idBaiHoc" Type="int" Mode="In" />
@@ -335,6 +354,9 @@
         <Function Name="GET_DSThongBao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idaccount" Type="int" Mode="In" />
         </Function>
+        <Function Name="Get_DsYeuCauKetBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAccount" Type="int" Mode="In" />
+        </Function>
         <Function Name="Get_LoaiDiemKinhNghiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GET_THONGTINTAIKHOAN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTaikhoan" Type="int" Mode="In" />
@@ -342,6 +364,10 @@
         <Function Name="INSERT_ACCOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="pass" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_PhanHoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="THEM_THONGTINTAIKHOAN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idkhoahoc" Type="int" Mode="In" />
@@ -364,6 +390,12 @@
           <Parameter Name="currentPass" Type="varchar" Mode="In" />
           <Parameter Name="newPass" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Update_ThongTinBanBe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idbanbe" Type="int" Mode="In" />
+          <Parameter Name="idaccount" Type="int" Mode="In" />
+          <Parameter Name="yeucau" Type="bit" Mode="In" />
+        </Function>
         <EntityContainer Name="WebLapTrinhModelStoreContainer">
           <EntitySet Name="BieuDoTheoDoi" EntityType="Self.BieuDoTheoDoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CapDo" EntityType="Self.CapDo" Schema="dbo" store:Type="Tables" />
@@ -377,6 +409,7 @@
           <EntitySet Name="DSYeuCauKetBan" EntityType="Self.DSYeuCauKetBan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KhoaHoc" EntityType="Self.KhoaHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiDiemKN" EntityType="Self.LoaiDiemKN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhanHoi" EntityType="Self.PhanHoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongTinTaiKhoan" EntityType="Self.ThongTinTaiKhoan" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BieuDoTheoDoi_TaiKhoan" Association="Self.FK_BieuDoTheoDoi_TaiKhoan">
@@ -490,7 +523,6 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idbanbe" Type="Int32" Nullable="false" />
-          <Property Name="tenbanbe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="idaccount" Type="Int32" Nullable="false" />
           <Property Name="yeucau" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_DSBanBe_TaiKhoan" FromRole="DSBanBe" ToRole="TaiKhoan" />
@@ -563,6 +595,15 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="diemKN" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ThongTinTaiKhoans" Relationship="Self.FK_ThongTinTaiKhoan_LoaiDiemKN" FromRole="LoaiDiemKN" ToRole="ThongTinTaiKhoan" />
+        </EntityType>
+        <EntityType Name="PhanHoi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="trangthai" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -778,6 +819,7 @@
           <EntitySet Name="DSYeuCauKetBans" EntityType="Self.DSYeuCauKetBan" />
           <EntitySet Name="KhoaHocs" EntityType="Self.KhoaHoc" />
           <EntitySet Name="LoaiDiemKNs" EntityType="Self.LoaiDiemKN" />
+          <EntitySet Name="PhanHois" EntityType="Self.PhanHoi" />
           <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
           <EntitySet Name="ThongTinTaiKhoans" EntityType="Self.ThongTinTaiKhoan" />
           <AssociationSet Name="FK_BieuDoTheoDoi_TaiKhoan" Association="Self.FK_BieuDoTheoDoi_TaiKhoan">
@@ -840,12 +882,26 @@
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Delete_BanBe">
+            <Parameter Name="idbanbe" Mode="In" Type="Int32" />
+            <Parameter Name="idaccount" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_all_account_same_khoahoc" ReturnType="Collection(WebLapTrinhModel.Get_all_account_same_khoahoc_Result)">
+            <Parameter Name="idTaiKhoan" Mode="In" Type="Int32" />
+            <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="GET_BieuDoTheoDoi" ReturnType="Collection(WebLapTrinhModel.GET_BieuDoTheoDoi_Result)">
           <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Get_CapDo" ReturnType="Collection(WebLapTrinhModel.Get_CapDo_Result)" />
           <FunctionImport Name="Get_DSBaiHoc_ById" ReturnType="Collection(WebLapTrinhModel.Get_DSBaiHoc_ById_Result)">
           <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_DSBaiHocPass" ReturnType="Collection(WebLapTrinhModel.Get_DSBaiHocPass_Result)">
+          <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_DSBanBe_By_IdAccount" ReturnType="Collection(WebLapTrinhModel.Get_DSBanBe_By_IdAccount_Result)">
+          <Parameter Name="idAccount" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo" ReturnType="Collection(WebLapTrinhModel.GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result)">
             <Parameter Name="idBaiHoc" Mode="In" Type="Int32" />
@@ -862,6 +918,9 @@
           <FunctionImport Name="GET_DSThongBao" ReturnType="Collection(WebLapTrinhModel.GET_DSThongBao_Result)">
           <Parameter Name="idaccount" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="Get_DsYeuCauKetBan" ReturnType="Collection(WebLapTrinhModel.Get_DsYeuCauKetBan_Result)">
+          <Parameter Name="idAccount" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Get_LoaiDiemKinhNghiem" ReturnType="Collection(WebLapTrinhModel.Get_LoaiDiemKinhNghiem_Result)" />
           <FunctionImport Name="GET_THONGTINTAIKHOAN" ReturnType="Collection(WebLapTrinhModel.GET_THONGTINTAIKHOAN_Result)">
           <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
@@ -870,6 +929,10 @@
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Insert_PhanHoi">
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="noidung" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="THEM_THONGTINTAIKHOAN">
             <Parameter Name="idkhoahoc" Mode="In" Type="Int32" />
             <Parameter Name="idcapdo" Mode="In" Type="Int32" />
@@ -877,6 +940,10 @@
             <Parameter Name="diemKNDay" Mode="In" Type="Int32" />
             <Parameter Name="idtaikhoan" Mode="In" Type="Int32" />
             <Parameter Name="ngayhoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ThemBaiHocPass">
+            <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
+            <Parameter Name="idBaiHoc" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UPDATE_DSThongBao_Follow_Id_IdAccount">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -887,16 +954,15 @@
             <Parameter Name="currentPass" Mode="In" Type="String" />
             <Parameter Name="newPass" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Get_all_account_same_khoahoc" ReturnType="Collection(WebLapTrinhModel.Get_all_account_same_khoahoc_Result)">
-            <Parameter Name="idTaiKhoan" Mode="In" Type="Int32" />
-            <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
+          <FunctionImport Name="Update_ThongTinBanBe">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idbanbe" Mode="In" Type="Int32" />
+            <Parameter Name="idaccount" Mode="In" Type="Int32" />
+            <Parameter Name="yeucau" Mode="In" Type="Boolean" />
           </FunctionImport>
-          <FunctionImport Name="ThemBaiHocPass">
-            <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
-            <Parameter Name="idBaiHoc" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Get_DSBaiHocPass" ReturnType="Collection(WebLapTrinhModel.Get_DSBaiHocPass_Result)">
-            <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
+          <FunctionImport Name="Delete_YeuCauKetBan">
+            <Parameter Name="idbanbe" Mode="In" Type="Int32" />
+            <Parameter Name="idaccount" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ACCOUNT_LOGIN_Result">
@@ -905,6 +971,11 @@
           <Property Type="String" Name="password" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="email" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="Get_all_account_same_khoahoc_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="GET_BieuDoTheoDoi_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -926,6 +997,19 @@
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="tenbaihoc" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="idkhoahoc" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Get_DSBaiHocPass_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="idTTTaiKhoan" Nullable="false" />
+          <Property Type="Int32" Name="idBaiHoc" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_DSBanBe_By_IdAccount_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="idbanbe" Nullable="false" />
+          <Property Type="Int32" Name="idaccount" Nullable="false" />
+          <Property Type="Boolean" Name="yeucau" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -954,6 +1038,13 @@
           <Property Type="String" Name="thongbao" Nullable="false" />
           <Property Type="Boolean" Name="docthongbao" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="Get_DsYeuCauKetBan_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="idaccount" Nullable="false" />
+          <Property Type="Int32" Name="idbanbe" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
+        </ComplexType>
         <ComplexType Name="Get_LoaiDiemKinhNghiem_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="Int32" Name="diemKN" Nullable="false" />
@@ -966,16 +1057,6 @@
           <Property Type="Int32" Name="diemKNDay" Nullable="true" />
           <Property Type="Int32" Name="idtaikhoan" Nullable="false" />
           <Property Type="DateTime" Name="ngayhoc" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Get_all_account_same_khoahoc_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="username" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
-        </ComplexType>
-        <ComplexType Name="Get_DSBaiHocPass_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="Int32" Name="idTTTaiKhoan" Nullable="false" />
-          <Property Type="Int32" Name="idBaiHoc" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1030,7 +1111,6 @@
               <MappingFragment StoreEntitySet="DSBanBe">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idbanbe" ColumnName="idbanbe" />
-                <ScalarProperty Name="tenbanbe" ColumnName="tenbanbe" />
                 <ScalarProperty Name="idaccount" ColumnName="idaccount" />
                 <ScalarProperty Name="yeucau" ColumnName="yeucau" />
               </MappingFragment>
@@ -1102,6 +1182,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PhanHois">
+            <EntityTypeMapping TypeName="WebLapTrinhModel.PhanHoi">
+              <MappingFragment StoreEntitySet="PhanHoi">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="noidung" ColumnName="noidung" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TaiKhoans">
             <EntityTypeMapping TypeName="WebLapTrinhModel.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
@@ -1137,6 +1227,16 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Delete_BanBe" FunctionName="WebLapTrinhModel.Store.Delete_BanBe" />
+          <FunctionImportMapping FunctionImportName="Get_all_account_same_khoahoc" FunctionName="WebLapTrinhModel.Store.Get_all_account_same_khoahoc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_all_account_same_khoahoc_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GET_BieuDoTheoDoi" FunctionName="WebLapTrinhModel.Store.GET_BieuDoTheoDoi">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WebLapTrinhModel.GET_BieuDoTheoDoi_Result">
@@ -1167,6 +1267,27 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tenbaihoc" ColumnName="tenbaihoc" />
                 <ScalarProperty Name="idkhoahoc" ColumnName="idkhoahoc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_DSBaiHocPass" FunctionName="WebLapTrinhModel.Store.Get_DSBaiHocPass">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_DSBaiHocPass_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idTTTaiKhoan" ColumnName="idTTTaiKhoan" />
+                <ScalarProperty Name="idBaiHoc" ColumnName="idBaiHoc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_DSBanBe_By_IdAccount" FunctionName="WebLapTrinhModel.Store.Get_DSBanBe_By_IdAccount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_DSBanBe_By_IdAccount_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idbanbe" ColumnName="idbanbe" />
+                <ScalarProperty Name="idaccount" ColumnName="idaccount" />
+                <ScalarProperty Name="yeucau" ColumnName="yeucau" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="img" ColumnName="img" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1217,6 +1338,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_DsYeuCauKetBan" FunctionName="WebLapTrinhModel.Store.Get_DsYeuCauKetBan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_DsYeuCauKetBan_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idaccount" ColumnName="idaccount" />
+                <ScalarProperty Name="idbanbe" ColumnName="idbanbe" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Get_LoaiDiemKinhNghiem" FunctionName="WebLapTrinhModel.Store.Get_LoaiDiemKinhNghiem">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_LoaiDiemKinhNghiem_Result">
@@ -1239,28 +1371,13 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="INSERT_ACCOUNT" FunctionName="WebLapTrinhModel.Store.INSERT_ACCOUNT" />
+          <FunctionImportMapping FunctionImportName="Insert_PhanHoi" FunctionName="WebLapTrinhModel.Store.Insert_PhanHoi" />
           <FunctionImportMapping FunctionImportName="THEM_THONGTINTAIKHOAN" FunctionName="WebLapTrinhModel.Store.THEM_THONGTINTAIKHOAN" />
+          <FunctionImportMapping FunctionImportName="ThemBaiHocPass" FunctionName="WebLapTrinhModel.Store.ThemBaiHocPass" />
           <FunctionImportMapping FunctionImportName="UPDATE_DSThongBao_Follow_Id_IdAccount" FunctionName="WebLapTrinhModel.Store.UPDATE_DSThongBao_Follow_Id_IdAccount" />
           <FunctionImportMapping FunctionImportName="Update_PassWord_Account" FunctionName="WebLapTrinhModel.Store.Update_PassWord_Account" />
-          <FunctionImportMapping FunctionImportName="Get_all_account_same_khoahoc" FunctionName="WebLapTrinhModel.Store.Get_all_account_same_khoahoc">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_all_account_same_khoahoc_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="img" ColumnName="img" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ThemBaiHocPass" FunctionName="WebLapTrinhModel.Store.ThemBaiHocPass" />
-          <FunctionImportMapping FunctionImportName="Get_DSBaiHocPass" FunctionName="WebLapTrinhModel.Store.Get_DSBaiHocPass">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_DSBaiHocPass_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idTTTaiKhoan" ColumnName="idTTTaiKhoan" />
-                <ScalarProperty Name="idBaiHoc" ColumnName="idBaiHoc" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_ThongTinBanBe" FunctionName="WebLapTrinhModel.Store.Update_ThongTinBanBe" />
+          <FunctionImportMapping FunctionImportName="Delete_YeuCauKetBan" FunctionName="WebLapTrinhModel.Store.Delete_YeuCauKetBan" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

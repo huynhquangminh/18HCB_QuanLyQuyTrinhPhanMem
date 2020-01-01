@@ -368,3 +368,49 @@ AS BEGIN
 	FROM DSBaiHocPass_Of_TaiKhoan
 	WHERE idTTTaiKhoan = @idTTTaiKhoan 
 END
+
+ALTER PROC Get_DSBanBe_By_IdAccount(@idAccount int)
+AS BEGIN
+	SELECT be.id, be.idbanbe, be.idaccount, be.yeucau, tk.username, tk.img
+	FROM DSBanBe be, TaiKhoan tk
+	WHERE be.idaccount = @idAccount AND be.idbanbe = tk.id
+END
+
+ALTER PROC Update_ThongTinBanBe (
+@id int,
+@idbanbe int,
+@idaccount int,
+@yeucau bit
+)
+AS BEGIN
+	UPDATE DSBanBe 
+	SET idbanbe = @idbanbe, idaccount = @idaccount, yeucau = @yeucau
+	WHERE id = @id
+END
+
+CREATE PROC Delete_BanBe ( @idbanbe int, @idaccount int)
+AS BEGIN
+	DELETE DSBanBe WHERE idbanbe = @idbanbe AND idaccount = @idaccount 
+END
+
+ALTER PROC Delete_YeuCauKetBan ( @idbanbe int, @idaccount int)
+AS BEGIN
+	DELETE DSYeuCauKetBan WHERE idbanbe = @idbanbe AND idaccount = @idaccount AND yeucau = 0
+END
+
+ALTER PROC Get_DsYeuCauKetBan(@idAccount int)
+AS BEGIN
+	SELECT yc.id, yc.idaccount, yc.idbanbe, tk.username, tk.img
+	FROM DSYeuCauKetBan yc, TaiKhoan tk
+	WHERE yc.idaccount = @idAccount AND yc.yeucau = 0 AND yc.idbanbe = tk.id 
+END
+
+CREATE PROC Insert_PhanHoi 
+(
+	@email varchar(100),
+	@noidung nvarchar(max)
+) 
+AS BEGIN
+	INSERT INTO PhanHoi (email, noidung, trangthai)
+	VALUES( @email, @noidung, 0) 
+END

@@ -55,6 +55,9 @@ namespace api
             container.RegisterType<IBieuDoTheoDoiBusinessLogic, BieuDoTheoDoiBusinessLogic>();
             container.RegisterType<IBieuDoTheoDoiDataAccess, BieuDoTheoDoiDataAccess>();
 
+            container.RegisterType<IBanBeBusinessLogic, BanBeBusinessLogic>();
+            container.RegisterType<IBanBeDataAccess, BanBeDataAccess>();
+
 
             config.DependencyResolver = new UnityResolver(container);
             // Web API routes
