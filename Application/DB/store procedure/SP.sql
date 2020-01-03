@@ -150,6 +150,8 @@ AS BEGIN
 	WHERE tk.id != @idTaiKhoan AND tk.id = tttk.idtaikhoan And tttk.idkhoahoc = @idKhoaHoc 
 END
 
+-------------------21/12/2019----------------------
+
 CREATE PROC [dbo].[GET_BieuDoTheoDoi](@idTaikhoan int)
 AS BEGIN 
 	SELECT id, idTaikhoan, Thu2, Thu3, Thu4, Thu5, Thu6, Thu7, ChuNhat, NgayBatDau
@@ -250,7 +252,7 @@ AS BEGIN
 	SET @dauThang = DATEADD(DAY,1,EOMONTH(@NgayHienTai,-1))
 	SET @cuoiThang = EOMONTH(@NgayHienTai)
 
-	SELECT SUM(diemKNDay) AS 'diem/thang' 
+	SELECT COALESCE(SUM(diemKNDay), 0) AS 'diem/thang' 
 	FROM ThongTinTaiKhoan
 	WHERE ngayhoc BETWEEN @dauThang AND @cuoiThang
  	AND idtaikhoan = @idTaikhoan AND idkhoahoc = @idKhoaHoc
@@ -362,6 +364,7 @@ AS BEGIN
 	END
 END
 
+--------------------01/01/2020---------------------
 CREATE PROC Get_DSBaiHocPass(@idTTTaiKhoan int)
 AS BEGIN
 	SELECT id, idTTTaiKhoan, idBaiHoc
@@ -414,3 +417,46 @@ AS BEGIN
 	INSERT INTO PhanHoi (email, noidung, trangthai)
 	VALUES( @email, @noidung, 0) 
 END
+
+---------------03/01/2020 --------------
+CREATE PROC [dbo].[Delete_KhoaHocById](@id int)
+AS BEGIN
+	DELETE KhoaHoc WHERE id = @id
+END
+GO
+
+CREATE PROC [dbo].[Delete_BaiHocById](@id int)
+AS BEGIN
+	DELETE DSBaiHoc WHERE id = @id
+END
+GO
+
+CREATE PROC [dbo].[Delete_BaiHocByIdKhoaHoc](@idKhoaHoc int)
+AS BEGIN
+	DELETE DSBaiHoc WHERE idkhoahoc = @idKhoaHoc
+END
+GO
+
+CREATE PROC [dbo].[Delete_CauHoiById](@id int)
+AS BEGIN
+	DELETE DSCauHoi WHERE id = @id
+END
+GO
+
+CREATE PROC [dbo].[Delete_CauHoiByIdBaiHoc](@idbaihoc int)
+AS BEGIN
+	DELETE DSCauHoi WHERE idbaihoc = @idBaiHoc
+END
+GO
+
+CREATE PROC [dbo].[Delete_DapAnById](@id int)
+AS BEGIN
+	DELETE DSDapAn WHERE id = @id
+END
+GO
+
+CREATE PROC [dbo].[Delete_DapAnByIdCauHoi](@idcauhoi int)
+AS BEGIN
+	DELETE DSDapAn WHERE idcauhoi = @idcauhoi
+END
+GO
