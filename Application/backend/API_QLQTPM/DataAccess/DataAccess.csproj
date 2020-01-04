@@ -91,6 +91,7 @@
     <Compile Include="DapAnDataAccess.cs" />
     <Compile Include="KhoaHocDataAccess.cs" />
     <Compile Include="LoaiDiemKNDataAccess.cs" />
+    <Compile Include="PhanHoiDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaiKhoanDataAccess.cs" />
     <Compile Include="ThongBaoDataAccess.cs" />

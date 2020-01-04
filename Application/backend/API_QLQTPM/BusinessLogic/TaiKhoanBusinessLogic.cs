@@ -148,5 +148,25 @@ namespace BusinessLogic
             }
             return await Task.FromResult(response);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<bool> UpdateAccountInfo(UpdateAccountInfoParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.UpdateAccountInfo(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception ex)
+            {
+                return await Task.FromResult(response);
+            }
+        }
     }
 }

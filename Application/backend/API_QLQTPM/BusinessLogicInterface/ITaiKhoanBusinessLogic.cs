@@ -50,5 +50,12 @@
         /// <param name="request"></param>
         /// <returns></returns>
         Task<GetAllAccSameKHResponse> GetAllAccSameKH(GetAllAccountSameKHParam request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<bool> UpdateAccountInfo(UpdateAccountInfoParameter request);
     }
 }

@@ -91,6 +91,7 @@
     <Compile Include="IKhoaHocDataAccess.cs" />
     <Compile Include="ILoaiDiemKNDataAccess.cs" />
     <Compile Include="IBieuDoTheoDoiDataAccess.cs" />
+    <Compile Include="IPhanHoiDataAccess.cs" />
     <Compile Include="ITaiKhoanDataAccess.cs" />
     <Compile Include="IThongBaoDataAccess.cs" />
     <Compile Include="Parameter\DeleteBanBeParameter.cs" />
@@ -103,9 +104,11 @@
     <Compile Include="Parameter\GetDsDapAnParameter.cs" />
     <Compile Include="Parameter\GetDSThongBaoParameter.cs" />
     <Compile Include="Parameter\GetThongTinTaiKhoanParameter.cs" />
+    <Compile Include="Parameter\InsertPhanHoiParameter.cs" />
     <Compile Include="Parameter\LoginParameter.cs" />
     <Compile Include="Parameter\ThemBaiHocPassParameter.cs" />
     <Compile Include="Parameter\ThemThongTinTaiKhoanParameter.cs" />
+    <Compile Include="Parameter\UpdateAccountInfoParameter.cs" />
     <Compile Include="Parameter\UpdatePasswordParameter.cs" />
     <Compile Include="Parameter\UpdateThongBaoParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -84,5 +84,17 @@ namespace api.Controllers
             var result = _businessLogic.GetAllAccSameKH(RequestData);
             return new ActionResult<GetAllAccSameKHResponse>(result.Result, Request);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="RequestData"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult UpdateAccountInfo(UpdateAccountInfoParameter RequestData)
+        {
+            var result = _businessLogic.UpdateAccountInfo(RequestData);
+            return new ActionResult<bool>(result.Result, Request);
+        }
     }
 }

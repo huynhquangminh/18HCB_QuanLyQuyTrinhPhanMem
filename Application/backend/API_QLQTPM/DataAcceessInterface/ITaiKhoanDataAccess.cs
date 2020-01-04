@@ -50,5 +50,12 @@
         /// <param name="param"></param>
         /// <returns></returns>
         IEnumerable<Get_all_account_same_khoahoc_Result> GetAllAccSameKH(GetAllAccountSameKHParam param);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        bool UpdateAccountInfo(UpdateAccountInfoParameter param);
     }
 }

@@ -58,6 +58,10 @@ namespace api
             container.RegisterType<IBanBeBusinessLogic, BanBeBusinessLogic>();
             container.RegisterType<IBanBeDataAccess, BanBeDataAccess>();
 
+            //phan hoi
+            container.RegisterType<IPhanHoiBusinessLogic, PhanHoiBusinessLogic>();
+            container.RegisterType<IPhanHoiDataAccess, PhanHoiDataAccess>();
+
 
             config.DependencyResolver = new UnityResolver(container);
             // Web API routes

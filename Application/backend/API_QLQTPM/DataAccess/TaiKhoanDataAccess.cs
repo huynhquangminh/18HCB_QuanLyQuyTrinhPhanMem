@@ -69,5 +69,16 @@
         {
             return db.Get_all_account_same_khoahoc(param.idTaiKhoan, param.idKhoaHoc);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public bool UpdateAccountInfo(UpdateAccountInfoParameter param)
+        {
+            var result = db.Update_AccountInfo(param.id, param.username, param.email, param.img) > 0 ? true : false;
+            return result;
+        }
     }
 }

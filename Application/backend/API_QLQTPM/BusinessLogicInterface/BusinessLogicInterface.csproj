@@ -109,6 +109,7 @@
     <Compile Include="IDapAnBusinessLogic.cs" />
     <Compile Include="IKhoaHocBusinessLogic.cs" />
     <Compile Include="ILoaiDiemKNBusinessLogic.cs" />
+    <Compile Include="IPhanHoiBusinessLogic.cs" />
     <Compile Include="ITaiKhoanBusinessLogic.cs" />
     <Compile Include="IThongBaoBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
