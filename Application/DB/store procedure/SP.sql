@@ -460,3 +460,10 @@ AS BEGIN
 	DELETE DSDapAn WHERE idcauhoi = @idcauhoi
 END
 GO
+
+CREATE PROC Update_AccountInfo (@id int, @username nvarchar(100), @email nvarchar(100), @img nvarchar(max))
+AS BEGIN
+	UPDATE TaiKhoan 
+	SET username = @username,  email = @email, img = @img 
+	WHERE id = @id
+END

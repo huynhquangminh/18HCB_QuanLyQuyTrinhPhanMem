@@ -381,6 +381,12 @@
           <Parameter Name="idTTTaiKhoan" Type="int" Mode="In" />
           <Parameter Name="idBaiHoc" Type="int" Mode="In" />
         </Function>
+        <Function Name="Update_AccountInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="img" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="UPDATE_DSThongBao_Follow_Id_IdAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="idAccount" Type="int" Mode="In" />
@@ -964,6 +970,12 @@
             <Parameter Name="idbanbe" Mode="In" Type="Int32" />
             <Parameter Name="idaccount" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="Update_AccountInfo">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="img" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ACCOUNT_LOGIN_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1378,6 +1390,7 @@
           <FunctionImportMapping FunctionImportName="Update_PassWord_Account" FunctionName="WebLapTrinhModel.Store.Update_PassWord_Account" />
           <FunctionImportMapping FunctionImportName="Update_ThongTinBanBe" FunctionName="WebLapTrinhModel.Store.Update_ThongTinBanBe" />
           <FunctionImportMapping FunctionImportName="Delete_YeuCauKetBan" FunctionName="WebLapTrinhModel.Store.Delete_YeuCauKetBan" />
+          <FunctionImportMapping FunctionImportName="Update_AccountInfo" FunctionName="WebLapTrinhModel.Store.Update_AccountInfo" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
