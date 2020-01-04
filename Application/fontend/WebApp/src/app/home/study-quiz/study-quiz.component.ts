@@ -20,7 +20,7 @@ export class StudyQuizComponent implements OnInit {
   public listQuestion: any[] = [];
   public listCauHoi: any[] = [];
   public listDapAn: any[] = [];
-  currentQuestion = {};
+  currentQuestion: any = {};
   indexCurrentQuestion = 0;
   audio = new Audio();
   pathAudioRight = '../../../../assets/audio/right_answer.mp3';
@@ -180,6 +180,7 @@ export class StudyQuizComponent implements OnInit {
     this.router.navigateByUrl('/home/main/course-list');
   }
   cancelStudy() {
+    clearInterval(this.interval);
     this.router.navigateByUrl('/home/main/course-list');
   }
 
