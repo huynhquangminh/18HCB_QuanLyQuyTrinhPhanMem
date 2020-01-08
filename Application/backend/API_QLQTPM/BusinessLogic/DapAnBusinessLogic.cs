@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-   public class DapAnBusinessLogic: BaseBusinessLogic, IDapAnBusinessLogic
+    public class DapAnBusinessLogic : BaseBusinessLogic, IDapAnBusinessLogic
     {
         private readonly IDapAnDataAccess _dataAccess;
 
@@ -33,6 +33,36 @@ namespace BusinessLogic
             mapper = configMap.CreateMapper();
         }
 
+        public async Task<bool> DeleteDapAnByID(DeleteDapAnByIDParam request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.DeleteDapAnByID(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
+        public async Task<bool> DeleteDapAnByIDCauHoi(DeleteDapAnByIDCauHoiParam request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.DeleteDapAnByIDCauHoi(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
         public async Task<ListDapAnResponse> GetDSDapByBaiHoc(GetDsDapAnParameter param)
         {
             var response = new ListDapAnResponse();
@@ -41,7 +71,7 @@ namespace BusinessLogic
                 var result = _dataAccess.GetDSDapAnByBaiHoc(param);
                 if (result != null)
                 {
-                    response.listDapAn = MapList<GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result, listDapAnDto > (result.ToList());
+                    response.listDapAn = MapList<GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result, listDapAnDto>(result.ToList());
                     response.Success = true;
                 }
 

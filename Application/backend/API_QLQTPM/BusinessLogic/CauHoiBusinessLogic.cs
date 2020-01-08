@@ -51,6 +51,21 @@ namespace BusinessLogic
             }
         }
 
+        public async Task<bool> DeleteCauHoiByIDBaiHoc(DeleteCauHoiByIDBaiHocParam request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.DeleteCauHoiByIDBaiHoc(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
         public async Task<GetDSCauHoiResponse> GetDSCauHoi(GetDSCauHoiParameter request)
         {
             var response = new GetDSCauHoiResponse();

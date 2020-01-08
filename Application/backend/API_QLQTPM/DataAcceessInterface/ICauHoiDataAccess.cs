@@ -16,5 +16,12 @@ namespace DataAcceessInterface
         /// 
         /// </summary>
         bool DeleteCauHoiByID(DeleteCauHoiByIDParam param);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        bool DeleteCauHoiByIDBaiHoc(DeleteCauHoiByIDBaiHocParam param);
     }
 }

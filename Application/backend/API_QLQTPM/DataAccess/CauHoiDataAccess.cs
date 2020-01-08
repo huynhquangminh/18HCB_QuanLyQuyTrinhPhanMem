@@ -27,6 +27,12 @@ namespace DataAccess
             return result;
         }
 
+        public bool DeleteCauHoiByIDBaiHoc(DeleteCauHoiByIDBaiHocParam param)
+        {
+            var result = db.Delete_CauHoiByIdBaiHoc(param.idBaiHoc) > 0 ? true : false;
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>

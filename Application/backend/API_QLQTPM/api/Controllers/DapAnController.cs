@@ -25,5 +25,19 @@ namespace api.Controllers
             var result = _businessLogic.GetDSDapByBaiHoc(param);
             return new ActionResult<ListDapAnResponse>(result.Result, Request);
         }
+
+        [HttpPost]
+        public IHttpActionResult DeleteDapAnByID(DeleteDapAnByIDParam param)
+        {
+            var result = _businessLogic.DeleteDapAnByID(param);
+            return new ActionResult<bool>(result.Result, Request);
+        }
+
+        [HttpPost]
+        public IHttpActionResult DeleteDapAnByIDCauHoi(DeleteDapAnByIDCauHoiParam param)
+        {
+            var result = _businessLogic.DeleteDapAnByIDCauHoi(param);
+            return new ActionResult<bool>(result.Result, Request);
+        }
     }
 }

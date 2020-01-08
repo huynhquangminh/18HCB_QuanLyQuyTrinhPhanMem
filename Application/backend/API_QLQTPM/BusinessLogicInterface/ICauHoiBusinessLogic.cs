@@ -18,5 +18,7 @@ namespace BusinessLogicInterface
         Task<GetDSCauHoiResponse> GetDSCauHoi(GetDSCauHoiParameter request);
 
         Task<bool> DeleteCauHoiByID(DeleteCauHoiByIDParam request);
+
+        Task<bool> DeleteCauHoiByIDBaiHoc(DeleteCauHoiByIDBaiHocParam request);
     }
 }

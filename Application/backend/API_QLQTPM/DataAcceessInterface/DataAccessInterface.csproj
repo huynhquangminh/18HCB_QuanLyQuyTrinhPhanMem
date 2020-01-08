@@ -97,7 +97,10 @@
     <Compile Include="Parameter\DeleteBaiHocByIDKhoaHocParam.cs" />
     <Compile Include="Parameter\DeleteBaiHocByIDParam.cs" />
     <Compile Include="Parameter\DeleteBanBeParameter.cs" />
+    <Compile Include="Parameter\DeleteCauHoiByIDBaiHocParam.cs" />
     <Compile Include="Parameter\DeleteCauHoiByIDParam.cs" />
+    <Compile Include="Parameter\DeleteDapAnByIDCauHoiParam.cs" />
+    <Compile Include="Parameter\DeleteDapAnByIDParam.cs" />
     <Compile Include="Parameter\DeleteKHByIDParameter.cs" />
     <Compile Include="Parameter\GetAllAccountSameKHParam.cs" />
     <Compile Include="Parameter\GetBieuDoTheoDoiParameter.cs" />

@@ -42,5 +42,17 @@ namespace api.Controllers
             var result = _businessLogic.DeleteCauHoiByID(request);
             return new ActionResult<bool>(result.Result, Request);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult DeleteCauHoiByIDBaiHoc(DeleteCauHoiByIDBaiHocParam request)
+        {
+            var result = _businessLogic.DeleteCauHoiByIDBaiHoc(request);
+            return new ActionResult<bool>(result.Result, Request);
+        }
     }
 }
