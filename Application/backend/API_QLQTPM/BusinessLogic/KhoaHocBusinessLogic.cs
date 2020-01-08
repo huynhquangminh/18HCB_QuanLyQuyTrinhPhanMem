@@ -9,6 +9,7 @@ using BusinessLogicInterface;
 using BusinessLogicInterface.Dtos;
 using BusinessLogicInterface.Response;
 using DataAcceessInterface;
+using DataAcceessInterface.Parameter;
 using EntityData;
 
 namespace BusinessLogic
@@ -53,6 +54,36 @@ namespace BusinessLogic
                 response.Success = false;
             }
             return await Task.FromResult(response);
+        }
+
+        public async Task<bool> ThemKhoaHoc(ThemKhoaHocParameter param)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.ThemKhoaHoc(param);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
+        public async Task<bool> SuaKhoaHoc(ThemKhoaHocParameter param)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.SuaKhoaHoc(param);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
         }
     }
 }

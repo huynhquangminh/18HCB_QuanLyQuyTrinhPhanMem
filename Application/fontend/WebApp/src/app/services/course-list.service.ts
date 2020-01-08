@@ -6,6 +6,16 @@ export class CourseListService extends AppService {
         return this.CallByResquestService('/api/baihoc/danhsachbaihoc', request);
     }
 
+    updateBaiHoc(request: any) {
+        return this.CallByResquestService('/api/baihoc/suabaihoc', request);
+    }
+
+    insertBaiHoc(request: any) {
+        return this.CallByResquestService('/api/baihoc/thembaihoc', request);
+    }
+
+
+
     ThemBaiHocPass(request: any = {}) {
         return this.CallByResquestService('/api/baihoc/thembaihocpass', request);
     }

@@ -14,6 +14,8 @@ export class KhoahocComponent implements OnInit {
   isThemKhoaHoc = false;
   isSuaKhoaHoc = false;
   public tenkhoahoc = '';
+  idkhoahoc = 0;
+  img = '';
 
   constructor(
     private displaySettingService: DisplaySettingService,
@@ -29,6 +31,33 @@ export class KhoahocComponent implements OnInit {
     this.isSuaKhoaHoc = false;
     this.tenkhoahoc = '';
   }
+  save() {
+    const request = {
+      id: 0,
+      tenkhoahoc: this.tenkhoahoc,
+      imgkhoahoc: 'xxxx'
+    };
+    this.displaySettingService.insertKhoaHoc(request).subscribe(res => {
+      if (res) {
+        this.getDsKhoaHoc();
+      }
+    });
+  }
+
+  update() {
+    const request = {
+      id: this.idkhoahoc,
+      tenkhoahoc: this.tenkhoahoc,
+      imgkhoahoc: this.img
+    };
+    this.displaySettingService.updateKhoaHoc(request).subscribe(res => {
+      if (res) {
+        this.tenkhoahoc = '';
+        this.isSuaKhoaHoc = false;
+        this.getDsKhoaHoc();
+      }
+    });
+  }
   getDsKhoaHoc() {
     this.displaySettingService.getDsKhoaHoc().subscribe(res => {
       if (res && res.Success) {
@@ -41,6 +70,8 @@ export class KhoahocComponent implements OnInit {
     this.isSuaKhoaHoc = true;
     this.isThemKhoaHoc = false;
     this.tenkhoahoc = item.tenkhoahoc;
+    this.idkhoahoc = item.id;
+    this.img = item.imgKhoaHoc;
   }
   xoakhoahoc(id) {
     const dialogRef = this.dialog.open(DialogComfirmComponent, {

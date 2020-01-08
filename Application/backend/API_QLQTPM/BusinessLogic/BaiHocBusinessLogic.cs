@@ -69,7 +69,7 @@ namespace BusinessLogic
             }
         }
 
-       public async Task<GetDSBaiHocPassResponse> GetDSBaiHocPass(GetDSBaiHocPassParameter request)
+        public async Task<GetDSBaiHocPassResponse> GetDSBaiHocPass(GetDSBaiHocPassParameter request)
         {
             var response = new GetDSBaiHocPassResponse();
             try
@@ -87,6 +87,36 @@ namespace BusinessLogic
                 response.Success = false;
             }
             return await Task.FromResult(response);
+        }
+
+        public async Task<bool> ThemBaiHoc(ThemBaiHocParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.ThemBaiHoc(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
+        public async Task<bool> SuaBaiHoc(ThemBaiHocParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.SuaBaiHoc(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
         }
     }
 }

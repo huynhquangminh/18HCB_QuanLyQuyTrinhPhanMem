@@ -16,6 +16,7 @@ export class BaihocComponent implements OnInit {
   public isSuaBaiHoc = false;
   public tenbaihoc = '';
   public idKhoahoc = 0;
+  idbaihoc = 0;
   public listKhoaHoc: any[] = [];
   constructor(
     private displaySettingService: DisplaySettingService,
@@ -56,10 +57,39 @@ export class BaihocComponent implements OnInit {
     this.tenbaihoc = '';
   }
 
+  save() {
+    const request = {
+      id: 0,
+      tenbaihoc: this.tenbaihoc,
+      idkhoahoc: this.idKhoahoc
+    };
+    this.courseListService.insertBaiHoc(request).subscribe(res => {
+      if (res) {
+        this.getDsKhoaHoc();
+      }
+    });
+  }
+
+  update() {
+    const request = {
+      id: this.idbaihoc,
+      tenkhoahoc: this.tenbaihoc,
+      idkhoahoc: this.idKhoahoc
+    };
+    this.courseListService.updateBaiHoc(request).subscribe(res => {
+      if (res) {
+        this.tenbaihoc = '';
+        this.isSuaBaiHoc = false;
+        this.getDsKhoaHoc();
+      }
+    });
+  }
+
   suabaihoc(item) {
     this.isSuaBaiHoc = true;
     this.isThemBaiHoc = false;
     this.tenbaihoc = item.tenbaihoc;
+    this.idbaihoc = item.id;
   }
   xoabaihoc(id) {
     const dialogRef = this.dialog.open(DialogComfirmComponent, {

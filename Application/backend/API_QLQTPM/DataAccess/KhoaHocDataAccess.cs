@@ -1,4 +1,5 @@
 ﻿using DataAcceessInterface;
+using DataAcceessInterface.Parameter;
 using EntityData;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,18 @@ namespace DataAccess
         public IEnumerable<Get_DSKhoaHoc_Result> GetDSKhoaHoc()
         {
             return db.Get_DSKhoaHoc();
+        }
+
+        public bool ThemKhoaHoc(ThemKhoaHocParameter param)
+        {
+            //var result = db.Insert_KhoaHoc(param.tenkhoahoc, param.imgkhoahoc) > 0 ? true : false;
+            return true;
+        }
+
+        public bool SuaKhoaHoc(ThemKhoaHocParameter param)
+        {
+            var result = db.Update_KhoaHoc(param.id, param.tenkhoahoc, param.imgkhoahoc) > 0 ? true : false;
+            return result;
         }
     }
 }

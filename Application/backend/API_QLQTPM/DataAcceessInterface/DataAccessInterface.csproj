@@ -106,7 +106,9 @@
     <Compile Include="Parameter\GetThongTinTaiKhoanParameter.cs" />
     <Compile Include="Parameter\InsertPhanHoiParameter.cs" />
     <Compile Include="Parameter\LoginParameter.cs" />
+    <Compile Include="Parameter\ThemBaiHocParameter.cs" />
     <Compile Include="Parameter\ThemBaiHocPassParameter.cs" />
+    <Compile Include="Parameter\ThemKhoaHocParameter.cs" />
     <Compile Include="Parameter\ThemThongTinTaiKhoanParameter.cs" />
     <Compile Include="Parameter\UpdateAccountInfoParameter.cs" />
     <Compile Include="Parameter\UpdatePasswordParameter.cs" />

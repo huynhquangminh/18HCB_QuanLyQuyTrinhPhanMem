@@ -47,5 +47,27 @@ namespace DataAccess
             return db.Get_DSBaiHocPass(param.idTTTaiKhoan);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public bool ThemBaiHoc(ThemBaiHocParameter param)
+        {
+            var result = db.Insert_DSBaiHoc(param.tenbaihoc, param.idkhoahoc) > 0 ? true : false;
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public bool SuaBaiHoc(ThemBaiHocParameter param)
+        {
+            var result = db.Update_DSBaiHoc(param.id, param.tenbaihoc, param.idkhoahoc) > 0 ? true : false;
+            return result;
+        }
+
     }
 }

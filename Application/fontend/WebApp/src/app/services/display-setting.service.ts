@@ -10,6 +10,12 @@ export class DisplaySettingService extends AppService {
     getDsKhoaHoc() {
         return this.CallAllService('/api/khoahoc/GetDSKhoaHoc');
     }
+    updateKhoaHoc(request: any = {}) {
+        return this.CallByResquestService('/api/khoahoc/suakhoahoc', request);
+    }
+    insertKhoaHoc(request: any = {}) {
+        return this.CallByResquestService('/api/khoahoc/themkhoahoc', request);
+    }
     getDsCapDo() {
         return this.CallAllService('/api/CapDo/GetCapDo');
     }

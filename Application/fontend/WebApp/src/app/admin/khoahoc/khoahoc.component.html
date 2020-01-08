@@ -10,8 +10,8 @@
                     <mat-form-field class="form-input ">
                         <input name="tenkhoahoc" matInput placeholder="Tên Khóa học" [(ngModel)]="tenkhoahoc">
                     </mat-form-field>
-                    <button mat-raised-button color="primary" *ngIf="isThemKhoaHoc">Thêm</button>
-                    <button mat-raised-button color="accent" *ngIf="isSuaKhoaHoc">Sửa</button>
+                    <button mat-raised-button color="primary" *ngIf="isThemKhoaHoc" (click)="save()">Thêm</button>
+                    <button mat-raised-button color="accent" *ngIf="isSuaKhoaHoc" (click)="update()">Sửa</button>
                 </form>
             </div>
         </ng-container>

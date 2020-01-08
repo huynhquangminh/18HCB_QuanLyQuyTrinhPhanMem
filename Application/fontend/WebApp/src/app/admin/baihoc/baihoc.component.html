@@ -21,8 +21,8 @@
                         </mat-form-field>
 
                     </div>
-                    <button class="btn-aciton" mat-raised-button color="primary" *ngIf="isThemBaiHoc">Thêm</button>
-                    <button class="btn-aciton" mat-raised-button color="accent" *ngIf="isSuaBaiHoc">Sửa</button>
+                    <button class="btn-aciton" mat-raised-button color="primary" *ngIf="isThemBaiHoc" (click)="save()">Thêm</button>
+                    <button class="btn-aciton" mat-raised-button color="accent" *ngIf="isSuaBaiHoc" (click)="update()">Sửa</button>
                 </ng-container>
             </form>
         </div>
