@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DisplaySettingService } from 'src/app/services/display-setting.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComfirmComponent } from 'src/app/shared/dialog-comfirm/dialog-comfirm.component';
 
 @Component({
   selector: 'app-khoahoc',
@@ -14,7 +16,8 @@ export class KhoahocComponent implements OnInit {
   public tenkhoahoc = '';
 
   constructor(
-    private displaySettingService: DisplaySettingService
+    private displaySettingService: DisplaySettingService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -40,6 +43,15 @@ export class KhoahocComponent implements OnInit {
     this.tenkhoahoc = item.tenkhoahoc;
   }
   xoakhoahoc(id) {
+    const dialogRef = this.dialog.open(DialogComfirmComponent, {
+      width: '350px',
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getDsKhoaHoc();
+      }
+    });
   }
 
 }

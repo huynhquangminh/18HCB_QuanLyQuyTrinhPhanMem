@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DisplaySettingService } from 'src/app/services/display-setting.service';
 import { CourseListService } from 'src/app/services/course-list.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComfirmComponent } from 'src/app/shared/dialog-comfirm/dialog-comfirm.component';
 
 @Component({
   selector: 'app-baihoc',
@@ -17,7 +19,8 @@ export class BaihocComponent implements OnInit {
   public listKhoaHoc: any[] = [];
   constructor(
     private displaySettingService: DisplaySettingService,
-    private courseListService: CourseListService
+    private courseListService: CourseListService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -59,6 +62,14 @@ export class BaihocComponent implements OnInit {
     this.tenbaihoc = item.tenbaihoc;
   }
   xoabaihoc(id) {
-
+    const dialogRef = this.dialog.open(DialogComfirmComponent, {
+      width: '350px',
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getDsKhoaHoc();
+      }
+    });
   }
 }

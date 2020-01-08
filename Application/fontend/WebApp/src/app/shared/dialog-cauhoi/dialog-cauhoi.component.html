@@ -1,0 +1,25 @@
+<div class="content-div">
+    <span style="font-size: 15px;">Câu hỏi</span><br>
+    <mat-form-field class="form-input">
+        <textarea matInput placeholder="Textarea"></textarea>
+    </mat-form-field>
+</div>
+<div>
+    <span style="font-size: 15px;">Danh sách câu trả lời</span><br>
+    <div class="content-div">
+        <ng-container>
+            <mat-form-field class="form-input-tl">
+                <input matInput placeholder="Câu trả lời" value="Sushi">
+            </mat-form-field>
+            <mat-checkbox>Đáp án đúng</mat-checkbox>
+        </ng-container>
+    </div>
+    <span>
+        <mat-icon>add_circle</mat-icon>
+        <span style="font-size: 15px;">Thêm câu trả lời</span>
+    </span>
+</div>
+<div style="float: right; ">
+    <button style="margin-right: 5px;" mat-raised-button color="primary" (click)="huy()">Không</button>
+    <button style="margin-right: 5px;" mat-raised-button color="warn" (click)="dongy()">Có</button>
+</div>

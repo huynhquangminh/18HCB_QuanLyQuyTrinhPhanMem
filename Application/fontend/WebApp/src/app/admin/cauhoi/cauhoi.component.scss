@@ -1,0 +1,38 @@
+.example-container {
+    height: 400px;
+    overflow: auto;
+}
+  
+table {
+    width: 100%;
+}
+.header-table {
+    margin-top: 15px;
+    height: auto;
+}
+.container-add {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-input {
+    width: 20%;
+    font-size: 15px;
+    margin: 10px;
+}
+.form-input-textarea {
+    width: 70%;
+    font-size: 15px;
+    margin: 10px;
+}
+.btn-aciton {
+    margin: 5px;
+}
+.view-cauhoi {
+    width: 65%;
+    background: #d7e0e0; 
+    margin: 10px; 
+    padding: 10px;
+    font-size: 15px;
+}

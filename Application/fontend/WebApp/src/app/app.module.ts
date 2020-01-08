@@ -32,6 +32,11 @@ import { DialogFriendsComponent } from './shared/dialog-friends/dialog-friends.c
 import { MatTabsModule } from '@angular/material/tabs';
 import { FriendsService } from './services/friends.service';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { DialogComfirmComponent } from './shared/dialog-comfirm/dialog-comfirm.component';
+import { DialogCauhoiComponent } from './shared/dialog-cauhoi/dialog-cauhoi.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +49,8 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
     DialogNoticationsComponent,
     DialogFriendsComponent,
     LoginAdminComponent,
+    DialogComfirmComponent,
+    DialogCauhoiComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +64,9 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
     MatButtonModule,
     MatRippleModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [
     AppService,
@@ -78,7 +87,9 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
     DialogTimeOutComponent,
     DialogQuizSuccessComponent,
     DialogNoticationsComponent,
-    DialogFriendsComponent
+    DialogFriendsComponent,
+    DialogComfirmComponent,
+    DialogCauhoiComponent
   ]
 })
 export class AppModule { }

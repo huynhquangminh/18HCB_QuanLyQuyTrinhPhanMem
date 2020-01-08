@@ -36,7 +36,7 @@ export class DialogFriendsComponent implements OnInit {
   getListFriends() {
     this.friendsService.getListFriends({ idAccount: this.data.idTaiKhoan }).subscribe(res => {
       if (res && res.Success) {
-        this.listFriend = res.listBanBe
+        this.listFriend = res.listBanBe;
       }
     });
   }

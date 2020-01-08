@@ -6,7 +6,8 @@
 </div>
 <div class="question-style" *ngIf="listCauHoi.length > 0">
     <mat-card-content *ngIf="valueProgress < 100">
-        <label id="example-radio-group-label" style="font-size: 20px">Question: {{currentQuestion.question}}</label>
+        <label id="example-radio-group-label" style="font-size: 20px">Question</label><br>
+        <span style="font-size: 20px; margin-left: 10px;" [innerHTML]="currentQuestion.question"></span>
         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
             [(ngModel)]="resultAnswer" >
             <mat-radio-button class="example-radio-button" *ngFor="let item of currentQuestion.answer"
@@ -17,5 +18,4 @@
         <button mat-raised-button color="primary" [disabled]="!resultAnswer"
             (click)="submitAnswer(resultAnswer,currentQuestion.id )">Submit</button>
     </mat-card-content>
-    <!-- <button *ngIf="valueProgress === 100" mat-raised-button color="primary" (click)="selectFinish()">Finish</button> -->
 </div>
