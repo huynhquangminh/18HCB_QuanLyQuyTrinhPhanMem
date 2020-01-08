@@ -15,7 +15,7 @@ namespace EntityData
     public partial class DSBaiHocPass_Of_TaiKhoan
     {
         public int id { get; set; }
-        public int idTTTaiKhoan { get; set; }
+        public Nullable<int> idTTTaiKhoan { get; set; }
         public Nullable<int> idBaiHoc { get; set; }
     
         public virtual ThongTinTaiKhoan ThongTinTaiKhoan { get; set; }

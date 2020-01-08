@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="header-table">
+        <button mat-button color="primary" (click)="themkhoahoc()" *ngIf="!isThemKhoaHoc">
+            <mat-icon>add_circle</mat-icon>
+            Thêm khóa học
+        </button>
+        <ng-container *ngIf="isThemKhoaHoc || isSuaKhoaHoc">
+            <div class="container-add">
+                <form>
+                    <mat-form-field class="form-input ">
+                        <input name="tenkhoahoc" matInput placeholder="Tên Khóa học" [(ngModel)]="tenkhoahoc">
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" *ngIf="isThemKhoaHoc">Thêm</button>
+                    <button mat-raised-button color="accent" *ngIf="isSuaKhoaHoc">Sửa</button>
+                </form>
+            </div>
+        </ng-container>
+    </div>
+    <div class=" example-container mat-elevation-z8" *ngIf="dataSource && dataSource.length>0">
+        <table mat-table [dataSource]="dataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="Id">
+                <th mat-header-cell *matHeaderCellDef> Id. </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="tenkhoahoc">
+                <th mat-header-cell *matHeaderCellDef> Tên khóa học </th>
+                <td mat-cell *matCellDef="let element"> {{element.tenkhoahoc}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="chucnang">
+                <th mat-header-cell *matHeaderCellDef> Chức năng </th>
+                <td mat-cell *matCellDef="let element">
+                    <button class="btn-aciton" title="Sửa" mat-button color="accent" (click)="suakhoahoc(element)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button class="btn-aciton" title="Xóa" mat-button color="warn" (click)="xoakhoahoc(element.id)">
+                        <mat-icon>remove_circle</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+</div>

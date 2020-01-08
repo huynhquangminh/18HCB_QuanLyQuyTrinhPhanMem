@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'login-manager',
+    component: LoginAdminComponent
   },
   {
     path: 'register',
@@ -23,6 +28,10 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+  },
+  {
+    path: 'manager',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
   },
   {
     path: '**',

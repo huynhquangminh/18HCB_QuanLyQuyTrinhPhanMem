@@ -93,16 +93,16 @@ export class HomeComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe(res => {
         this.getListFriends();
-      })
+      });
     }
 
   }
 
-  getListFriends(){
+  getListFriends() {
     const user = this.webStorageSerivce.getLocalStorage(WebKeyStorage.AccountInfo);
-    this.friendsService.getListFriends({idAccount:user.id }).subscribe(res=> {
-      if(res && res.Success){
-        this.listFriend = res.listBanBe.filter(item=> item.yeucau === true);
+    this.friendsService.getListFriends({ idAccount: user.id }).subscribe(res => {
+      if (res && res.Success) {
+        this.listFriend = res.listBanBe.filter(item => item.yeucau === true);
       }
     });
   }

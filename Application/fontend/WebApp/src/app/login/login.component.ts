@@ -36,23 +36,28 @@ export class LoginComponent implements OnInit {
   submitLogin() {
     this.taiKhoanService.login(this.loginModel).subscribe(result => {
       if (result && result.Success) {
-        this.webStorageSerivce.setLocalStorage(WebKeyStorage.AccountInfo, result.accountLogin);
-        this.taiKhoanService.getDanhSachThongTinTaiKhoan({ idAccount: result.accountLogin.id }).subscribe(res => {
-          if (res && res.Success) {
-            // const dateNow = new Date().toDateString();
-            const dateNow = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-            const datedb = new Date(res.thongTinTaiKhoan.ngayhoc).toJSON().slice(0, 10).replace(/-/g, '/');
-            res.thongTinTaiKhoan.ngayhoc = dateNow;
-            if (datedb !== dateNow) {
-              res.thongTinTaiKhoan.diemKNDay = 0;
+        if (result.accountLogin.typeAccount) {
+          this.webStorageSerivce.setSessionStorage(WebKeyStorage.AccountInfo, result.accountLogin);
+          this.router.navigateByUrl('manager/main');
+        } else {
+          this.webStorageSerivce.setLocalStorage(WebKeyStorage.AccountInfo, result.accountLogin);
+          this.taiKhoanService.getDanhSachThongTinTaiKhoan({ idAccount: result.accountLogin.id }).subscribe(res => {
+            if (res && res.Success) {
+              // const dateNow = new Date().toDateString();
+              const dateNow = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+              const datedb = new Date(res.thongTinTaiKhoan.ngayhoc).toJSON().slice(0, 10).replace(/-/g, '/');
+              res.thongTinTaiKhoan.ngayhoc = dateNow;
+              if (datedb !== dateNow) {
+                res.thongTinTaiKhoan.diemKNDay = 0;
+              }
+              this.goalEveryDayService.listensChangeGoalDay(res.thongTinTaiKhoan.diemKNDay);
+              this.webStorageSerivce.setLocalStorage(WebKeyStorage.SettingUser, res.thongTinTaiKhoan);
+              this.router.navigateByUrl('/home/main/course-list');
+            } else {
+              this.router.navigateByUrl('/home/display-setting');
             }
-            this.goalEveryDayService.listensChangeGoalDay(res.thongTinTaiKhoan.diemKNDay);
-            this.webStorageSerivce.setLocalStorage(WebKeyStorage.SettingUser, res.thongTinTaiKhoan);
-            this.router.navigateByUrl('/home/main/course-list');
-          } else {
-            this.router.navigateByUrl('/home/display-setting');
-          }
-        });
+          });
+        }
         this.isLoginPass = true;
       } else {
         this.isLoginPass = false;

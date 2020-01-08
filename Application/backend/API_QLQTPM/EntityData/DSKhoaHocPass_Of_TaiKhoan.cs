@@ -17,7 +17,5 @@ namespace EntityData
         public int id { get; set; }
         public int idTTTaiKhoan { get; set; }
         public Nullable<int> idKhoaHoc { get; set; }
-    
-        public virtual ThongTinTaiKhoan ThongTinTaiKhoan { get; set; }
     }
 }

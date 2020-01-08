@@ -6,4 +6,8 @@ export class ThongBaoService extends AppService {
     updateThongBao(request: any = {}) {
         return this.CallByResquestService('/api/thongbao/updatethongbao', request);
     }
+
+    themphanhoi(request: any = {}) {
+        return this.CallByResquestService('/api/phanhoi/insertphanhoi', request);
+    }
 }

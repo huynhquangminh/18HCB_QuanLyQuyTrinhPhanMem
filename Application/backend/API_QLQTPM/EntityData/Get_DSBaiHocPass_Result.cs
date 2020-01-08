@@ -14,7 +14,7 @@ namespace EntityData
     public partial class Get_DSBaiHocPass_Result
     {
         public int id { get; set; }
-        public int idTTTaiKhoan { get; set; }
+        public Nullable<int> idTTTaiKhoan { get; set; }
         public Nullable<int> idBaiHoc { get; set; }
     }
 }

@@ -1,0 +1,26 @@
+.example-container {
+    height: 400px;
+    overflow: auto;
+}
+  
+table {
+    width: 100%;
+}
+.header-table {
+    margin-top: 15px;
+    height: auto;
+}
+.container-add {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-input {
+    width: 50%;
+    font-size: 15px;
+    margin: 10px;
+}
+.btn-aciton {
+    margin: 5px;
+}

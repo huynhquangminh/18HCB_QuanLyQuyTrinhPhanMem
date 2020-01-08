@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="WebLapTrinhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="WebLapTrinhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BieuDoTheoDoi">
           <Key>
             <PropertyRef Name="id" />
@@ -33,14 +33,14 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tenbaihoc" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="idkhoahoc" Type="int" Nullable="false" />
+          <Property Name="idkhoahoc" Type="int" />
         </EntityType>
         <EntityType Name="DSBaiHocPass_Of_TaiKhoan">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idTTTaiKhoan" Type="int" Nullable="false" />
+          <Property Name="idTTTaiKhoan" Type="int" />
           <Property Name="idBaiHoc" Type="int" />
         </EntityType>
         <EntityType Name="DSBanBe">
@@ -58,7 +58,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tencauhoi" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="idbaihoc" Type="int" Nullable="false" />
+          <Property Name="idbaihoc" Type="int" />
           <Property Name="idcapdo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="DSDapAn">
@@ -120,6 +120,16 @@
           <Property Name="noidung" Type="nvarchar(max)" Nullable="false" />
           <Property Name="trangthai" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
             <PropertyRef Name="id" />
@@ -129,13 +139,14 @@
           <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="200" />
           <Property Name="img" Type="varchar" MaxLength="200" />
+          <Property Name="typeAccount" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ThongTinTaiKhoan">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idkhoahoc" Type="int" Nullable="false" />
+          <Property Name="idkhoahoc" Type="int" />
           <Property Name="idcapdo" Type="int" Nullable="false" />
           <Property Name="diemKN" Type="int" Nullable="false" />
           <Property Name="diemKNDay" Type="int" />
@@ -155,7 +166,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DSBaiHoc_KhoaHoc">
-          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
+          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DSBaiHoc" Type="Self.DSBaiHoc" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KhoaHoc">
@@ -167,7 +180,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
-          <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="1" />
+          <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DSBaiHocPass_Of_TaiKhoan" Type="Self.DSBaiHocPass_Of_TaiKhoan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ThongTinTaiKhoan">
@@ -203,7 +218,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DSCauHoi_DSBaiHoc">
-          <End Role="DSBaiHoc" Type="Self.DSBaiHoc" Multiplicity="1" />
+          <End Role="DSBaiHoc" Type="Self.DSBaiHoc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DSCauHoi" Type="Self.DSCauHoi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DSBaiHoc">
@@ -215,7 +232,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DSDapAn_DSCauHoi">
-          <End Role="DSCauHoi" Type="Self.DSCauHoi" Multiplicity="1" />
+          <End Role="DSCauHoi" Type="Self.DSCauHoi" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DSDapAn" Type="Self.DSDapAn" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DSCauHoi">
@@ -223,18 +242,6 @@
             </Principal>
             <Dependent Role="DSDapAn">
               <PropertyRef Name="idcauhoi" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
-          <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="1" />
-          <End Role="DSKhoaHocPass_Of_TaiKhoan" Type="Self.DSKhoaHocPass_Of_TaiKhoan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ThongTinTaiKhoan">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="DSKhoaHocPass_Of_TaiKhoan">
-              <PropertyRef Name="idTTTaiKhoan" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -275,7 +282,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ThongTinTaiKhoan_KhoaHoc">
-          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
+          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KhoaHoc">
@@ -314,9 +323,30 @@
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="pass" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Delete_BaiHocById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_BaiHocByIdKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idKhoaHoc" Type="int" Mode="In" />
+        </Function>
         <Function Name="Delete_BanBe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idbanbe" Type="int" Mode="In" />
           <Parameter Name="idaccount" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_CauHoiById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_CauHoiByIdBaiHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idbaihoc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_DapAnById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_DapAnByIdCauHoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idcauhoi" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_KhoaHocById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="Delete_YeuCauKetBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idbanbe" Type="int" Mode="In" />
@@ -330,6 +360,11 @@
           <Parameter Name="idTaikhoan" Type="int" Mode="In" />
         </Function>
         <Function Name="Get_CapDo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_DiemPerThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTaikhoan" Type="int" Mode="In" />
+          <Parameter Name="idKhoaHoc" Type="int" Mode="In" />
+          <Parameter Name="NgayHienTai" Type="date" Mode="In" />
+        </Function>
         <Function Name="Get_DSBaiHoc_ById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idKhoaHoc" Type="int" Mode="In" />
         </Function>
@@ -365,9 +400,46 @@
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="pass" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Insert_DSBaiHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenbaihoc" Type="nvarchar" Mode="In" />
+          <Parameter Name="idkhoahoc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Insert_DSCauHoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tencauhoi" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="idbaihoc" Type="int" Mode="In" />
+          <Parameter Name="idcapdo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Insert_DSDapAn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idcauhoi" Type="int" Mode="In" />
+          <Parameter Name="cautraloi" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="dapan" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Insert_KhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenkhoahoc" Type="nvarchar" Mode="In" />
+          <Parameter Name="imgKhoaHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="INSERT_OR_UPDATE_BieuDoTheoDoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTaikhoan" Type="int" Mode="In" />
+          <Parameter Name="Thu2" Type="int" Mode="In" />
+          <Parameter Name="Thu3" Type="int" Mode="In" />
+          <Parameter Name="Thu4" Type="int" Mode="In" />
+          <Parameter Name="Thu5" Type="int" Mode="In" />
+          <Parameter Name="Thu6" Type="int" Mode="In" />
+          <Parameter Name="Thu7" Type="int" Mode="In" />
+          <Parameter Name="ChuNhat" Type="int" Mode="In" />
+          <Parameter Name="NgayHienTai" Type="date" Mode="In" />
+        </Function>
         <Function Name="Insert_PhanHoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="email" Type="varchar" Mode="In" />
           <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="InsertUpdate_CapDo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="tencapdo" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InsertUpdate_LoaiDiemKN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="diemKN" Type="int" Mode="In" />
         </Function>
         <Function Name="THEM_THONGTINTAIKHOAN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idkhoahoc" Type="int" Mode="In" />
@@ -387,9 +459,31 @@
           <Parameter Name="email" Type="nvarchar" Mode="In" />
           <Parameter Name="img" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="Update_DSBaiHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="tenbaihoc" Type="nvarchar" Mode="In" />
+          <Parameter Name="idkhoahoc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Update_DSCauHoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="tencauhoi" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="idbaihoc" Type="int" Mode="In" />
+          <Parameter Name="idcapdo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Update_DSDapAn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idcauhoi" Type="int" Mode="In" />
+          <Parameter Name="cautraloi" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="dapan" Type="bit" Mode="In" />
+        </Function>
         <Function Name="UPDATE_DSThongBao_Follow_Id_IdAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="idAccount" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Update_KhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="tenkhoahoc" Type="nvarchar" Mode="In" />
+          <Parameter Name="imgKhoaHoc" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Update_PassWord_Account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="username" Type="varchar" Mode="In" />
@@ -416,6 +510,7 @@
           <EntitySet Name="KhoaHoc" EntityType="Self.KhoaHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiDiemKN" EntityType="Self.LoaiDiemKN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhanHoi" EntityType="Self.PhanHoi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongTinTaiKhoan" EntityType="Self.ThongTinTaiKhoan" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BieuDoTheoDoi_TaiKhoan" Association="Self.FK_BieuDoTheoDoi_TaiKhoan">
@@ -446,10 +541,6 @@
             <End Role="DSCauHoi" EntitySet="DSCauHoi" />
             <End Role="DSDapAn" EntitySet="DSDapAn" />
           </AssociationSet>
-          <AssociationSet Name="FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan" Association="Self.FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
-            <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoan" />
-            <End Role="DSKhoaHocPass_Of_TaiKhoan" EntitySet="DSKhoaHocPass_Of_TaiKhoan" />
-          </AssociationSet>
           <AssociationSet Name="FK_DSThongBao_TaiKhoan" Association="Self.FK_DSThongBao_TaiKhoan">
             <End Role="TaiKhoan" EntitySet="TaiKhoan" />
             <End Role="DSThongBao" EntitySet="DSThongBao" />
@@ -475,7 +566,8 @@
             <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoan" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebLapTrinhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -510,7 +602,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tenbaihoc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="idkhoahoc" Type="Int32" Nullable="false" />
+          <Property Name="idkhoahoc" Type="Int32" />
           <NavigationProperty Name="KhoaHoc" Relationship="Self.FK_DSBaiHoc_KhoaHoc" FromRole="DSBaiHoc" ToRole="KhoaHoc" />
           <NavigationProperty Name="DSCauHois" Relationship="Self.FK_DSCauHoi_DSBaiHoc" FromRole="DSBaiHoc" ToRole="DSCauHoi" />
         </EntityType>
@@ -519,7 +611,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idTTTaiKhoan" Type="Int32" Nullable="false" />
+          <Property Name="idTTTaiKhoan" Type="Int32" />
           <Property Name="idBaiHoc" Type="Int32" />
           <NavigationProperty Name="ThongTinTaiKhoan" Relationship="Self.FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan" FromRole="DSBaiHocPass_Of_TaiKhoan" ToRole="ThongTinTaiKhoan" />
         </EntityType>
@@ -539,7 +631,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tencauhoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="idbaihoc" Type="Int32" Nullable="false" />
+          <Property Name="idbaihoc" Type="Int32" />
           <Property Name="idcapdo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CapDo" Relationship="Self.FK_DSCauHoi_CapDo" FromRole="DSCauHoi" ToRole="CapDo" />
           <NavigationProperty Name="DSBaiHoc" Relationship="Self.FK_DSCauHoi_DSBaiHoc" FromRole="DSCauHoi" ToRole="DSBaiHoc" />
@@ -562,7 +654,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idTTTaiKhoan" Type="Int32" Nullable="false" />
           <Property Name="idKhoaHoc" Type="Int32" />
-          <NavigationProperty Name="ThongTinTaiKhoan" Relationship="Self.FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan" FromRole="DSKhoaHocPass_Of_TaiKhoan" ToRole="ThongTinTaiKhoan" />
         </EntityType>
         <EntityType Name="DSThongBao">
           <Key>
@@ -611,6 +702,16 @@
           <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="trangthai" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
             <PropertyRef Name="id" />
@@ -620,6 +721,7 @@
           <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="typeAccount" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="BieuDoTheoDois" Relationship="Self.FK_BieuDoTheoDoi_TaiKhoan" FromRole="TaiKhoan" ToRole="BieuDoTheoDoi" />
           <NavigationProperty Name="DSBanBes" Relationship="Self.FK_DSBanBe_TaiKhoan" FromRole="TaiKhoan" ToRole="DSBanBe" />
           <NavigationProperty Name="DSThongBaos" Relationship="Self.FK_DSThongBao_TaiKhoan" FromRole="TaiKhoan" ToRole="DSThongBao" />
@@ -631,7 +733,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idkhoahoc" Type="Int32" Nullable="false" />
+          <Property Name="idkhoahoc" Type="Int32" />
           <Property Name="idcapdo" Type="Int32" Nullable="false" />
           <Property Name="diemKN" Type="Int32" Nullable="false" />
           <Property Name="diemKNDay" Type="Int32" />
@@ -639,7 +741,6 @@
           <Property Name="ngayhoc" Type="DateTime" Precision="0" />
           <NavigationProperty Name="CapDo" Relationship="Self.FK_ThongTinTaiKhoan_CapDo" FromRole="ThongTinTaiKhoan" ToRole="CapDo" />
           <NavigationProperty Name="DSBaiHocPass_Of_TaiKhoan" Relationship="Self.FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan" FromRole="ThongTinTaiKhoan" ToRole="DSBaiHocPass_Of_TaiKhoan" />
-          <NavigationProperty Name="DSKhoaHocPass_Of_TaiKhoan" Relationship="Self.FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan" FromRole="ThongTinTaiKhoan" ToRole="DSKhoaHocPass_Of_TaiKhoan" />
           <NavigationProperty Name="KhoaHoc" Relationship="Self.FK_ThongTinTaiKhoan_KhoaHoc" FromRole="ThongTinTaiKhoan" ToRole="KhoaHoc" />
           <NavigationProperty Name="LoaiDiemKN" Relationship="Self.FK_ThongTinTaiKhoan_LoaiDiemKN" FromRole="ThongTinTaiKhoan" ToRole="LoaiDiemKN" />
           <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_ThongTinTaiKhoan_TaiKhoan" FromRole="ThongTinTaiKhoan" ToRole="TaiKhoan" />
@@ -681,7 +782,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DSBaiHoc_KhoaHoc">
-          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
+          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DSBaiHoc" Type="Self.DSBaiHoc" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KhoaHoc">
@@ -693,7 +796,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DSCauHoi_DSBaiHoc">
-          <End Role="DSBaiHoc" Type="Self.DSBaiHoc" Multiplicity="1" />
+          <End Role="DSBaiHoc" Type="Self.DSBaiHoc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DSCauHoi" Type="Self.DSCauHoi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DSBaiHoc">
@@ -705,7 +810,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DSBaiHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
-          <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="1" />
+          <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DSBaiHocPass_Of_TaiKhoan" Type="Self.DSBaiHocPass_Of_TaiKhoan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ThongTinTaiKhoan">
@@ -729,7 +836,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DSDapAn_DSCauHoi">
-          <End Role="DSCauHoi" Type="Self.DSCauHoi" Multiplicity="1" />
+          <End Role="DSCauHoi" Type="Self.DSCauHoi" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DSDapAn" Type="Self.DSDapAn" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DSCauHoi">
@@ -737,18 +846,6 @@
             </Principal>
             <Dependent Role="DSDapAn">
               <PropertyRef Name="idcauhoi" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
-          <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="1" />
-          <End Role="DSKhoaHocPass_Of_TaiKhoan" Type="Self.DSKhoaHocPass_Of_TaiKhoan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ThongTinTaiKhoan">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="DSKhoaHocPass_Of_TaiKhoan">
-              <PropertyRef Name="idTTTaiKhoan" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -777,7 +874,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ThongTinTaiKhoan_KhoaHoc">
-          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
+          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ThongTinTaiKhoan" Type="Self.ThongTinTaiKhoan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KhoaHoc">
@@ -826,6 +925,7 @@
           <EntitySet Name="KhoaHocs" EntityType="Self.KhoaHoc" />
           <EntitySet Name="LoaiDiemKNs" EntityType="Self.LoaiDiemKN" />
           <EntitySet Name="PhanHois" EntityType="Self.PhanHoi" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
           <EntitySet Name="ThongTinTaiKhoans" EntityType="Self.ThongTinTaiKhoan" />
           <AssociationSet Name="FK_BieuDoTheoDoi_TaiKhoan" Association="Self.FK_BieuDoTheoDoi_TaiKhoan">
@@ -860,10 +960,6 @@
             <End Role="DSCauHoi" EntitySet="DSCauHois" />
             <End Role="DSDapAn" EntitySet="DSDapAns" />
           </AssociationSet>
-          <AssociationSet Name="FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan" Association="Self.FK_DSKhoaHocPass_Of_TaiKhoan_ThongTinTaiKhoan">
-            <End Role="ThongTinTaiKhoan" EntitySet="ThongTinTaiKhoans" />
-            <End Role="DSKhoaHocPass_Of_TaiKhoan" EntitySet="DSKhoaHocPass_Of_TaiKhoan" />
-          </AssociationSet>
           <AssociationSet Name="FK_DSThongBao_TaiKhoan" Association="Self.FK_DSThongBao_TaiKhoan">
             <End Role="TaiKhoan" EntitySet="TaiKhoans" />
             <End Role="DSThongBao" EntitySet="DSThongBaos" />
@@ -888,7 +984,32 @@
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Delete_BaiHocById">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_BaiHocByIdKhoaHoc">
+            <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Delete_BanBe">
+            <Parameter Name="idbanbe" Mode="In" Type="Int32" />
+            <Parameter Name="idaccount" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_CauHoiById">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_CauHoiByIdBaiHoc">
+            <Parameter Name="idbaihoc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_DapAnById">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_DapAnByIdCauHoi">
+            <Parameter Name="idcauhoi" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_KhoaHocById">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_YeuCauKetBan">
             <Parameter Name="idbanbe" Mode="In" Type="Int32" />
             <Parameter Name="idaccount" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -897,17 +1018,22 @@
             <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GET_BieuDoTheoDoi" ReturnType="Collection(WebLapTrinhModel.GET_BieuDoTheoDoi_Result)">
-          <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
+            <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Get_CapDo" ReturnType="Collection(WebLapTrinhModel.Get_CapDo_Result)" />
+          <FunctionImport Name="Get_DiemPerThang" ReturnType="Collection(Int32)">
+            <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
+            <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
+            <Parameter Name="NgayHienTai" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="Get_DSBaiHoc_ById" ReturnType="Collection(WebLapTrinhModel.Get_DSBaiHoc_ById_Result)">
-          <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
+            <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Get_DSBaiHocPass" ReturnType="Collection(WebLapTrinhModel.Get_DSBaiHocPass_Result)">
-          <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
+            <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Get_DSBanBe_By_IdAccount" ReturnType="Collection(WebLapTrinhModel.Get_DSBanBe_By_IdAccount_Result)">
-          <Parameter Name="idAccount" Mode="In" Type="Int32" />
+            <Parameter Name="idAccount" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo" ReturnType="Collection(WebLapTrinhModel.GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result)">
             <Parameter Name="idBaiHoc" Mode="In" Type="Int32" />
@@ -919,25 +1045,62 @@
           </FunctionImport>
           <FunctionImport Name="Get_DSKhoaHoc" ReturnType="Collection(WebLapTrinhModel.Get_DSKhoaHoc_Result)" />
           <FunctionImport Name="GET_DSKhoaHocPass_By_IdTTTaiKhoan" ReturnType="Collection(WebLapTrinhModel.GET_DSKhoaHocPass_By_IdTTTaiKhoan_Result)">
-          <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
+            <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GET_DSThongBao" ReturnType="Collection(WebLapTrinhModel.GET_DSThongBao_Result)">
-          <Parameter Name="idaccount" Mode="In" Type="Int32" />
+            <Parameter Name="idaccount" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Get_DsYeuCauKetBan" ReturnType="Collection(WebLapTrinhModel.Get_DsYeuCauKetBan_Result)">
-          <Parameter Name="idAccount" Mode="In" Type="Int32" />
+            <Parameter Name="idAccount" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Get_LoaiDiemKinhNghiem" ReturnType="Collection(WebLapTrinhModel.Get_LoaiDiemKinhNghiem_Result)" />
           <FunctionImport Name="GET_THONGTINTAIKHOAN" ReturnType="Collection(WebLapTrinhModel.GET_THONGTINTAIKHOAN_Result)">
-          <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
+            <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="INSERT_ACCOUNT">
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Insert_DSBaiHoc">
+            <Parameter Name="tenbaihoc" Mode="In" Type="String" />
+            <Parameter Name="idkhoahoc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_DSCauHoi" ReturnType="Collection(Decimal)">
+            <Parameter Name="tencauhoi" Mode="In" Type="String" />
+            <Parameter Name="idbaihoc" Mode="In" Type="Int32" />
+            <Parameter Name="idcapdo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_DSDapAn">
+            <Parameter Name="idcauhoi" Mode="In" Type="Int32" />
+            <Parameter Name="cautraloi" Mode="In" Type="String" />
+            <Parameter Name="dapan" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_KhoaHoc" ReturnType="Collection(Decimal)">
+            <Parameter Name="tenkhoahoc" Mode="In" Type="String" />
+            <Parameter Name="imgKhoaHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INSERT_OR_UPDATE_BieuDoTheoDoi">
+            <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
+            <Parameter Name="Thu2" Mode="In" Type="Int32" />
+            <Parameter Name="Thu3" Mode="In" Type="Int32" />
+            <Parameter Name="Thu4" Mode="In" Type="Int32" />
+            <Parameter Name="Thu5" Mode="In" Type="Int32" />
+            <Parameter Name="Thu6" Mode="In" Type="Int32" />
+            <Parameter Name="Thu7" Mode="In" Type="Int32" />
+            <Parameter Name="ChuNhat" Mode="In" Type="Int32" />
+            <Parameter Name="NgayHienTai" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="Insert_PhanHoi">
             <Parameter Name="email" Mode="In" Type="String" />
             <Parameter Name="noidung" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertUpdate_CapDo">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="tencapdo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertUpdate_LoaiDiemKN">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="diemKN" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="THEM_THONGTINTAIKHOAN">
             <Parameter Name="idkhoahoc" Mode="In" Type="Int32" />
@@ -951,9 +1114,37 @@
             <Parameter Name="idTTTaiKhoan" Mode="In" Type="Int32" />
             <Parameter Name="idBaiHoc" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="Update_AccountInfo">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="img" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_DSBaiHoc">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="tenbaihoc" Mode="In" Type="String" />
+            <Parameter Name="idkhoahoc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_DSCauHoi">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="tencauhoi" Mode="In" Type="String" />
+            <Parameter Name="idbaihoc" Mode="In" Type="Int32" />
+            <Parameter Name="idcapdo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_DSDapAn">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idcauhoi" Mode="In" Type="Int32" />
+            <Parameter Name="cautraloi" Mode="In" Type="String" />
+            <Parameter Name="dapan" Mode="In" Type="Boolean" />
+          </FunctionImport>
           <FunctionImport Name="UPDATE_DSThongBao_Follow_Id_IdAccount">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="idAccount" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_KhoaHoc">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="tenkhoahoc" Mode="In" Type="String" />
+            <Parameter Name="imgKhoaHoc" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Update_PassWord_Account">
             <Parameter Name="username" Mode="In" Type="String" />
@@ -966,16 +1157,6 @@
             <Parameter Name="idaccount" Mode="In" Type="Int32" />
             <Parameter Name="yeucau" Mode="In" Type="Boolean" />
           </FunctionImport>
-          <FunctionImport Name="Delete_YeuCauKetBan">
-            <Parameter Name="idbanbe" Mode="In" Type="Int32" />
-            <Parameter Name="idaccount" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Update_AccountInfo">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="email" Mode="In" Type="String" />
-            <Parameter Name="img" Mode="In" Type="String" />
-          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ACCOUNT_LOGIN_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -983,6 +1164,7 @@
           <Property Type="String" Name="password" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="email" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="typeAccount" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Get_all_account_same_khoahoc_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1008,11 +1190,11 @@
         <ComplexType Name="Get_DSBaiHoc_ById_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="tenbaihoc" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="idkhoahoc" Nullable="false" />
+          <Property Type="Int32" Name="idkhoahoc" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Get_DSBaiHocPass_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="Int32" Name="idTTTaiKhoan" Nullable="false" />
+          <Property Type="Int32" Name="idTTTaiKhoan" Nullable="true" />
           <Property Type="Int32" Name="idBaiHoc" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Get_DSBanBe_By_IdAccount_Result">
@@ -1026,7 +1208,7 @@
         <ComplexType Name="GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="tencauhoi" Nullable="false" />
-          <Property Type="Int32" Name="idbaihoc" Nullable="false" />
+          <Property Type="Int32" Name="idbaihoc" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1063,7 +1245,7 @@
         </ComplexType>
         <ComplexType Name="GET_THONGTINTAIKHOAN_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="Int32" Name="idkhoahoc" Nullable="false" />
+          <Property Type="Int32" Name="idkhoahoc" Nullable="true" />
           <Property Type="Int32" Name="idcapdo" Nullable="false" />
           <Property Type="Int32" Name="diemKN" Nullable="false" />
           <Property Type="Int32" Name="diemKNDay" Nullable="true" />
@@ -1204,6 +1386,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WebLapTrinhModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TaiKhoans">
             <EntityTypeMapping TypeName="WebLapTrinhModel.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
@@ -1212,6 +1405,7 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="typeAccount" ColumnName="typeAccount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1236,10 +1430,19 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="typeAccount" ColumnName="typeAccount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Delete_BaiHocById" FunctionName="WebLapTrinhModel.Store.Delete_BaiHocById" />
+          <FunctionImportMapping FunctionImportName="Delete_BaiHocByIdKhoaHoc" FunctionName="WebLapTrinhModel.Store.Delete_BaiHocByIdKhoaHoc" />
           <FunctionImportMapping FunctionImportName="Delete_BanBe" FunctionName="WebLapTrinhModel.Store.Delete_BanBe" />
+          <FunctionImportMapping FunctionImportName="Delete_CauHoiById" FunctionName="WebLapTrinhModel.Store.Delete_CauHoiById" />
+          <FunctionImportMapping FunctionImportName="Delete_CauHoiByIdBaiHoc" FunctionName="WebLapTrinhModel.Store.Delete_CauHoiByIdBaiHoc" />
+          <FunctionImportMapping FunctionImportName="Delete_DapAnById" FunctionName="WebLapTrinhModel.Store.Delete_DapAnById" />
+          <FunctionImportMapping FunctionImportName="Delete_DapAnByIdCauHoi" FunctionName="WebLapTrinhModel.Store.Delete_DapAnByIdCauHoi" />
+          <FunctionImportMapping FunctionImportName="Delete_KhoaHocById" FunctionName="WebLapTrinhModel.Store.Delete_KhoaHocById" />
+          <FunctionImportMapping FunctionImportName="Delete_YeuCauKetBan" FunctionName="WebLapTrinhModel.Store.Delete_YeuCauKetBan" />
           <FunctionImportMapping FunctionImportName="Get_all_account_same_khoahoc" FunctionName="WebLapTrinhModel.Store.Get_all_account_same_khoahoc">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_all_account_same_khoahoc_Result">
@@ -1273,6 +1476,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_DiemPerThang" FunctionName="WebLapTrinhModel.Store.Get_DiemPerThang" />
           <FunctionImportMapping FunctionImportName="Get_DSBaiHoc_ById" FunctionName="WebLapTrinhModel.Store.Get_DSBaiHoc_ById">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_DSBaiHoc_ById_Result">
@@ -1383,14 +1587,24 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="INSERT_ACCOUNT" FunctionName="WebLapTrinhModel.Store.INSERT_ACCOUNT" />
+          <FunctionImportMapping FunctionImportName="Insert_DSBaiHoc" FunctionName="WebLapTrinhModel.Store.Insert_DSBaiHoc" />
+          <FunctionImportMapping FunctionImportName="Insert_DSCauHoi" FunctionName="WebLapTrinhModel.Store.Insert_DSCauHoi" />
+          <FunctionImportMapping FunctionImportName="Insert_DSDapAn" FunctionName="WebLapTrinhModel.Store.Insert_DSDapAn" />
+          <FunctionImportMapping FunctionImportName="Insert_KhoaHoc" FunctionName="WebLapTrinhModel.Store.Insert_KhoaHoc" />
+          <FunctionImportMapping FunctionImportName="INSERT_OR_UPDATE_BieuDoTheoDoi" FunctionName="WebLapTrinhModel.Store.INSERT_OR_UPDATE_BieuDoTheoDoi" />
           <FunctionImportMapping FunctionImportName="Insert_PhanHoi" FunctionName="WebLapTrinhModel.Store.Insert_PhanHoi" />
+          <FunctionImportMapping FunctionImportName="InsertUpdate_CapDo" FunctionName="WebLapTrinhModel.Store.InsertUpdate_CapDo" />
+          <FunctionImportMapping FunctionImportName="InsertUpdate_LoaiDiemKN" FunctionName="WebLapTrinhModel.Store.InsertUpdate_LoaiDiemKN" />
           <FunctionImportMapping FunctionImportName="THEM_THONGTINTAIKHOAN" FunctionName="WebLapTrinhModel.Store.THEM_THONGTINTAIKHOAN" />
           <FunctionImportMapping FunctionImportName="ThemBaiHocPass" FunctionName="WebLapTrinhModel.Store.ThemBaiHocPass" />
+          <FunctionImportMapping FunctionImportName="Update_AccountInfo" FunctionName="WebLapTrinhModel.Store.Update_AccountInfo" />
+          <FunctionImportMapping FunctionImportName="Update_DSBaiHoc" FunctionName="WebLapTrinhModel.Store.Update_DSBaiHoc" />
+          <FunctionImportMapping FunctionImportName="Update_DSCauHoi" FunctionName="WebLapTrinhModel.Store.Update_DSCauHoi" />
+          <FunctionImportMapping FunctionImportName="Update_DSDapAn" FunctionName="WebLapTrinhModel.Store.Update_DSDapAn" />
           <FunctionImportMapping FunctionImportName="UPDATE_DSThongBao_Follow_Id_IdAccount" FunctionName="WebLapTrinhModel.Store.UPDATE_DSThongBao_Follow_Id_IdAccount" />
+          <FunctionImportMapping FunctionImportName="Update_KhoaHoc" FunctionName="WebLapTrinhModel.Store.Update_KhoaHoc" />
           <FunctionImportMapping FunctionImportName="Update_PassWord_Account" FunctionName="WebLapTrinhModel.Store.Update_PassWord_Account" />
           <FunctionImportMapping FunctionImportName="Update_ThongTinBanBe" FunctionName="WebLapTrinhModel.Store.Update_ThongTinBanBe" />
-          <FunctionImportMapping FunctionImportName="Delete_YeuCauKetBan" FunctionName="WebLapTrinhModel.Store.Delete_YeuCauKetBan" />
-          <FunctionImportMapping FunctionImportName="Update_AccountInfo" FunctionName="WebLapTrinhModel.Store.Update_AccountInfo" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

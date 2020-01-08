@@ -31,6 +31,7 @@ import { ThongBaoService } from './services/notications.service';
 import { DialogFriendsComponent } from './shared/dialog-friends/dialog-friends.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FriendsService } from './services/friends.service';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { FriendsService } from './services/friends.service';
     NotFoundComponent,
     DialogNoticationsComponent,
     DialogFriendsComponent,
+    LoginAdminComponent,
   ],
   imports: [
     BrowserModule,

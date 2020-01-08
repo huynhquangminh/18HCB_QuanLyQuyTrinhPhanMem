@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="header-table">
+        <button mat-button color="primary" (click)="thembaihoc()" *ngIf="!isThemBaiHoc">
+            <mat-icon>add_circle</mat-icon>
+            Thêm bài học
+        </button>
+        <div class="container-add">
+            <form>
+                <div>
+                    <mat-form-field class="form-input ">
+                        <mat-select [(value)]="idKhoahoc" (selectionChange)="changeKhoaHoc(idKhoahoc)">
+                            <mat-option *ngFor="let item of listKhoaHoc" [value]="item.id">{{item.tenkhoahoc}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <ng-container *ngIf="isThemBaiHoc || isSuaBaiHoc">
+                    <div>
+                        <mat-form-field class="form-input ">
+                            <input name="tenbaihoc" matInput placeholder="Tên bài học" [(ngModel)]="tenbaihoc">
+                        </mat-form-field>
+
+                    </div>
+                    <button class="btn-aciton" mat-raised-button color="primary" *ngIf="isThemBaiHoc">Thêm</button>
+                    <button class="btn-aciton" mat-raised-button color="accent" *ngIf="isSuaBaiHoc">Sửa</button>
+                </ng-container>
+            </form>
+        </div>
+    </div>
+    <div class=" example-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="Id">
+                <th mat-header-cell *matHeaderCellDef> Id. </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="tenbaihoc">
+                <th mat-header-cell *matHeaderCellDef> Tên bài học </th>
+                <td mat-cell *matCellDef="let element"> {{element.tenbaihoc}} </td>
+            </ng-container>
+            <ng-container matColumnDef="chucnang">
+                <th mat-header-cell *matHeaderCellDef> Chức năng </th>
+                <td mat-cell *matCellDef="let element">
+                    <button class="btn-aciton" title="Sửa" mat-button color="accent" (click)="suabaihoc(element)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button class="btn-aciton" title="Xóa" mat-button color="warn" (click)="xoabaihoc(element.id)">
+                        <mat-icon>remove_circle</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr  mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+        </table>
+    </div>
+
+</div>

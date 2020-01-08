@@ -1,0 +1,46 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid" style="display: block">
+        <div class="navbar-header">
+            <a class="navbar-brand" routerLink="/home/main/course-list">
+                <img width="60xp" src="../../assets/image/logo.PNG">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav" style="display: block;">
+                <li><a routerLink="./khoahoc">Khóa học</a></li>
+                <li><a routerLink="./baihoc">Bài học</a></li>
+                <li><a routerLink="./cauhoi">Câu hỏi</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right" style="display: block;">
+                <li style="margin-right:5px">
+                    <span style=" font-size: 20px; color: white;">Admin1</span>
+                    <button mat-button [matMenuTriggerFor]="menuAccount">
+                        <img width="40px" src="../../assets/image/icon-login.png">
+                    </button>
+                    <mat-menu #menuAccount="matMenu">
+                        <button mat-menu-item>Thông tin tài khoản</button>
+                        <button mat-menu-item (click)="forgotpass()">Đổi Mật Khẩu</button>
+                    </mat-menu>
+                </li>
+                <li (click)="logout()"><img width="40px" src="../../assets/image/icon-logout.png" title="Logout">
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-12 text-left">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<footer class="container-fluid text-center">
+    <ul>
+        <li style="font-size: 20px;">Website dậy lập trình từ căn bản tới nâng cao</li>
+        <li style="font-size: 15px;">Phone: 084-4324-3424</li>
+        <li style="font-size: 15px;">Gmail: laptrinhcanban@gmail.com</li>
+        <li style="font-size: 15px;">Địa chỉ: 40 Lê lợi, Phường 7, TP.Hồ Chí Minh</li>
+    </ul>
+</footer>

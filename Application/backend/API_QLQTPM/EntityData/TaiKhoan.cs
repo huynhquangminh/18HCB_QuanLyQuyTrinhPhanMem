@@ -29,6 +29,7 @@ namespace EntityData
         public string password { get; set; }
         public string email { get; set; }
         public string img { get; set; }
+        public bool typeAccount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BieuDoTheoDoi> BieuDoTheoDois { get; set; }

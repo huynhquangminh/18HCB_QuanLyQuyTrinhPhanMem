@@ -18,11 +18,10 @@ namespace EntityData
         public ThongTinTaiKhoan()
         {
             this.DSBaiHocPass_Of_TaiKhoan = new HashSet<DSBaiHocPass_Of_TaiKhoan>();
-            this.DSKhoaHocPass_Of_TaiKhoan = new HashSet<DSKhoaHocPass_Of_TaiKhoan>();
         }
     
         public int id { get; set; }
-        public int idkhoahoc { get; set; }
+        public Nullable<int> idkhoahoc { get; set; }
         public int idcapdo { get; set; }
         public int diemKN { get; set; }
         public Nullable<int> diemKNDay { get; set; }
@@ -32,8 +31,6 @@ namespace EntityData
         public virtual CapDo CapDo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DSBaiHocPass_Of_TaiKhoan> DSBaiHocPass_Of_TaiKhoan { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DSKhoaHocPass_Of_TaiKhoan> DSKhoaHocPass_Of_TaiKhoan { get; set; }
         public virtual KhoaHoc KhoaHoc { get; set; }
         public virtual LoaiDiemKN LoaiDiemKN { get; set; }
         public virtual TaiKhoan TaiKhoan { get; set; }

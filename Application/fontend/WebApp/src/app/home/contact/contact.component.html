@@ -1,22 +1,30 @@
 <div class="content">
-    <form>
+    <form novalidate #formContcat="ngForm" (ngSubmit)="submitContact()">
         <span class="login100-form-title">
             Liên hệ chúng tôi
         </span>
         <div class="example-container form-filed">
             <mat-form-field class="input-filed">
-                <input matInput placeholder="Email của bạn" required>
-                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                <input class="form-control" name="email" matInput placeholder="Email của bạn"  [(ngModel)]="email" required>
+                <mat-error *ngIf="formContcat.controls.email?.errors?.required && formContcat.controls.email?.touched">
+                    *Email không được bỏ trống!
+                </mat-error>
             </mat-form-field>
         </div>
 
         <div class="example-container form-filed">
             <mat-form-field class="input-filed">
-                <textarea matInput placeholder="Nội dung phản hồi "></textarea>
+                <textarea class="form-control" name="noidung" matInput placeholder="Nội dung phản hồi "  [(ngModel)]="noidung" required></textarea>
+                <mat-error *ngIf="formContcat.controls.noidung?.errors?.required && formContcat.controls.noidung?.touched">
+                    *Nội dung không được bỏ trống!
+                </mat-error>
             </mat-form-field>
         </div>
+        <div *ngIf="isPhanHoi" class="example-container form-filed">
+            <span style="font-size: 15px;">Bạn đã gửi phản hồi thành công!</span>
+        </div>
         <div class="container-login100-form-btn">
-            <button class="login100-form-btn">
+            <button class="login100-form-btn" [disabled] ="!formContcat.valid">
                 Gửi phản hồi
             </button>
         </div>

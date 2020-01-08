@@ -14,7 +14,7 @@ namespace EntityData
     public partial class GET_THONGTINTAIKHOAN_Result
     {
         public int id { get; set; }
-        public int idkhoahoc { get; set; }
+        public Nullable<int> idkhoahoc { get; set; }
         public int idcapdo { get; set; }
         public int diemKN { get; set; }
         public Nullable<int> diemKNDay { get; set; }
