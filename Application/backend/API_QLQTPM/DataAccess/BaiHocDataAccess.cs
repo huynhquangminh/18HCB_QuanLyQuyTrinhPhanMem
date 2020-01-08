@@ -47,5 +47,26 @@ namespace DataAccess
             return db.Get_DSBaiHocPass(param.idTTTaiKhoan);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public bool DeleteBaiHocByID(DeleteBaiHocByIDParam param)
+        {
+            var result = db.Delete_BaiHocById(param.ID) > 0 ? true : false;
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public bool DeleteBaiHocByIDKhoaHoc(DeleteBaiHocByIDKhoaHocParam param)
+        {
+            var result = db.Delete_BaiHocByIdKhoaHoc(param.idKhoaHoc) > 0 ? true : false;
+            return result;
+        }
     }
 }

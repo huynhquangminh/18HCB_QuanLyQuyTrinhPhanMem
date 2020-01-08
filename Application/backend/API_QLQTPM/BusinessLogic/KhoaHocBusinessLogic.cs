@@ -9,6 +9,7 @@ using BusinessLogicInterface;
 using BusinessLogicInterface.Dtos;
 using BusinessLogicInterface.Response;
 using DataAcceessInterface;
+using DataAcceessInterface.Parameter;
 using EntityData;
 
 namespace BusinessLogic
@@ -35,6 +36,30 @@ namespace BusinessLogic
             mapper = configMap.CreateMapper();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteKHByID(DeleteKHByIDParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.DeleteKhoaHocByID(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task<GetKhoaHocResponse> GetDSKhoaHoc()
         {
             var response = new GetKhoaHocResponse();
@@ -48,7 +73,7 @@ namespace BusinessLogic
                 }
 
             }
-            catch (Exception )
+            catch (Exception)
             {
                 response.Success = false;
             }

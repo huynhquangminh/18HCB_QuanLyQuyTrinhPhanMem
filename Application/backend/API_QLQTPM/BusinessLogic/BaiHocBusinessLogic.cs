@@ -69,7 +69,7 @@ namespace BusinessLogic
             }
         }
 
-       public async Task<GetDSBaiHocPassResponse> GetDSBaiHocPass(GetDSBaiHocPassParameter request)
+        public async Task<GetDSBaiHocPassResponse> GetDSBaiHocPass(GetDSBaiHocPassParameter request)
         {
             var response = new GetDSBaiHocPassResponse();
             try
@@ -87,6 +87,46 @@ namespace BusinessLogic
                 response.Success = false;
             }
             return await Task.FromResult(response);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteBHByID(DeleteBaiHocByIDParam request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.DeleteBaiHocByID(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteBHByIDKhoaHoc(DeleteBaiHocByIDKhoaHocParam request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.DeleteBaiHocByIDKhoaHoc(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
         }
     }
 }

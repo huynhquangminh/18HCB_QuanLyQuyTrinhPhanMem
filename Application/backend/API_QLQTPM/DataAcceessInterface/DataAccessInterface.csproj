@@ -94,7 +94,11 @@
     <Compile Include="IPhanHoiDataAccess.cs" />
     <Compile Include="ITaiKhoanDataAccess.cs" />
     <Compile Include="IThongBaoDataAccess.cs" />
+    <Compile Include="Parameter\DeleteBaiHocByIDKhoaHocParam.cs" />
+    <Compile Include="Parameter\DeleteBaiHocByIDParam.cs" />
     <Compile Include="Parameter\DeleteBanBeParameter.cs" />
+    <Compile Include="Parameter\DeleteCauHoiByIDParam.cs" />
+    <Compile Include="Parameter\DeleteKHByIDParameter.cs" />
     <Compile Include="Parameter\GetAllAccountSameKHParam.cs" />
     <Compile Include="Parameter\GetBieuDoTheoDoiParameter.cs" />
     <Compile Include="Parameter\GetDSBaiHocParameter.cs" />

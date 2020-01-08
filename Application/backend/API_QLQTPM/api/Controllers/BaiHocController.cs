@@ -54,5 +54,29 @@ namespace api.Controllers
             var result = _businessLogic.GetDSBaiHocPass(dataRequest);
             return new ActionResult<GetDSBaiHocPassResponse>(result.Result, Request);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dataRequest"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult DeleteBaiHocByID(DeleteBaiHocByIDParam dataRequest)
+        {
+            var result = _businessLogic.DeleteBHByID(dataRequest);
+            return new ActionResult<bool>(result.Result, Request);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dataRequest"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult DeleteBaiHocByIDKhoaHoc(DeleteBaiHocByIDKhoaHocParam dataRequest)
+        {
+            var result = _businessLogic.DeleteBHByIDKhoaHoc(dataRequest);
+            return new ActionResult<bool>(result.Result, Request);
+        }
     }
 }
