@@ -80,7 +80,14 @@ export class KhoahocComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.getDsKhoaHoc();
+        const request = {
+          ID: id
+        };
+        this.displaySettingService.deleteKhoaHoc(request).subscribe(res => {
+          if (res) {
+            this.getDsKhoaHoc();
+          }
+        });
       }
     });
   }

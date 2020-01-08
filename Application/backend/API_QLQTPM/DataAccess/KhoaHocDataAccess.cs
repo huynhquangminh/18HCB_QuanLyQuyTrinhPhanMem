@@ -23,7 +23,7 @@ namespace DataAccess
         /// <returns></returns>
         public bool DeleteKhoaHocByID(DeleteKHByIDParameter param)
         {
-            var result = db.Delete_BaiHocById(param.ID) > 0 ? true : false;
+            var result = db.Delete_KhoaHocById(param.ID) > 0 ? true : false;
             return result;
         }
 
@@ -38,7 +38,7 @@ namespace DataAccess
 
         public bool ThemKhoaHoc(ThemKhoaHocParameter param)
         {
-            //var result = db.Insert_KhoaHoc(param.tenkhoahoc, param.imgkhoahoc) > 0 ? true : false;
+            var result = db.Insert_KhoaHoc(param.tenkhoahoc, param.imgkhoahoc) > 0 ? true : false;
             return true;
         }
 

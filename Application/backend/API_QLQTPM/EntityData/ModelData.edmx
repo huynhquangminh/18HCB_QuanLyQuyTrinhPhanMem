@@ -101,7 +101,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tenkhoahoc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tenkhoahoc" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="imgKhoaHoc" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="LoaiDiemKN">
@@ -482,7 +482,7 @@
         </Function>
         <Function Name="Update_KhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="tenkhoahoc" Type="nvarchar" Mode="In" />
+          <Parameter Name="tenkhoahoc" Type="varchar" Mode="In" />
           <Parameter Name="imgKhoaHoc" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Update_PassWord_Account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -680,7 +680,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tenkhoahoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tenkhoahoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="imgKhoaHoc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DSBaiHocs" Relationship="Self.FK_DSBaiHoc_KhoaHoc" FromRole="KhoaHoc" ToRole="DSBaiHoc" />
           <NavigationProperty Name="ThongTinTaiKhoans" Relationship="Self.FK_ThongTinTaiKhoan_KhoaHoc" FromRole="KhoaHoc" ToRole="ThongTinTaiKhoan" />
@@ -1075,7 +1075,7 @@
             <Parameter Name="cautraloi" Mode="In" Type="String" />
             <Parameter Name="dapan" Mode="In" Type="Boolean" />
           </FunctionImport>
-          <FunctionImport Name="Insert_KhoaHoc" ReturnType="Collection(Decimal)">
+          <FunctionImport Name="Insert_KhoaHoc">
             <Parameter Name="tenkhoahoc" Mode="In" Type="String" />
             <Parameter Name="imgKhoaHoc" Mode="In" Type="String" />
           </FunctionImport>

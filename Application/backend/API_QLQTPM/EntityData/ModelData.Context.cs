@@ -349,7 +349,7 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_DSDapAn", idcauhoiParameter, cautraloiParameter, dapanParameter);
         }
     
-        public virtual ObjectResult<Nullable<decimal>> Insert_KhoaHoc(string tenkhoahoc, string imgKhoaHoc)
+        public virtual int Insert_KhoaHoc(string tenkhoahoc, string imgKhoaHoc)
         {
             var tenkhoahocParameter = tenkhoahoc != null ?
                 new ObjectParameter("tenkhoahoc", tenkhoahoc) :
@@ -359,7 +359,7 @@ namespace EntityData
                 new ObjectParameter("imgKhoaHoc", imgKhoaHoc) :
                 new ObjectParameter("imgKhoaHoc", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("Insert_KhoaHoc", tenkhoahocParameter, imgKhoaHocParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_KhoaHoc", tenkhoahocParameter, imgKhoaHocParameter);
         }
     
         public virtual int INSERT_OR_UPDATE_BieuDoTheoDoi(Nullable<int> idTaikhoan, Nullable<int> thu2, Nullable<int> thu3, Nullable<int> thu4, Nullable<int> thu5, Nullable<int> thu6, Nullable<int> thu7, Nullable<int> chuNhat, Nullable<System.DateTime> ngayHienTai)

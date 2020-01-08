@@ -16,6 +16,9 @@ export class DisplaySettingService extends AppService {
     insertKhoaHoc(request: any = {}) {
         return this.CallByResquestService('/api/khoahoc/themkhoahoc', request);
     }
+    deleteKhoaHoc(request: any = {}) {
+        return this.CallByResquestService('/api/khoahoc/DeleteKhoaHocByID', request);
+    }
     getDsCapDo() {
         return this.CallAllService('/api/CapDo/GetCapDo');
     }

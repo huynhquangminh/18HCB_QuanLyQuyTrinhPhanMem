@@ -65,7 +65,9 @@ export class BaihocComponent implements OnInit {
     };
     this.courseListService.insertBaiHoc(request).subscribe(res => {
       if (res) {
-        this.getDsKhoaHoc();
+        this.tenbaihoc = '';
+        this.isThemBaiHoc = false;
+        this.getDsBaiHoc(this.idKhoahoc);
       }
     });
   }
@@ -73,14 +75,14 @@ export class BaihocComponent implements OnInit {
   update() {
     const request = {
       id: this.idbaihoc,
-      tenkhoahoc: this.tenbaihoc,
+      tenbaihoc: this.tenbaihoc,
       idkhoahoc: this.idKhoahoc
     };
     this.courseListService.updateBaiHoc(request).subscribe(res => {
       if (res) {
         this.tenbaihoc = '';
         this.isSuaBaiHoc = false;
-        this.getDsKhoaHoc();
+        this.getDsBaiHoc(this.idKhoahoc);
       }
     });
   }
@@ -98,7 +100,15 @@ export class BaihocComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.getDsKhoaHoc();
+        const request = {
+          ID: id
+        };
+        this.courseListService.deleteBaiHoc(request).subscribe(res => {
+          if (res) {
+            this.getDsBaiHoc(this.idKhoahoc);
+          }
+        });
+
       }
     });
   }

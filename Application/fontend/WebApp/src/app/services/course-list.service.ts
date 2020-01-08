@@ -14,6 +14,9 @@ export class CourseListService extends AppService {
         return this.CallByResquestService('/api/baihoc/thembaihoc', request);
     }
 
+    deleteBaiHoc(request: any) {
+        return this.CallByResquestService('/api/baihoc/DeleteBaiHocByID', request);
+    }
 
 
     ThemBaiHocPass(request: any = {}) {
