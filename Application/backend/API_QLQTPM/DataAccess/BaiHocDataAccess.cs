@@ -55,6 +55,11 @@ namespace DataAccess
         public bool ThemBaiHoc(ThemBaiHocParameter param)
         {
             var result = db.Insert_DSBaiHoc(param.tenbaihoc, param.idkhoahoc) > 0 ? true : false;
+             return result;
+        }
+        public bool DeleteBaiHocByID(DeleteBaiHocByIDParam param)
+        {
+            var result = db.Delete_BaiHocById(param.ID) > 0 ? true : false;
             return result;
         }
 
@@ -69,5 +74,10 @@ namespace DataAccess
             return result;
         }
 
+        public bool DeleteBaiHocByIDKhoaHoc(DeleteBaiHocByIDKhoaHocParam param)
+        {
+            var result = db.Delete_BaiHocByIdKhoaHoc(param.idKhoaHoc) > 0 ? true : false;
+            return result;
+        }
     }
 }

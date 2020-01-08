@@ -89,6 +89,25 @@ namespace BusinessLogic
             return await Task.FromResult(response);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteBHByID(DeleteBaiHocByIDParam request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.DeleteBaiHocByID(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
         public async Task<bool> ThemBaiHoc(ThemBaiHocParameter request)
         {
             var response = false;

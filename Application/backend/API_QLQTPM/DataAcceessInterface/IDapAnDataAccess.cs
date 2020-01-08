@@ -10,6 +10,10 @@ namespace DataAcceessInterface
 {
     public interface IDapAnDataAccess
     {
-         IEnumerable<GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result> GetDSDapAnByBaiHoc(GetDsDapAnParameter param);
+        IEnumerable<GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result> GetDSDapAnByBaiHoc(GetDsDapAnParameter param);
+
+        bool DeleteDapAnByID(DeleteDapAnByIDParam param);
+
+        bool DeleteDapAnByIDCauHoi(DeleteDapAnByIDCauHoiParam param);
     }
 }

@@ -21,6 +21,23 @@ namespace DataAccess
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
+        public bool DeleteCauHoiByID(DeleteCauHoiByIDParam param)
+        {
+            var result = db.Delete_CauHoiById(param.ID) > 0 ? true : false;
+            return result;
+        }
+
+        public bool DeleteCauHoiByIDBaiHoc(DeleteCauHoiByIDBaiHocParam param)
+        {
+            var result = db.Delete_CauHoiByIdBaiHoc(param.idBaiHoc) > 0 ? true : false;
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
         public IEnumerable<GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result> GetDSCauHoi(GetDSCauHoiParameter param)
         {
             return db.GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo(param.idBaiHoc, param.idCapDo);

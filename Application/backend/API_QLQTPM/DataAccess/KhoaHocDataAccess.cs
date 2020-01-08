@@ -17,6 +17,17 @@ namespace DataAccess
         private WebLapTrinhEntities db = new WebLapTrinhEntities();
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public bool DeleteKhoaHocByID(DeleteKHByIDParameter param)
+        {
+            var result = db.Delete_BaiHocById(param.ID) > 0 ? true : false;
+            return result;
+        }
+
+        /// <summary>
         /// get danh sach khoa hoc
         /// </summary>
         /// <returns></returns>

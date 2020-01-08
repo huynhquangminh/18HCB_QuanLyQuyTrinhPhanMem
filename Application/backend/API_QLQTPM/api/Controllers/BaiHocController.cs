@@ -64,6 +64,11 @@ namespace api.Controllers
         public IHttpActionResult ThemBaiHoc(ThemBaiHocParameter dataRequest)
         {
             var result = _businessLogic.ThemBaiHoc(dataRequest);
+             return new ActionResult<bool>(result.Result, Request);
+        }
+        public IHttpActionResult DeleteBaiHocByID(DeleteBaiHocByIDParam dataRequest)
+        {
+            var result = _businessLogic.DeleteBHByID(dataRequest);
             return new ActionResult<bool>(result.Result, Request);
         }
 
@@ -76,7 +81,12 @@ namespace api.Controllers
         public IHttpActionResult SuaBaiHoc(ThemBaiHocParameter dataRequest)
         {
             var result = _businessLogic.SuaBaiHoc(dataRequest);
-            return new ActionResult<bool>(result.Result, Request);
+             return new ActionResult<bool>(result.Result, Request);
+        }
+        public IHttpActionResult DeleteBaiHocByIDKhoaHoc(DeleteBaiHocByIDKhoaHocParam dataRequest)
+        {
+            //var result = _businessLogic.DeleteBHByIDKhoaHoc(dataRequest);
+            return new ActionResult<bool>(true, Request);
         }
     }
 }

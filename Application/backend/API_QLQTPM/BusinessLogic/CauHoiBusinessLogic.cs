@@ -36,6 +36,36 @@ namespace BusinessLogic
             mapper = configMap.CreateMapper();
         }
 
+        public async Task<bool> DeleteCauHoiByID(DeleteCauHoiByIDParam request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.DeleteCauHoiByID(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
+        public async Task<bool> DeleteCauHoiByIDBaiHoc(DeleteCauHoiByIDBaiHocParam request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.DeleteCauHoiByIDBaiHoc(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
         public async Task<GetDSCauHoiResponse> GetDSCauHoi(GetDSCauHoiParameter request)
         {
             var response = new GetDSCauHoiResponse();

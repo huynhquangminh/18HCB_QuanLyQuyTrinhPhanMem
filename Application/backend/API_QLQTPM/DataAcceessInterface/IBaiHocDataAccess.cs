@@ -38,6 +38,7 @@ namespace DataAcceessInterface
         /// <param name="param"></param>
         /// <returns></returns>
         bool ThemBaiHoc(ThemBaiHocParameter param);
+        bool DeleteBaiHocByID(DeleteBaiHocByIDParam param);
 
         /// <summary>
         /// 
@@ -45,5 +46,6 @@ namespace DataAcceessInterface
         /// <param name="param"></param>
         /// <returns></returns>
         bool SuaBaiHoc(ThemBaiHocParameter param);
+        bool DeleteBaiHocByIDKhoaHoc(DeleteBaiHocByIDKhoaHocParam param);
     }
 }

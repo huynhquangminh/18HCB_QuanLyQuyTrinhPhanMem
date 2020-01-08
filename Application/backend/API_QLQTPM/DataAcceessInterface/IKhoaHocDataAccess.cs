@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAcceessInterface.Parameter;
 
 namespace DataAcceessInterface
 {
@@ -13,5 +14,7 @@ namespace DataAcceessInterface
         IEnumerable<Get_DSKhoaHoc_Result> GetDSKhoaHoc();
         bool ThemKhoaHoc(ThemKhoaHocParameter param);
         bool SuaKhoaHoc(ThemKhoaHocParameter param);
+
+        bool DeleteKhoaHocByID(DeleteKHByIDParameter param);
     }
 }

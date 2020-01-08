@@ -38,6 +38,7 @@ namespace BusinessLogicInterface
         /// <param name="request"></param>
         /// <returns></returns>
         Task<bool> ThemBaiHoc(ThemBaiHocParameter request);
+        Task<bool> DeleteBHByID(DeleteBaiHocByIDParam request);
 
         /// <summary>
         /// 
