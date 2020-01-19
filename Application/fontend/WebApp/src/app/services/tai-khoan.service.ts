@@ -23,4 +23,12 @@ export class TaiKhoanService extends AppService {
     themThongTinTaiKhoan(request: any) {
         return this.CallByResquestService('/api/taikhoan/themthongtintaikhoan', request);
     }
+
+    getDsTaiKhoanUser() {
+        return this.CallAllService('/api/taikhoan/getalluseraccount');
+    }
+
+    deleteTaiKhoan(request: any = {}) {
+        return this.CallByResquestService('/api/taikhoan/deleteaccountbyid', request);
+    }
 }

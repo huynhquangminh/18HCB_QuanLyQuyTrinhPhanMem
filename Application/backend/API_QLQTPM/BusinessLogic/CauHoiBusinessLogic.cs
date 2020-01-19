@@ -85,5 +85,20 @@ namespace BusinessLogic
             }
             return await Task.FromResult(response);
         }
+
+        public async Task<bool> ThemCauHoiByIDBaiHoc(ThemCauHoiByIdBaiHocParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.ThemCauHoiByIdBaiHoc(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
     }
 }

@@ -93,6 +93,7 @@
     <Compile Include="Dtos\bieudotheodoiDTO.cs" />
     <Compile Include="Dtos\CapDoDTO.cs" />
     <Compile Include="Dtos\cauhoiDTO.cs" />
+    <Compile Include="Dtos\GetAllAccountUserDto.cs" />
     <Compile Include="Dtos\GetDsBaiHocPassDto.cs" />
     <Compile Include="Dtos\GetDSBanBeDto.cs" />
     <Compile Include="Dtos\khoahocDTO.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="IThongBaoBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\LoginRequest.cs" />
+    <Compile Include="Response\GetAllAccountUserResponse.cs" />
     <Compile Include="Response\GetAllAccSameKHResponse.cs" />
     <Compile Include="Response\GetBieuDoTheoDoiResponse.cs" />
     <Compile Include="Response\GetCapDoResponse.cs" />

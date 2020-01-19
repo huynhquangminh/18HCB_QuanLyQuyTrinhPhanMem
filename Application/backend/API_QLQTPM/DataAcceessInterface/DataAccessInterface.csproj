@@ -94,6 +94,7 @@
     <Compile Include="IPhanHoiDataAccess.cs" />
     <Compile Include="ITaiKhoanDataAccess.cs" />
     <Compile Include="IThongBaoDataAccess.cs" />
+    <Compile Include="Parameter\DeleteAccountByIdParameter.cs" />
     <Compile Include="Parameter\DeleteBaiHocByIDKhoaHocParam.cs" />
     <Compile Include="Parameter\DeleteBaiHocByIDParam.cs" />
     <Compile Include="Parameter\DeleteBanBeParameter.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Parameter\LoginParameter.cs" />
     <Compile Include="Parameter\ThemBaiHocParameter.cs" />
     <Compile Include="Parameter\ThemBaiHocPassParameter.cs" />
+    <Compile Include="Parameter\ThemCauHoiByIdBaiHocParameter.cs" />
     <Compile Include="Parameter\ThemKhoaHocParameter.cs" />
     <Compile Include="Parameter\ThemThongTinTaiKhoanParameter.cs" />
     <Compile Include="Parameter\UpdateAccountInfoParameter.cs" />

@@ -40,6 +40,8 @@ export class KhoahocComponent implements OnInit {
     this.displaySettingService.insertKhoaHoc(request).subscribe(res => {
       if (res) {
         this.getDsKhoaHoc();
+        this.tenkhoahoc = '';
+        this.isThemKhoaHoc = false;
       }
     });
   }
@@ -86,6 +88,9 @@ export class KhoahocComponent implements OnInit {
         this.displaySettingService.deleteKhoaHoc(request).subscribe(res => {
           if (res) {
             this.getDsKhoaHoc();
+            this.isThemKhoaHoc = true;
+            this.isSuaKhoaHoc = false;
+            this.tenkhoahoc = '';
           }
         });
       }

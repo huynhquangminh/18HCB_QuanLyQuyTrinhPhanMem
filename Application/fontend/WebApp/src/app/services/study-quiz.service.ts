@@ -8,4 +8,12 @@ export class StudyQuizService extends AppService {
     getDsDapAn(request: any = {}) {
         return this.CallByResquestService('/api/dapan/listdapan', request);
     }
+
+    themCauHoi(request: any = {}) {
+        return this.CallByResquestService('/api/cauhoi/themcauhoibyidbaihoc', request);
+    }
+
+    xoaCauHoi(request: any = {}) {
+        return this.CallByResquestService('/api/cauhoi/DeleteCauHoiByID', request);
+    }
 }

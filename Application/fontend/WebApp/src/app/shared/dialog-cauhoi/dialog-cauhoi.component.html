@@ -1,25 +1,36 @@
 <div class="content-div">
     <span style="font-size: 15px;">Câu hỏi</span><br>
     <mat-form-field class="form-input">
-        <textarea matInput placeholder="Textarea"></textarea>
+        <textarea matInput placeholder="Textarea" [(ngModel)]="tencauhoi" ></textarea>
     </mat-form-field>
+    <button style="margin-right: 5px;" 
+    mat-raised-button 
+    color="primary" 
+    (click)="themCauHoi()"
+    [disabled]="tencauhoi === ''"
+    >{{textBtnCauHoi}}</button>
 </div>
-<div>
+<div class="content-dapan" *ngIf="isCauHoi">
     <span style="font-size: 15px;">Danh sách câu trả lời</span><br>
     <div class="content-div">
         <ng-container>
-            <mat-form-field class="form-input-tl">
-                <input matInput placeholder="Câu trả lời" value="Sushi">
-            </mat-form-field>
-            <mat-checkbox>Đáp án đúng</mat-checkbox>
+            <div *ngFor="let item of dsCauTraLoi">
+                <mat-form-field class="form-input-tl">
+                    <input matInput placeholder="Câu trả lời" [(ngModel)]="item.tencautl">
+                </mat-form-field>
+                <mat-checkbox [(ngModel)]="item.isDapAn">Đáp án đúng</mat-checkbox>
+                <button (click)="xoaDapAn(item)">
+                    <mat-icon>highlight_off</mat-icon>
+                </button>
+            </div>
         </ng-container>
     </div>
-    <span>
+    <button (click)="themDapAn()" [disabled]="checkDapAnRequired()">
         <mat-icon>add_circle</mat-icon>
-        <span style="font-size: 15px;">Thêm câu trả lời</span>
-    </span>
+        <span style="font-size: 15px;">Thêm đáp án</span>
+    </button>
+
 </div>
 <div style="float: right; ">
-    <button style="margin-right: 5px;" mat-raised-button color="primary" (click)="huy()">Không</button>
-    <button style="margin-right: 5px;" mat-raised-button color="warn" (click)="dongy()">Có</button>
+    <button style="margin-right: 5px;" mat-raised-button color="primary" (click)="huy()">Đóng</button>
 </div>

@@ -29,9 +29,10 @@ import {MatTableModule} from '@angular/material/table';
 import { BaihocComponent } from './baihoc/baihoc.component';
 import {MatSelectModule} from '@angular/material/select';
 import { CauhoiComponent } from './cauhoi/cauhoi.component';
+import { TaikhoanComponent } from './taikhoan/taikhoan.component';
 
 @NgModule({
-  declarations: [AdminComponent, KhoahocComponent, BaihocComponent, CauhoiComponent],
+  declarations: [AdminComponent, KhoahocComponent, BaihocComponent, CauhoiComponent, TaikhoanComponent],
   imports: [
     AdminRoutingModule,
     FormsModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebStorageSerivce } from '../services/webStorage.service';
 import { Router } from '@angular/router';
+import { WebKeyStorage } from '../global/web-key-storage';
 
 @Component({
   selector: 'app-admin',
@@ -9,12 +10,14 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
+  public userAccount: any = {};
   constructor(
     private webStorageSerivce: WebStorageSerivce,
     private router: Router,
   ) { }
 
   ngOnInit() {
+    this.userAccount = this.webStorageSerivce.getSessionStorage(WebKeyStorage.AccountInfo);
   }
 
   logout() {

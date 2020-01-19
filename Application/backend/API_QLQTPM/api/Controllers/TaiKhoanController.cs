@@ -96,5 +96,29 @@ namespace api.Controllers
             var result = _businessLogic.UpdateAccountInfo(RequestData);
             return new ActionResult<bool>(result.Result, Request);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="RequestData"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult GetALLUserAccount()
+        {
+            var result = _businessLogic.GetAllUserAccount();
+            return new ActionResult<GetAllAccountUserResponse>(result.Result, Request);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="RequestData"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult DeleteAccountById(DeleteAccountByIdParameter RequestData)
+        {
+            var result = _businessLogic.DeleteAccountById(RequestData);
+            return new ActionResult<bool>(result.Result, Request);
+        }
     }
 }

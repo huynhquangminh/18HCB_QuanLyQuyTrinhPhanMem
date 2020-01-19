@@ -315,7 +315,7 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_DSBaiHoc", tenbaihocParameter, idkhoahocParameter);
         }
     
-        public virtual ObjectResult<Nullable<decimal>> Insert_DSCauHoi(string tencauhoi, Nullable<int> idbaihoc, Nullable<int> idcapdo)
+        public virtual int Insert_DSCauHoi(string tencauhoi, Nullable<int> idbaihoc, Nullable<int> idcapdo)
         {
             var tencauhoiParameter = tencauhoi != null ?
                 new ObjectParameter("tencauhoi", tencauhoi) :
@@ -329,7 +329,7 @@ namespace EntityData
                 new ObjectParameter("idcapdo", idcapdo) :
                 new ObjectParameter("idcapdo", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("Insert_DSCauHoi", tencauhoiParameter, idbaihocParameter, idcapdoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_DSCauHoi", tencauhoiParameter, idbaihocParameter, idcapdoParameter);
         }
     
         public virtual int Insert_DSDapAn(Nullable<int> idcauhoi, string cautraloi, Nullable<bool> dapan)
@@ -630,6 +630,20 @@ namespace EntityData
                 new ObjectParameter("yeucau", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_ThongTinBanBe", idParameter, idbanbeParameter, idaccountParameter, yeucauParameter);
+        }
+    
+        public virtual int DELETE_TaiKhoan(Nullable<int> idTaikhoan)
+        {
+            var idTaikhoanParameter = idTaikhoan.HasValue ?
+                new ObjectParameter("idTaikhoan", idTaikhoan) :
+                new ObjectParameter("idTaikhoan", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETE_TaiKhoan", idTaikhoanParameter);
+        }
+    
+        public virtual ObjectResult<GET_ALL_TaiKhoan_Result> GET_ALL_TaiKhoan()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_ALL_TaiKhoan_Result>("GET_ALL_TaiKhoan");
         }
     }
 }

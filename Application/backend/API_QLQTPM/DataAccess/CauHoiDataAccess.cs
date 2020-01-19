@@ -42,5 +42,11 @@ namespace DataAccess
         {
             return db.GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo(param.idBaiHoc, param.idCapDo);
         }
+
+        public bool ThemCauHoiByIdBaiHoc(ThemCauHoiByIdBaiHocParameter param)
+        {
+            var result = db.Insert_DSCauHoi(param.tencauhoi, param.idbaihoc, param.idcapdo) > 0 ? true : false;
+            return result;
+        }
     }
 }

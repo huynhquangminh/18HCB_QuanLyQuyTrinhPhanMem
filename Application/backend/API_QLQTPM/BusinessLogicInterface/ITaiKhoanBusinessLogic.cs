@@ -57,5 +57,19 @@
         /// <param name="request"></param>
         /// <returns></returns>
         Task<bool> UpdateAccountInfo(UpdateAccountInfoParameter request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<GetAllAccountUserResponse> GetAllUserAccount();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<bool> DeleteAccountById(DeleteAccountByIdParameter request);
     }
 }

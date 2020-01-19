@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { KhoahocComponent } from './khoahoc/khoahoc.component';
 import { CauhoiComponent } from './cauhoi/cauhoi.component';
+import { TaikhoanComponent } from './taikhoan/taikhoan.component';
 const adminRouting: Routes = [
     { path: '', redirectTo: 'main', pathMatch: 'full' },
     {
@@ -12,6 +13,7 @@ const adminRouting: Routes = [
             { path: 'khoahoc', component: KhoahocComponent },
             { path: 'baihoc', component: BaihocComponent },
             { path: 'cauhoi', component: CauhoiComponent },
+            { path: 'taikhoan', component: TaikhoanComponent },
         ]
     }
 ];

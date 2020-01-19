@@ -35,6 +35,7 @@ namespace BusinessLogic
                 cfg.CreateMap<ACCOUNT_LOGIN_Result, loginDto>();
                 cfg.CreateMap<GET_THONGTINTAIKHOAN_Result, thongtintaikhoanDto>();
                 cfg.CreateMap<Get_all_account_same_khoahoc_Result, accountsamekhDTO>();
+                cfg.CreateMap<GET_ALL_TaiKhoan_Result, GetAllAccountUserDto>();
             });
             mapper = configMap.CreateMapper();
         }
@@ -160,6 +161,51 @@ namespace BusinessLogic
             try
             {
                 response = _dataAccess.UpdateAccountInfo(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception ex)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<GetAllAccountUserResponse> GetAllUserAccount()
+        {
+            var response = new GetAllAccountUserResponse();
+            try
+            {
+                var result = _dataAccess.GetAllUserAccount();
+                if (result != null)
+                {
+                    response.listAccount = MapList<GET_ALL_TaiKhoan_Result, GetAllAccountUserDto>(result.ToList());
+                    response.Success = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+            }
+            return await Task.FromResult(response);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteAccountById(DeleteAccountByIdParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.DeleteAccountById(request);
                 return await Task.FromResult(response);
 
             }

@@ -80,5 +80,26 @@
             var result = db.Update_AccountInfo(param.id, param.username, param.email, param.img) > 0 ? true : false;
             return result;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public IEnumerable<GET_ALL_TaiKhoan_Result> GetAllUserAccount()
+        {
+            return db.GET_ALL_TaiKhoan();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public bool DeleteAccountById(DeleteAccountByIdParameter param)
+        {
+            var result = db.DELETE_TaiKhoan(param.idTaikhoan) > 0 ? true : false;
+            return result;
+        }
     }
 }

@@ -57,5 +57,19 @@
         /// <param name="param"></param>
         /// <returns></returns>
         bool UpdateAccountInfo(UpdateAccountInfoParameter param);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        IEnumerable<GET_ALL_TaiKhoan_Result> GetAllUserAccount();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        bool DeleteAccountById(DeleteAccountByIdParameter param);
     }
 }
