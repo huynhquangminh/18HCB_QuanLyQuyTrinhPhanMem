@@ -29,5 +29,16 @@ namespace DataAccess
         {
             return db.GET_DSDapAn_Follow_IdBaiHoc_IdCapDo(param.idBaiHoc, param.idCapDo);
         }
+
+        public IEnumerable<Get_DapAn_ByIdCauHoi_Result> GetDapAnByIdCauHoi(GetCauHoiByIdParameter param)
+        {
+            return db.Get_DapAn_ByIdCauHoi(param.idCauHoi);
+        }
+
+        public bool ThemDapAnByIdCauHoi(ThemDapAnByIdCauHoiParameter param)
+        {
+            var res = db.Insert_DSDapAn(param.idcauhoi, param.cautraloi, param.dapan) > 0 ? true : false;
+            return res;
+        }
     }
 }

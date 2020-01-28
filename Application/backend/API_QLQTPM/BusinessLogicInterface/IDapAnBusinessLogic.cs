@@ -16,8 +16,16 @@ namespace BusinessLogicInterface
         /// <returns></returns>
         Task<ListDapAnResponse> GetDSDapByBaiHoc(GetDsDapAnParameter param);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        Task<ListDapAnResponse> GetDapAnByIdCauHoi(GetCauHoiByIdParameter param);
+
         Task<bool> DeleteDapAnByID(DeleteDapAnByIDParam param);
 
         Task<bool> DeleteDapAnByIDCauHoi(DeleteDapAnByIDCauHoiParam param);
+
+        Task<bool> ThemDapAnByIDCauHoi(ThemDapAnByIdCauHoiParameter param);
     }
 }

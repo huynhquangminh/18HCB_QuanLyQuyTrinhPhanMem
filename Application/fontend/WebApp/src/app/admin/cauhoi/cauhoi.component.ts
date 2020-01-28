@@ -35,7 +35,6 @@ export class CauhoiComponent implements OnInit {
     this.isInit = true;
     this.getDsCapDo();
     this.getDsKhoaHoc();
-    console.log('xxx', this.idBaihoc);
   }
 
   getDsCauHoi(idbaihoc: number, idcapdo: number) {
@@ -56,6 +55,7 @@ export class CauhoiComponent implements OnInit {
         this.listBaiHoc = res.listBaiHoc;
         if (this.listBaiHoc.length > 0) {
           this.idBaihoc = this.listBaiHoc[0].id;
+          console.log('idBaihoc', this.idBaihoc);
           this.getDsCauHoi(this.idBaihoc, this.idCapdo);
           this.isInit = false;
         }
@@ -90,7 +90,6 @@ export class CauhoiComponent implements OnInit {
     this.getDsBaiHoc(this.idKhoahoc);
   }
   changeBaiHoc() {
-    console.log('xxx', this.idBaihoc);
     this.isGetCauhoi = false;
     this.getDsCauHoi(this.idBaihoc, this.idCapdo);
   }
@@ -114,6 +113,11 @@ export class CauhoiComponent implements OnInit {
         itemData: {}
       }
     });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getDsCauHoi(this.idBaihoc, this.idCapdo);
+      }
+    });
   }
 
   suacauhoi(item) {
@@ -124,6 +128,11 @@ export class CauhoiComponent implements OnInit {
         idBaiHoc: this.idBaihoc,
         idCapDo: this.idCapdo,
         itemData: item
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getDsCauHoi(this.idBaihoc, this.idCapdo);
       }
     });
   }

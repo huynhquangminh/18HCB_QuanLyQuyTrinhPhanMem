@@ -1,14 +1,10 @@
 <div class="content-div">
     <span style="font-size: 15px;">Câu hỏi</span><br>
     <mat-form-field class="form-input">
-        <textarea matInput placeholder="Textarea" [(ngModel)]="tencauhoi" ></textarea>
+        <textarea matInput placeholder="Textarea" [(ngModel)]="tencauhoi"></textarea>
     </mat-form-field>
-    <button style="margin-right: 5px;" 
-    mat-raised-button 
-    color="primary" 
-    (click)="themCauHoi()"
-    [disabled]="tencauhoi === ''"
-    >{{textBtnCauHoi}}</button>
+    <button style="margin-right: 5px;" mat-raised-button color="primary" (click)="actionCauHoi()"
+        [disabled]="tencauhoi === ''">{{textBtnCauHoi}}</button>
 </div>
 <div class="content-dapan" *ngIf="isCauHoi">
     <span style="font-size: 15px;">Danh sách câu trả lời</span><br>
@@ -32,5 +28,5 @@
 
 </div>
 <div style="float: right; ">
-    <button style="margin-right: 5px;" mat-raised-button color="primary" (click)="huy()">Đóng</button>
+    <button style="margin-right: 5px;" [disabled]="checkBtnClose()" mat-raised-button color="primary" (click)="huy()">Đóng</button>
 </div>

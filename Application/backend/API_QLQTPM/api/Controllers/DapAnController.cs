@@ -26,6 +26,17 @@ namespace api.Controllers
             return new ActionResult<ListDapAnResponse>(result.Result, Request);
         }
 
+        /// <summary>
+        /// ListDapAn
+        /// </summary>
+        /// <returns>IHttpActionResult</returns>
+        [HttpPost]
+        public IHttpActionResult GetDapAnByCauHoi(GetCauHoiByIdParameter param)
+        {
+            var result = _businessLogic.GetDapAnByIdCauHoi(param);
+            return new ActionResult<ListDapAnResponse>(result.Result, Request);
+        }
+
         [HttpPost]
         public IHttpActionResult DeleteDapAnByID(DeleteDapAnByIDParam param)
         {
@@ -37,6 +48,13 @@ namespace api.Controllers
         public IHttpActionResult DeleteDapAnByIDCauHoi(DeleteDapAnByIDCauHoiParam param)
         {
             var result = _businessLogic.DeleteDapAnByIDCauHoi(param);
+            return new ActionResult<bool>(result.Result, Request);
+        }
+
+        [HttpPost]
+        public IHttpActionResult ThemDapAnByIDCauHoi(ThemDapAnByIdCauHoiParameter param)
+        {
+            var result = _businessLogic.ThemDapAnByIDCauHoi(param);
             return new ActionResult<bool>(result.Result, Request);
         }
     }

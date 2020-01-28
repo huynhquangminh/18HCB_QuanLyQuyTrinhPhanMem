@@ -364,6 +364,12 @@
           <Parameter Name="idTaikhoan" Type="int" Mode="In" />
         </Function>
         <Function Name="Get_CapDo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_CauHoi_ById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCauHoi" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_DapAn_ByIdCauHoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCauHoi" Type="int" Mode="In" />
+        </Function>
         <Function Name="Get_DiemPerThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTaikhoan" Type="int" Mode="In" />
           <Parameter Name="idKhoaHoc" Type="int" Mode="In" />
@@ -1012,6 +1018,9 @@
           <FunctionImport Name="Delete_KhoaHocById">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="DELETE_TaiKhoan">
+          <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Delete_YeuCauKetBan">
             <Parameter Name="idbanbe" Mode="In" Type="Int32" />
             <Parameter Name="idaccount" Mode="In" Type="Int32" />
@@ -1020,6 +1029,7 @@
             <Parameter Name="idTaiKhoan" Mode="In" Type="Int32" />
             <Parameter Name="idKhoaHoc" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GET_ALL_TaiKhoan" ReturnType="Collection(WebLapTrinhModel.GET_ALL_TaiKhoan_Result)" />
           <FunctionImport Name="GET_BieuDoTheoDoi" ReturnType="Collection(WebLapTrinhModel.GET_BieuDoTheoDoi_Result)">
           <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1068,7 +1078,7 @@
             <Parameter Name="tenbaihoc" Mode="In" Type="String" />
             <Parameter Name="idkhoahoc" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Insert_DSCauHoi" ReturnType="Collection(Decimal)">
+          <FunctionImport Name="Insert_DSCauHoi">
             <Parameter Name="tencauhoi" Mode="In" Type="String" />
             <Parameter Name="idbaihoc" Mode="In" Type="Int32" />
             <Parameter Name="idcapdo" Mode="In" Type="Int32" />
@@ -1160,10 +1170,12 @@
             <Parameter Name="idaccount" Mode="In" Type="Int32" />
             <Parameter Name="yeucau" Mode="In" Type="Boolean" />
           </FunctionImport>
-          <FunctionImport Name="DELETE_TaiKhoan">
-            <Parameter Name="idTaikhoan" Mode="In" Type="Int32" />
+          <FunctionImport Name="Get_CauHoi_ById" ReturnType="Collection(WebLapTrinhModel.Get_CauHoi_ById_Result)">
+            <Parameter Name="idCauHoi" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GET_ALL_TaiKhoan" ReturnType="Collection(WebLapTrinhModel.GET_ALL_TaiKhoan_Result)" />
+          <FunctionImport Name="Get_DapAn_ByIdCauHoi" ReturnType="Collection(WebLapTrinhModel.Get_DapAn_ByIdCauHoi_Result)">
+            <Parameter Name="idCauHoi" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ACCOUNT_LOGIN_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1176,6 +1188,13 @@
         <ComplexType Name="Get_all_account_same_khoahoc_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="GET_ALL_TaiKhoan_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="GET_BieuDoTheoDoi_Result">
@@ -1225,8 +1244,8 @@
         </ComplexType>
         <ComplexType Name="Get_DSKhoaHoc_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="tenkhoahoc" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="imgKhoaHoc" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="tenkhoahoc" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="imgKhoaHoc" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GET_DSKhoaHocPass_By_IdTTTaiKhoan_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1259,12 +1278,17 @@
           <Property Type="Int32" Name="idtaikhoan" Nullable="false" />
           <Property Type="DateTime" Name="ngayhoc" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="GET_ALL_TaiKhoan_Result">
+        <ComplexType Name="Get_CauHoi_ById_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="username" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="password" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="email" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="img" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="tencauhoi" Nullable="false" />
+          <Property Type="Int32" Name="idbaihoc" Nullable="true" />
+          <Property Type="Int32" Name="idcapdo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Get_DapAn_ByIdCauHoi_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="idcauhoi" Nullable="false" />
+          <Property Type="String" Name="cautraloi" Nullable="false" />
+          <Property Type="Boolean" Name="dapan" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1456,12 +1480,24 @@
           <FunctionImportMapping FunctionImportName="Delete_DapAnById" FunctionName="WebLapTrinhModel.Store.Delete_DapAnById" />
           <FunctionImportMapping FunctionImportName="Delete_DapAnByIdCauHoi" FunctionName="WebLapTrinhModel.Store.Delete_DapAnByIdCauHoi" />
           <FunctionImportMapping FunctionImportName="Delete_KhoaHocById" FunctionName="WebLapTrinhModel.Store.Delete_KhoaHocById" />
+          <FunctionImportMapping FunctionImportName="DELETE_TaiKhoan" FunctionName="WebLapTrinhModel.Store.DELETE_TaiKhoan" />
           <FunctionImportMapping FunctionImportName="Delete_YeuCauKetBan" FunctionName="WebLapTrinhModel.Store.Delete_YeuCauKetBan" />
           <FunctionImportMapping FunctionImportName="Get_all_account_same_khoahoc" FunctionName="WebLapTrinhModel.Store.Get_all_account_same_khoahoc">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_all_account_same_khoahoc_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GET_ALL_TaiKhoan" FunctionName="WebLapTrinhModel.Store.GET_ALL_TaiKhoan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.GET_ALL_TaiKhoan_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="img" ColumnName="img" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -1619,15 +1655,23 @@
           <FunctionImportMapping FunctionImportName="Update_KhoaHoc" FunctionName="WebLapTrinhModel.Store.Update_KhoaHoc" />
           <FunctionImportMapping FunctionImportName="Update_PassWord_Account" FunctionName="WebLapTrinhModel.Store.Update_PassWord_Account" />
           <FunctionImportMapping FunctionImportName="Update_ThongTinBanBe" FunctionName="WebLapTrinhModel.Store.Update_ThongTinBanBe" />
-          <FunctionImportMapping FunctionImportName="DELETE_TaiKhoan" FunctionName="WebLapTrinhModel.Store.DELETE_TaiKhoan" />
-          <FunctionImportMapping FunctionImportName="GET_ALL_TaiKhoan" FunctionName="WebLapTrinhModel.Store.GET_ALL_TaiKhoan">
+          <FunctionImportMapping FunctionImportName="Get_CauHoi_ById" FunctionName="WebLapTrinhModel.Store.Get_CauHoi_ById">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="WebLapTrinhModel.GET_ALL_TaiKhoan_Result">
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_CauHoi_ById_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="tencauhoi" ColumnName="tencauhoi" />
+                <ScalarProperty Name="idbaihoc" ColumnName="idbaihoc" />
+                <ScalarProperty Name="idcapdo" ColumnName="idcapdo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_DapAn_ByIdCauHoi" FunctionName="WebLapTrinhModel.Store.Get_DapAn_ByIdCauHoi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebLapTrinhModel.Get_DapAn_ByIdCauHoi_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idcauhoi" ColumnName="idcauhoi" />
+                <ScalarProperty Name="cautraloi" ColumnName="cautraloi" />
+                <ScalarProperty Name="dapan" ColumnName="dapan" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

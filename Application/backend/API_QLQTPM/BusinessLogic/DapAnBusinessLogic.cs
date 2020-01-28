@@ -29,6 +29,7 @@ namespace BusinessLogic
             configMap = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<GET_DSDapAn_Follow_IdBaiHoc_IdCapDo_Result, listDapAnDto>();
+                cfg.CreateMap<Get_DapAn_ByIdCauHoi_Result, listDapAnDto>();
             });
             mapper = configMap.CreateMapper();
         }
@@ -81,6 +82,41 @@ namespace BusinessLogic
                 response.Success = false;
             }
             return await Task.FromResult(response);
+        }
+
+        public async Task<ListDapAnResponse> GetDapAnByIdCauHoi(GetCauHoiByIdParameter param)
+        {
+            var response = new ListDapAnResponse();
+            try
+            {
+                var result = _dataAccess.GetDapAnByIdCauHoi(param);
+                if (result != null)
+                {
+                    response.listDapAn = MapList<Get_DapAn_ByIdCauHoi_Result, listDapAnDto>(result.ToList());
+                    response.Success = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+            }
+            return await Task.FromResult(response);
+        }
+
+        public async Task<bool> ThemDapAnByIDCauHoi(ThemDapAnByIdCauHoiParameter param)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.ThemDapAnByIdCauHoi(param);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
         }
     }
 }

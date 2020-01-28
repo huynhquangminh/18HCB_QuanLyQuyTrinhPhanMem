@@ -133,6 +133,15 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Delete_KhoaHocById", idParameter);
         }
     
+        public virtual int DELETE_TaiKhoan(Nullable<int> idTaikhoan)
+        {
+            var idTaikhoanParameter = idTaikhoan.HasValue ?
+                new ObjectParameter("idTaikhoan", idTaikhoan) :
+                new ObjectParameter("idTaikhoan", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETE_TaiKhoan", idTaikhoanParameter);
+        }
+    
         public virtual int Delete_YeuCauKetBan(Nullable<int> idbanbe, Nullable<int> idaccount)
         {
             var idbanbeParameter = idbanbe.HasValue ?
@@ -157,6 +166,11 @@ namespace EntityData
                 new ObjectParameter("idKhoaHoc", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_all_account_same_khoahoc_Result>("Get_all_account_same_khoahoc", idTaiKhoanParameter, idKhoaHocParameter);
+        }
+    
+        public virtual ObjectResult<GET_ALL_TaiKhoan_Result> GET_ALL_TaiKhoan()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_ALL_TaiKhoan_Result>("GET_ALL_TaiKhoan");
         }
     
         public virtual ObjectResult<GET_BieuDoTheoDoi_Result> GET_BieuDoTheoDoi(Nullable<int> idTaikhoan)
@@ -632,18 +646,22 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_ThongTinBanBe", idParameter, idbanbeParameter, idaccountParameter, yeucauParameter);
         }
     
-        public virtual int DELETE_TaiKhoan(Nullable<int> idTaikhoan)
+        public virtual ObjectResult<Get_CauHoi_ById_Result> Get_CauHoi_ById(Nullable<int> idCauHoi)
         {
-            var idTaikhoanParameter = idTaikhoan.HasValue ?
-                new ObjectParameter("idTaikhoan", idTaikhoan) :
-                new ObjectParameter("idTaikhoan", typeof(int));
+            var idCauHoiParameter = idCauHoi.HasValue ?
+                new ObjectParameter("idCauHoi", idCauHoi) :
+                new ObjectParameter("idCauHoi", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETE_TaiKhoan", idTaikhoanParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_CauHoi_ById_Result>("Get_CauHoi_ById", idCauHoiParameter);
         }
     
-        public virtual ObjectResult<GET_ALL_TaiKhoan_Result> GET_ALL_TaiKhoan()
+        public virtual ObjectResult<Get_DapAn_ByIdCauHoi_Result> Get_DapAn_ByIdCauHoi(Nullable<int> idCauHoi)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_ALL_TaiKhoan_Result>("GET_ALL_TaiKhoan");
+            var idCauHoiParameter = idCauHoi.HasValue ?
+                new ObjectParameter("idCauHoi", idCauHoi) :
+                new ObjectParameter("idCauHoi", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_DapAn_ByIdCauHoi_Result>("Get_DapAn_ByIdCauHoi", idCauHoiParameter);
         }
     }
 }

@@ -22,5 +22,9 @@ namespace BusinessLogicInterface
         Task<bool> DeleteCauHoiByIDBaiHoc(DeleteCauHoiByIDBaiHocParam request);
 
         Task<bool> ThemCauHoiByIDBaiHoc(ThemCauHoiByIdBaiHocParameter request);
+
+        Task<bool> SuaCauHoiByID(UpdateCauHoiByIdParameter request);
+
+        Task<GetDSCauHoiResponse> GetCauHoiById(GetCauHoiByIdParameter request);
     }
 }

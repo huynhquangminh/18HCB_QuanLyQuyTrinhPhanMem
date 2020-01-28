@@ -31,7 +31,8 @@ namespace BusinessLogic
         {
             configMap = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<GetDSCauHoiResponse, cauhoiDTO>();
+                cfg.CreateMap<GET_DSCauHoi_Follow_IdBaiHoc_IdCapDo_Result, cauhoiDTO>();
+                cfg.CreateMap<Get_CauHoi_ById_Result, cauhoiDTO>();
             });
             mapper = configMap.CreateMapper();
         }
@@ -95,10 +96,45 @@ namespace BusinessLogic
                 return await Task.FromResult(response);
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return await Task.FromResult(response);
             }
+        }
+
+        public async Task<bool> SuaCauHoiByID(UpdateCauHoiByIdParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.UpdateCauHoiById(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception e)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
+        public async Task<GetDSCauHoiResponse> GetCauHoiById(GetCauHoiByIdParameter request)
+        {
+            var response = new GetDSCauHoiResponse();
+            try
+            {
+                var result = _dataAccess.GetCauHoiById(request);
+                if (result != null)
+                {
+                    response.listCauHoi = MapList<Get_CauHoi_ById_Result, cauhoiDTO>(result.ToList());
+                    response.Success = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+            }
+            return await Task.FromResult(response);
         }
     }
 }

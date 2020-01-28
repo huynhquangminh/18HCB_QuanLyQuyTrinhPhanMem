@@ -34,6 +34,17 @@ namespace api.Controllers
         /// <summary>
         /// 
         /// </summary>
+        /// <returns>IHttpActionResult</returns>
+        [HttpPost]
+        public IHttpActionResult GetCauHoiById(GetCauHoiByIdParameter request)
+        {
+            var result = _businessLogic.GetCauHoiById(request);
+            return new ActionResult<GetDSCauHoiResponse>(result.Result, Request);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
@@ -52,6 +63,18 @@ namespace api.Controllers
         public IHttpActionResult DeleteCauHoiByIDBaiHoc(DeleteCauHoiByIDBaiHocParam request)
         {
             var result = _businessLogic.DeleteCauHoiByIDBaiHoc(request);
+            return new ActionResult<bool>(result.Result, Request);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult UpdateCauHoiById(UpdateCauHoiByIdParameter request)
+        {
+            var result = _businessLogic.SuaCauHoiByID(request);
             return new ActionResult<bool>(result.Result, Request);
         }
 

@@ -11,5 +11,6 @@ namespace BusinessLogicInterface.Dtos
         public int id { get; set; }
         public string tencauhoi { get; set; }
         public int idbaihoc { get; set; }
+        public int idcapdo { get; set; }
     }
 }

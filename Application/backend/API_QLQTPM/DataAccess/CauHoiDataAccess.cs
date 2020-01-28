@@ -45,8 +45,20 @@ namespace DataAccess
 
         public bool ThemCauHoiByIdBaiHoc(ThemCauHoiByIdBaiHocParameter param)
         {
-            var result = db.Insert_DSCauHoi(param.tencauhoi, param.idbaihoc, param.idcapdo) > 0 ? true : false;
-            return result;
+            var result = db.Insert_DSCauHoi(param.tencauhoi, param.idbaihoc, param.idcapdo);
+
+            return result > 0 ? true : false;
+        }
+
+        public IEnumerable<Get_CauHoi_ById_Result> GetCauHoiById(GetCauHoiByIdParameter param)
+        {
+            return db.Get_CauHoi_ById(param.idCauHoi);
+        }
+
+        public bool UpdateCauHoiById(UpdateCauHoiByIdParameter param)
+        {
+            var result = db.Update_DSCauHoi(param.id, param.tencauhoi, param.idbaihoc, param.idcapdo);
+            return result > 0 ? true : false;
         }
     }
 }

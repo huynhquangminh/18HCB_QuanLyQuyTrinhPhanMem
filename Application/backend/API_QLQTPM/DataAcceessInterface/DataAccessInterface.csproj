@@ -105,6 +105,7 @@
     <Compile Include="Parameter\DeleteKHByIDParameter.cs" />
     <Compile Include="Parameter\GetAllAccountSameKHParam.cs" />
     <Compile Include="Parameter\GetBieuDoTheoDoiParameter.cs" />
+    <Compile Include="Parameter\GetCauHoiByIdParameter.cs" />
     <Compile Include="Parameter\GetDSBaiHocParameter.cs" />
     <Compile Include="Parameter\GetDSBaiHocPassParameter.cs" />
     <Compile Include="Parameter\GetDSBanBeParameter.cs" />
@@ -117,9 +118,11 @@
     <Compile Include="Parameter\ThemBaiHocParameter.cs" />
     <Compile Include="Parameter\ThemBaiHocPassParameter.cs" />
     <Compile Include="Parameter\ThemCauHoiByIdBaiHocParameter.cs" />
+    <Compile Include="Parameter\ThemDapAnByIdCauHoiParameter.cs" />
     <Compile Include="Parameter\ThemKhoaHocParameter.cs" />
     <Compile Include="Parameter\ThemThongTinTaiKhoanParameter.cs" />
     <Compile Include="Parameter\UpdateAccountInfoParameter.cs" />
+    <Compile Include="Parameter\UpdateCauHoiByIdParameter.cs" />
     <Compile Include="Parameter\UpdatePasswordParameter.cs" />
     <Compile Include="Parameter\UpdateThongBaoParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

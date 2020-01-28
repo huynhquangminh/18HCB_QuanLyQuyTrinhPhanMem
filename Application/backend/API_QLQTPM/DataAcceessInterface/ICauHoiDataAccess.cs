@@ -32,6 +32,11 @@ namespace DataAcceessInterface
         /// <summary>
         /// 
         /// </summary>
-        //bool UpdateCauHoiById(DeleteCauHoiByIDParam param);
+        bool UpdateCauHoiById(UpdateCauHoiByIdParameter param);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        IEnumerable<Get_CauHoi_ById_Result> GetCauHoiById(GetCauHoiByIdParameter param);
     }
 }

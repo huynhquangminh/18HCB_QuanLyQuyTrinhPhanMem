@@ -16,4 +16,24 @@ export class StudyQuizService extends AppService {
     xoaCauHoi(request: any = {}) {
         return this.CallByResquestService('/api/cauhoi/DeleteCauHoiByID', request);
     }
+
+    xoaDapAn(request: any = {}) {
+        return this.CallByResquestService('/api/dapan/DeleteDapAnByIDCauHoi', request);
+    }
+
+    getDapAnByCauHoi(request: any = {}) {
+        return this.CallByResquestService('/api/dapan/GetDapAnByCauHoi', request);
+    }
+
+    xoaDapAnById(request: any = {}) {
+        return this.CallByResquestService('/api/dapan/DeleteDapAnByID', request);
+    }
+
+    themDapAnByIdCauHoi(request: any = {}) {
+        return this.CallByResquestService('/api/dapan/ThemDapAnByIDCauHoi', request);
+    }
+
+    suaCauHoiById(request: any = {}) {
+        return this.CallByResquestService('/api/cauhoi/UpdateCauHoiById', request);
+    }
 }

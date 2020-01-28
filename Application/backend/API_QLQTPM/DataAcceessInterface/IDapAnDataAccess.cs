@@ -15,5 +15,9 @@ namespace DataAcceessInterface
         bool DeleteDapAnByID(DeleteDapAnByIDParam param);
 
         bool DeleteDapAnByIDCauHoi(DeleteDapAnByIDCauHoiParam param);
+
+        IEnumerable<Get_DapAn_ByIdCauHoi_Result> GetDapAnByIdCauHoi(GetCauHoiByIdParameter param);
+
+        bool ThemDapAnByIdCauHoi(ThemDapAnByIdCauHoiParameter param);
     }
 }
