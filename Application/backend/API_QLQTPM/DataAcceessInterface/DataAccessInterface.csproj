@@ -122,6 +122,7 @@
     <Compile Include="Parameter\ThemKhoaHocParameter.cs" />
     <Compile Include="Parameter\ThemThongTinTaiKhoanParameter.cs" />
     <Compile Include="Parameter\UpdateAccountInfoParameter.cs" />
+    <Compile Include="Parameter\UpdateBieuDoTheoDoiParameter.cs" />
     <Compile Include="Parameter\UpdateCauHoiByIdParameter.cs" />
     <Compile Include="Parameter\UpdatePasswordParameter.cs" />
     <Compile Include="Parameter\UpdateThongBaoParameter.cs" />

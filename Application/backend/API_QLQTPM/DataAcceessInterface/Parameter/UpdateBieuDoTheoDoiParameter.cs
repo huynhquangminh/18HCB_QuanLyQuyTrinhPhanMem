@@ -1,8 +1,9 @@
-﻿namespace BusinessLogicInterface.Dtos
+﻿using System;
+
+namespace DataAcceessInterface.Parameter
 {
-    public class bieudotheodoiDTO
+    public class UpdateBieuDoTheoDoiParameter
     {
-        public int id { get; set; }
         public int idTaikhoan { get; set; }
         public int Thu2 { get; set; }
         public int Thu3 { get; set; }
@@ -11,6 +12,6 @@
         public int Thu6 { get; set; }
         public int Thu7 { get; set; }
         public int ChuNhat { get; set; }
-        public System.DateTime NgayBatDau { get; set; }
+        public DateTime NgayHienTai { get; set; }
     }
 }

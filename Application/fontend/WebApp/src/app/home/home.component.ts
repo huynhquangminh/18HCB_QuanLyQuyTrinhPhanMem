@@ -51,7 +51,6 @@ export class HomeComponent implements OnInit {
     if (user) {
       this.chartFllowService.getChartFllow(user.id).subscribe(res => {
         if (res && res.Success && res.lstBieuDoTheoDoi.length > 0) {
-          // console.log('xxx', res);
           this.chartFllowService.listensDataChart(res.lstBieuDoTheoDoi[0]);
         }
       });

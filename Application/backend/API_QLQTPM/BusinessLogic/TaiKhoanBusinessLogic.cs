@@ -120,6 +120,7 @@ namespace BusinessLogic
             var response = false;
             try
             {
+                //request.ngayhoc =
                 response = _dataAccess.ThemThongTinTaiKhoan(request);
                 return await Task.FromResult(response);
 

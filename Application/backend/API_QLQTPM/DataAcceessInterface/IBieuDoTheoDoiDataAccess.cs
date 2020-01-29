@@ -16,5 +16,12 @@ namespace DataAcceessInterface
         /// <param name="param"></param>
         /// <returns></returns>
         IEnumerable<GET_BieuDoTheoDoi_Result> GetBieuDoTheoDoi(GetBieuDoTheoDoiParameter param);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        bool UpdateBieuDoTheoDoi(UpdateBieuDoTheoDoiParameter param);
     }
 }

@@ -31,5 +31,17 @@ namespace api.Controllers
             var result = _businessLogic.GetBieuDoTheoDoi(request);
             return new ActionResult<GetBieuDoTheoDoiResponse>(result.Result, Request);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult UpdateBieuDoTheoDoi(UpdateBieuDoTheoDoiParameter request)
+        {
+            var result = _businessLogic.UpdateBieuDoTheoDoi(request);
+            return new ActionResult<bool>(result.Result, Request);
+        }
     }
 }

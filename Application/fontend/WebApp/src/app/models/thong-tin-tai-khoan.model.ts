@@ -4,6 +4,7 @@ export class ThongTinTaiKhoanModel {
     diemKN: number;
     diemKNDay: number;
     idtaikhoan: number;
+    ngayhoc: string;
     constructor() {
         this.idkhoahoc = 0;
         this.idcapdo = 0;

@@ -56,5 +56,20 @@ namespace BusinessLogic
             }
             return await Task.FromResult(response);
         }
+
+        public async Task<bool> UpdateBieuDoTheoDoi(UpdateBieuDoTheoDoiParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.UpdateBieuDoTheoDoi(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
     }
 }

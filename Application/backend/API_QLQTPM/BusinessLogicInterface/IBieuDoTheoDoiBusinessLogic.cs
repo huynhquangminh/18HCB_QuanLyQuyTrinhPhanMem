@@ -16,5 +16,12 @@ namespace BusinessLogicInterface
         /// <param name="request"></param>
         /// <returns></returns>
         Task<GetBieuDoTheoDoiResponse> GetBieuDoTheoDoi(GetBieuDoTheoDoiParameter request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<bool> UpdateBieuDoTheoDoi(UpdateBieuDoTheoDoiParameter request);
     }
 }

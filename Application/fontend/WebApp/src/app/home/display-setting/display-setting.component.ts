@@ -51,7 +51,6 @@ export class DisplaySettingComponent implements OnInit {
         this.listGoalDay = res.listLoaiDiemKinhNghiem;
       }
     });
-
   }
   settingLanguage(id) {
     this.resultSetting.idkhoahoc = id;
@@ -72,6 +71,7 @@ export class DisplaySettingComponent implements OnInit {
     const taikhoanInfo = this.webStorageSerivce.getLocalStorage(WebKeyStorage.AccountInfo);
     if (taikhoanInfo) {
       this.resultSetting.idtaikhoan = taikhoanInfo.id;
+      this.resultSetting.ngayhoc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
     }
     this.taiKhoanService.themThongTinTaiKhoan(this.resultSetting).subscribe(res => {
       if (res) {

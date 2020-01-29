@@ -192,7 +192,7 @@ export class StudyQuizComponent implements OnInit {
   }
 
   showDialogQuizSuccess() {
-    if (this.valueProgress === 100) {
+    if (this.valueProgress > 100) {
       clearInterval(this.interval);
       const dialogRef = this.dialog.open(DialogQuizSuccessComponent, {
         width: '400px',

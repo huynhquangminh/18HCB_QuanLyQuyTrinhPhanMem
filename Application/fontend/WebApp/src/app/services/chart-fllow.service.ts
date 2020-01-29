@@ -5,12 +5,14 @@ import { BehaviorSubject } from 'rxjs';
 export class ChartFllowService extends AppService {
     public dataChart = new BehaviorSubject<any>({});
     listensDataChart(data) {
-        console.log(data);
-        // this.dataChart = data;
         this.dataChart.next(data);
     }
 
     getChartFllow(id: number) {
         return this.CallByResquestService('/api/bieudotheodoi/getbieudotheodoi', { idTaiKhoan: id });
+    }
+
+    updateChartFllow(request: any = {}) {
+        return this.CallByResquestService('/api/bieudotheodoi/UpdateBieuDoTheoDoi', request);
     }
 }
