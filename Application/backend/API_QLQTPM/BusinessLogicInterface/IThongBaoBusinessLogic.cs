@@ -19,5 +19,7 @@ namespace BusinessLogicInterface
         /// <param name="request"></param>
         /// <returns></returns>
         Task<bool> UpdateThongBao(UpdateThongBaoParameter request);
+
+        Task<bool> InsertThongBao(InsertThongBaoParameter request);
     }
 }

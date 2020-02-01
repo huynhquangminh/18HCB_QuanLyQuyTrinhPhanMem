@@ -41,5 +41,16 @@ namespace api.Controllers
             var result = _businessLogic.UpdateThongBao(request);
             return new ActionResult<bool>(result.Result, Request);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>IHttpActionResult</returns>
+        [HttpPost]
+        public IHttpActionResult InsertThongBao(InsertThongBaoParameter request)
+        {
+            var result = _businessLogic.InsertThongBao(request);
+            return new ActionResult<bool>(result.Result, Request);
+        }
     }
 }

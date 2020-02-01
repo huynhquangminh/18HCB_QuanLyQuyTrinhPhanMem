@@ -66,7 +66,7 @@ namespace BusinessLogic
                 return await Task.FromResult(response);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return await Task.FromResult(response);
             }

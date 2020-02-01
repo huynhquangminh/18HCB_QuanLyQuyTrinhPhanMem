@@ -40,7 +40,6 @@ namespace EntityData
         public virtual DbSet<KhoaHoc> KhoaHocs { get; set; }
         public virtual DbSet<LoaiDiemKN> LoaiDiemKNs { get; set; }
         public virtual DbSet<PhanHoi> PhanHois { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<ThongTinTaiKhoan> ThongTinTaiKhoans { get; set; }
     
@@ -185,6 +184,24 @@ namespace EntityData
         public virtual ObjectResult<Get_CapDo_Result> Get_CapDo()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_CapDo_Result>("Get_CapDo");
+        }
+    
+        public virtual ObjectResult<Get_CauHoi_ById_Result> Get_CauHoi_ById(Nullable<int> idCauHoi)
+        {
+            var idCauHoiParameter = idCauHoi.HasValue ?
+                new ObjectParameter("idCauHoi", idCauHoi) :
+                new ObjectParameter("idCauHoi", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_CauHoi_ById_Result>("Get_CauHoi_ById", idCauHoiParameter);
+        }
+    
+        public virtual ObjectResult<Get_DapAn_ByIdCauHoi_Result> Get_DapAn_ByIdCauHoi(Nullable<int> idCauHoi)
+        {
+            var idCauHoiParameter = idCauHoi.HasValue ?
+                new ObjectParameter("idCauHoi", idCauHoi) :
+                new ObjectParameter("idCauHoi", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_DapAn_ByIdCauHoi_Result>("Get_DapAn_ByIdCauHoi", idCauHoiParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> Get_DiemPerThang(Nullable<int> idTaikhoan, Nullable<int> idKhoaHoc, Nullable<System.DateTime> ngayHienTai)
@@ -376,7 +393,7 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_KhoaHoc", tenkhoahocParameter, imgKhoaHocParameter);
         }
     
-        public virtual int INSERT_OR_UPDATE_BieuDoTheoDoi(Nullable<int> idTaikhoan, Nullable<int> thu2, Nullable<int> thu3, Nullable<int> thu4, Nullable<int> thu5, Nullable<int> thu6, Nullable<int> thu7, Nullable<int> chuNhat, Nullable<System.DateTime> ngayHienTai)
+        public virtual int INSERT_OR_UPDATE_BieuDoTheoDoi(Nullable<int> idTaikhoan, Nullable<int> thu2, Nullable<int> thu3, Nullable<int> thu4, Nullable<int> thu5, Nullable<int> thu6, Nullable<int> thu7, Nullable<int> chuNhat, Nullable<int> diemTong, Nullable<System.DateTime> ngayHienTai)
         {
             var idTaikhoanParameter = idTaikhoan.HasValue ?
                 new ObjectParameter("idTaikhoan", idTaikhoan) :
@@ -410,11 +427,15 @@ namespace EntityData
                 new ObjectParameter("ChuNhat", chuNhat) :
                 new ObjectParameter("ChuNhat", typeof(int));
     
+            var diemTongParameter = diemTong.HasValue ?
+                new ObjectParameter("DiemTong", diemTong) :
+                new ObjectParameter("DiemTong", typeof(int));
+    
             var ngayHienTaiParameter = ngayHienTai.HasValue ?
                 new ObjectParameter("NgayHienTai", ngayHienTai) :
                 new ObjectParameter("NgayHienTai", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERT_OR_UPDATE_BieuDoTheoDoi", idTaikhoanParameter, thu2Parameter, thu3Parameter, thu4Parameter, thu5Parameter, thu6Parameter, thu7Parameter, chuNhatParameter, ngayHienTaiParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERT_OR_UPDATE_BieuDoTheoDoi", idTaikhoanParameter, thu2Parameter, thu3Parameter, thu4Parameter, thu5Parameter, thu6Parameter, thu7Parameter, chuNhatParameter, diemTongParameter, ngayHienTaiParameter);
         }
     
         public virtual int Insert_PhanHoi(string email, string noidung)
@@ -646,22 +667,34 @@ namespace EntityData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_ThongTinBanBe", idParameter, idbanbeParameter, idaccountParameter, yeucauParameter);
         }
     
-        public virtual ObjectResult<Get_CauHoi_ById_Result> Get_CauHoi_ById(Nullable<int> idCauHoi)
+        public virtual int Insert_ThongBaoByIdAccount(Nullable<int> idaccount, string thongbao)
         {
-            var idCauHoiParameter = idCauHoi.HasValue ?
-                new ObjectParameter("idCauHoi", idCauHoi) :
-                new ObjectParameter("idCauHoi", typeof(int));
+            var idaccountParameter = idaccount.HasValue ?
+                new ObjectParameter("idaccount", idaccount) :
+                new ObjectParameter("idaccount", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_CauHoi_ById_Result>("Get_CauHoi_ById", idCauHoiParameter);
+            var thongbaoParameter = thongbao != null ?
+                new ObjectParameter("thongbao", thongbao) :
+                new ObjectParameter("thongbao", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_ThongBaoByIdAccount", idaccountParameter, thongbaoParameter);
         }
     
-        public virtual ObjectResult<Get_DapAn_ByIdCauHoi_Result> Get_DapAn_ByIdCauHoi(Nullable<int> idCauHoi)
+        public virtual int INSERT_YeuCauKetBan(Nullable<int> idAccount, Nullable<int> idBanBe, Nullable<bool> yeucau)
         {
-            var idCauHoiParameter = idCauHoi.HasValue ?
-                new ObjectParameter("idCauHoi", idCauHoi) :
-                new ObjectParameter("idCauHoi", typeof(int));
+            var idAccountParameter = idAccount.HasValue ?
+                new ObjectParameter("idAccount", idAccount) :
+                new ObjectParameter("idAccount", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_DapAn_ByIdCauHoi_Result>("Get_DapAn_ByIdCauHoi", idCauHoiParameter);
+            var idBanBeParameter = idBanBe.HasValue ?
+                new ObjectParameter("idBanBe", idBanBe) :
+                new ObjectParameter("idBanBe", typeof(int));
+    
+            var yeucauParameter = yeucau.HasValue ?
+                new ObjectParameter("yeucau", yeucau) :
+                new ObjectParameter("yeucau", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERT_YeuCauKetBan", idAccountParameter, idBanBeParameter, yeucauParameter);
         }
     }
 }

@@ -8,7 +8,6 @@ export class GoalEveryDayService extends AppService {
   public goalDay = new BehaviorSubject<number>(0);
   listensChangeGoalDay(data) {
     const sum = this.goalDay.value + data;
-    console.log('sum', sum);
     this.goalDay.next(sum);
   }
 

@@ -19,5 +19,7 @@ namespace EntityData
         public bool yeucau { get; set; }
         public string username { get; set; }
         public string img { get; set; }
+        public Nullable<int> diemtuan { get; set; }
+        public Nullable<int> tongdiemkn { get; set; }
     }
 }

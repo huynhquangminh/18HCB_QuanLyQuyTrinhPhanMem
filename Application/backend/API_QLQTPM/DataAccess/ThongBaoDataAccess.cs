@@ -36,5 +36,11 @@ namespace DataAccess
             var result = db.UPDATE_DSThongBao_Follow_Id_IdAccount(param.id, param.idAccount) > 0 ? true : false;
             return result;
         }
+
+        public bool InsertThongBao(InsertThongBaoParameter param)
+        {
+            var result = db.Insert_ThongBaoByIdAccount(param.idaccount, param.thongbao) > 0 ? true : false;
+            return result;
+        }
     }
 }

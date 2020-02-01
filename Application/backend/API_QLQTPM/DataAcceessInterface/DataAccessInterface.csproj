@@ -114,6 +114,8 @@
     <Compile Include="Parameter\GetDSThongBaoParameter.cs" />
     <Compile Include="Parameter\GetThongTinTaiKhoanParameter.cs" />
     <Compile Include="Parameter\InsertPhanHoiParameter.cs" />
+    <Compile Include="Parameter\InsertThongBaoParameter.cs" />
+    <Compile Include="Parameter\InsertYeuCauKetBanParameter.cs" />
     <Compile Include="Parameter\LoginParameter.cs" />
     <Compile Include="Parameter\ThemBaiHocParameter.cs" />
     <Compile Include="Parameter\ThemBaiHocPassParameter.cs" />

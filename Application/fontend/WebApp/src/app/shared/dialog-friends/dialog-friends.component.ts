@@ -1,3 +1,5 @@
+import { WebStorageSerivce } from './../../services/webStorage.service';
+import { WebKeyStorage } from './../../global/web-key-storage';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FriendsService } from 'src/app/services/friends.service';
@@ -16,7 +18,8 @@ export class DialogFriendsComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogFriendsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private friendsService: FriendsService
+    private friendsService: FriendsService,
+    private webStorageSerivce: WebStorageSerivce
   ) { }
 
   ngOnInit() {
@@ -44,7 +47,7 @@ export class DialogFriendsComponent implements OnInit {
   getListRequestFriend() {
     this.friendsService.getListRequestFriend({ idAccount: this.data.idTaiKhoan }).subscribe(res => {
       if (res && res.Success) {
-        this.listRequest = res.listBanBe
+        this.listRequest = res.listBanBe;
       }
     });
   }
@@ -59,7 +62,9 @@ export class DialogFriendsComponent implements OnInit {
       idaccount: idbanbe
     };
     const request2 = {
+      // tslint:disable-next-line:object-literal-shorthand
       idbanbe: idbanbe,
+      // tslint:disable-next-line:object-literal-shorthand
       idaccount: idaccount
     };
     forkJoin(
@@ -72,6 +77,24 @@ export class DialogFriendsComponent implements OnInit {
       }
       return of([]);
     });
+  }
+
+  themYeuCauKetBan(item) {
+    const setting = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
+    const request = {
+      idAccount: setting.idtaikhoan,
+      idBanBe: item.id,
+      yeucau: false
+    };
+    this.friendsService.insertRequestFriend(request).subscribe(res => {
+      if (res) {
+        this.getListAccountSameCourse();
+      }
+    });
+  }
+
+  DongYRequest(idbanbe, idaccount) {
+
   }
 
 }

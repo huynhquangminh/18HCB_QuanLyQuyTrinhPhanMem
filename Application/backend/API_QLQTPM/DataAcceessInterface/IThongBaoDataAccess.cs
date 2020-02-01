@@ -18,5 +18,7 @@ namespace DataAcceessInterface
         /// <param name="param"></param>
         /// <returns></returns>
         bool UpdateThongBao(UpdateThongBaoParameter param);
+
+        bool InsertThongBao(InsertThongBaoParameter param);
     }
 }

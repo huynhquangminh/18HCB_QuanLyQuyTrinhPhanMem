@@ -18,7 +18,12 @@ export class AppComponent {
     const user = this.webStorageSerivce.getLocalStorage(WebKeyStorage.AccountInfo);
     if (user) {
       const setting = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
-      this.goalEveryDayService.listensChangeGoalDay(setting ? setting.diemKNDay : 0);
+      if (setting) {
+        this.goalEveryDayService.listensChangeGoalDay(setting ? setting.diemKNDay : 0);
+      } else {
+        this.goalEveryDayService.listensChangeGoalDay(0);
+        this.router.navigateByUrl('/home/display-setting');
+      }
     } else {
       this.router.navigateByUrl('/login');
     }

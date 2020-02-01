@@ -12,6 +12,7 @@ namespace DataAcceessInterface.Parameter
         public int Thu6 { get; set; }
         public int Thu7 { get; set; }
         public int ChuNhat { get; set; }
+        public int DiemTong { get; set; }
         public DateTime NgayHienTai { get; set; }
     }
 }

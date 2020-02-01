@@ -23,6 +23,7 @@ namespace EntityData
         public int Thu6 { get; set; }
         public int Thu7 { get; set; }
         public int ChuNhat { get; set; }
+        public Nullable<int> TongDiemKN { get; set; }
         public System.DateTime NgayBatDau { get; set; }
     
         public virtual TaiKhoan TaiKhoan { get; set; }

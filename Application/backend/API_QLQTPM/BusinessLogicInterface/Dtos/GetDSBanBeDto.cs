@@ -8,5 +8,7 @@
         public bool yeucau { get; set; }
         public string username { get; set; }
         public string img { get; set; }
+        public int diemtuan { get; set; }
+        public int tongdiemkn { get; set; }
     }
 }

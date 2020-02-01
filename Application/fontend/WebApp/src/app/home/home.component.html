@@ -75,13 +75,13 @@
                                     <mat-list-item>
                                         <img style="margin-right:5px" [src]="pathImg + 'icon-login.png'" width="40px">
                                         <span>{{item.username}} </span>
-                                        <span style="margin-left: 140px;">50 KN</span>
+                                        <span style="margin-left: 140px;">{{item.diemtuan}} KN</span>
                                     </mat-list-item>
                                     <mat-divider></mat-divider>
                                 </ng-container>
                             </mat-list>
                         </mat-tab>
-                        <mat-tab label="Tháng này">
+                        <!-- <mat-tab label="Tháng này">
                             <mat-list style="height: 155px; overflow: hidden;">
                                 <ng-container *ngFor="let item of listFriend">
                                     <mat-list-item>
@@ -92,14 +92,14 @@
                                     <mat-divider></mat-divider>
                                 </ng-container>
                             </mat-list>
-                        </mat-tab>
+                        </mat-tab> -->
                         <mat-tab label="Tổng cộng">
                             <mat-list style="height: 155px; overflow: hidden;">
                                 <ng-container *ngFor="let item of listFriend">
                                     <mat-list-item>
                                         <img style="margin-right:5px" [src]="pathImg + 'icon-login.png'" width="40px">
                                         <span>{{item.username}} </span>
-                                        <span style="margin-left: 140px;">50 KN</span>
+                                        <span style="margin-left: 140px;">{{item.tongdiemkn}} KN</span>
                                     </mat-list-item>
                                     <mat-divider></mat-divider>
                                 </ng-container>

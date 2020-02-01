@@ -1,3 +1,4 @@
+import { GoalEveryDayService } from './../services/goal-every-day.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { WebStorageSerivce } from '../services/webStorage.service';
@@ -8,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogNoticationsComponent } from '../shared/dialog-notications/dialog-notications.component';
 import { DialogFriendsComponent } from '../shared/dialog-friends/dialog-friends.component';
 import { FriendsService } from '../services/friends.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +27,8 @@ export class HomeComponent implements OnInit {
     private homeService: HomeService,
     private chartFllowService: ChartFllowService,
     public dialog: MatDialog,
-    private friendsService: FriendsService
+    private friendsService: FriendsService,
+    private goalEveryDayService: GoalEveryDayService,
   ) { }
 
   ngOnInit() {
@@ -59,6 +62,7 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.webStorageSerivce.clearLocalStorage();
+    this.goalEveryDayService.goalDay = new BehaviorSubject<number>(0);
     this.router.navigateByUrl('/login');
   }
 
@@ -102,6 +106,7 @@ export class HomeComponent implements OnInit {
     this.friendsService.getListFriends({ idAccount: user.id }).subscribe(res => {
       if (res && res.Success) {
         this.listFriend = res.listBanBe.filter(item => item.yeucau === true);
+        console.log('listFriend', this.listFriend);
       }
     });
   }

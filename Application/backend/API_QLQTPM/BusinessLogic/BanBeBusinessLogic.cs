@@ -102,5 +102,20 @@ namespace BusinessLogic
                 return await Task.FromResult(response);
             }
         }
+
+        public async Task<bool> InsertYeuCauKetBan(InsertYeuCauKetBanParameter param)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.InsertYeuCauKetBan(param);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
     }
 }

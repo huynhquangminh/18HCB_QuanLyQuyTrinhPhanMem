@@ -35,5 +35,11 @@ namespace DataAccess
             var result = db.Delete_YeuCauKetBan(param.idbanbe, param.idaccount);
             return result > 0 ? true : false;
         }
+
+        public bool InsertYeuCauKetBan(InsertYeuCauKetBanParameter param)
+        {
+            var result = db.INSERT_YeuCauKetBan(param.idAccount, param.idBanBe, param.yeucau);
+            return result > 0 ? true : false;
+        }
     }
 }

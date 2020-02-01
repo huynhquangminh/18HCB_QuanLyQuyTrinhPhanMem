@@ -80,5 +80,20 @@ namespace BusinessLogic
                 return await Task.FromResult(response);
             }
         }
+
+        public async Task<bool> InsertThongBao(InsertThongBaoParameter request)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.InsertThongBao(request);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
     }
 }

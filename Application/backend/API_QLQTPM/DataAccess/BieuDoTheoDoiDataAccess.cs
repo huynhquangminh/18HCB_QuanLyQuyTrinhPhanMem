@@ -28,7 +28,7 @@ namespace DataAccess
 
         public bool UpdateBieuDoTheoDoi(UpdateBieuDoTheoDoiParameter param)
         {
-            var res = db.INSERT_OR_UPDATE_BieuDoTheoDoi(param.idTaikhoan, param.Thu2, param.Thu3, param.Thu4, param.Thu5, param.Thu6, param.Thu7, param.ChuNhat, param.NgayHienTai);
+            var res = db.INSERT_OR_UPDATE_BieuDoTheoDoi(param.idTaikhoan, param.Thu2, param.Thu3, param.Thu4, param.Thu5, param.Thu6, param.Thu7, param.ChuNhat,param.DiemTong, param.NgayHienTai);
             return res > 0 ? true : false;
         }
     }

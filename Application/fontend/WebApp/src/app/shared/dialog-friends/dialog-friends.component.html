@@ -5,7 +5,7 @@
                 <mat-list-item>
                     <img style="margin-right:5px" [src]="pathImg + 'icon-login.png'" width="40px">
                     <span>{{item.username}} </span>
-                    <button style="margin-left: 300px;" mat-button color="primary">Theo dõi</button>
+                    <button style="margin-left: 300px;" mat-button color="primary" (click)="themYeuCauKetBan(item)">Theo dõi</button>
                 </mat-list-item>
                 <mat-divider></mat-divider>
             </ng-container>
@@ -35,7 +35,7 @@
                     <img style="margin-right:5px" [src]="pathImg + 'icon-login.png'" width="40px">
                     <span>{{item.username}} </span>
                     <span style="margin-left: 250px;">
-                        <button mat-button color="primary">Đồng ý</button>
+                        <button mat-button color="primary" (click)="DongYRequest(item.idbanbe, item.idaccount)">Đồng ý</button>
                         <button mat-button color="warn" (click)="deleteRequest(item.idbanbe, item.idaccount)">Xóa</button>
                     </span>
                 </mat-list-item>

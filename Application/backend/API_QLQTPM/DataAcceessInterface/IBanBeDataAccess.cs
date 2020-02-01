@@ -14,5 +14,6 @@ namespace DataAcceessInterface
         IEnumerable<Get_DsYeuCauKetBan_Result> GetDSYeuCauKetBan(GetDSBanBeParameter param);
         bool DeleteBanBe(DeleteBanBeParameter param);
         bool DeleteYeuCauKetBan(DeleteBanBeParameter param);
+        bool InsertYeuCauKetBan(InsertYeuCauKetBanParameter param);
     }
 }

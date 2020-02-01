@@ -16,6 +16,7 @@ export class TargetDayComponent implements OnInit {
   dataChart = [];
   objDataChart: any = {};
   chart: Chart;
+  pointCurrent = 0;
   constructor(
     private goalEveryDayService: GoalEveryDayService,
     private webStorageSerivce: WebStorageSerivce,
@@ -38,6 +39,7 @@ export class TargetDayComponent implements OnInit {
         setting['diemKNDay'] = this.numGoalDay;
         this.webStorageSerivce.setLocalStorage(WebKeyStorage.SettingUser, setting);
         this.updateGoadDay();
+        this.pointCurrent = this.objDataChart[this.getDate()];
         this.objDataChart[this.getDate()] = this.numGoalDay;
         this.chartFllowService.listensDataChart(this.objDataChart);
       }
@@ -66,6 +68,7 @@ export class TargetDayComponent implements OnInit {
             Thu6: this.objDataChart['Thu6'],
             Thu7: this.objDataChart['Thu7'],
             ChuNhat: this.objDataChart['ChuNhat'],
+            DiemTong : this.objDataChart['TongDiemKN'] + (this.numGoalDay - this.pointCurrent),
             NgayHienTai: new Date().toJSON().slice(0, 10).replace(/-/g, '-')
           };
           this.chartFllowService.updateChartFllow(requestUpdateChart).subscribe(result => {
@@ -103,7 +106,7 @@ export class TargetDayComponent implements OnInit {
       },
 
       tooltip: {
-        enabled: false
+        enabled: true
       },
 
       series: [{

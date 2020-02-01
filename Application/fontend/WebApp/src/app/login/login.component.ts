@@ -28,9 +28,22 @@ export class LoginComponent implements OnInit {
     const setting = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
     if (user) {
       if (setting) {
-        this.router.navigateByUrl('/home/main/course-list');
+        this.taiKhoanService.getDanhSachThongTinTaiKhoan({ idAccount: user.id }).subscribe(res => {
+          if (res && res.Success) {
+            const dateNow = this.formatDate(new Date());
+            const datedb = this.formatDate(new Date(res.thongTinTaiKhoan.ngayhoc));
+            res.thongTinTaiKhoan.ngayhoc = dateNow;
+            if (datedb !== dateNow) {
+              res.thongTinTaiKhoan.diemKNDay = 0;
+            }
+            this.goalEveryDayService.listensChangeGoalDay(res.thongTinTaiKhoan.diemKNDay);
+            this.webStorageSerivce.setLocalStorage(WebKeyStorage.SettingUser, res.thongTinTaiKhoan);
+            this.router.navigateByUrl('/home/main/course-list');
+          }
+        });
+      } else {
+        this.router.navigateByUrl('/home/display-setting');
       }
-      this.router.navigateByUrl('/home/display-setting');
     }
   }
   submitLogin() {
@@ -43,9 +56,8 @@ export class LoginComponent implements OnInit {
           this.webStorageSerivce.setLocalStorage(WebKeyStorage.AccountInfo, result.accountLogin);
           this.taiKhoanService.getDanhSachThongTinTaiKhoan({ idAccount: result.accountLogin.id }).subscribe(res => {
             if (res && res.Success) {
-              // const dateNow = new Date().toDateString();
-              const dateNow = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-              const datedb = new Date(res.thongTinTaiKhoan.ngayhoc).toJSON().slice(0, 10).replace(/-/g, '/');
+              const dateNow = this.formatDate(new Date());
+              const datedb = this.formatDate(new Date(res.thongTinTaiKhoan.ngayhoc));
               res.thongTinTaiKhoan.ngayhoc = dateNow;
               if (datedb !== dateNow) {
                 res.thongTinTaiKhoan.diemKNDay = 0;
@@ -63,6 +75,14 @@ export class LoginComponent implements OnInit {
         this.isLoginPass = false;
       }
     });
+  }
+
+  formatDate(value: any) {
+    // const date = new Date(value);
+    const dateString = new Date(value.getTime() - (value.getTimezoneOffset() * 60000))
+      .toISOString()
+      .split('T')[0];
+    return dateString;
   }
 
 }

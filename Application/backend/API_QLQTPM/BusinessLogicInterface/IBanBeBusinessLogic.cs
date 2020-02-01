@@ -10,5 +10,6 @@ namespace BusinessLogicInterface
         Task<GetDSBanBeResponse> GetDSYeuCauKetBan(GetDSBanBeParameter param);
         Task<bool> DeleteBanBe(DeleteBanBeParameter param);
         Task<bool> DeleteYeuCauKetBan(DeleteBanBeParameter param);
+        Task<bool> InsertYeuCauKetBan(InsertYeuCauKetBanParameter param);
     }
 }

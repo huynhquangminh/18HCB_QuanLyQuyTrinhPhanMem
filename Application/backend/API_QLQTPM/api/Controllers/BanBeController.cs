@@ -63,5 +63,16 @@ namespace api.Controllers
             var result = _businessLogic.DeleteYeuCauKetBan(dataRequest);
             return new ActionResult<bool>(result.Result, Request);
         }
+
+        /// <summary>
+        /// get khoa hoc
+        /// </summary>
+        /// <returns>IHttpActionResult</returns>
+        [HttpPost]
+        public IHttpActionResult ThemYeuCauKetBan(InsertYeuCauKetBanParameter dataRequest)
+        {
+            var result = _businessLogic.InsertYeuCauKetBan(dataRequest);
+            return new ActionResult<bool>(result.Result, Request);
+        }
     }
 }
