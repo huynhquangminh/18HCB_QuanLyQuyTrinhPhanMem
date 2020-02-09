@@ -696,5 +696,39 @@ namespace EntityData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERT_YeuCauKetBan", idAccountParameter, idBanBeParameter, yeucauParameter);
         }
+    
+        public virtual int Insert_BanBe(Nullable<int> idaccount, Nullable<int> idbanbe, Nullable<bool> yeucau)
+        {
+            var idaccountParameter = idaccount.HasValue ?
+                new ObjectParameter("idaccount", idaccount) :
+                new ObjectParameter("idaccount", typeof(int));
+    
+            var idbanbeParameter = idbanbe.HasValue ?
+                new ObjectParameter("idbanbe", idbanbe) :
+                new ObjectParameter("idbanbe", typeof(int));
+    
+            var yeucauParameter = yeucau.HasValue ?
+                new ObjectParameter("yeucau", yeucau) :
+                new ObjectParameter("yeucau", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_BanBe", idaccountParameter, idbanbeParameter, yeucauParameter);
+        }
+    
+        public virtual int Update_YeuCauKetBan(Nullable<int> idAcount, Nullable<int> idbanbe, Nullable<bool> yeucau)
+        {
+            var idAcountParameter = idAcount.HasValue ?
+                new ObjectParameter("idAcount", idAcount) :
+                new ObjectParameter("idAcount", typeof(int));
+    
+            var idbanbeParameter = idbanbe.HasValue ?
+                new ObjectParameter("idbanbe", idbanbe) :
+                new ObjectParameter("idbanbe", typeof(int));
+    
+            var yeucauParameter = yeucau.HasValue ?
+                new ObjectParameter("yeucau", yeucau) :
+                new ObjectParameter("yeucau", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_YeuCauKetBan", idAcountParameter, idbanbeParameter, yeucauParameter);
+        }
     }
 }

@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class GoalEveryDayService extends AppService {
   public goalDay = new BehaviorSubject<number>(0);
   listensChangeGoalDay(data) {
-    const sum = this.goalDay.value + data;
+    const sum = data === 0 ? 0 : this.goalDay.value + data;
     this.goalDay.next(sum);
   }
 

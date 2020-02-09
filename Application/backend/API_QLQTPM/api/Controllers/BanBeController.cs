@@ -74,5 +74,27 @@ namespace api.Controllers
             var result = _businessLogic.InsertYeuCauKetBan(dataRequest);
             return new ActionResult<bool>(result.Result, Request);
         }
+
+        /// <summary>
+        /// get khoa hoc
+        /// </summary>
+        /// <returns>IHttpActionResult</returns>
+        [HttpPost]
+        public IHttpActionResult ThemBanBe(InsertYeuCauKetBanParameter dataRequest)
+        {
+            var result = _businessLogic.InsertBanBe(dataRequest);
+            return new ActionResult<bool>(result.Result, Request);
+        }
+
+        /// <summary>
+        /// get khoa hoc
+        /// </summary>
+        /// <returns>IHttpActionResult</returns>
+        [HttpPost]
+        public IHttpActionResult SuaYeuCauKetBan(InsertYeuCauKetBanParameter dataRequest)
+        {
+            var result = _businessLogic.UpdateYeuCauKetBan(dataRequest);
+            return new ActionResult<bool>(result.Result, Request);
+        }
     }
 }

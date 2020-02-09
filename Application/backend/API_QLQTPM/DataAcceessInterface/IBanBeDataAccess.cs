@@ -15,5 +15,7 @@ namespace DataAcceessInterface
         bool DeleteBanBe(DeleteBanBeParameter param);
         bool DeleteYeuCauKetBan(DeleteBanBeParameter param);
         bool InsertYeuCauKetBan(InsertYeuCauKetBanParameter param);
+        bool InsertBanBe(InsertYeuCauKetBanParameter param);
+        bool UpdateYeuCauKetBan(InsertYeuCauKetBanParameter param);
     }
 }

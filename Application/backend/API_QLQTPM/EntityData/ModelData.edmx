@@ -401,6 +401,11 @@
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="pass" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Insert_BanBe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idaccount" Type="int" Mode="In" />
+          <Parameter Name="idbanbe" Type="int" Mode="In" />
+          <Parameter Name="yeucau" Type="bit" Mode="In" />
+        </Function>
         <Function Name="Insert_DSBaiHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tenbaihoc" Type="nvarchar" Mode="In" />
           <Parameter Name="idkhoahoc" Type="int" Mode="In" />
@@ -505,6 +510,11 @@
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="idbanbe" Type="int" Mode="In" />
           <Parameter Name="idaccount" Type="int" Mode="In" />
+          <Parameter Name="yeucau" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Update_YeuCauKetBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAcount" Type="int" Mode="In" />
+          <Parameter Name="idbanbe" Type="int" Mode="In" />
           <Parameter Name="yeucau" Type="bit" Mode="In" />
         </Function>
         <EntityContainer Name="WebLapTrinhModelStoreContainer">
@@ -1176,6 +1186,16 @@
             <Parameter Name="idBanBe" Mode="In" Type="Int32" />
             <Parameter Name="yeucau" Mode="In" Type="Boolean" />
           </FunctionImport>
+          <FunctionImport Name="Insert_BanBe">
+            <Parameter Name="idaccount" Mode="In" Type="Int32" />
+            <Parameter Name="idbanbe" Mode="In" Type="Int32" />
+            <Parameter Name="yeucau" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Update_YeuCauKetBan">
+            <Parameter Name="idAcount" Mode="In" Type="Int32" />
+            <Parameter Name="idbanbe" Mode="In" Type="Int32" />
+            <Parameter Name="yeucau" Mode="In" Type="Boolean" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ACCOUNT_LOGIN_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1673,6 +1693,8 @@
           <FunctionImportMapping FunctionImportName="Update_ThongTinBanBe" FunctionName="WebLapTrinhModel.Store.Update_ThongTinBanBe" />
           <FunctionImportMapping FunctionImportName="Insert_ThongBaoByIdAccount" FunctionName="WebLapTrinhModel.Store.Insert_ThongBaoByIdAccount" />
           <FunctionImportMapping FunctionImportName="INSERT_YeuCauKetBan" FunctionName="WebLapTrinhModel.Store.INSERT_YeuCauKetBan" />
+          <FunctionImportMapping FunctionImportName="Insert_BanBe" FunctionName="WebLapTrinhModel.Store.Insert_BanBe" />
+          <FunctionImportMapping FunctionImportName="Update_YeuCauKetBan" FunctionName="WebLapTrinhModel.Store.Update_YeuCauKetBan" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

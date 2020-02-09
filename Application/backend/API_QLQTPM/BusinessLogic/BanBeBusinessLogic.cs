@@ -97,7 +97,7 @@ namespace BusinessLogic
                 return await Task.FromResult(response);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return await Task.FromResult(response);
             }
@@ -117,5 +117,36 @@ namespace BusinessLogic
                 return await Task.FromResult(response);
             }
         }
+
+        public async Task<bool> InsertBanBe(InsertYeuCauKetBanParameter param)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.InsertBanBe(param);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
+        public async Task<bool> UpdateYeuCauKetBan(InsertYeuCauKetBanParameter param)
+        {
+            var response = false;
+            try
+            {
+                response = _dataAccess.UpdateYeuCauKetBan(param);
+                return await Task.FromResult(response);
+
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(response);
+            }
+        }
+
     }
 }

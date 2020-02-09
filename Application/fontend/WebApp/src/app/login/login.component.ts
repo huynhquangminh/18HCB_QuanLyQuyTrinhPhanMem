@@ -61,10 +61,27 @@ export class LoginComponent implements OnInit {
               res.thongTinTaiKhoan.ngayhoc = dateNow;
               if (datedb !== dateNow) {
                 res.thongTinTaiKhoan.diemKNDay = 0;
+                console.log(' res.thongTinTaiKhoan', res.thongTinTaiKhoan);
+                const request = {
+                  idkhoahoc: res.thongTinTaiKhoan.idkhoahoc,
+                  idcapdo: res.thongTinTaiKhoan.idcapdo,
+                  diemKN: res.thongTinTaiKhoan.diemKN,
+                  diemKNDay: 0,
+                  idtaikhoan: res.thongTinTaiKhoan.idtaikhoan,
+                  ngayhoc: dateNow
+                };
+                this.taiKhoanService.themThongTinTaiKhoan(request).subscribe(response => {
+                  if (response) {
+                    console.log('update success');
+                  }
+                });
               }
               this.goalEveryDayService.listensChangeGoalDay(res.thongTinTaiKhoan.diemKNDay);
               this.webStorageSerivce.setLocalStorage(WebKeyStorage.SettingUser, res.thongTinTaiKhoan);
               this.router.navigateByUrl('/home/main/course-list');
+
+
+
             } else {
               this.router.navigateByUrl('/home/display-setting');
             }

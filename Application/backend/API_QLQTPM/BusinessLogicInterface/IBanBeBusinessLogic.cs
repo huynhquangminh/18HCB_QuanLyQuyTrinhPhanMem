@@ -11,5 +11,7 @@ namespace BusinessLogicInterface
         Task<bool> DeleteBanBe(DeleteBanBeParameter param);
         Task<bool> DeleteYeuCauKetBan(DeleteBanBeParameter param);
         Task<bool> InsertYeuCauKetBan(InsertYeuCauKetBanParameter param);
+        Task<bool> InsertBanBe(InsertYeuCauKetBanParameter param);
+        Task<bool> UpdateYeuCauKetBan(InsertYeuCauKetBanParameter param);
     }
 }

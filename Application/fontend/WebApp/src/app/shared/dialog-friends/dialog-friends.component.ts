@@ -1,3 +1,4 @@
+import { ThongBaoService } from 'src/app/services/notications.service';
 import { WebStorageSerivce } from './../../services/webStorage.service';
 import { WebKeyStorage } from './../../global/web-key-storage';
 import { Component, OnInit, Inject } from '@angular/core';
@@ -19,7 +20,8 @@ export class DialogFriendsComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogFriendsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private friendsService: FriendsService,
-    private webStorageSerivce: WebStorageSerivce
+    private webStorageSerivce: WebStorageSerivce,
+    private thongBaoService: ThongBaoService
   ) { }
 
   ngOnInit() {
@@ -67,20 +69,23 @@ export class DialogFriendsComponent implements OnInit {
       // tslint:disable-next-line:object-literal-shorthand
       idaccount: idaccount
     };
-    forkJoin(
-      this.friendsService.deleteFriend(request1),
-      this.friendsService.deleteRequestFriend(request2)
-    ).subscribe(([res1, res2]) => {
-      if (res1 && res2) {
-        this.getListFriends();
+
+    this.friendsService.deleteRequestFriend(request2).subscribe(res => {
+      if (res) {
         this.getListRequestFriend();
+        // this.friendsService.deleteFriend(request1).subscribe(result => {
+        //   if (result) {
+        //     this.getListFriends();
+        //     this.getListRequestFriend();
+        //   }
+        // });
       }
-      return of([]);
     });
   }
 
   themYeuCauKetBan(item) {
     const setting = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);
+    const userInfo = this.webStorageSerivce.getLocalStorage(WebKeyStorage.AccountInfo);
     const request = {
       idAccount: setting.idtaikhoan,
       idBanBe: item.id,
@@ -88,13 +93,47 @@ export class DialogFriendsComponent implements OnInit {
     };
     this.friendsService.insertRequestFriend(request).subscribe(res => {
       if (res) {
-        this.getListAccountSameCourse();
+        const param = {
+          idaccount: item.id,
+          thongbao: 'Bạn có thông báo kết bạn mới từ ' + userInfo.username
+        };
+        this.thongBaoService.themThongBao(param).subscribe(result => {
+          this.getListAccountSameCourse();
+        });
       }
     });
   }
 
   DongYRequest(idbanbe, idaccount) {
-
+    const userInfo = this.webStorageSerivce.getLocalStorage(WebKeyStorage.AccountInfo);
+    const request = {
+      idAccount: idbanbe,
+      idBanBe: idaccount,
+      yeucau: true
+    };
+    this.friendsService.insertBanBe(request).subscribe(res => {
+      if (res) {
+        const paramThongbao = {
+          // tslint:disable-next-line:object-literal-shorthand
+          idaccount: idbanbe,
+          thongbao: userInfo.username + ' đã đồng ý kết bạn với bạn, giờ 2 người có theo dõi nhau'
+        };
+        this.thongBaoService.themThongBao(paramThongbao).subscribe(result => {
+          this.getListAccountSameCourse();
+        });
+        this.getListFriends();
+        const param = {
+          idAccount: idaccount,
+          idBanBe: idbanbe,
+          yeucau: true
+        };
+        this.friendsService.updateRequestFriend(param).subscribe(result => {
+          if (result) {
+            this.getListRequestFriend();
+          }
+        });
+      }
+    });
   }
 
 }

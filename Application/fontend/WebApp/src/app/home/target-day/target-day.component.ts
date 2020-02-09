@@ -32,7 +32,7 @@ export class TargetDayComponent implements OnInit {
       }
     });
     this.goalEveryDayService.goalDay.subscribe(result => {
-      if (result && this.progessGoalDay < 100) {
+      if (result !== undefined && this.progessGoalDay < 100) {
         this.numGoalDay = Math.round(result) > this.targetNumber ? this.targetNumber : Math.round(result);
         this.progessGoalDay = this.numGoalDay * Math.round(100 / this.targetNumber);
         const setting = this.webStorageSerivce.getLocalStorage(WebKeyStorage.SettingUser);

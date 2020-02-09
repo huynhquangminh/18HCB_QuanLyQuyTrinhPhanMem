@@ -26,4 +26,12 @@ export class FriendsService extends AppService {
     insertRequestFriend(request: any = {}) {
         return this.CallByResquestService('/api/banbe/ThemYeuCauKetBan', request);
     }
+
+    insertBanBe(request: any = {}) {
+        return this.CallByResquestService('/api/banbe/ThemBanBe', request);
+    }
+
+    updateRequestFriend(request: any = {}) {
+        return this.CallByResquestService('/api/banbe/SuaYeuCauKetBan', request);
+    }
 }
